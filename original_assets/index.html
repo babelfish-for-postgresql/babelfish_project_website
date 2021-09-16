@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+    <link rel="icon" type="image/png" href="img/bbfsh_logobug.svg" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="js/masonry.pkgd.min.js"></script>
+    <script src="js/scripts.js" defer></script>
+    <title>Babelfish for PostgreSQL - Coming Soon</title>
+  </head>
+  <body>
+    <div id="home" name="home" class="mdl-head">
+      <header class="mdl-header">
+        <input id="sta-menu" type="checkbox" />
+        <div class="m-content">
+          <a href="#home" class="m-img">
+            <img src="img/bbfsh_logo.svg" alt="Babelfish for PostgreSQL"/>
+          </a>
+          <nav>
+            <a class="sta-hoverOFF" href="#how_it_works">HOW IT WORKS</a>
+            <a class="sta-hoverOFF" href="#benefits">BENEFITS</a>
+            <a class="sta-hoverOFF" href="#faq">FAQs</a>
+            <a class="sta-hoverOFF" href="#learn_more">LEARN MORE</a>  
+            <a class="sta-hoverOFF" </a>  
+          </nav>
+          <label for="sta-menu">
+            <span></span>
+          </label>
+        </div>
+      </header>
+      <section class="mdl-hero">
+        <div class="m-content">
+          <div class="m-title">A new end-point in PostgreSQL that understand commands from applications built for Microsoft SQL Server.</div>
+          <a href="mailto:babelfish-pg@amazon.com?subject=Babelfish Updates&body=I am interested in contributing to Babelfish for PostgreSQL. Please contact me with updates." class="css-button2 sta-hoverOFF">  
+<!--            <a href="https://pages.awscloud.com/Babelfish-for-Aurora-PostgreSQL.html" class="css-button2 sta-hoverOFF">   -->
+            Sign up here for updates
+          </a>
+        </div>
+      </section>
+    </div>
+    <div id="sticky" name="sticky" class="sticky">
+      <header class="sticky-header">
+        <input id="sta-menu" type="checkbox" />
+        <div class="m-content">
+          <a href="#home" class="s-img">
+            <img src="img/bbfsh_logo.svg" alt="Babelfish for PostgreSQL"/>
+          </a>
+          <nav>
+            <a class="sta-hoverOFF" href="#how_it_works">HOW IT WORKS</a>            
+            <a class="sta-hoverOFF" href="#benefits">BENEFITS</a>
+            <a class="sta-hoverOFF" href="#faq">FAQs</a>
+            <a class="sta-hoverOFF" href="#learn_more">LEARN MORE</a>  
+            <a class="sta-hoverOFF" </a>  
+          </nav>
+          <label for="sta-menu">
+            <span></span>
+          </label>
+        </div>
+      </header>
+    </div>
+    <section class="mdl-article">
+      <article class="m-content">
+        <section>
+          <p>
+            <b>Babelfish for PostgreSQL</b> is an Apache-2.0 open source project that adds a Microsoft SQL Server-compatible end-point to PostgreSQL to enable your PostgreSQL database to understand the SQL Server wire protocol and commonly used SQL Server commands. With Babelfish, applications that were originally built for SQL Server can work directly with PostgreSQL, with little to no code changes, and without changing database drivers.
+          </p>  
+          <p>
+            Babelfish for PostgreSQL will be available on Github in 2021. 
+          </p>  
+        </section>
+      </article>
+    </section>
+    <section class="mdl-article2">
+      <article class="m-content">
+        <header id="how_it_works" name="how_it_works" style="text-align:left">HOW IT WORKS</header>
+        <div class="m-header">How Babelfish for PostgreSQL works</div>
+        <div class="m-img">
+          <img src="img/bbfsh-diagram.png" class="m-desktop" alt="Babelfish Desktop diagram" />
+          <img src="img/bbfsh-diagram.png" class="m-device" alt="Babelfish Mobile diagram" />
+        </div>
+        <section>
+          <p>
+            Babelfish for PostgreSQL adds an endpoint to PostgreSQL that understands the SQL Server wire protocol Tabular Data Stream (TDS), and commonly used T-SQL programming language constructs used by SQL Server. Support for T-SQL includes elements such as the SQL dialect, cursors, catalog views, data types, triggers, stored procedures, and functions.          </p>
+          <p>
+          </p>
+        </section>
+      </article>
+    </section>
+    <section class="mdl-benefits">
+      <div class="m-content">
+        <div id="benefits" name="benefits" class="m-title" style="text-align:left">BENEFITS</div>
+        <div class="m-grid">
+          <article class="m-item">
+            <div class="m-header">
+              <img src="img/migration_icon.svg" alt="Faster Migrations" />
+                    <header>Faster Migrations</header>
+            </div>
+            <section>
+              Complete migrations from SQL Server to PostgreSQL faster, saving months to years of work from changing application code
+            </section>
+          </article>
+          <article class="m-item">
+            <div class="m-header">
+              <img src="img/innovate_icon.svg" alt="Faster Migrations" />
+                    <header>Freedom to Innovate</header>
+            </div>
+            <section>
+              Build new functionality by running PostgreSQL code side-by-side with your existing T-SQL code
+            </section>
+          </article>
+        </article>
+        <article class="m-item">
+          <div class="m-header">
+            <img src="img/opensource_icon.svg" alt="Innovate Faster" />
+                  <header>100% Open Source</header>
+          </div>
+          <section>
+            Uses the permissive Apache 2.0 license. Contribute and help steer the direction of Babelfish to meet your application needs
+          </section>
+        </article>
+        </div>
+      </div>
+    </section>
+    <section id="faq" name="faq" class="mdl-faq">
+      <div class="m-content">
+        <div id="m-title" name="benefits" class="m-title" style="text-align:left">FAQs</div>
+                <div class="m-grid sta-masonry">
+          <article class="m-item">
+            <header>Who developed Babelfish for PostgreSQL?</header>
+            <section>
+              <a></a>
+              The Babelfish for PostgreSQL project was created by Amazon Web Services who built services such as
+              <a href="https://aws.amazon.com/aurora/">Amazon Aurora</a>
+              and
+              <a href="https://aws.amazon.com/rds/">Amazon RDS</a>
+            </section>
+          </article>
+          <article class="m-item">
+            <header>Why did you develop Babelfish for PostgreSQL?</header>
+            <section>
+              We built Babelfish for PostgreSQL to make it easier to migrate applications from SQL Server to PostgreSQL. Today, there are a number of ways to migrate your data and database schema from SQL Server to PostgreSQL. However, once the initial database migration is done, manually re-writing application code, switching out database drivers, and verifying that the application behavior hasn’t changed requires significant effort. As a result, organizations struggle to start these types of projects because of the opportunity cost of tying up developers, and the risk of introducing errors when making extensive changes to the application code. 
+          </article>
+          <article class="m-item">
+            <header>When will Babelfish for PostgreSQL be available on GitHub?</header>
+            <section>
+                Babelfish for PostgreSQL will be available on Github in 2021.
+            </section>
+          </article>
+          <article class="m-item">
+            <header>Who can contribute to Babelfish for PostgreSQL?</header>
+            <section>
+              Anyone! We will make it easy for developers, SQL Server experts, and PostgreSQL experts from all organizations to help guide the direction of Babelfish for PostgreSQL. We are planning to provide samples and training to help people that are new to open source projects get a running start.
+            </section>
+          </article>
+
+          <article class="m-item">
+            <header>How is Babelfish for PostgreSQL licensed?</header>
+            <section>
+              We will release Babelfish for PostgreSQL on the permissive Apache-2.0 license, allowing you to freely use, copy, and distribute your changes under the terms of your choice. 
+            </section>
+          </article>
+
+          <article class="m-item">
+            <header>What programming language is Babelfish for PostgreSQL written in?</header>
+            <section>
+              Babelfish is written in C, which is the same programming language used to develop PostgreSQL. Some parts of Babelfish are developed using procedural language in PL/pgSQL. Many test cases are written in PL/pgSQL and T-SQL. 
+            </section>
+          </article>
+          <article class="m-item">
+             <header>How can I contribute?</header>
+            <section>
+              You can contribute by adding or extending Babelfish functionality, submitting feature requests, working on documentation, and contributing test cases.  
+            </section>
+          </article>
+        </div>
+    </section>
+    <section class="mdl-learn">
+      <div class="m-content">
+        <div id="learn_more" name="learn_more" class="m-title" style="text-align: left">LEARN MORE</div>
+        <div class="m-grid">
+          <a
+            href="https://aws.amazon.com/blogs/opensource/want-more-postgresql-you-just-might-like-babelfish/"
+            class="m-item sta-hoverOFF"        
+          <article>
+            <header>
+              <small>OPEN SOURCE BLOG</small>
+              <big>Announcing the Babelfish for PostgreSQL Open Source Project</big>
+            </header>
+            <section>
+              Read about Babelfish for PostgreSQL, where the project is headed, and how you can join,
+              contribute, and collaborate.
+            </section>
+            <footer>
+              <span>Read here</span>
+              <i class="icon-right-arrow" aria-hidden="true"></i>
+            </footer>
+          </article>
+          </a>
+        </div>
+      </div>
+    </section>
+    <footer class="mdl-footer">
+      <div class="m-content">
+        <div>
+          <article class="m-content">
+            <section>
+              <img src="img/bbfsh_logoWhite.svg" alt="Babelfish for PostgreSQL"/>
+            </section>
+          </article>
+        </div>
+        </a>
+        <div>
+          <article class="m-content">
+            <section>
+              ©2018 - 2020, Amazon Web Services, Inc or its affiliates. All rights reserved.
+            </section>
+          </article>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
