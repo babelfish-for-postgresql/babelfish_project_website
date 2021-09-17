@@ -1,5 +1,0 @@
-I"	<p>In <a href="https://aws.amazon.com/blogs/opensource/introducing-opensearch/">introducing OpenSearch</a> we said:</p>
-<blockquote>
-  <p>The Amazon OpenSearch Service APIs will be backwards compatible with the existing service APIs to eliminate any need for customers to update their current client code or applications. Additionally, just as we did for previous versions of Elasticsearch, we will provide a seamless upgrade path from existing Elasticsearch 6.x and 7.x managed clusters to OpenSearch.</p>
-</blockquote>
-:ET

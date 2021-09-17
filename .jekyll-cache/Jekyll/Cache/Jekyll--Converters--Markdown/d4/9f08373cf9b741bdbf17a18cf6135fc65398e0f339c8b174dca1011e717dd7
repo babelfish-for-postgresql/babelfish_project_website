@@ -1,2 +1,0 @@
-I"4<p>This post introduces an updated Random Cut Forest library, RCF 2.0. OpenSearch uses RCF 1.0 in its existing High Cardinality Anomaly Detection (HCAD) framework [<a href="#footnote1">1</a>,<a href="#footnote2">2</a>,<a href="#footnote3">3</a>]. The sequel discusses the perspective motivating RCF 2.0.</p>
-:ET

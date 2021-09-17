@@ -1,6 +1,6 @@
-<img src="https://opensearch.org/assets/img/opensearch-logo-themed.svg" height="64px">
+<img src="https://babelfishpg.org/assets/img/babelfishpg-logo-themed.svg" height="64px">
 
-- [OpenSearch.org Website](#opensearchorg-website)
+- [babelfishpg.org Website](#opensearchorg-website)
   - [Getting Help](#getting-help)
   - [Contributing](#contributing)
     - [Adding to the Partners Page](#adding-to-the-partners-page)
@@ -10,9 +10,9 @@
   - [License](#license)
   - [Credits](#credits)
   
-# OpenSearch.org Website
+# Babelfishpg.org Website
 
-This repo contains the source for the [opensearch.org](https://opensearch.org/) website. 
+This repo contains the source for the [babelfishpg.org](https://babelfishpg.org/) website. 
 
 ## Getting Help
 
@@ -74,7 +74,7 @@ This project is licensed under the [BSD-3-Clause License](LICENSE).
 
 ## Credits
 
-This website was forked from the BSD-licensed [djangoproject.com](https://github.com/django/djangoproject.com).
+This website was forked from the BSD-licensed [djangoproject.com](https://github.com/django/djangoproject.com) and merged with just-the-docs theme.
 
 ## Copyright
 

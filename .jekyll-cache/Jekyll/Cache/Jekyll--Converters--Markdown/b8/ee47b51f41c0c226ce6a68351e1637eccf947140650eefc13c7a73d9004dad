@@ -1,3 +1,0 @@
-I"<p>You are able to stop Elasticsearch OSS and Kibana OSS, install OpenSearch and OpenSearch Dashboards, manually configure those to point to your Elasticsearch OSS and Kibana OSS data, review and potentially update settings, then start OpenSearch with OpenSearch Dashboards.</p>
-
-:ET

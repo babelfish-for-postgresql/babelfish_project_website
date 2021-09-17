@@ -1,4 +1,0 @@
-I"Í<p>Environment variables that contain branded words such as <code class="language-plaintext highlighter-rouge">ES</code> or <code class="language-plaintext highlighter-rouge">OPENDISTRO</code> have been renamed.</p>
-
-<p>Cluster settings that contain branded words such as <code class="language-plaintext highlighter-rouge">es.</code> or <code class="language-plaintext highlighter-rouge">opendistro.</code> can continue to be used but have been deprecated.</p>
-:ET

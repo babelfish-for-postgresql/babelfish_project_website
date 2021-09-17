@@ -1,7 +1,0 @@
-I"›<p>OpenSearch has a long history at Amazon. The trademark for OpenSearch is held by Amazon.</p>
-
-<h2 id="opensearch-syndication-protocol">OpenSearch Syndication Protocol</h2>
-
-<p>At the 2005 Oâ€™Reilly Emerging Technology Conference, <a href="https://www.technologyreview.com/2005/03/15/231423/jeff-bezos-unveils-vertical-search-live-from-the-oreilly-e-tech-conference/">Jeff Bezos showed the world</a> the OpenSearch syndication protocol. This protocol was born out of A9, the search arm of <a href="https://amazon.com/">Amazon.com</a>, and allowed for the syndication of search results across services. This protocol has lived on and is still valid today. You can find more details on <a href="https://en.wikipedia.org/wiki/OpenSearch">Wikipedia</a>. This specification is currently being maintained in GitHub by an ex-A9 employee, at <a href="https://github.com/dewitt/opensearch">github.com/dewitt/opensearch</a>.</p>
-
-:ET

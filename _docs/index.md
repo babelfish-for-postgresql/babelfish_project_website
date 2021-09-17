@@ -6,28 +6,27 @@ redirect_from: /404.html
 permalink: /docs
 ---
 
-# OpenSearch documentation
+# Babelfih for PostgreSQL documentation
 
-This site contains the technical documentation for [OpenSearch](https://opensearch.org/), the Apache 2.0-licensed search, analytics, and visualization suite with advanced security, alerting, SQL support, automated index management, deep performance analysis, and more.
+This site contains the technical documentation for [BabelfishPF](https://babelfishpg.org/), an Apache-2.0 open source project that adds a Microsoft SQL Server-compatible end-point to PostgreSQL to enable your PostgreSQL database to understand the SQL Server wire protocol and commonly used SQL Server commands. With Babelfish, PostgreSQL now understands T-SQL, Microsoft SQL Server's proprietary SQL dialect, and supports the same communications protocol, so your apps that were originally written for SQL Server can now work with PostgreSQL with fewer code changes and without changing database drivers.
+
 
 [Get started](#docker-quickstart){: .btn .btn-blue }
 
 
 ---
 
-## Why use OpenSearch?
+## Why use BabelfishPG?
 
-OpenSearch is well-suited to the following use cases:
+BabelfishPG is well-suited to the following use cases:
 
-* Log analytics
-* Real-time application monitoring
-* Clickstream analytics
-* Search backend
+* Smooth transition of you MSSQL Server compatible source code to an Open Source based database.
+* BabelfishPG intends to move forward on its integration to the PostgreSQL community.
 
 Component | Purpose
 :--- | :---
-[OpenSearch]({{site.url}}{{site.baseurl}}/opensearch/) | Data store and search engine
-[OpenSearch Dashboards]({{site.url}}{{site.baseurl}}/dashboards/) | Search frontend and visualizations
+[BabelfishPG]({{site.url}}{{site.baseurl}}/BabelfishPG/) | Data store and search engine
+[BabelfishPG Dashboards]({{site.url}}{{site.baseurl}}/dashboards/) | Search frontend and visualizations
 [Security]({{site.url}}{{site.baseurl}}/security-plugin/) | Authentication and access control for your cluster
 [Alerting]({{site.url}}{{site.baseurl}}/monitoring-plugins/alerting/) | Receive notifications when your data meets certain conditions
 [SQL]({{site.url}}{{site.baseurl}}/search-plugins/sql/) | Use SQL or a piped processing language to query your data
@@ -37,7 +36,6 @@ Component | Purpose
 [Anomaly Detection]({{site.url}}{{site.baseurl}}/monitoring-plugins/ad/) | Identify atypical data and receive automatic notifications
 [Asynchronous Search]({{site.url}}{{site.baseurl}}/search-plugins/async/) | Run search requests in the background
 
-Most of OpenSearch plugins have a corresponding OpenSearch Dashboards plugin that provide a convenient, unified user interface.
 
 For specifics around the project, see the [FAQ](https://opensearch.org/faq/).
 

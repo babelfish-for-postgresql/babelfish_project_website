@@ -1,2 +1,0 @@
-I"(<p>Elasticsearch is an open source distributed search and analytics engine based on <a href="https://lucene.apache.org/">Apache Lucene</a>. After adding your data to Elasticsearch, you can perform full-text searches on the data with all of the features you may expect: search by field, search multiple indices, boost fields, rank results by score, sort results by field, and aggregate results. You can also use <a href="https://opendistro.github.io/for-elasticsearch-docs/docs/kibana/">Kibana</a> to build visualizations for data in Elasticsearch.</p>
-:ET

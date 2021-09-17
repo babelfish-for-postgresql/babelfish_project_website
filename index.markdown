@@ -7,7 +7,7 @@ layout_class: sidebar-right
 body_class: homepage
 sectionid: homepage
 
-meta_description: OpenSearch is a community-driven, open source search and analytics suite derived from Apache 2.0 licensed Elasticsearch 7.10.2 & Kibana 7.10.2. It consists of a search engine daemon, OpenSearch, and a visualization and user interface, OpenSearch Dashboards. OpenSearch enables people to easily ingest, secure, search, aggregate, view, and analyze data.
+meta_description: Babelfish for PostgreSQL is an Apache-2.0 open source project that adds a Microsoft SQL Server-compatible end-point to PostgreSQL to enable your PostgreSQL database to understand the SQL Server wire protocol and commonly used SQL Server commands. With Babelfish, PostgreSQL now understands T-SQL, Microsoft SQL Server's proprietary SQL dialect, and supports the same communications protocol, so your apps that were originally written for SQL Server can now work with PostgreSQL with fewer code changes and without changing database drivers.
 
 download_ctas:
   - os
@@ -20,20 +20,20 @@ ctas:
         url: '/downloads.html'
     roadmap:
         text: 'View the project roadmap'
-        url: https://github.com/orgs/opensearch-project/projects/1
+        url: https://github.com/orgs/babelfish-for-postgresql/projects/1
 
 
-greeting: "More about OpenSearch"
+greeting: "More about BabelfishPG"
 
-headline: "OpenSearch makes it easy to ingest, search, visualize, and analyze your data."
+headline: "BabelfishPG makes it easy to ingest, search, visualize, and analyze your data."
 
-long_description: "OpenSearch is a community-driven, open source search and analytics suite derived from Apache 2.0 licensed Elasticsearch 7.10.2 & Kibana 7.10.2. It consists of a search engine daemon, OpenSearch, and a visualization and user interface, OpenSearch Dashboards. OpenSearch enables people to easily ingest, secure, search, aggregate, view, and analyze data. These capabilities are popular for use cases such as application search, log analytics, and more. With OpenSearch people benefit from having an open source product they can use, modify, extend, monetize, and resell how they want. At the same time, OpenSearch will continue to provide a secure, high-quality search and analytics suite with a rich roadmap of new and innovative functionality."
+long_description: "Babelfish for PostgreSQL is an Apache-2.0 open source project that adds a Microsoft SQL Server-compatible end-point to PostgreSQL to enable your PostgreSQL database to understand the SQL Server wire protocol and commonly used SQL Server commands. With Babelfish, PostgreSQL now understands T-SQL, Microsoft SQL Server's proprietary SQL dialect, and supports the same communications protocol, so your apps that were originally written for SQL Server can now work with PostgreSQL with fewer code changes and without changing database drivers."
 
 
-callouts_head: "The OpenSearch project's principles for development"
+callouts_head: "The BabelfishPG project's principles for development"
 callouts_class: list-features
 callouts_id: principles
-callouts_leader: 'When we (the contributors) are successful, OpenSearch will be:'
+callouts_leader: 'When we (the contributors) are successful, BabelfishPG will be:'
 
 version_feature:
     latest_label: "Current Version:"
@@ -61,7 +61,7 @@ secondary:
 sidebar:
     -
         title: Have a question?
-        description: Do you have a question regarding OpenSearch? Maybe you aren’t the first to ask it. Checkout our frequently asked questions (FAQ) to see if your question is already answered. If not, don’t hesitate to ask in the community forums.
+        description: Do you have a question regarding BabelfishPG? Maybe you aren’t the first to ask it. Checkout our frequently asked questions (FAQ) to see if your question is already answered. If not, don’t hesitate to ask in the community forums.
         links:
             -
                 title: Check out the FAQ
@@ -76,11 +76,11 @@ sidebar:
 #            url: http://www.example.com/
         links:
             -
-                title: Introducing OpenSearch
-                url: https://aws.amazon.com/blogs/opensource/introducing-opensearch
-            -
-                title: 'Stepping up for a truly open source Elasticsearch'
-                url: https://aws.amazon.com/blogs/opensource/stepping-up-for-a-truly-open-source-elasticsearch/
+                title: Introducing BabelfishPG
+                url: https://aws.amazon.com/blogs/opensource/introducing-BabelfishPG
+            # -
+            #     title: 'Stepping up for a truly open source Elasticsearch'
+            #     url: https://aws.amazon.com/blogs/opensource/stepping-up-for-a-truly-open-source-elasticsearch/
             -
                 title: 'Keeping Open Source Open'
                 url: https://aws.amazon.com/blogs/opensource/keeping-open-source-open-open-distro-for-elasticsearch/

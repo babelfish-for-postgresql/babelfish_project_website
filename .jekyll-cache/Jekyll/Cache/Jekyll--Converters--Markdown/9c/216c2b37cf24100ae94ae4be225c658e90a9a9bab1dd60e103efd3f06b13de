@@ -1,2 +1,0 @@
-I"ô<p>Distributed systems scale by coordinating and distributing their workloads horizontally, across several machines. In Elasticsearch, this is done by partitioning indexes into shards and distributing them across data nodes in the cluster.</p>
-:ET

@@ -1,6 +1,6 @@
-title: OpenSearch documentation
+title: Babelfish for PostgreSQL(BabelfishPG) Documentation
 description: >- # this means to ignore newlines until "baseurl:"
-  Documentation for OpenSearch, the Apache 2.0 search, analytics, and visualization suite with advanced security, alerting, SQL support, automated index management, deep performance analysis, and more.
+  Babelfish for PostgreSQL is an Apache-2.0 open source project that adds a Microsoft SQL Server-compatible end-point to PostgreSQL to enable your PostgreSQL database to understand the SQL Server wire protocol and commonly used SQL Server commands. With Babelfish, PostgreSQL now understands T-SQL, Microsoft SQL Server's proprietary SQL dialect, and supports the same communications protocol, so your apps that were originally written for SQL Server can now work with PostgreSQL with fewer code changes and without changing database drivers.
 baseurl: "/babelfishpg-project-website" # the subpath of your site, e.g. /blog
 url: "https://github.com/babelfish-for-postgresql" # the base hostname & protocol for your site, e.g. http://example.com
 permalink: /:path/
@@ -124,6 +124,9 @@ just_the_docs:
     opensearch:
       name: OpenSearch
       nav_fold: true
+    # babelfishpg:
+    #   name: Babelfishpg
+    #   nav_fold: true
     dashboards:
       name: OpenSearch Dashboards
       nav_fold: true
