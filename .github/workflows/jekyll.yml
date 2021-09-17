@@ -2,7 +2,7 @@ name: Babelfish Website Build Workload
 
 on:
   push:
-    branches: [ unify-docs-and-website-on-a-single-jekyll-project ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
