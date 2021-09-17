@@ -1,6 +1,6 @@
 <li>
   {% if page.url == include.url_full %} {{ include.text }} {% else %}
-    <a href="{{ site.baseurl }}/{{ include.href }}" {% if url_parts[1] == {{include.url_fragment}} %} class="in-category" {% endif %}>
+    <a href="{{ site.baseurl }}{{ include.href }}" {% if url_parts[1] == {{include.url_fragment}} %} class="in-category" {% endif %}>
       {{ include.text }}
     </a> 
   {% endif %}
