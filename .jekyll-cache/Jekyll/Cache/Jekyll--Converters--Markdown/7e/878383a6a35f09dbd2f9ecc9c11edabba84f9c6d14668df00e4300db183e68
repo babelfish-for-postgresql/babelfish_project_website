@@ -1,0 +1,34 @@
+I"Œ<h1 id="version-history">Version history</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">OpenSearch version</th>
+      <th style="text-align: left">Release highlights</th>
+      <th style="text-align: left">Release date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><a href="https://github.com/opensearch-project/opensearch-build/tree/main/release-notes/opensearch-release-notes-1.0.1.md">1.0.1</a></td>
+      <td style="text-align: left">Bug fixes.</td>
+      <td style="text-align: left">1 September 2021</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="https://github.com/opensearch-project/opensearch-build/tree/main/release-notes/opensearch-release-notes-1.0.0.md">1.0.0</a></td>
+      <td style="text-align: left">General availability release. Adds compatibility setting for clients that require a version check before connecting.</td>
+      <td style="text-align: left">12 July 2021</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="https://github.com/opensearch-project/opensearch-build/tree/main/release-notes/opensearch-release-notes-1.0.0-rc1.md">1.0.0-rc1</a></td>
+      <td style="text-align: left">First release candidate.</td>
+      <td style="text-align: left">7 June 2021</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="https://github.com/opensearch-project/opensearch-build/tree/main/release-notes/opensearch-release-notes-1.0.0-beta1.md">1.0.0-beta1</a></td>
+      <td style="text-align: left">Initial beta release. Refactors plugins to work with OpenSearch.</td>
+      <td style="text-align: left">13 May 2021</td>
+    </tr>
+  </tbody>
+</table>
+:ET

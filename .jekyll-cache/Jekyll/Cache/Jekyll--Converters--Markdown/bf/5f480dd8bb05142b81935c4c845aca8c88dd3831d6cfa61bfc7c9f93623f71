@@ -1,0 +1,175 @@
+I"�Z<p>Recently, we launched k-NN similarity search feature on Open Distro for Elasticsearch. We are excited for the community to try out this feature and welcome you to come join in and contribute in building additional capabilities into Open Distro for Elasticsearch.</p>
+
+<p>A k-nearest neighbors (k-NN) algorithm is a technique for performing similarity search: given a query data point, what are the k data points in an index that are most similar to the query? k-NN is largely popular for its use in content-based recommendation systems. For example, in a music streaming service, when a user generates an on-demand playlist, the recommendation system adds the songs that match the attributes of that playlist using k-NN. In a k-NN search algorithm, the elements of a data set are represented by vectors. Each song is a vector, containing several dimensions (attributes) like artist, album, genre, year of release, etc. The search assumes you have a defined distance function between the data elements (vectors) and returns most similar items to the one provided as input, where closest distance translates to item similarity. Other use cases with similarity search include fraud detection, image recognition, and semantic document retrieval.</p>
+
+<p>We evaluated four primary dimensions to measure the effectiveness of a k-NN algorithm:</p>
+
+<ol>
+  <li><strong>Speed</strong> - How quickly does the algorithm return the approximate k-nearest neighbors, measured in latency of a single or batch query?</li>
+  <li><strong>Recall</strong> - How accurate are the results, measured by ratio of the returned k-nearest neighbors indeed in the list of the actual k nearest neighbors to the value of k?</li>
+  <li><strong>Scalability</strong> - Can the algorithm handle data sets with millions or billions of vectors and thousands of dimensions?</li>
+  <li><strong>Updates</strong> - Does the algorithm allow addition, deletion, and updating points without having to rebuild an index, a process that can take hours or more?</li>
+</ol>
+
+<p>We selected “<a href="https://arxiv.org/pdf/1603.09320.pdf"><strong>Hierarchical Navigable Small World</strong></a>” (HNSW) graphs developed under the open source library “<strong>Non-Metric Space Library</strong>” (<a href="https://github.com/nmslib/nmslib">NMSLIB</a>) as it aligned with our architectural requirements and met most of our evaluation criteria. Given a dataset, the algorithm constructs a graph on the data such that the greedy search algorithm finds the approximate nearest neighbor to a query in logarithmic time. HSNW consistently outperforms other libraries in this space based on <a href="https://github.com/erikbern/ann-benchmarks">ANN benchmark</a> metrics. HNSW excels at speed, recall, and cost, though it is restricted in scalability and updates. While the HNSW algorithm allows incremental addition of points, it forbids deletion and modification of indexed points. We offset the scalability and updates challenges by leveraging Elasticsearch’s distributed architecture, which scales with large data sets and inherently supports incremental updates to the data sets that become available in the search results in near real-time. The rest of this post discusses the integration of NMSLIB with Elasticsearch and the customizations made to support the feature in Elasticsearch.</p>
+
+<h2 id="hierarchical-navigable-small-world-algorithm-hnsw">Hierarchical Navigable Small World Algorithm (HNSW)</h2>
+
+<p>The HNSW graph algorithm is a fast and accurate solution to the approximate k-nearest neighbors (k-NN) search problem.</p>
+
+<p>A straightforward, yet naive solution to the k-NN problem is to first compute the distances from a given query point to every data point within an index and then select the data points with the smallest k distances to the query. While this approach is effective when the index contains ten thousand or fewer data points, it does not scale to the sizes of datasets used by our customers. An approximate k-NN (ANN) algorithm may greatly reduce search latency at the cost of precision. When designing an ANN algorithm there are two general approaches to improve latency:</p>
+
+<ol>
+  <li>Compute fewer distances and</li>
+  <li>Make distance computations cheaper</li>
+</ol>
+
+<p>The HNSW algorithm focuses on the first of these approaches by building a graph data structure on the constituent points of the data set.</p>
+
+<p>With a graph data structure on the data set, approximate nearest neighbors can be found using graph traversal methods. Given a query point, we find its nearest neighbors by starting at a random point in the graph and computing its distance to the query point. From this entry point, we explore the graph, computing the distance to the query of each newly visited data point until the traversal can find no closer data points. To compute fewer distances while still retaining high accuracy, the HNSW algorithm builds on top of previous work on Navigable Small World (NSW) graphs. The NSW algorithm builds a graph with two key properties. The “small world” property is such that the number of edges in the shortest path between any pair of points grows poly-logarithmically with the number of points in the graph. The “navigable” property asserts that the greedy algorithm is likely to stay on this shortest path. Combining these two properties results in a graph structure so the greedy algorithm is likely to find the nearest data point to a query in logarithmic time.</p>
+
+<p><img src="//assets/media/blog-images/2020-04-06-Building-k-Nearest-Neighbor-(k-NN)-Similarity-Search-Engine-with-Elasticsearch/knn_graph_1.png" alt="k-NN Graph Figure 1" class="img-fluid" /></p>
+<p align="left">
+<i>Figure 1: A depiction of an NSW graph built on blue data points. The dark blue edges represent long-range connections that help ensure the small-world property. Starting at the entry point, at each iteration the greedy algorithm will move to the neighbor closest to the query point. The chosen path from the entry point to the query’s nearest neighbor is highlighted in magenta and, by the “navigable” property, is likely to be the shortest path from the entry point to the query’s nearest neighbor.
+</i></p>
+
+<p>HNSW extends the NSW algorithm by building multiple layers of interconnected NSW-like graphs. The top layer is a coarse graph built on a small subset of the data points in the index. Each lower layer incorporates more points in its graph until reaching the bottom layer, which consists of an NSW-like graph on every data point. To find the approximate nearest neighbors to a query, the search process finds the nearest neighbors in the graph at the top layer and uses these points as the entry points to the subsequent layer. This strategy results in a nearest neighbors search algorithm which runs logarithmically with respect to the number of data points in the index.</p>
+
+<h3 id="non-metric-space-library-nmslib">Non Metric Space Library (NMSLIB)</h3>
+
+<p>NMSLIB, an Apache 2 licensed library, is the open source implementation of HNSW. It is lightweight and works particularly well for our use cases that that requires minimal impact on the Elasticsearch application workloads. To index the vectors and to query the nearest neighbors for the given query vector, our k-NN plugin makes calls to the NMSLIB implementation of HNSW. We use the Java Native Interface (JNI) to bridge between Elasticsearch written in Java and C++ libraries in NMSLIB.  Although we use Euclidean distance vector to calculate the proximity, NMSLIB can be easily extended to add new search methods and distance functions (like cosine similarity) in the future.</p>
+
+<h2 id="elasticsearch-integration-with-approximate-k-nn-search">Elasticsearch Integration with Approximate k-NN Search</h2>
+
+<p>Elasticsearch’s distributed engine allows us to distribute the millions of vectors across multiple shards spread across multiple nodes within a cluster and scales horizontally as the data grows. Users can also take advantage of Elasticsearch’s support for index updates to make any modifications to the data set and reflect the changes in the results in near real-time. While Elasticsearch’s plugin-based architecture makes it easy to add extensions, we had to make some customizations to support the Approximate Nearest Neighbor (ANN) Search.</p>
+
+<p>First, we added a new field type, <strong>knn_vector</strong>, using the Mapper plugin, to represent the vectors as a an array of floating point numbers in a document. ANN requires support for storing high cardinality vectors. The <strong>knn_vector</strong> field support vectors up to 10k dimensions. We also introduced a new Apache Lucene codec, <strong>KNNCodec</strong>, to add a new index file format for storing and retrieving the vectors and make Apache Lucene aware of the graphs built by NMSLIB. These file formats co-exist with the other Apache Lucene file formats and are immutable just like the other Apache Lucene files, making them file system cache friendly and thread safe.</p>
+
+<p>Let’s create a KNN index <strong>myindex</strong> and add data of type knn_vector to the field my_vector. You could then index your documents as you would normally do using any of Elasticsearch index APIs.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">PUT</span><span class="w"> </span><span class="err">/myindex</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"index.knn"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"mappings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"my_vector"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"knn_vector"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"dimension"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div></div>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">PUT</span><span class="w"> </span><span class="err">/myindex/_doc/</span><span class="mi">1</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"my_vector"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1.5</span><span class="p">,</span><span class="w"> </span><span class="mf">2.5</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">PUT/myindex/_doc/</span><span class="mi">2</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"my_vector"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">2.5</span><span class="p">,</span><span class="w"> </span><span class="mf">3.5</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>We also added a new query clause <code class="language-plaintext highlighter-rouge">knn</code>. You can use the this clause in the query DSL and specify the point of interest as my_vector (knn_vector) and the number of nearest neighbors to fetch as ‘k’. The response below, which shows 2 nearest docs as defined by k to the input point [3, 4]. The score indicates the distance between the two vectors and is the deciding factor for selecting the neighbors.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">POST</span><span class="w"> </span><span class="err">/myindex/_search</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"query"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"knn"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"my_vector"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"vector"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">],</span><span class="w">
+        </span><span class="nl">"k"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">Output:</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"took"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"timed_out"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"_shards"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"successful"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"skipped"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"failed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"hits"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"relation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eq"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"max_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5857864</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"hits"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="nl">"_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myindex"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_doc"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5857864</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"_source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"my_vector"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mf">2.5</span><span class="p">,</span><span class="w">
+            </span><span class="mf">3.5</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myindex"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_doc"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.32037726</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"_source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"my_vector"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mf">1.5</span><span class="p">,</span><span class="w">
+            </span><span class="mf">2.5</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>You can also combine the <code class="language-plaintext highlighter-rouge">knn</code> query clause with other query clauses as you would normally do with compound queries. In the example provided, the user first runs the <code class="language-plaintext highlighter-rouge">knn</code> query to find the closest five neighbors (k=5) to the vector [3,4] and then applies post filter to the results using the boolean query to focus on items that are priced less than 15 units.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">POST</span><span class="w"> </span><span class="err">/myindex/_search</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"query"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"bool"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"must"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"knn"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"my_vector"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"vector"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">],</span><span class="w">
+            </span><span class="nl">"k"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"filter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"range"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"lt"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="memory-monitoring">Memory Monitoring</h3>
+
+<p>The NSW graphs, created by the underlying NMSLIB C++ library, are loaded outside Elasticsearch JVM, and the garbage collection does not reclaim the memory used by the graphs. We developed a monitoring solution using Guava cache to limit memory consumption by the graphs to prevent OOM (out of memory) issues and to trigger garbage collection when the indices are deleted or when the existing segments are merged to newer segments as part of segment merges. We also introduced an additional stats API to monitor the cache metrics like totalLoadTime, evictionCount, hitCount, graphMemoryUsage to assist with efficient memory management. Refer to the <a href="https://opendistro.github.io/for-elasticsearch-docs/docs/knn/settings/">Open Distro for Elasticsearch documentation</a> for the complete set of metrics.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Our new k-NN solution enables you to build a scalable, distributed, and reliable framework for similarity searches. You can further enhance the results with strong analytics and query support from Elasticsearch. The current solution leverages Euclidean distance to calculate the nearest neighbors. We plan to add support for cosine similarity in the future.</p>
+
+<p>We encourage you to try out this solution on Open Distro for Elasticsearch or on Amazon Elasticsearch Service and provide your valuable feedback to our research and engineering team at <a href="https://github.com/opendistro-for-elasticsearch/k-NN">https://github.com/opendistro-for-elasticsearch/k-NN</a>.</p>
+:ET

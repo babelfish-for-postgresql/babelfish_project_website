@@ -1,0 +1,130 @@
+I"D.<p>We are excited to release the OpenSearch Beta 1.0 (derived from Elasticsearch 7.10.2) and OpenSearch Dashboards Beta 1.0 (derived from Kibana 7.10.2). With this beta release, we have refactored all the Open Distro for Elasticsearch plugins to work with OpenSearch and provide the community with <a href="/downloads.html">downloadable artifacts (Linux tars and Docker images)</a> to run OpenSearch and OpenSearch Dashboards with these plugins installed. Features released with this beta include;</p>
+
+<ul>
+  <li>Advanced Security</li>
+  <li>SQL Query Syntax</li>
+  <li>Anomaly Detection</li>
+  <li>Alerting</li>
+  <li>Piped Processing Language</li>
+</ul>
+
+<p>…and more (<a href="https://github.com/opensearch-project/OpenSearch">OpenSearch</a> and <a href="https://github.com/opensearch-project/OpenSearch-Dashboards">OpenSearch Dashboards</a>).</p>
+
+<p>We would like to get your feedback from this beta release - please let us know if there are any features you would like or bugs you identify. You can submit pull requests, write documentation, open issues (either on <a href="https://github.com/opensearch-project/OpenSearch/issues">OpenSearch</a> or <a href="https://github.com/opensearch-project/OpenSearch-Dashboards/issues">OpenSearch Dashboards</a>), or simply read the <a href="https://opensearch.org/blog/">news</a>. If you would like to install or run this project please see the Developer Guide (<a href="https://github.com/opensearch-project/OpenSearch/blob/main/DEVELOPER_GUIDE.md">OpenSearch</a> and <a href="https://github.com/opensearch-project/OpenSearch-Dashboards/blob/main/DEVELOPER_GUIDE.md">OpenSearch Dashboards</a>) to get started.</p>
+
+<h4 id="plugins-and-components-available-in-beta-are">Plugins and Components Available in Beta are:</h4>
+
+<ul>
+  <li><a href="https://github.com/opensearch-project/anomaly-detection">Anomaly Detection</a></li>
+  <li><a href="https://github.com/opensearch-project/anomaly-detection-dashboards-plugin">Anomaly Detection Dashboards</a></li>
+  <li><a href="https://github.com/opensearch-project/security-dashboards-plugin">Security Dashboards (FE)</a></li>
+  <li><a href="https://github.com/opensearch-project/security">Security (BE)</a></li>
+  <li><a href="https://github.com/opensearch-project/performance-analyzer">Performance Analyzer</a></li>
+  <li><a href="https://github.com/opensearch-project/perftop">PerfTop</a></li>
+  <li><a href="https://github.com/opensearch-project/k-NN">K-NN</a></li>
+  <li><a href="https://github.com/opensearch-project/job-scheduler">Job Scheduler</a></li>
+  <li><a href="https://github.com/opensearch-project/index-management">Index Management</a></li>
+  <li><a href="https://github.com/opensearch-project/index-management-dashboards-plugin">Index Management Dashboards</a></li>
+  <li><a href="https://github.com/opensearch-project/alerting">Alerting</a></li>
+  <li><a href="https://github.com/opensearch-project/alerting-dashboards-plugin">Alerting Dashboard</a></li>
+  <li><a href="https://github.com/opensearch-project/sql">SQL/PPL OpenSearch Plugin</a></li>
+  <li><a href="https://github.com/opensearch-project/sql">Query Workbench Dashboards Plugin</a></li>
+  <li><a href="https://github.com/opensearch-project/sql">SQL JDBC Driver</a></li>
+  <li><a href="https://github.com/opensearch-project/sql">SQL CLI Client</a></li>
+  <li><a href="https://github.com/opensearch-project/sql">SQL ODBC Driver</a></li>
+  <li><a href="https://github.com/opensearch-project/dashboards-notebooks">Notebooks OpenSearch Plugin</a></li>
+  <li><a href="https://github.com/opensearch-project/dashboards-notebooks">Notebooks Dashboards Plugin</a></li>
+  <li><a href="https://github.com/opensearch-project/dashboards-reports">Reporting Dashboards Plugin</a></li>
+  <li><a href="https://github.com/opensearch-project/dashboards-reports">Reporting Opensearch Plugin</a></li>
+  <li><a href="https://github.com/opensearch-project/trace-analytics">Trace Analytics Dashboards Plugin</a></li>
+  <li><a href="https://github.com/opensearch-project/dashboards-visualizations">Gantt Charts - Dashboards Visualization plugin</a></li>
+  <li><a href="https://github.com/opensearch-project/asynchronous-search">Asynchronous Search</a></li>
+  <li><a href="https://github.com/opensearch-project/opensearch-cli">OpenSearch CLI</a></li>
+  <li><a href="https://github.com/opensearch-project/common-utils">Common Utils</a></li>
+  <li><a href="https://github.com/opensearch-project/data-prepper">Data Prepper</a></li>
+</ul>
+
+<h2 id="special-thanks">Special Thanks</h2>
+<p>We would also like to extend a special thanks to the people already contributing to the project. We appreciate the additional support for this project from;</p>
+
+<ul>
+  <li><a href="https://github.com/AmiStrn">AmiStrn</a></li>
+  <li><a href="https://github.com/Conan-Kudo">Conan-Kudo</a></li>
+  <li><a href="https://github.com/rmuir">rmuir</a></li>
+  <li><a href="https://github.com/sharp-pixel">sharp-pixel</a></li>
+  <li><a href="https://github.com/Hakky54">Hakky54</a></li>
+  <li><a href="https://github.com/kyleconroy">kyleconroy</a></li>
+  <li><a href="https://github.com/geekygirldawn">geekygirldawn</a></li>
+  <li><a href="https://github.com/jkowall">jkowall</a></li>
+  <li><a href="https://github.com/ace03uec">ace03uec</a></li>
+  <li><a href="https://github.com/denysvitali">denysvitali</a></li>
+  <li><a href="https://github.com/jkowall">jkowall</a></li>
+  <li><a href="https://github.com/galangel">galangel</a></li>
+  <li><a href="https://github.com/FreCap">FreCap</a></li>
+  <li><a href="https://github.com/anthonylouisbsb">anthonylouisbsb</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/aadrien">aadrien</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/accat">accat</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/adkalavadia">adkalavadia</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/alexz00">alexz00</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/amitai">amitai</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/aparo">aparo</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/asfoorial">asfoorial</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/BlackMetalz">BlackMetalz</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/Bobpartb">Bobpartb</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/bradlee">bradlee</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/dawnfoster">dawnfoster</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/dirkhh">dirkhh</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/erhan">erhan</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/fabide">fabide</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/frotsch">frotsch</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/GezimSejdiu">GezimSejdiu</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/GoodMirek">GoodMirek</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/hagayg">hagayg</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/horizondave">horizondave</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/horovits">horovits</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/igorid70">igorid70</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/janhoy">janhoy</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/jkeirstead">jkeirstead</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/jkowall">jkowall</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/Katulus">Katulus</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/lornajane">lornajane</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/Malini">Malini</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/mattwelke">mattwelke</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/mosajjal">mosajjal</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/nickytd">nickytd</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/nknize">nknize</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/Northern">Northern</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/opensorcerer89">opensorcerer89</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/otisg">otisg</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/ralph">ralph</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/retzkek">retzkek</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/robcowart">robcowart</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/santiagobassett">santiagobassett</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/SergioFG">SergioFG</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/shamil">shamil</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/sksamuel">sksamuel</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/spapadop">spapadop</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/sunilchadha">sunilchadha</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/tardyp">tardyp</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/Tom1">Tom1</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/ttx">ttx</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/tvc_apisani">tvc_apisani</a></li>
+  <li><a href="https://discuss.opendistrocommunity.dev/u/willyb">willyb</a></li>
+</ul>
+
+<h2 id="how-can-you-help">How can you help?</h2>
+<p>The biggest thing you can do to help is join us! You can install (<a href="https://github.com/opensearch-project/OpenSearch/blob/main/DEVELOPER_GUIDE.md">OpenSearch</a> and <a href="https://github.com/opensearch-project/OpenSearch-Dashboards/blob/main/DEVELOPER_GUIDE.md">OpenSearch Dashboards</a>) and start diving in! Feel free to take a look around at what we’ve been up to, and then head over to look at the open issues. Or you could jump right in and start opening issues or contributing. For more details see <a href="https://github.com/opensearch-project/OpenSearch/blob/main/CONTRIBUTING.md">here</a>.</p>
+
+<p><strong>When in doubt, open an issue</strong></p>
+
+<p>For almost any type of contribution, the first step is opening an issue (<a href="https://github.com/opensearch-project/OpenSearch/issues">OpenSearch</a>, <a href="https://github.com/opensearch-project/OpenSearch-Dashboards/issues">OpenSearch Dashboards</a>). Even if you think you already know what the solution is, writing down a description of the problem you’re trying to solve will help everyone get context when they review your pull request. If it’s truly a trivial change (e.g. spelling error), you can skip this step – but as the subject says, when it doubt, open an issue.</p>
+
+<p><strong>Look for the tag “help wanted”</strong></p>
+
+<p>If you’re excited to jump in, we’ve marked a few issues that would be really helpful (<a href="https://github.com/opensearch-project/OpenSearch/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22">“Help Wanted”</a>).</p>
+
+<p><strong>Questions? Feedback?</strong></p>
+
+<p>Let us know in by opening an <a href="https://github.com/opensearch-project/OpenSearch/issues">issue</a> or posting in the <a href="https://discuss.opendistrocommunity.dev/">forums</a>. We are also having biweekly <a href="https://www.meetup.com/Open-Distro-for-Elasticsearch-Meetup-Group/">Community Meetings</a>. The community meetings will include progress updates at every session as well as leaving time for Q&amp;A. The next community meeting is on <a href="/events/2021-may-late/">May 18, 2021 at
+9:00 AM PDT</a>.</p>
+:ET

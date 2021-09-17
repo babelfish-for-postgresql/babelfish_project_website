@@ -1,0 +1,2 @@
+I"¡<p>This is possible and has caveats. For example, upgrading Kibana OSS to OpenSearch Dashboards migrates the Kibana OSS indexes and does not allow rollback.</p>
+:ET

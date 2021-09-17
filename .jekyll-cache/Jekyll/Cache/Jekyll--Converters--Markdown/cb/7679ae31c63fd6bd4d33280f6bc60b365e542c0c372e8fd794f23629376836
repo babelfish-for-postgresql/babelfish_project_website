@@ -1,0 +1,2 @@
+I"<p>You can directly upgrade to OpenSearch 1.0 from Elasticsearch OSS and Kibana OSS 6.8.0-7.10.2, and Open Distro for Elasticsearch (ODFE) 1.x. For rolling upgrades from ODFE to OpenSearch, we recommend first upgrading to ODFE 1.13, then upgrading to OpenSearch 1.0.</p>
+:ET

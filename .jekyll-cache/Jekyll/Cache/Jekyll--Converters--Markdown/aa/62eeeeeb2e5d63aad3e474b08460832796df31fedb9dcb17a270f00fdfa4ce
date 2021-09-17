@@ -1,0 +1,74 @@
+I"�<p>The OpenSearch <a href="https://github.com/opensearch-project/dashboards-reports">Reporting</a> feature helps users generate reports from Dashboards, Visualizations, and the Discover panel and export them to PDF, PNG, and CSV file formats to easily share. In this blog post we talk about how to use the reporting feature, how it is implemented and how it was built with numerous contributions from the open source community. Last, we discuss future plans to improve it.</p>
+
+<p><strong>What is Reporting in OpenSearch ?</strong>
+Reporting is a form of organizing data into formal summaries; to make reports visually appealing Reporting also supports charts and graphs. Reports are classified into two primary types, visual reports (i.e. PDF and PNG) and data reports (CSVs).</p>
+
+<p><strong>How can reports be generated ?</strong>
+Reports are generated manually on OpenSearch Dashboards, via scheduled triggers, or through system triggers like alerts or API calls.</p>
+
+<p><strong>Anatomy of the Reporting feature on OpenSearch</strong>
+The reporting feature is composed of two plugins; an <a href="https://github.com/opensearch-project/dashboards-reports/tree/main/dashboards-reports">OpenSearch Dashboards plugin</a> which controls most of the <a href="https://github.com/opensearch-project/dashboards-reports/blob/main/docs/dashboards-reports/ux/OpenSearch-Dashboards-Reporting-UX-documentation.md">user experience</a> and the <a href="https://github.com/opensearch-project/dashboards-reports/tree/main/reports-scheduler">OpenSearch plugin</a> which provides scheduling features and secures access to user data with OpenSearch Security policies. The initial request for comments (RFC) for Reporting can be found <a href="https://github.com/opensearch-project/dashboards-reports/blob/main/docs/dashboards-reports/dev/OpenSearch-Dashboards-Reporting-Design-Proposal.md">here</a>.</p>
+
+<p><img src="/assets/media/blog-images/2021-06-29-feature-highlight-reporting/report-anatomy.png" alt="Report Anatomy" class="img-fluid" /></p>
+
+<h2 id="quick-start-user-guide">Quick Start User Guide</h2>
+
+<h3 id="installation">Installation</h3>
+
+<p>Reporting comes packaged with the OpenSearch and OpenSearch Dashboards downloads. You can follow the installation instructions on <a href="https://opensearch.org/downloads.html">opensearch.org/downloads</a></p>
+
+<h3 id="how-do-i-create-a-report">How do I create a report?</h3>
+
+<p><strong>Visual reports</strong> are created inside Visualizations or Dashboards.</p>
+
+<p><img src="/assets/media/blog-images/2021-06-29-feature-highlight-reporting/visual-reports.gif" alt="visual reports" class="img-fluid" /></p>
+
+<p><strong>CSV reports</strong> are created from the Discover tab.</p>
+
+<p><img src="/assets/media/blog-images/2021-06-29-feature-highlight-reporting/csv-reports.gif" alt="csv reports" class="img-fluid" /></p>
+
+<p><strong>Scheduled reports</strong> are configured from inside the Reporting UI under OpenSearch Plugins.</p>
+
+<p><img src="/assets/media/blog-images/2021-06-29-feature-highlight-reporting/create-report-definition.gif" alt="scheduled reports" class="img-fluid" /></p>
+
+<h2 id="development-internals">Development internals</h2>
+
+<p>The reporting feature uses a custom <a href="https://github.com/opensearch-project/dashboards-reports/tree/main/dashboards-reports/rendering-engine/headless-chrome">minimal build</a> of headless-chromium. Chromium is used as the rendering engine to generate visual reports. Below is are multiple flow diagrams for the various actions of Reporting.</p>
+
+<p><strong>Creating a report definition</strong>: When a user defines a report in OpenSearch Dashboards, the Reporting Dashboards plugin saves that definition in an index in OpenSearch.</p>
+
+<p><strong>Downloading a report:</strong> When a user downloads a report, the OpenSearch Dashboards Reporting plugin fetches the data from OpenSearch. After the data is fetched, the report is generated and downloaded to the users browser.</p>
+
+<p><strong>Running a reporting job:</strong> When a schedule report begins, data is fetched from OpenSearch, next the OpenSearch Dashboards Reporting plugin generates the report. Once the report is generated, it is sent to the configured destination in the reporting policy and the job status is updated and stored back in OpenSearch.</p>
+
+<p><img src="/assets/media/blog-images/2021-06-29-feature-highlight-reporting/flow-diagram.png" alt="flow diagram" class="img-fluid" /></p>
+
+<h2 id="community-contributions">Community contributions</h2>
+
+<p>Reporting was built by multiple contributors from the community (some PRs listed below). Our team presented the initial Reporting contributions in a community meeting with the <a href="https://github.com/opendistro-for-elasticsearch/kibana-reports/blob/master/docs/dev/Kibana-Reporting-Design-Proposal.md">Reports RFC</a>. Our team went over the initial design and requirements, and our high level plan to develop the feature. After the community meeting, some of the attendees expressed interest in contributing and helped build the CSV functionality. Since the initial release, there have been numerous other community contributions to improve and customize the project (see below). We thank all the contributors who have helped build the Reporting feature!</p>
+
+<ul>
+  <li><a href="https://github.com/opendistro-for-elasticsearch/kibana-reports/pull/50">CSV APIs endpoints for data reports. #50</a></li>
+  <li><a href="https://github.com/opendistro-for-elasticsearch/kibana-reports/pull/354">Improve quality of rendered PDFs #354</a></li>
+  <li><a href="https://github.com/opendistro-for-elasticsearch/kibana-reports/pull/329">passing default proxy-authentication headers #329</a></li>
+  <li><a href="https://github.com/opendistro-for-elasticsearch/kibana-reports/pull/314">Ignore custom commented areas. #314</a></li>
+  <li><a href="https://github.com/opendistro-for-elasticsearch/kibana-reports/pull/331">Add dynamic wait to allow page content to render #331</a></li>
+  <li><a href="https://github.com/opendistro-for-elasticsearch/kibana-reports/pull/352">Use commonlyUsedRanges from Settings instead of a constant value #352</a></li>
+  <li><a href="https://github.com/opendistro-for-elasticsearch/kibana-reports/pull/362">Add i18n translation support #362</a></li>
+  <li><a href="https://github.com/opendistro-for-elasticsearch/kibana-reports/pull/361">Improve sanity tests #361</a></li>
+</ul>
+
+<p>and more…</p>
+
+<p>If you’re interested in contributing please reach out on <a href="https://github.com/opensearch-project/dashboards-reports/issues">GitHub issues</a> or <a href="https://discuss.opendistrocommunity.dev/">the community forum</a>. The more formal contribution guidelines are documented <a href="https://github.com/opensearch-project/dashboards-reports/blob/main/CONTRIBUTING.md">here</a>.</p>
+
+<h2 id="future-project-goals">Future project goals</h2>
+
+<ul>
+  <li>Create integrations with Alerting, Notebooks and other plugins</li>
+  <li>Enable support for slack, chime, webhooks, pager-duty, and other destinations via the <a href="https://github.com/opensearch-project/notifications">Notifications plugin</a>.</li>
+  <li>Remove the hard dependency on headless-chromium by enabling support for a Java-based rendering engine.</li>
+  <li>Enable APIs for programatic reporting</li>
+</ul>
+
+:ET

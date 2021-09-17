@@ -1,0 +1,20 @@
+I"�	<p>Welcome to the new Open Distro for Elasticsearch blog. Open Distro for Elasticsearch is an Apache 2.0-licensed distribution of Elasticsearch and Kibana. This blog will be a source for in-depth, technical content on the project. You’ll find how-tos, release notes, case studies, event announcements, and if you’re inspired, your own content, too! Or you can join the conversation by commenting on blog posts in the <a href="https://discuss.opendistrocommunity.dev/">discussion forum</a>.</p>
+
+<p>Whether you are using Open Distro for Elasticsearch out of the box or building on top of it, we invite you to write about your experience as a guest blogger. Contributing is a great way to share your expertise with the community, spark new conversations, and further the project’s mission. <a href="mailto:opendistro-blog@amazon.com">Send us</a> your article idea and a brief abstract and get started on your first guest post. We have a handful of editors who can help take your post from rough draft to finished product.</p>
+
+<p>Need inspiration? Here are a few of our most popular blog posts:</p>
+
+<ul>
+  <li><a href="https://aws.amazon.com/blogs/opensource/open-distro-for-elasticsearch-1-1-0-released/">Open Distro 1.1.0 released</a></li>
+  <li><a href="https://aws.amazon.com/blogs/opensource/add-ssl-certificates-open-distro-for-elasticsearch/">Add Your Own SSL Certificates to Open Distro for Elasticsearch</a></li>
+  <li><a href="https://aws.amazon.com/blogs/opensource/open-distro-elasticsearch-shard-allocation/">Demystifying Elasticsearch Shard Allocation</a></li>
+  <li><a href="https://aws.amazon.com/blogs/opensource/open-distro-for-elasticsearch-single-sign-on-saml-adfs/">Add Single Sign-On to Open Distro for Elasticsearch Kibana Using SAML and ADFS</a></li>
+  <li><a href="https://aws.amazon.com/blogs/opensource/open-distro-for-elasticsearch-saml-okta/">Add Single Sign-On (SSO) to Open Distro for Elasticsearch Kibana Using SAML and Okta</a></li>
+  <li><a href="https://aws.amazon.com/blogs/opensource/open-distro-for-elasticsearch-on-kubernetes/">Running Open Distro for Elasticsearch on Kubernetes</a></li>
+  <li><a href="https://aws.amazon.com/blogs/opensource/multi-tenant-kibana-open-distro-for-elasticsearch/">Setting up multi-tenant Kibana access in Open Distro for Elasticsearch</a></li>
+</ul>
+
+<p>We can’t wait to highlight all of the use cases and innovations that Open Distro for Elasticsearch enables. Happy blogging!</p>
+
+<p>Alolita Sharma, Jon Handler, and the entire Open Distro for Elasticsearch team</p>
+:ET

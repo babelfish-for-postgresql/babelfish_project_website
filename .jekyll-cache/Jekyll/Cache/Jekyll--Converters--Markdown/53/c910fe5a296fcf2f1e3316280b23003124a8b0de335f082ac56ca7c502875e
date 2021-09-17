@@ -1,0 +1,2 @@
+I"«<p>I expect very few people will <em>only</em> use OpenSearch and OpenSearch Dashboards. Sure, you might do a little testing with the sample data in OpenSearch Dashboards, but really youâ€™re going to be using something to help you get some data into that cluster. There is a ton of existing, compatible software that can help you do just that - agents, client libraries for programming languages, and data pipeline tools.</p>
+:ET

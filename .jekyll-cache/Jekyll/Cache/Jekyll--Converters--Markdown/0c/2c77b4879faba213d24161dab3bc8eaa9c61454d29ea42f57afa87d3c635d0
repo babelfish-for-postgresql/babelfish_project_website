@@ -1,0 +1,20 @@
+I"ß<h2 id="how-to-verify-signatures-for-downloadable-artifacts">How to verify signatures for downloadable artifacts</h2>
+
+<p>Download our PGP key using the link below and import it.</p>
+
+<p>If youâ€™re using gpg, you just need to run:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --import /path/to/key
+</code></pre></div></div>
+
+<p>You can then verify the signature by downloading it into the same directory where you downloaded the tarball, and running:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --verify /path/to/signature /path/to/tarball
+</code></pre></div></div>
+
+<p>It should show a good signature signed by opensearch@amazon.com.</p>
+
+<p>Our current PGP key fingerprint is <code class="language-plaintext highlighter-rouge">C2EE 2AF6 542C 03B4</code></p>
+
+<p><a href="https://artifacts.opensearch.org/publickeys/opensearch.pgp">Get our PGP Key</a></p>
+:ET

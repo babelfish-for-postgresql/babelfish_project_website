@@ -1,0 +1,51 @@
+I"o<p>Open Distro for Elasticsearch 1.7.0 is now available for <a href="https://opendistro.github.io/for-elasticsearch/downloads.html">download</a>. <a href="https://opendistro.github.io/for-elasticsearch/downloads.html">Upgrade to 1.7.0</a> to leverage the latest features and bug fixes.</p>
+
+<p>The release consists of Apache 2.0 licensed Elasticsearch version 7.6.1, Kibana version 7.6.1, new plugins for anomaly detection and SQL workbench, a new SQL ODBC driver and SQL CLI client. Other plugins in the distribution include alerting, index management, performance analyzer, security, SQL and machine learning with k-NN. A SQL JDBC driver and PerfTop, a client for Performance Analyzer are also available for download.</p>
+
+<h2 id="download-the-latest-packages">Download the latest packages</h2>
+
+<p>You can find Docker Hub images <a href="https://hub.docker.com/r/amazon/opendistro-for-elasticsearch">Open Distro for Elasticsearch 1.7.0</a> and <a href="https://hub.docker.com/r/amazon/opendistro-for-elasticsearch-kibana">Open Distro for Elasticsearch Kibana 1.7.0</a> on Docker Hub. Make sure your compose file specifies 1.7.0 or uses the latest tag.</p>
+
+<p>If you’re using RPMs or DEBs, see our documentation on how to install Open Distro for Elasticsearch with <a href="https://opendistro.github.io/for-elasticsearch-docs/docs/install/rpm/">RPMs</a> and install Open Distro for Elasticsearch with <a href="https://opendistro.github.io/for-elasticsearch-docs/docs/install/deb/">Debian packages</a>. A <a href="https://opendistro.github.io/for-elasticsearch-docs/docs/install/tar/">tarball</a> is also available for testing and other applications.</p>
+
+<p>A <a href="https://opendistro.github.io/for-elasticsearch-docs/docs/install/windows/">Windows ready package</a> supporting version 1.7.0 enables users to easily install Elasticsearch and Kibana on Windows.</p>
+
+<p>If you’re using Kubernetes, check out the <a href="https://opendistro.github.io/for-elasticsearch-docs/docs/install/helm/">Helm chart</a> to install Open Distro for Elasticsearch.</p>
+
+<p>You can find Open Distro for Elasticsearch security, alerting notification and job scheduler artifacts on <a href="https://mvnrepository.com/artifact/com.amazon.opendistroforelasticsearch">Maven Central</a>.</p>
+
+<p>You can download the latest versions of Open Distro for Elasticsearch’s <a href="https://www.npmjs.com/package/@aws/opendistro-for-elasticsearch-perftop">PerfTop client</a> on NPM, Open Distro for Elasticsearch’s latest <a href="https://pypi.org/project/odfe-sql-cli/">SQL CLI client</a> on PyPi. SQL drivers supporting ODBC and <a href="https://d3g5vo6xdbdb9a.cloudfront.net/downloads/elasticsearch-clients/opendistro-sql-jdbc/opendistro-sql-jdbc-1.7.0.0.jar">JDBC</a> are also available.</p>
+
+<h2 id="release-highlights">Release Highlights</h2>
+
+<ul>
+  <li>The <a href="https://github.com/opendistro-for-elasticsearch/anomaly-detection">anomaly detection</a> plugin has moved out of the preview phase and is now generally available. It comes with a easy-to-use <a href="https://github.com/opendistro-for-elasticsearch/anomaly-detection-kibana-plugin">Kibana</a> user interface and supports <a href="https://opendistro.github.io/for-elasticsearch/blog/odfe-updates/2020/05/Real-time-Anomaly-Detection-is-now-available-in-Open-Distro-for-Elasticsearch-1.7.0/">real-time anomaly detection</a>.</li>
+  <li>The SQL plugin has greatly expanded its supported operations, added a new <a href="https://github.com/opendistro-for-elasticsearch/sql-kibana-plugin">Kibana</a> user interface, and now has an interactive <a href="https://github.com/opendistro-for-elasticsearch/sql-cli">CLI</a>with autocomplete.</li>
+  <li>A new <a href="https://github.com/opendistro-for-elasticsearch/sql-odbc">SQL ODBC driver</a> is also now available.</li>
+  <li>A new package, the <a href="https://opendistro.github.io/for-elasticsearch-docs/docs/install/ami/">Open Distro for Elasticsearch 1.7.0 AMI</a>, is now available for use with Amazon EC2. Search for “open distro” when you start a new instance.</li>
+</ul>
+
+<p>Please take a look at the detailed 1.7.0 <a href="https://github.com/opendistro-for-elasticsearch/opendistro-build/blob/master/release-notes/opendistro-for-elasticsearch-release-notes-1.7.0.md">release notes</a> for the latest features, enhancements, infra and documentation updates and bug fixes.</p>
+
+<p><a href="https://opendistro.github.io/for-elasticsearch/downloads.html">Upgrade to 1.7.0</a> to leverage the latest features and bug fixes.</p>
+
+<h2 id="come-join-our-community">Come join our community!</h2>
+
+<p>There are many easy ways to participate in the Open Distro community!</p>
+
+<p>Ask questions and share your knowledge with other community members on the Open Distro <a href="https://discuss.opendistrocommunity.dev/">discussion forums</a>.</p>
+
+<p>Attend our bi-weekly online <a href="https://www.meetup.com/Open-Distro-for-Elasticsearch-Meetup-Group">community meetup</a> to learn more about Elasticsearch, security, performance, machine learning and more.</p>
+
+<p>File an issue, request an enhancement or feature you need or suggest a plugin you need at <a href="https://github.com/opendistro-for-elasticsearch">github.com/opendistro-for-elasticsearch</a>.</p>
+
+<p>Contribute code, tests, documentation and even release packages at <a href="https://github.com/opendistro-for-elasticsearch">github.com/opendistro-for-elasticsearch</a>. If you want to showcase how you’re using Open Distro, write a blog post for <a href="https://opensearch.org/blog">opensearch.org/blog</a>. If you’re interested, please reach out to us on Twitter. You can find me @alolita or Jon at @jon_handler.</p>
+
+<p>Check out what’s in development and get involved in components like the <a href="https://github.com/opendistro-for-elasticsearch/performance-analyzer-rca">Performance Analyzer RCA Engine</a>.</p>
+
+<p>We also invite you to get involved in ongoing development of new Open Distro for Elasticsearch plugins, clients, drivers. Contribute code, documentation or tests for <a href="https://github.com/opendistro-for-elasticsearch/performance-analyzer-rca">Performance Analyzer RCA Engine</a>.</p>
+
+<p>You can also track upcoming features in Open Distro for Elasticsearch by watching the code repositories or checking the <a href="https://opendistro.github.io">project website.</a></p>
+
+<p>Thanks again for using and contributing to Open Distro for Elasticsearch and being part of the project’s growing community!</p>
+:ET

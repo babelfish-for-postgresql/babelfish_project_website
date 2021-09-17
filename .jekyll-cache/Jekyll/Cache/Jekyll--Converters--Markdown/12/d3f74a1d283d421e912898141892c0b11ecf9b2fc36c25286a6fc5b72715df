@@ -1,0 +1,3 @@
+I"+<p>Download our PGP key using the link below and import it. If you’re using gpg, you just need to run <code class="language-plaintext highlighter-rouge">gpg --import /path/to/key</code>. You can then verify the signature by downloading it into the same directory where you downloaded the tarball, and running <code class="language-plaintext highlighter-rouge">gpg --verify /path/to/signature /path/to/tarball</code>. It should show a good signature signed by opensearch@amazon.com.<br /><br />
+Our current PGP key fingerprint is C2EE 2AF6 542C 03B4</p>
+:ET

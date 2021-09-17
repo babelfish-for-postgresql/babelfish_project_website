@@ -1,0 +1,121 @@
+I"$<p>OpenSearch Dashboards <a href="https://opensearch.org/docs/dashboards/notebooks/">Notebooks</a> lets you easily combine live visualizations, narrative text, and SQL and <a href="https://opensearch.org/docs/search-plugins/ppl/index/">Piped Processing Language (PPL)</a> queries so that you can tell your data’s story. You can interactively explore data by running different visualizations and share them with team members to collaborate. Notebooks can help with a variety of use cases such as creating postmortem reports, designing operations run books, building live infrastructure reports, and even documentation.  With OpenSearch 1.0, Notebooks is now production ready. Additionally, multiple enhancements were introduced such as support for multi-tenancy, query languages like SQL and PPL and an integration with reporting.</p>
+
+<p>In this blog we will explore popular use cases for Notebooks, how the feature works, and how to get started with it.</p>
+
+<h2 id="what-problem-does-opensearch-dashboards-notebooks-solve">What problem does OpenSearch Dashboards Notebooks solve?</h2>
+
+<p>Before Notebooks, there was no built-in way to combine text, queries, visualizations, and dashboards to build contextual views of data stored in OpenSearch. This made it difficult to convey important results and summaries in a way that can be consumed easily.  As an example, when creating a post mortem report for a customer issue, you had to collaborate with multiple stakeholders like support engineers, devops, developers, and your management. It involved relying on multiple tools like text editors, wikis, notes, and screenshots to create documents and reports. This process was time consuming and the documents and reports generated contain static data and visualizations. You could not tell the full story from the data and had to share generic dashboards and visualizations that left interpretation open to your stakeholders.</p>
+
+<h2 id="how-does-opensearch-dashboards-notebooks-solve-the-problem">How does OpenSearch Dashboards Notebooks solve the problem?</h2>
+<p>Notebooks was built to address this problem by enabling you to interactively and collaboratively develop rich reports backed by live data, and queries in cells or paragraphs that can combine markdown, SQL and PPL queries, and visualizations with support for multi-timelines so that you can easily tell a story. They can be developed, shared as a PDF, PNG or an OpenSearch Dashboards endpoint, and refreshed directly from OpenSearch Dashboards to foster data driven exploration and collaboration between you and your stakeholders. In this release, we integrated Notebooks with other OpenSearch features and libraries like the SQL and PPL query engine, reporting engine, and OpenSearch Dashboard APIs. We used the <a href="https://nteract.io/">nteract library</a> to render paragraphs and markdown.</p>
+
+<h2 id="how-do-you-use-opensearch-dashboards-notebooks">How do you use OpenSearch Dashboards Notebooks?</h2>
+<p>To get started, choose <strong>Notebooks</strong> within OpenSearch Dashboards.</p>
+
+<h3 id="step-1-create-a-notebook">Step 1: Create a notebook</h3>
+
+<ol>
+  <li>Choose <strong>Create notebook</strong> and enter a descriptive name.</li>
+  <li>Choose <strong>Create</strong>.</li>
+</ol>
+
+<p>Choose <strong>Actions</strong> to rename, duplicate, or delete a notebook.
+<img src="/assets/media/blog-images/2021-07-20-feature-highlight-opensearch-dashboards-notebooks/create_notebook.gif" alt="create notebook" class="img-fluid" /></p>
+
+<h3 id="step-2-add-paragraphs">Step 2: Add paragraphs</h3>
+
+<p>Paragraphs combine code blocks and visualizations for describing data.</p>
+
+<h3 id="add-a-code-block">Add a code block</h3>
+
+<p>Code blocks support markdown, SQL, and PPL languages.</p>
+
+<p>Specify the input language on the first line using <code class="language-plaintext highlighter-rouge">%[language type]</code> syntax. For example, type <code class="language-plaintext highlighter-rouge">%md</code> for markdown, <code class="language-plaintext highlighter-rouge">%sql</code> for SQL, and <code class="language-plaintext highlighter-rouge">%ppl</code> for PPL.</p>
+
+<h3 id="sample-markdown-block">Sample markdown block</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%md
+Add in text formatted in markdown.
+</code></pre></div></div>
+
+<p><img src="/assets/media/blog-images/2021-07-20-feature-highlight-opensearch-dashboards-notebooks/markdown_notebooks.gif" alt="markdown notebooks" class="img-fluid" /></p>
+
+<h3 id="sample-sql-block">Sample SQL block</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%sql
+Select * from opensearch_dashboards_sample_data_flights limit 20;
+</code></pre></div></div>
+<p><img src="/assets/media/blog-images/2021-07-20-feature-highlight-opensearch-dashboards-notebooks/sql_notebooks.gif" alt="sql notebooks" class="img-fluid" /></p>
+
+<h3 id="sample-ppl-block">Sample PPL block</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%ppl
+source=opensearch_dashboards_sample_data_logs | head 20
+</code></pre></div></div>
+
+<p><img src="/assets/media/blog-images/2021-07-20-feature-highlight-opensearch-dashboards-notebooks/ppl_notebooks.gif" alt="ppl notebooks" class="img-fluid" /></p>
+
+<h3 id="add-a-visualization">Add a visualization</h3>
+
+<ol>
+  <li>To add a visualization, choose <strong>Add paragraph</strong> and select <strong>Visualization</strong>.</li>
+  <li>In <strong>Title</strong>, select your visualization and choose a date range. You can choose multiple timelines to compare and contrast visualizations.</li>
+  <li>To run and save a paragraph, choose <strong>Run</strong>.</li>
+</ol>
+
+<p><img src="/assets/media/blog-images/2021-07-20-feature-highlight-opensearch-dashboards-notebooks/visualization_notebooks.gif" alt="visualization notebooks" class="img-fluid" /></p>
+
+<h3 id="paragraph-actions">Paragraph actions</h3>
+
+<p>You can perform the following actions on paragraphs:</p>
+
+<ul>
+  <li>Add a new paragraph to the top of a report,</li>
+  <li>Add a new paragraph to the bottom of a report,</li>
+  <li>Run all the paragraphs at the same time,</li>
+  <li>Clear the outputs of all paragraphs,</li>
+  <li>Delete all the paragraphs.</li>
+</ul>
+
+<p><img src="/assets/media/blog-images/2021-07-20-feature-highlight-opensearch-dashboards-notebooks/paragraphs_notebooks.gif" alt="paragraphs notebooks" class="img-fluid" /></p>
+
+<h3 id="sample-notebooks">Sample notebooks</h3>
+
+<p>We prepared the following sample notebooks that showcase a variety of use cases:</p>
+
+<ul>
+  <li>Using SQL to query the OpenSearch Dashboards sample flight data.</li>
+  <li>Using PPL to query the OpenSearch Dashboards sample web logs data.</li>
+  <li>Using PPL and visualizations to perform sample root cause event analysis on the OpenSearch Dashboards sample web logs data.</li>
+</ul>
+
+<p>To add a sample notebook, choose <strong>Actions</strong> and select <strong>Add sample notebooks</strong>.</p>
+
+<p><img src="/assets/media/blog-images/2021-07-20-feature-highlight-opensearch-dashboards-notebooks/sample_notebooks.gif" alt="sample notebooks" class="img-fluid" /></p>
+
+<h3 id="create-a-report">Create a report</h3>
+
+<p>You can use notebooks to create PNG and PDF reports:</p>
+
+<ol>
+  <li>From the top menu bar, choose <strong>Reporting actions</strong>.</li>
+  <li>You can choose to <strong>Download PDF</strong> or <strong>Download PNG</strong>.
+    <ol>
+      <li>Reports generate asynchronously in the background and might take a few minutes, depending on the size of the report. A notification appears when your report is ready to download.</li>
+    </ol>
+  </li>
+  <li>To create a schedule-based report, choose <strong>Create report definition</strong>. For steps to create a report definition, see the <a href="https://opensearch.org/docs/dashboards/reporting/#create-reports-using-a-definition">create report documentation</a>.</li>
+  <li>To see all your reports, choose <strong>View all reports</strong>.</li>
+</ol>
+
+<p><img src="/assets/media/blog-images/2021-07-20-feature-highlight-opensearch-dashboards-notebooks/report_notebooks.gif" alt="report notebooks" class="img-fluid" /></p>
+
+<h2 id="how-do-i-contribute">How do I contribute?</h2>
+
+<p>If you’re interested in contributing please reach out on <a href="https://github.com/opensearch-project/dashboards-reports/issues">GitHub issues</a> or <a href="https://discuss.opendistrocommunity.dev/">the community forum</a>. The more formal contribution guidelines are documented in the <a href="https://github.com/opensearch-project/dashboards-reports/blob/main/CONTRIBUTING.md">contributing guide</a><a href="https://github.com/opensearch-project/dashboards-reports/blob/main/CONTRIBUTING.md"></a>.</p>
+
+<h2 id="thank-you">Thank you</h2>
+
+<p>We would like to thank <a href="https://github.com/ps48">@ps48</a>, <a href="https://github.com/joshuali925">@joshuali925</a> , <a href="https://github.com/davidcui1225">davidcui1225</a> , <a href="https://github.com/chloe-zh">chloe-zh</a> and <a href="https://github.com/lvndc">lvndc</a> for their contributions to this feature.</p>
+
+:ET

@@ -1,0 +1,295 @@
+I"<<p>Elasticsearch is an open source distributed search and analytics engine based on <a href="https://lucene.apache.org/">Apache Lucene</a>. After adding your data to Elasticsearch, you can perform full-text searches on the data with all of the features you may expect: search by field, search multiple indices, boost fields, rank results by score, sort results by field, and aggregate results. You can also use <a href="https://opendistro.github.io/for-elasticsearch-docs/docs/kibana/">Kibana</a> to build visualizations for data in Elasticsearch.</p>
+
+<p>In this blog post, I used the <a href="https://opendistro.github.io/for-elasticsearch/features/indexmanagement.html">Index State Management (ISM) plugins in Open Distro for Elasticsearch</a>, a fully Apache 2 licensed open source distribution of Elasticsearch, to define custom management policies to automate routine tasks and apply them to indices and index patterns. The ISM plugin provides an automated solution for repetitive index management tasks such as set up and management of external custom processes to run your index operations.</p>
+
+<p>As I evaluated the ISM plugin in Open Distro for Elasticsearch, my goal was to find a solution for my customer’s challenge of managing time-series data. I was looking to maintain multiple indices for a diverse data workloads and set up an automated solution to periodically perform certain housekeeping index management functions. I prioritized new data over existing data. The housekeeping functions included marking the indices as read-only, reducing the segment count of the indices, closing these indices to improve performance and then deleting these indices when they are no longer needed.</p>
+
+<h2 id="solution-implemented">Solution implemented</h2>
+
+<p>Elasticsearch can contain any number of indices. The data is unique to each index. I used the ISM plugin to define a lifecycle index management policy that has four states - read-only, force_merge, close and delete. Note that as a best practice, you should be setting your index to read_only before calling force_merge.</p>
+
+<p>I installed Open Distro for Elasticsearch using a Docker image using directions from this <a href="https://aws.amazon.com/blogs/opensource/running-open-distro-for-elasticsearch/">blog post.</a><a href="https://aws.amazon.com/blogs/opensource/running-open-distro-for-elasticsearch/"></a> There are several other download options supporting Open Distro as outlined <a href="https://opendistro.github.io/for-elasticsearch-docs/docs/install/">here</a>.</p>
+
+<p>Once Open Distro for Elasticsearch is installed, the first step is to log in using the Kibana UI. See figure 1.</p>
+
+<p><em>Figure 1: Login screen for Open Distro for Elasticsearch</em></p>
+
+<p><img src="//assets/media/blog-images/2020-05-15-Index-State-Management-in-Open-Distro-for-Elasticsearch/ism-blogpost-figure01.png" alt="Image: Figure 1" class="img-fluid" /></p>
+
+<p>On Kibana’s splash page, choose to add the all the sample data listed in the screen by selecting <em>Try our sample data</em> and clicking on <em>Add data</em>. See figure 2.</p>
+
+<p><em>Figure 2: Adding data using Kibana interface</em></p>
+
+<p><img src="//assets/media/blog-images/2020-05-15-Index-State-Management-in-Open-Distro-for-Elasticsearch/ism-blogpost-figure02.png" alt="Image: Figure 2" class="img-fluid" /></p>
+
+<p>Once the data is added, switch to the <em>Index Management</em> tab which lands into the <em>Index Policies</em> page as shown in figure 3.</p>
+
+<p><em>Figure 3: Index policies summary page</em></p>
+
+<p><img src="//assets/media/blog-images/2020-05-15-Index-State-Management-in-Open-Distro-for-Elasticsearch/ism-blogpost-figure03.png" alt="Image: Figure 3" class="img-fluid" /></p>
+
+<p>Click on <em>Create Policy</em>, enter a policy name and replace the default policy with the policy mentioned below. Don’t worry on the policy content yet, I will discuss about each section at a later point. See figure 4.</p>
+
+<p><em>Figure 4: Policy creation page</em></p>
+
+<p><img src="//assets/media/blog-images/2020-05-15-Index-State-Management-in-Open-Distro-for-Elasticsearch/ism-blogpost-figure04.png" alt="Image: Figure 4" class="img-fluid" /></p>
+
+<p>This code block below describes the policy I created for this post.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    "policy": {
+      "description": "Lifecycle Management Policy",
+      "default_state": "force_merge",
+      "states": [
+        {
+            "name": "read_only",
+            "actions": [
+                {
+                    "read_only": {}
+                  }
+            ],
+            "transitions": [
+              {
+                "state_name": "force_merge",
+                "conditions": {
+                  "min_index_age": "1d"
+                }
+              }
+            ]
+        },
+        {
+          "name": "force_merge",
+          "actions": [
+            {
+                "force_merge": {
+                  "max_num_segments": 1
+                }
+              }
+          ],
+          "transitions": [
+            {
+              "state_name": "close",
+              "conditions": {
+                "min_index_age": "2d"
+              }
+            }
+          ]
+        },
+        {
+            "name": "close",
+            "actions": [
+                {
+                    "close": {}
+                  }
+            ],
+            "transitions": [
+              {
+                "state_name": "delete",
+                "conditions": {
+                  "min_index_age": "3d"
+                }
+              }
+            ]
+        },
+        {
+          "name": "delete",
+          "actions": [
+            {
+              "notification": {
+                "destination": {
+                  "chime": {
+                    "url": "&lt;CHIME_WEBHOOK_URL&gt;"
+                  }
+                },
+                "message_template": {
+                  "source": "The index  is being deleted because of actioned policy "
+                }
+              }
+            },
+            {
+              "delete": {}
+            }
+          ]
+        }
+      ]
+    }
+  }
+</code></pre></div></div>
+
+<p>Click <em>Create</em> to save the policy. I named the policy as “ism-policy-sample” as seen in figure 5.</p>
+
+<p><em>Figure 5: Index policies summary page</em></p>
+
+<p><img src="//assets/media/blog-images/2020-05-15-Index-State-Management-in-Open-Distro-for-Elasticsearch/ism-blogpost-figure05.png" alt="Image: Figure 5" class="img-fluid" /></p>
+
+<p>Next, navigate to the <em>Indices</em> tab and search for the <em>kibana-sample</em> indices keyword which should list all the sample data indices which was added earlier. See figure 6.</p>
+
+<p><em>Figure 6: Indices summary page</em></p>
+
+<p><img src="//assets/media/blog-images/2020-05-15-Index-State-Management-in-Open-Distro-for-Elasticsearch/ism-blogpost-figure06.png" alt="Image: Figure 6" class="img-fluid" /></p>
+
+<p>Choose all the indices and select <em>Apply Policy</em>.</p>
+
+<p>From the <em>Policy ID</em> dropdown, select the policy created in the previous step and click on <em>Apply</em> as seen in figure 7.</p>
+
+<p><em>Figure 7: Policy creation confirmation page</em></p>
+
+<p><img src="//assets/media/blog-images/2020-05-15-Index-State-Management-in-Open-Distro-for-Elasticsearch/ism-blogpost-figure07.png" alt="Image: Figure 7" class="img-fluid" /></p>
+
+<p>The policy is now assigned and starts managing the indices. Navigate to the <em>Managed Indices</em> tabs and observe the status as <em>Initializing</em> as seen in figure 8.</p>
+
+<p><em>Figure 8: Managed indices summary page</em></p>
+
+<p><img src="//assets/media/blog-images/2020-05-15-Index-State-Management-in-Open-Distro-for-Elasticsearch/ism-blogpost-figure08.png" alt="Image: Figure 8" class="img-fluid" /></p>
+
+<p>The pane also provides an option to set a refresh frequency to refresh the managed indices status information as seen in figure 9.</p>
+
+<p><em>Figure 9: Refresh frequency settings</em></p>
+
+<p><img src="//assets/media/blog-images/2020-05-15-Index-State-Management-in-Open-Distro-for-Elasticsearch/ism-blogpost-figure09.png" alt="Image: Figure 9" class="img-fluid" /></p>
+
+<h2 id="demystifying-the-policy">Demystifying the policy</h2>
+
+<p>Let me explain about the index policy tenets and how they are structured.</p>
+
+<p>Policies are JSON documents that defines -</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* the states that an index can be in
+* any actions that you want the plugin to take when an index enters the state
+* conditions that must be met for an index to move or transition into a new state
+</code></pre></div></div>
+
+<p>The policy document begins with basic metadata like <em>description, default_state</em> that the index should enter, and finally a series of state definitions.</p>
+
+<p>Let me start defining the first state – <em>read_only</em>. In this state, the managed indices will be set to read_only and the transition will move to <em>force_merge</em> state after one day.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "name": "read_only",
+  "actions": [
+      {
+          "read_only": {}
+        }
+  ],
+  "transitions": [
+    {
+      "state_name": "force_merge",
+      "conditions": {
+        "min_index_age": "1d"
+      }
+    }
+  ]
+}
+</code></pre></div></div>
+
+<p>Let us quickly verify from the console. The current state is <em>read_only</em> and the transitions to <em>force_merge</em> after one day. See figure 10.</p>
+
+<p><em>Figure 10: Managed indices summary at the first state</em></p>
+
+<p><img src="//assets/media/blog-images/2020-05-15-Index-State-Management-in-Open-Distro-for-Elasticsearch/ism-blogpost-figure10.png" alt="Image: Figure 10" class="img-fluid" /></p>
+
+<p>The force_merge action defined will compress the indices segments. Transitions define the conditions that need to be met for a state to change, which in my case, is close state once the index crosses 24 hours.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "name": "force_merge",
+  "actions": [
+    {
+        "force_merge": {
+          "max_num_segments": 1
+        }
+      }
+  ],
+  "transitions": [
+    {
+      "state_name": "close",
+      "conditions": {
+        "min_index_age": "2d"
+      }
+    }
+  ]
+}
+</code></pre></div></div>
+
+<p>Verify the status of the managed indices at this stage again. See figure 11.</p>
+
+<p><em>Figure 11: Managed indices summary at this state</em></p>
+
+<p><img src="//assets/media/blog-images/2020-05-15-Index-State-Management-in-Open-Distro-for-Elasticsearch/ism-blogpost-figure11.png" alt="Image: Figure 11" class="img-fluid" /></p>
+
+<p>Note that closed indices remain on disk, but do not consume any CPU or memory. I can’t read from, write to, or search closed indices. If I need to use a closed index again, reopening the closed index is simpler than restoring the index from a snapshot.</p>
+
+<p>The action defines the indices to be in a closed state for a day and then transitions them to a final delete state when the index age is three days old.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "name": "close",
+  "actions": [
+      {
+          "close": {}
+        }
+  ],
+  "transitions": [
+    {
+      "state_name": "delete",
+      "conditions": {
+        "min_index_age": "3d"
+      }
+    }
+  ]
+}
+</code></pre></div></div>
+
+<p>The status of the indices in this state can be verified again. See figure 12.</p>
+
+<p><em>Figure 12: Managed indices summary at this state</em></p>
+
+<p><img src="//assets/media/blog-images/2020-05-15-Index-State-Management-in-Open-Distro-for-Elasticsearch/ism-blogpost-figure12.png" alt="Image: Figure 12" class="img-fluid" /></p>
+
+<p>Notice that the delete state has two actions defined. The first action is self-explanatory, sends a notification as defined in the message_template to the destination.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "name": "delete",
+  "actions": [
+    {
+      "notification": {
+        "destination": {
+          "chime": {
+            "url": "&lt;CHIME_WEBHOOK_URL&gt;"
+          }
+        },
+        "message_template": {
+          "source": "The index  is being deleted because of actioned policy "
+        }
+      }
+    },
+    {
+      "delete": {}
+    }
+  ]
+}
+</code></pre></div></div>
+
+<p>I have configured the notification endpoint to be on <a href="https://aws.amazon.com/chime">Amazon Chime</a> <strong>CHIME_WEBHOOK_URL</strong>. More information on using webhooks for Amazon Chime can be found <a href="https://docs.aws.amazon.com/chime/latest/dg/webhooks.html">here</a>.</p>
+
+<p>At this state, I have received the notification on the Chime webhook as seen in the figure below.</p>
+
+<p><em>Figure 13: Chime webhook notifications</em></p>
+
+<p><img src="//assets/media/blog-images/2020-05-15-Index-State-Management-in-Open-Distro-for-Elasticsearch/ism-blogpost-figure13.png" alt="Image: Figure 13" class="img-fluid" /></p>
+
+<p>Below is the status from the console. See figure 14.</p>
+
+<p><em>Figure 14: Final status of the managed indices</em></p>
+
+<p><img src="//assets/media/blog-images/2020-05-15-Index-State-Management-in-Open-Distro-for-Elasticsearch/ism-blogpost-figure14.png" alt="Image: Figure 14" class="img-fluid" /></p>
+
+<p>Once the notification is successfully sent, the policy executes the next action in the state which is deleting the indices. After this final state, the indices will no longer appear in the <em>Managed Indices</em> section.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Hopefully this blog post provided you an understanding of how-to use the index state management plugin in Open Distro for Elasticsearch. My walkthrough of how indices can be managed using this plugin with a sample life-cycle policy.</p>
+
+<p>Check out the full documentation for the index state management plugin <a href="https://opendistro.github.io/for-elasticsearch-docs/docs/ism/">here</a>. If you need enhancements or have other feature requests, feel free to file an issue <a href="https://github.com/opendistro-for-elasticsearch/index-management-kibana-plugin/issues">here</a>. Also check out the contribution guidelines <a href="https://github.com/opendistro-for-elasticsearch/index-management-kibana-plugin/blob/master/CONTRIBUTING.md">here</a> to get more involved in the project.</p>
+
+<p>A big takeaway for me as I evaluated the ISM plugin in Open Distro was that the index state management plugin is fully compatible and works on the <a href="https://aws.amazon.com/elasticsearch-service/">Amazon Elasticsearch Service</a>. This is very useful for using Open Distro for Elasticsearch as a on-premise or internal solution while leveraging a managed service for your production workloads. If you are using hybrid environments, you can learn more <a href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/ism.html">here</a> about how this index state management functionality works on the managed service.</p>
+
+<p>Special thanks to Alolita Sharma, Sriram Kosuri and Drew Baugher from the ISM search engineering team for their help on this post.</p>
+:ET

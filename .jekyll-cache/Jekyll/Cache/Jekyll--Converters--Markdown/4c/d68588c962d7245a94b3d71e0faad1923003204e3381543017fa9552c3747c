@@ -1,0 +1,121 @@
+I"\A<p>Distributed systems scale by coordinating and distributing their workloads horizontally, across several machines. In Elasticsearch, this is done by partitioning indexes into shards and distributing them across data nodes in the cluster.</p>
+
+<p><img src="//assets/media/blog-images/2020-04-16-The-Elasticsearch-Weight-Function/es-weights-stone-tower-by-the-beach-by-yuri-samoilov-ccbysa3-0.jpg" alt="The Elasticsearch Weight Function" class="img-fluid" /></p>
+<p align="left">
+The Elasticsearch Weight Function<br />
+Image credit: <a href="https://yuri.samoilov.online">Yuri Samoilov</a>
+</p>
+
+<p>Shards receive read and write traffic, and consume resources like disk, memory, JVM heap, and network. The overall resource consumption (workload) on a data node, depends on the shards it holds and the traffic they receive. Thus, a balanced distribution of shards corresponds to even workloads and efficient node utilization. In Elasticsearch, this responsibility belongs to the <code class="language-plaintext highlighter-rouge">ShardsAllocator</code> component.</p>
+
+<p>In a <a href="https://aws.amazon.com/blogs/opensource/open-distro-elasticsearch-shard-allocation/"><em>previous post</em></a>, we discussed the internal Elasticsearch algorithms for allocation and rebalance. Each shard is compared against eligible destination nodes, and the best fit is chosen. These comparisons require some internal yardstick to rank nodes, which is provided by the Shard Allocation Weight Function.</p>
+
+<p>In this post, I will dive into the default weight function implementation to weigh the pros and cons of the default algorithm and look at some of the considerations in making shard allocation more responsive to transient signals. You will gain a deeper understanding of shard placement in your clusters, why Elasticsearch chose a particular node for a shard, and how future placement decisions will be evaluated. Knowing this will help you design for future workloads and scaling requirements.</p>
+
+<h2 id="the-weight-function">The Weight Function</h2>
+
+<p>Weight function, in Elasticsearch, is a neat abstraction to process parameters that influence a shard’s resource footprint on a node, and assign measurable weight values to each shard - node combination. The node with lowest weight value is considered as the best destination for shard in question. Similarly, a high difference in weight values implies imbalance – shards must be moved from high to low weighted nodes.</p>
+
+<p>The <a href="https://github.com/elastic/elasticsearch/blob/master/server/src/main/java/org/elasticsearch/cluster/routing/allocation/allocator/BalancedShardsAllocator.java#L207-L243"><em>default weight function</em></a> uses two parameters to balance shards <a href="#f2">2</a></p>
+
+<ul>
+  <li>Total number of shards on a node across all indexes.</li>
+  <li>Number of shards on a node for given index.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+shard-weight = theta0 * (num-shards-on-node – mean-shards-per-node)
+index-weight = theta1 * (num-index-shards-on-node – mean-shards-per-node-for-index)
+Weight (shard, node) = shard-weight + index-weight
+
+# theta0 and theta1 are user configurable constants.
+# theta0 + theta1 = 1
+# mean-shards-per-node = num-of-shards-in-cluster / num-nodes-in-cluster
+# mean-shards-per-node-for-index = num-shards-in-cluster-for-index / num-nodes-in-cluster
+
+</code></pre></div></div>
+
+<p>The function ensures that all nodes hold the same number of shards, and shards for each index are spread across nodes.
+If a node holds too many shards, its deviation from <code class="language-plaintext highlighter-rouge">mean-shards-per-node</code> is high, which increases the shard-weight factor. If too many shards of an index land on the same node, its deviation from <code class="language-plaintext highlighter-rouge">mean-shards-per-node-for-index</code> goes up, increasing the index-weight factor. Both of these increase the overall weight for shard on a node, indicating that shard be moved to a node with lesser weight.</p>
+
+<p>The contribution of each factor can be controlled by <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/shards-allocation.html#_shard_balancing_heuristics">two dynamic settings</a>.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">cluster.routing.allocation.balance.shard</code> – Controls shard-weight (Reduced to <code class="language-plaintext highlighter-rouge">theta0</code> in above equations [<a href="https://github.com/elastic/elasticsearch/blob/master/server/src/main/java/org/elasticsearch/cluster/routing/allocation/allocator/BalancedShardsAllocator.java#L221-L222">code</a>])</li>
+  <li><code class="language-plaintext highlighter-rouge">cluster.routing.allocation.balance.index</code> – Controls index-weight (Reduced to <code class="language-plaintext highlighter-rouge">theta1</code> in above equations [<a href="https://github.com/elastic/elasticsearch/blob/master/server/src/main/java/org/elasticsearch/cluster/routing/allocation/allocator/BalancedShardsAllocator.java#L221-L222">code</a>])</li>
+</ul>
+
+<p>There is another knob to control rebalancing — <code class="language-plaintext highlighter-rouge">cluster.routing.allocation.balance.threshold</code>. Shard balancing is an optimization problem. Moving a shard from one node to another demands system resources like CPU and network. At some point, the benefit achieved by rebalancing ceases to outweigh the cost of moving shards around. The threshold setting lets us fine-tune this tradeoff. Elasticsearch will rebalance only if the weight delta between nodes, is higher than configured threshold [<a href="https://github.com/elastic/elasticsearch/blob/master/server/src/main/java/org/elasticsearch/cluster/routing/allocation/allocator/BalancedShardsAllocator.java#L405-L416"><em>code</em></a>].</p>
+
+<p>Any non-negative float value is acceptable for the threshold variable. Elasticsearch will rebalance shards, if the weight difference after rebalance is more than this threshold. Deciding the right value for this threshold however, is involved. You could substitute the number of nodes, shards, and shards per index into the weight function above to get an idea. Or experiment with some values to see what works best.</p>
+
+<h2 id="the-beauty-of-using-shard-count">The Beauty of Using Shard Count</h2>
+
+<p>Simple solutions to complex problems have intangible engineering value. Shard count provides a simple, lightweight heuristic around how loaded a node is. And for a majority of use cases, it is a reasonable signal. Nodes with more shards get more traffic, and have more disk, CPU, and memory consumption as compared to nodes with fewer shards. Equalizing on shard count works especially well, if all your indexes handle similar workloads.</p>
+
+<p>Shard allocation can be seen as a modified bin-packing problem. You want to distribute <code class="language-plaintext highlighter-rouge">m items</code> (shards) across <code class="language-plaintext highlighter-rouge">n bins</code> (nodes) so as to minimize load on the most loaded bin.</p>
+
+<p>Using shard count as the balancing signal, simplifies this problem since shard count is a uniform, deterministic value. Assigning items (shards) to the least filled bin (node) so that all bins fill up uniformly gives even distribution. Changing this to actual resource usage signals like JVM, CPU, disk or network footprint of a shard, makes the items non-uniform, which considerably complicates the problem space</p>
+
+<p>Shard count is a uniform signal. Metrics like JVM heap, CPU or memory consumption fluctuate very frequently, and require smoothing approximation mechanisms like moving averages. Using shard count eliminates this extra need for signal cleanup.</p>
+
+<p>Changes to shard count, like adding/deleting indexes, changing replica counts for existing indexes, or shrink/split APIs, all go via cluster state updates.  Distributing these changes in cluster state allows for the current event driven model for shard balancer, where all allocation and rebalance scenarios are evaluated only in response to cluster state updates (or explicit <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-reroute.html"><em>reroute</em></a> API calls).</p>
+
+<p>In contrast, balancing on metrics like shard size (disk usage) requires periodic rebalance checks based on updated shard sizes. Elasticsearch does have a periodic internal monitor to track disk usage. But it is used by the balancer, only when disk watermarks are breached. At which point, the node stops receiving new shards (low watermark) or moves existing shards out (high watermark). Disk usage does not factor into shard balancing until watermarks are hit.</p>
+
+<h2 id="road-ahead">Road Ahead</h2>
+
+<p>The shard count heuristic provided a good foundational metric for early Elasticsearch versions. If you are running a small to medium sized cluster, or even a production grade cluster with homogeneous workloads, it can provide acceptable performance. But at AWS scale, we see clusters pushed to their limits. When throwing more machines ceases to help with a problem, we must go back and think from first principles.</p>
+
+<h3 id="beyond-homogeneity">Beyond Homogeneity</h3>
+
+<p>At petabyte scale, non-uniform workloads are a norm rather than the exception. For example, you might be supporting an enterprise-wide analytics platform with many different business units storing their own indexes. Shards across such indexes can vary significantly in ingestion rates and query traffic. One team might index several gigabytes of data every hour, while another may take a month to ingest 1gb.</p>
+
+<p>Workarounds today involve splitting your cluster by workload and using cross cluster search, index rollover by time (e.g. daily) or shard size, or creating an index life cycle with hot, warm and cold stages. Individually, these features solve separate important problems. Using them for load balancing however, is trying to force homogeneity onto a problem that is inherently diverse.</p>
+
+<p>These workarounds have drawbacks.</p>
+
+<p>Cross cluster is great to organize and split clusters by business use cases. You could create a cluster for finance and another one for inventory. But predicting workloads, creating uniform cluster splits and mapping each team to the right cluster, incurs significant management overhead. Not to mention the boiler plate cost of each split cluster.</p>
+
+<p>Rolling over by size or time still creates skewed indexes within the rollover window. Rotating at smaller sizes reduces skew, but quickly explodes to an unstable cluster with too many shards. Index lifecycle is great for archiving old data and clearing up resources. But it is not a guarantee of uniformity. One team’s hot shard may have lower footprint than what another team considers a cold shard.</p>
+
+<p>We need to embrace that shards have inherently diverse resource requirements, and balancing should consider their individual footprints.</p>
+
+<h3 id="diverse-signals-hybrid-clusters">Diverse Signals, Hybrid Clusters</h3>
+
+<p>Shards could be balanced by <em>shard heat</em> – the actual resource footprint of a shard. Signals like JVM heap, CPU, memory, network and disk consumption could be actual indicators for shard heat. Balancing would then, map shard heat to resource availability on nodes.</p>
+
+<p>The present-day shard count is a placeholder signal that occasionally correlates with resource consumption. Future balancers should consider multiple relevant signals. For example, shard size alone is a good signal for disk usage, but not sufficient by itself. Large shards are often cold shards from index rollovers. And in most modern-day systems, JVM heap and CPU, are more precious than disk space. To work across these multiple dimensions, resources could define priority – balance on memory before disk usage.</p>
+
+<p>Mapping shard requirement to resource availability opens gates for diversity in resources as well. Clusters can comprise hybrid nodes with different capabilities to best fit the price-performance metric.</p>
+
+<h3 id="compute-intensive-in-critical-path">Compute Intensive in Critical Path</h3>
+
+<p>Our former post described algorithms used to check for <code class="language-plaintext highlighter-rouge">move</code> and <code class="language-plaintext highlighter-rouge">rebalance</code> operations. These operations run in the order of <code class="language-plaintext highlighter-rouge">num-shards * num-nodes</code>, and are performed by the master node alone during cluster state changes.</p>
+
+<p>This incurs significant processing cost in clusters with high shard and node count. While shard movement is a cluster state change decision that has to happen at master, checking for imbalance could be made periodic and moved out of the state update path.</p>
+
+<h3 id="indexing-hot-spots">Indexing Hot Spots</h3>
+
+<p>The current count-based weight function considers deviation from mean in <code class="language-plaintext highlighter-rouge">total-node-shard-count</code> and <code class="language-plaintext highlighter-rouge">index-level-node-shard-count</code>. In a sufficiently sized cluster, each node can hold a few hundred shards. In contrast, a single index would typically have only 5-10 shards.</p>
+
+<p>When you add an empty node to this cluster, during cluster scale out or failed node replacement, the new node joins with zero shard count. If you calculate the weight for this node, the total shard count deviation heavily outweighs the deviation created due to index level shard count. Even when all shards of an index land on the new node, its net weight is still very low due to the large negative factor added by <code class="language-plaintext highlighter-rouge">total-node-shard-count – mean-node-shard-count</code>.</p>
+
+<p>This low weight value keeps the new node as <code class="language-plaintext highlighter-rouge">most eligible</code> for receiving all shards of any new index. It is only when the node gets sufficiently filled up, and <code class="language-plaintext highlighter-rouge">total-node-shard-count</code> approaches <code class="language-plaintext highlighter-rouge">mean-node-shard-count</code>, that the <code class="language-plaintext highlighter-rouge">index-weight</code> becomes significant. At this point, balancer <em>moves</em> the new index shards, out of this new node.</p>
+
+<p>This is the index-level shard allocation hot spot problem. In any cluster of reasonable size, if you add a single node, or replace a failed node, all shards of any newly created index land on the newly added node. Since new indexes are usually high traffic targets, this node then becomes an indexing bottleneck in the cluster. The node continues to remain as a hotspot until shards from other nodes fill it up, which can be considerably long, since shard movement takes time. Furthermore, there is an added overhead of moving the new shards out when the node finally gets filled up and <code class="language-plaintext highlighter-rouge">index-weight</code> kicks in.</p>
+
+<h2 id="parting-thoughts">Parting Thoughts</h2>
+
+<p>Customer obsession and diving deep, are guiding principles at AWS. The problems we discuss here, were realized working backwards from actual customer issues. Shard balancing is an involved multi-variable optimization problem. The default allocator implementations served as a good starting ground, it powers the distributed engine we all love today. But as we push the envelope with scale, we must innovate and re-imagine the future of these components.</p>
+
+<p>We are working on the ideas discussed above <a href="#f3">3</a>, and will keep the open-source community involved in our progress. Suggestions, ideas and inputs from the OpenDistro for Elasticsearch community are welcome. You can post your suggestions <a href="https://github.com/opendistro-for-elasticsearch/community/issues">here</a>.</p>
+
+<h3 id="footnotes">Footnotes</h3>
+
+<ol>
+  <li><a name="f1">There are other functions that also consume node resources – like cluster coordination on master node, query coordination and result aggregation on coordinator node, or ingestion related tasks on ingest nodes. But since shards are at the center of any activity in Elasticsearch, shard footprint is the dominant resource utilization signal on data nodes.</a></li>
+  <li><a name="f2">As of this writing, i.e. Elasticsearch v7.6.1</a></li>
+  <li><a name="f3">Solving indexing hot spots with allocation constraints. <a href="https://github.com/elastic/elasticsearch/issues/43350">See Issue</a></a></li>
+</ol>
+:ET

@@ -1,0 +1,62 @@
+I"�<p>OpenSearch is a distributed, open source search and analytics suite used for a broad set of use cases like real-time application monitoring, log analytics, and website search. And it’s easy to imagine why you might want to query information from OpenSearch in those use cases. But you might not know how those queries actually work. Well, that’s what we’re going to explore in this blog! In particular, we’re going to take a closer look at how a query works by following a query through OpenSearch.</p>
+
+<h2 id="high-level-concepts">High-level concepts</h2>
+
+<p>In order to understand how a query works, you’ll need a high-level understanding of OpenSearch itself. To start, OpenSearch is document oriented; meaning the most basic unit for OpenSearch is a <strong>document</strong>. Rather than information stored as rows and columns as you see in tabular data, OpenSearch stores data as <a href="https://www.json.org/json-en.html">JSON</a> documents. By default, documents added to an OpenSearch store are <strong>indexed</strong>. Indices are logical partitions of documents and the largest unit of data in OpenSearch. To index these documents, OpenSearch leverages the <a href="https://lucene.apache.org/">Apache Lucene search library</a> which uses an <strong>inverted index</strong> (<a href="https://en.wikipedia.org/wiki/Inverted_index">Wikipedia</a>). An inverted index is a data structure that stores mappings of content to the location in a document (or set of documents). Rather than search each document and text directly, OpenSearch searches the index/indices allowing it to achieve it’s fast search responses.</p>
+
+<p>A <strong>node</strong> is an instance of OpenSearch and a <strong>cluster</strong> is a collection of one or more OpenSearch nodes with the same cluster name. There are several different types of OpenSearch nodes that we can discuss in future blog posts (stay tuned), but at a high-level OpenSearch functionality is built off the distribution of tasks and work among all the nodes in a cluster. OpenSearch allows for indices to be subdivided into multiple <strong>shards</strong> and each shard is part of the OpenSearch index. You can copy those index shards as <strong>replica shards</strong> (or just replicas) which serve as redundant copies of data, increasing both resiliency and capacity for read requests.</p>
+
+<h2 id="a-querys-journey">A Query’s Journey</h2>
+
+<p>Now that we have reviewed OpenSearch components, let’s follow a query through OpenSearch. At a very high-level, a OpenSearch query can be broken down into two major phases; the query phase and the fetch phase.</p>
+
+<h3 id="query-phase">Query Phase</h3>
+<p>In this phase, the query provided to OpenSearch is broadcasted to a copy of every shard across the entire index. Once received, the query is executed locally. The result is a priority queue of matching, sorted documents for each shard. This priority queue is simply a sorted list of the <em>top n</em> matching documents with <em>top</em> being determined by relevance and <em>n</em> being determined by pagination parameters set by the user (or the default if not set by the user). Relevance in this case is a score of how well each document it matches the query. The individual shards are responsible for the actual matching process as well as the scoring. So for example, if you have a three node cluster and wanted to search for “Hamster”, you could write a query like this;</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -X GET "localhost:9200/_search?q=Hamster&amp;pretty"
+</code></pre></div></div>
+<p>Once OpenSearch has your query, OpenSearch takes the following steps;</p>
+<ol>
+  <li>The API or client sends your search query to Node 1.</li>
+  <li>Node 1 sends the search request to a primary or replica shard for each shard in an index.</li>
+  <li>Each shard executes the search locally and creates a locally sorted queue.</li>
+  <li>Each shard returns doc ID and sort value of the all the documents in its local queue.</li>
+  <li>Node 1 as the coordinator node, merges these values into a globally sorted list.</li>
+</ol>
+
+<p><em>Figure 1: Query Phase</em>
+<img src="//assets/media/blog-images/2021-08-23-a-query-or-there-and-back-again/QueryPhase.png" alt="Figure 1: Query Phase Diagram" class="img-fluid" /></p>
+
+<p><em>Note on coordinating nodes</em>: Once OpenSearch learns about the query, the query can be sent to any available data node and that node can become the coordinating node for that query. These nodes delegate client requests to the shards on the data nodes, collects and aggregates the results into one final result, and sends this result back to the client. Often larger clusters will have dedicated coordinating nodes that manage search volume.</p>
+
+<h3 id="fetch-phase">Fetch Phase</h3>
+<p>Now that the query phase has identified the documents that satisfy the request, OpenSearch needs to actually retrieve the documents. For the fetch phase, the coordinating node used the globally sorted priority list generated in the query phase to build the GET requests needed for the query. Using the same three node cluster as the earlier example, OpenSearch needs to collect all the results for your query (i.e. “Hamster”) and return them to you.</p>
+
+<ol>
+  <li>The coordinating node uses the global list to identify which documents are needed.</li>
+  <li>The coordinating node issues multiple GET requests to the relevant shards.</li>
+  <li>Each individual shard loads the request document and returns them to the coordinating node.</li>
+  <li>Once all the documents are returned, the results are returned to the client.</li>
+</ol>
+
+<p><em>Figure 2: Fetch Phase</em>
+<img src="//assets/media/blog-images/2021-08-23-a-query-or-there-and-back-again/FetchPhase.png" alt="Figure 2: Fetch Phase Diagram" class="img-fluid" /></p>
+
+<p>With the results returned, OpenSearch has completed the query!</p>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>And there you go, you now have a basic understanding of how an OpenSearch query works! What’s next? Well, we are planning two additional posts to bring your conceptional understanding to the next level;</p>
+
+<ol>
+  <li>A Deeper Look at Queries: A look at how query scoring, routing, and balancing work.</li>
+  <li>So you want to write an OpenSearch query: An overview of query basics such as Boolean Operators, Ranges Queries, Fields, Fuzzy Queries, and Wildcards.</li>
+</ol>
+
+<p>If you’re interested in contributing please reach out on <a href="https://github.com/opensearch-project/dashboards-reports/issues">GitHub issues</a> or the <a href="https://discuss.opendistrocommunity.dev/">community forum</a>. The more formal contribution guidelines are documented in the <a href="https://github.com/opensearch-project/dashboards-reports/blob/main/CONTRIBUTING.md">contributing guide</a>.</p>
+
+<p><strong>Sources</strong></p>
+<ol>
+  <li>https://opensearch.org/docs/opensearch/index-data/</li>
+  <li>https://opensearch.org/docs/opensearch/cluster/</li>
+  <li>https://opensearch.org/docs/opensearch/ux/</li>
+</ol>
+:ET

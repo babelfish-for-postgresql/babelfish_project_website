@@ -1,0 +1,112 @@
+I"�<h1 id="opensearch-documentation">OpenSearch documentation</h1>
+
+<p>This site contains the technical documentation for <a href="https://opensearch.org/">OpenSearch</a>, the Apache 2.0-licensed search, analytics, and visualization suite with advanced security, alerting, SQL support, automated index management, deep performance analysis, and more.</p>
+
+<p><a href="#docker-quickstart" class="btn btn-blue">Get started</a></p>
+
+<hr />
+
+<h2 id="why-use-opensearch">Why use OpenSearch?</h2>
+
+<p>OpenSearch is well-suited to the following use cases:</p>
+
+<ul>
+  <li>Log analytics</li>
+  <li>Real-time application monitoring</li>
+  <li>Clickstream analytics</li>
+  <li>Search backend</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Component</th>
+      <th style="text-align: left">Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><a href="//opensearch/">OpenSearch</a></td>
+      <td style="text-align: left">Data store and search engine</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="//dashboards/">OpenSearch Dashboards</a></td>
+      <td style="text-align: left">Search frontend and visualizations</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="//security-plugin/">Security</a></td>
+      <td style="text-align: left">Authentication and access control for your cluster</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="//monitoring-plugins/alerting/">Alerting</a></td>
+      <td style="text-align: left">Receive notifications when your data meets certain conditions</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="//search-plugins/sql/">SQL</a></td>
+      <td style="text-align: left">Use SQL or a piped processing language to query your data</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="//im-plugin/">Index State Management</a></td>
+      <td style="text-align: left">Automate index operations</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="//search-plugins/knn/">KNN</a></td>
+      <td style="text-align: left">Find “nearest neighbors” in your vector data</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="//monitoring-plugins/pa/">Performance Analyzer</a></td>
+      <td style="text-align: left">Monitor and optimize your cluster</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="//monitoring-plugins/ad/">Anomaly Detection</a></td>
+      <td style="text-align: left">Identify atypical data and receive automatic notifications</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="//search-plugins/async/">Asynchronous Search</a></td>
+      <td style="text-align: left">Run search requests in the background</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Most of OpenSearch plugins have a corresponding OpenSearch Dashboards plugin that provide a convenient, unified user interface.</p>
+
+<p>For specifics around the project, see the <a href="https://opensearch.org/faq/">FAQ</a>.</p>
+
+<hr />
+
+<h2 id="docker-quickstart">Docker quickstart</h2>
+<p class="label label-green">Docker</p>
+
+<ol>
+  <li>Install and start <a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a>.</li>
+  <li>
+    <p>Run the following commands:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull opensearchproject/opensearch:1.0.1
+docker run <span class="nt">-p</span> 9200:9200 <span class="nt">-p</span> 9600:9600 <span class="nt">-e</span> <span class="s2">"discovery.type=single-node"</span> opensearchproject/opensearch:1.0.1
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>In a new terminal session, run:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-XGET</span> <span class="nt">--insecure</span> https://localhost:9200 <span class="nt">-u</span> admin:admin
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>To learn more, see <a href="//opensearch/install/">Install and configure OpenSearch</a> and <a href="//dashboards/install/">Install and configure OpenSearch Dashboards</a>.</p>
+
+<h2 id="the-secure-path-forward">The secure path forward</h2>
+
+<p>OpenSearch includes a demo configuration so that you can get up and running quickly, but before using OpenSearch in a production environment, you must <a href="//security-plugin/configuration/index/">configure the security plugin manually</a>: your own certificates, your own authentication method, your own users, and your own passwords.</p>
+
+<h2 id="looking-for-the-javadoc">Looking for the Javadoc?</h2>
+
+<p>See <a href="https://opensearch.org/javadocs/">opensearch.org/javadocs/</a>.</p>
+
+<h2 id="get-involved">Get involved</h2>
+
+<p><a href="https://opensearch.org">OpenSearch</a> is supported by Amazon Web Services. All components are available under the <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a> on <a href="https://github.com/opensearch-project/">GitHub</a>.</p>
+
+<p>The project welcomes GitHub issues, bug fixes, features, plugins, documentation—anything at all. To get involved, see <a href="https://opensearch.org/source.html">Contributing</a> on the OpenSearch website.</p>
+:ET

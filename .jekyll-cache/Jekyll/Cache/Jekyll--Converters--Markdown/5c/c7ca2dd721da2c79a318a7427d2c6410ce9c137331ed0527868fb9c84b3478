@@ -1,0 +1,123 @@
+I"F(<p>Open Distro for Elasticsearch version 1.2.1 is available for download.</p>
+
+<h2 id="whats-included-in-version-121"><strong>What’s included in version 1.2.1</strong></h2>
+
+<p>Version 1.2.1 includes upstream open source versions of Elasticsearch 7.2.1, Kibana 7.2.1, and all Open Distro plugins including Alerting, Performance Analyzer, Security, SQL, and corresponding Kibana plugins too. A SQL JDBC driver and PerfTop, a client for Performance Analyzer, also comes with the distribution. You can find details on enhancements, bug fixes, and new features in the release notes for each plugin on GitHub. See Open Distro’s <a href="https://opendistro.github.io/for-elasticsearch-docs/version-history/">version history</a> table if you need to use a previous release of the distribution.</p>
+
+<h2 id="download-the-latest-packages"><strong>Download the latest packages</strong></h2>
+
+<p>Docker images for this release of<a href="https://hub.docker.com/r/amazon/opendistro-for-elasticsearch"> Open Distro for Elasticsearch</a> and <a href="https://hub.docker.com/r/amazon/opendistro-for-elasticsearch-kibana">Kibana</a> can be downloaded from Docker Hub. If you are using Docker, make sure your compose file specifies 1.2.1 or uses the latest tag. Additionally,<a href="https://opendistro.github.io/for-elasticsearch-docs/docs/install/rpm/"> RPM</a>,<a href="https://opendistro.github.io/for-elasticsearch-docs/docs/install/deb/"> Debian</a> and <a href="https://opendistro.github.io/for-elasticsearch-docs/docs/install/tar/">Linux tarball</a> packages are available for installation. You can download the PerfTop client <a href="https://www.npmjs.com/package/@aws/opendistro-for-elasticsearch-perftop">here</a> and our SQL JDBC driver <a href="https://d3g5vo6xdbdb9a.cloudfront.net/downloads/elasticsearch-clients/opendistro-sql-jdbc/opendistro-sql-jdbc-0.9.0.0.jar"> here</a>. You can also find our Security plugin artifacts on <a href="https://mvnrepository.com/artifact/com.amazon.opendistroforelasticsearch">Maven Central</a>. As many of you may already have discovered, the 1.2.1 artifacts and packages have been available for download since early November.</p>
+
+<h2 id="release-details"><strong>Release details</strong></h2>
+
+<h3 id="alerting"><strong>ALERTING</strong></h3>
+
+<ul>
+  <li>Update build.gradle and release notes for v1.2.0.1 <a href="https://github.com/opendistro-for-elasticsearch/alerting/pull/105">(#105)</a></li>
+  <li>Upgrade to ES 7.2.1 <a href="https://github.com/opendistro-for-elasticsearch/alerting/pull/110">(#110)</a></li>
+  <li>Alerting Anomaly detection integration <a href="https://github.com/opendistro-for-elasticsearch/alerting/commit/ae1cfc6f829de1d445a0ee5257cbaacc4f87eaf3">*</a></li>
+  <li>Update plugin version <a href="https://github.com/opendistro-for-elasticsearch/alerting/commit/37287521a5231bd7446555586233198c8d4d9676">*</a></li>
+  <li>Fix parse exception of ad result response <a href="https://github.com/opendistro-for-elasticsearch/alerting/pull/132">(#132)</a></li>
+</ul>
+
+<h3 id="alerting-kibana-ui"><strong>ALERTING KIBANA UI</strong></h3>
+
+<ul>
+  <li>Update package.json and release notes <a href="https://github.com/opendistro-for-elasticsearch/alerting-kibana-plugin/pull/99">(#99)</a></li>
+  <li>Alerting Anomaly detection integration<a href="https://github.com/opendistro-for-elasticsearch/alerting-kibana-plugin/commit/987c22cb57633e1615b809bdf017ca017bf2a598">*</a></li>
+</ul>
+
+<h3 id="performance-analyzer"><strong>PERFORMANCE ANALYZER</strong></h3>
+
+<ul>
+  <li>Update PerformanceAnalyzer to support Elasticsearch v7.2.1<a href="https://github.com/opendistro-for-elasticsearch/performance-analyzer/commit/0f513119f2a61293b2429eca3d162196d1833963">*</a></li>
+  <li>Merge pull request <a href="https://github.com/opendistro-for-elasticsearch/performance-analyzer/pull/76">(#76)</a></li>
+</ul>
+
+<h3 id="security"><strong>SECURITY</strong></h3>
+
+<ul>
+  <li>Support for ES 7.2.1 <a href="https://github.com/opendistro-for-elasticsearch/security/pull/153">(#153)</a></li>
+  <li>Extended proxy authenticator to pass additional attributes via header <a href="https://github.com/opendistro-for-elasticsearch/security/pull/174">(#174)</a></li>
+</ul>
+
+<h3 id="security-advanced-modules"><strong>SECURITY ADVANCED MODULES</strong></h3>
+
+<ul>
+  <li>Support for ES 7.2.1 <a href="https://github.com/opendistro-for-elasticsearch/security-advanced-modules/pull/49">(#49)</a></li>
+</ul>
+
+<h3 id="security-parent"><strong>SECURITY PARENT</strong></h3>
+
+<ul>
+  <li>Support for ES 7.2.1 <a href="https://github.com/opendistro-for-elasticsearch/security-parent/pull/26">(#26)</a></li>
+</ul>
+
+<h3 id="security-kibana-ui"><strong>SECURITY KIBANA UI</strong></h3>
+
+<ul>
+  <li>Support for ES 7.2.1 <a href="https://github.com/opendistro-for-elasticsearch/security-kibana-plugin/pull/106">(#106)</a></li>
+  <li>Update opendistro_security version to 7.2.1<a href="https://github.com/opendistro-for-elasticsearch/security-kibana-plugin/commit/e3432d7e29df19a519d1b8a02aa1dd164a934eaf">*</a></li>
+  <li>Update Open Distro version 1.2.1.0 for security kibana plugin <a href="https://github.com/opendistro-for-elasticsearch/security-kibana-plugin/pull/107">(#107)</a></li>
+</ul>
+
+<h3 id="sql"><strong>SQL</strong></h3>
+
+<ul>
+  <li>Support for Open Distro 1.2.1 <a href="https://github.com/opendistro-for-elasticsearch/sql/pull/219">(#219)</a></li>
+</ul>
+
+<h3 id="sql-jdbc"><strong>SQL JDBC</strong></h3>
+
+<ul>
+  <li>Changed version to 1.2.1 and updated release notes <a href="https://github.com/opendistro-for-elasticsearch/sql-jdbc/pull/27">(#27)</a></li>
+  <li>Update version in version.java</li>
+</ul>
+
+<h3 id="job-scheduler"><strong>JOB SCHEDULER</strong></h3>
+
+<ul>
+  <li>Support Elasticsearch 7.2.1 <a href="https://github.com/opendistro-for-elasticsearch/job-scheduler/pull/27">(#27)</a></li>
+</ul>
+
+<h3 id="perftop"><strong>PERFTOP</strong></h3>
+
+<ul>
+  <li>Update PerfTop to support OpenDistro 1.2.1 release<a href="https://github.com/opendistro-for-elasticsearch/perftop/commit/73aff7068b330100e47ccf1bb89f8b009a60018a">*</a></li>
+  <li>Update version 1.2.1 on package.json<a href="https://github.com/opendistro-for-elasticsearch/perftop/commit/3747dc265d2c6c59520de5e64172d3841ead7095">*</a></li>
+  <li>Fix vulnerabilities<a href="https://github.com/opendistro-for-elasticsearch/perftop/commit/5c400aecf0e5702e683936e2a4a114d49aa3f7d7">*</a></li>
+  <li>Merge pull request <a href="https://github.com/opendistro-for-elasticsearch/perftop/pull/31">(#31)</a></li>
+</ul>
+
+<p>You can find the latest release notes for each component at these URLs:<a href="https://github.com/opendistro-for-elasticsearch/alerting/releases"> Alerting</a>,<a href="https://github.com/opendistro-for-elasticsearch/alerting-kibana-plugin/releases"> Alerting Kibana UI</a>,<a href="https://github.com/opendistro-for-elasticsearch/performance-analyzer/blob/opendistro-1.0/release-notes"> Performance Analyzer</a>,<a href="https://github.com/opendistro-for-elasticsearch/perftop/blob/opendistro-1.0/release-notes"> PerfTop</a>,<a href="https://github.com/opendistro-for-elasticsearch/security/releases"> Security</a>,<a href="https://github.com/opendistro-for-elasticsearch/security-kibana-plugin/releases"> Security Kibana UI</a>,<a href="https://github.com/opendistro-for-elasticsearch/sql/releases"> SQL</a>,<a href="https://github.com/opendistro-for-elasticsearch/sql-jdbc/releases"> SQL JDBC</a> driver, and<a href="https://github.com/opendistro-for-elasticsearch/job-scheduler/releases"> Job Scheduler</a>.</p>
+
+<h2 id="features-in-development"><strong>Features in development</strong></h2>
+
+<p>Check out and contribute to features in development! You can also download and use the development versions of these plugins to test, experiment, and provide feedback.</p>
+
+<ul>
+  <li><a href="https://github.com/opendistro-for-elasticsearch/k-NN">k-NN</a></li>
+  <li><a href="https://github.com/opendistro-for-elasticsearch/index-management">Index Management</a></li>
+  <li><a href="https://github.com/opendistro-for-elasticsearch/index-management-kibana-plugin">Index Management Kibana UI</a></li>
+  <li><a href="https://github.com/opendistro-for-elasticsearch/anomaly-detection/">Anomaly Detection</a></li>
+  <li><a href="https://github.com/opendistro-for-elasticsearch/anomaly-detection-kibana-plugin">Anomaly Detection Kibana UI</a></li>
+</ul>
+
+<h2 id="rca-design-rfc-needs-your-feedback"><strong>RCA design RFC needs your feedback</strong></h2>
+
+<p>We’d love to get your feedback on the Performance Analyzer Root Cause Analysis (RCA) design RFC. Review it<a href="https://github.com/opendistro-for-elasticsearch/performance-analyzer/tree/master/rca"> here</a>. You can provide comments<a href="https://github.com/opendistro-for-elasticsearch/performance-analyzer/issues/73"> here</a>.</p>
+
+<h3 id="questions"><strong>Questions?</strong></h3>
+
+<p>Please feel free to ask questions on the <a href="https://discuss.opendistrocommunity.dev/">project community discussion forum</a>. I also invite you to help answer questions on the forums for other community members. We also have a 30-minute online community meeting every two weeks that you can <a href="https://www.meetup.com/Open-Distro-for-Elasticsearch-Meetup-Group/">join</a> to ask questions.</p>
+
+<h3 id="report-a-bug-or-request-a-feature"><strong>Report a bug or request a feature?</strong></h3>
+
+<p>You can file bugs, request features, or propose new ideas to enhance Open Distro on our <a href="https://github.com/opendistro-for-elasticsearch/community/issues">GitHub community</a> issues page. If you find bugs or want to propose a feature for a particular plug-in, you can go to the specific repo and file an issue on the plug-in repo.</p>
+
+<h3 id="getting-started"><strong>Getting Started?</strong></h3>
+
+<p>If you’re getting started on building your open source contribution karma, you can select an issue tagged as a “Good First Issue” to start contributing to Open Distro for Elasticsearch. There is extensive<a href="https://opendistro.github.io/for-elasticsearch-docs/docs/install/"> technical documentation</a> on the project website to help you get started.</p>
+
+<p>Feel free to reach out to me (alolitas) if you have any questions. Thanks for using Open Distro for Elasticsearch. Go build with Open Distro!</p>
+:ET
