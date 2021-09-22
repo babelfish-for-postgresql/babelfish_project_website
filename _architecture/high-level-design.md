@@ -9,30 +9,32 @@ permalink: /docs/architecture/high-level-design
 On regular PostgreSQL there is a single listener that supports the FE/BE protocol,
 and a query usually goes through the following path:
 
-{% mermaid %}
-graph TD;
-    A[FE/BE Listener] --> B[SQL Parser];
-    B --> C[SQL Executor];
-    C --> D[PL/pgSQL Interpreter/Compiler];
-    C --> E[PL/Perl Interpreter/Compiler];
-{% endmermaid %}
+```mermaid
+graph TD
+    A[FE/BE Listener] --> B[SQL Parser]
+    B --> C[SQL Executor]
+    C --> D[PL/pgSQL Interpreter/Compiler]
+    C --> E[PL/Perl Interpreter/Compiler]
+
+```
 
 Babelfish runs as a PostgreSQL branch, which means that it took the PostgreSQL
 code and modify it in order to support protocol hookability, TDS protocol, TSQL
 Parser, and PL/T-SQL Interpreter and PL/T-SQL compiler.
 
-{% mermaid %}
-graph TD;
-    A[Babelfish TDS Listener] --> B(Babelfish SQL Parser);
-    B --> C[SQL Executor];
-    C --> D[PL/T-SQL Interpreter/Compiler];
-    C --> E[PL/pgSQL Interpreter/Compiler];
-    C --> F[PL/Perl Interpreter/Compiler];
-    G[FE/BE Listener] --> H[Postgres SQL Parser];
-    H --> C;
-    I[Postmaster] --> A;
-    I --> G;
-{% endmermaid %}
+```mermaid
+graph TD
+    A[Babelfish TDS Listener] --> B(Babelfish SQL Parser)
+    B --> C[SQL Executor]
+    C --> D[PL/T-SQL Interpreter/Compiler]
+    C --> E[PL/pgSQL Interpreter/Compiler]
+    C --> F[PL/Perl Interpreter/Compiler]
+    G[FE/BE Listener] --> H[Postgres SQL Parser]
+    H --> C
+    I[Postmaster] --> A
+    I --> G
+
+```
 
 The application-layer network protocol handling for interactions with SQL Server
 client-drivers is implemented in a server component called the TDS Listener,
