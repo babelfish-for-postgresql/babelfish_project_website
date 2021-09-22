@@ -1,6 +1,6 @@
 title: OpenSearch
 description: ""
-baseurl: "/babelfishpg-project-website/" # the subpath of your site, e.g. /blog
+baseurl: "/babelfishpg-project-website" # the subpath of your site, e.g. /blog
 url: "https://ongres.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 permalink: /:path/
 email: opensearch@amazon.com
