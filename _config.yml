@@ -175,3 +175,9 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - README.md
+
+# Gems
+gems: [jekyll-mermaid]
+
+mermaid:
+  src: '/assets/js/mermaid.js'
