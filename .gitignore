@@ -7,3 +7,5 @@ jekyll-cache
 .jekyll-metadata
 vendor
 ./vendor
+.DS_Store/
+.Vscode/
