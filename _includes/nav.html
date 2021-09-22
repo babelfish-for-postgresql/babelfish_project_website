@@ -13,7 +13,7 @@
 
     The case-sensitivity of string sorting is determined by `site.nav_sort`.
   {%- endcomment -%}
-  
+
   {%- assign string_ordered_pages = titled_pages
         | where_exp:"item", "item.nav_order == nil" -%}
   {%- assign nav_ordered_pages = titled_pages
@@ -34,9 +34,9 @@
       {%- assign number_ordered_pages = number_ordered_pages | concat: group.items -%}
     {%- endif -%}
   {%- endfor -%}
-  
+
   {%- assign sorted_number_ordered_pages = number_ordered_pages | sort:"nav_order" -%}
-  
+
   {%- comment -%}
     The string_ordered_pages have to be sorted by nav_order, and otherwise title
     (where appending the empty string to a numeric title converts it to a string).
@@ -56,11 +56,11 @@
   {%- endfor -%}
 
   {%- assign pages_list = sorted_number_ordered_pages | concat: sorted_string_ordered_pages -%}
-  
+
   {%- for node in pages_list -%}
     {%- if node.parent == nil -%}
       {%- unless node.nav_exclude -%}
-      <li class="nav-list-item{% if page.url == node.url or page.parent == node.title or page.grand_parent == node.title %} active{% endif %}">
+      <li class="nav-list-item{% if page.collection == include.key and page.url == node.url or page.parent == node.title or page.grand_parent == node.title %} active{% endif %}">
         {%- if node.has_children -%}
           <a href="#" class="nav-list-expander"><svg viewBox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a>
         {%- endif -%}
@@ -97,3 +97,29 @@
     {%- endif -%}
   {%- endfor -%}
 </ul>
+
+{%- if page.collection == include.key -%}
+
+  {%- for node in pages_list -%}
+    {%- if node.parent == nil -%}
+      {%- if page.parent == node.title or page.grand_parent == node.title -%}
+        {%- assign first_level_url = node.url | absolute_url -%}
+      {%- endif -%}
+      {%- if node.has_children -%}
+        {%- assign children_list = pages_list | where: "parent", node.title -%}
+        {%- for child in children_list -%}
+          {%- if child.has_children -%}
+            {%- if page.url == child.url or page.parent == child.title and page.grand_parent == child.parent -%}
+              {%- assign second_level_url = child.url | absolute_url -%}
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {% if page.has_children == true and page.has_toc != false %}
+    {%- assign toc_list = pages_list | where: "parent", page.title | where: "grand_parent", page.parent -%}
+  {%- endif -%}
+
+{%- endif -%}

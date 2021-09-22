@@ -295,7 +295,7 @@ p.label {
 $logo_width: 170px;
 
 $attention-light: #4fb3e3;
-$attention: #34bbff; //formerly $green-medium, open sky
+$attention: #3bf; //formerly $green-medium, open sky
 $attention-dark: #0082b3; //formerly $green-medium-dark, open sky, tent 1
 $core:  #0053b8; //pacific blue
 
@@ -389,6 +389,7 @@ html {
 
 body {
   @include serif;
+  @include font-size(18);
   background: $background-lightest;
   color: $text;
   line-height: 1.6;
@@ -519,12 +520,12 @@ main {
     display: block;
     float: left;
     font-weight: 700;
-    margin: 0;
+    margin: 10px;
     overflow: hidden;
     text-decoration: none;
     text-indent: 100%;
     width: 170px;
-    height: 50px;
+    height: 46px;
     position: relative;
     svg {
       position: absolute;
@@ -613,6 +614,7 @@ main {
 
     li {
       @include sans-serif;
+      @include font-size(13);
       display: block;
       font-weight: 700;
       line-height: 16px;
@@ -799,7 +801,7 @@ main {
     }
     .copyright {
       float: left;
-      font-size: 13px;
+      @include font-size(12);
       margin: 20px 0 0 10px;
       @include mq(md) {
         max-width: 80%;

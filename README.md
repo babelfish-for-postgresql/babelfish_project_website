@@ -9,20 +9,20 @@
   - [Security](#security)
   - [License](#license)
   - [Credits](#credits)
-  
+
 # Babelfishpg.org Website
 
-This repo contains the source for the [babelfishpg.org](https://babelfishpg.org/) website. 
+This repo contains the source for the [babelfishpg.org](https://babelfishpg.org/) website.
 
 ## Getting Help
 
-If you find a bug, or have a feature request, please don't hesitate to open an issue in this repository. 
+If you find a bug, or have a feature request, please don't hesitate to open an issue in this repository.
 
 If you need help and are unsure where to open an issue, try [forums](https://discuss.opendistrocommunity.dev/).
 
 ## Contributing
 
-We welcome contributions! Please see our [CONTRIBUTING](CONTRIBUTING.md) page to learn more about how to contribute to the website. 
+We welcome contributions! Please see our [CONTRIBUTING](CONTRIBUTING.md) page to learn more about how to contribute to the website.
 
 _Note:_ As of July 20, 2021, contributions are welcome on the `main` branch; the `prod` branch is now protected and holds the finalized version of the site. The `staging` branch has been removed and is no longer being used.
 
@@ -35,7 +35,7 @@ If you are a partner, you are welcome to add your logo/link to our partners page
 This site uses [Jekyll](https://jekyllrb.com/). You can build the site and make it available on a local server via `docker-compose up -d`, or by installing all the dependencies on your local environment as follows.
 
 1. Install [Ruby](https://www.ruby-lang.org/en/) and [Bundler](https://bundler.io/), then run `bundle install`.
-2. Build and start Jekyll with `bundle exec jekyll serve`. 
+2. Build and start Jekyll with `bundle exec jekyll serve`.
 3. Browse the site at [`http://127.0.0.1:4000/`](http://127.0.0.1:4000/).
 
 Alternatively, build the site with `bundle exec jekyll build`. The HTML output is generated into `/_site`. For the full configuration options when running Jekyll, see [this page](https://jekyllrb.com/docs/configuration/options/).
@@ -55,10 +55,11 @@ JEKYLL_FATAL_LINK_CHECKER=all bundle exec jekyll build
 They both accept the same values with the only difference being that `JEKYLL_FATAL_LINK_CHECKER` fails the build if a broken link is found
 
 **Env values**
+
 1. **internal**: validates only the internal links
 2. **forced**: validates internal links and links that are technically internal but instead link to an external page. e.g. `/docs`
 3. **all**: validates all links. however this option does not retry retry-able link or follow redirection links. e.g. HTTP:429 (too many attrmpts, retry after), HTTP:301 (Permanent redirect)
-4. **retry**: validates all the links but also retries links with retry-able HTTP header 
+4. **retry**: validates all the links but also retries links with retry-able HTTP header
 
 ## Code of Conduct
 
@@ -78,4 +79,4 @@ This website was forked from the BSD-licensed [djangoproject.com](https://github
 
 ## Copyright
 
-Copyright OpenSearch Contributors. 
+Copyright OpenSearch Contributors.

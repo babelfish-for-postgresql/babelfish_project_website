@@ -1,4 +1,4 @@
-{% if page.path contains 'docs' %}
+{% if page.path contains 'docs' or page.permalink contains 'docs'  %}
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -39,7 +39,7 @@
     {% include head_custom.html %}
 
   </head>
-{% else }%
+{% else %}
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

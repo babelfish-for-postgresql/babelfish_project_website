@@ -479,7 +479,7 @@ blockquote {
         text-decoration: none;
         text-indent: 100%;
         width: 170px;
-        height: 36px;
+        height: 46px;
         position: relative;
         svg {
             position: absolute;
@@ -898,7 +898,7 @@ blockquote {
             margin: 20px 0 0 10px;
             @include respond-min(768px) {
                 max-width: 80%;
-                padding-top: 30px;
+                padding-top: 45px;
                 margin: 0;
             }
         }

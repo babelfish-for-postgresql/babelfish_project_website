@@ -1,9 +1,17 @@
-title: Babelfish for PostgreSQL(BabelfishPG) Documentation
-description: >- # this means to ignore newlines until "baseurl:"
-  Babelfish for PostgreSQL is an Apache-2.0 open source project that adds a Microsoft SQL Server-compatible end-point to PostgreSQL to enable your PostgreSQL database to understand the SQL Server wire protocol and commonly used SQL Server commands. With Babelfish, PostgreSQL now understands T-SQL, Microsoft SQL Server's proprietary SQL dialect, and supports the same communications protocol, so your apps that were originally written for SQL Server can now work with PostgreSQL with fewer code changes and without changing database drivers.
-baseurl: "/babelfishpg-project-website" # the subpath of your site, e.g. /blog
-url: "https://github.com/babelfish-for-postgresql" # the base hostname & protocol for your site, e.g. http://example.com
+title: OpenSearch
+description: ""
+baseurl: "/babelfishpg-project-website/" # the subpath of your site, e.g. /blog
+url: "https://ongres.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 permalink: /:path/
+email: opensearch@amazon.com
+twitter_username:
+github_username:
+
+headings:
+  news: "News"
+  source: "Source Code"
+  authors: "Authors"
+  downloads: "Download & Get Started"
 
 opensearch_version: 1.0.1
 opensearch_major_minor_version: 1.0
@@ -25,82 +33,50 @@ aux_links:
 color_scheme: opensearch
 
 defaults:
--
-    scope:
+  - scope:
       type: "posts"
     values:
       permalink: blog/:categories/:year/:month/:title/
-- 
-    scope:
+  - scope:
       path: ""
       type: "authors"
     values:
       layout: "author"
       permalink: /:collection/:name/
--
-    scope:
+  - scope:
       type: javadocs
     values:
       layout: javadocs
       permalink: /:collection/:name.html
--
-    scope:
+  - scope:
       type: events
     values:
       layout: event
-      permalink:  events/:title/
--
-    scope:
+      permalink: events/:title/
+  - scope:
       type: versions
-    values: 
+    values:
       layout: versions
-      permalink:  versions/:categories/:slug.html
--
-    scope:
+      permalink: versions/:categories/:slug.html
+  - scope:
       type: artifacts
     values:
       layout: artifact
       permalink: :collection/:categories/:slug.html
 
-
 # Define Jekyll collections
 collections:
   # Define a collection named "tests", its documents reside in the "_tests" directory
-  upgrade-to:
+  architecture:
     permalink: /:collection/:path/
     output: true
-  opensearch:
+  definition:
     permalink: /:collection/:path/
     output: true
-  dashboards:
+  quickStart:
     permalink: /:collection/:path/
     output: true
-  security-plugin:
-    permalink: /:collection/:path/
-    output: true
-  search-plugins:
-    permalink: /:collection/:path/
-    output: true
-  im-plugin:
-    permalink: /:collection/:path/
-    output: true
-  monitoring-plugins:
-    permalink: /:collection/:path/
-    output: true
-  clients:
-    permalink: /:collection/:path/
-    output: true
-  troubleshoot:
-    permalink: /:collection/:path/
-    output: true
-  external_links:
-    permalink: /:collection/:path/
-    output: true
-  authors:
-    output: true
-  partners:
-  'community_projects':
-  javadocs:
+  docs:
     output: true
   events:
     output: true
@@ -108,49 +84,32 @@ collections:
     output: true
   versions:
     output: true
+  docs:
+    output: true
   faqs:
-    
+    output: true
+
 paginate: 5
 paginate_path: "/blog/page:num/"
 
 just_the_docs:
   # Define the collections used in the theme
   collections:
-    upgrade-to:
-      name: Upgrade to OpenSearch
+    architecture:
+      name: Babelfish Architecture
       # nav_exclude: true
       nav_fold: true
       # search_exclude: true
-    opensearch:
-      name: OpenSearch
+    definition:
+      name: What is Babelfish
+      # nav_exclude: true
       nav_fold: true
-    # babelfishpg:
-    #   name: Babelfishpg
-    #   nav_fold: true
-    dashboards:
-      name: OpenSearch Dashboards
+      # search_exclude: true
+    quickStart:
+      name: Quickstart Guide
+      # nav_exclude: true
       nav_fold: true
-    security-plugin:
-      name: Security plugin
-      nav_fold: true
-    search-plugins:
-      name: Search plugins
-      nav_fold: true
-    im-plugin:
-      name: Index management plugin
-      nav_fold: true
-    monitoring-plugins:
-      name: Monitoring plugins
-      nav_fold: true
-    clients:
-      name: Clients and tools
-      nav_fold: true
-    troubleshoot:
-      name: Troubleshooting
-      nav_fold: true
-    external_links:
-      name: External links
-
+      # search_exclude: true
 
 # Enable or disable the site search
 # Supports true (default) or false
@@ -193,18 +152,14 @@ anchor_links: true
 
 footer_content:
 
+# Build settings
 plugins:
   - jekyll-remote-theme
   - jekyll-redirect-from
-  - jekyll-sitemap
   - jekyll-feed
   - jekyll-paginate
   - jekyll-last-modified-at
-
-# Include docs on processing
-include:
-  - _docs
-
+  - jekyll-sitemap
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -213,6 +168,8 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - node_modules
+  - bower.json
+  - package.json
   - vendor/bundle/
   - vendor/cache/
   - vendor/gems/

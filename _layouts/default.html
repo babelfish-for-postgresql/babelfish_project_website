@@ -1,7 +1,7 @@
 ---
 layout: table_wrappers
 ---
-{% if page.path contains 'docs' %}
+{% if page.path contains 'docs' or page.permalink contains 'docs'  %}
   <!DOCTYPE html>
 
   <html lang="{{ site.lang | default: 'en-US' }}">
@@ -61,6 +61,7 @@ layout: table_wrappers
               | where_exp:"item", "item.title != nil"
               | where_exp:"item", "item.parent == nil"
               | where_exp:"item", "item.nav_exclude != true"
+              | where_exp:"item", "item.path contains 'docs'"
               | size %}
           {% if pages_top_size > 0 %}
             {% include nav.html pages=site.html_pages key=nil %}
@@ -95,7 +96,7 @@ layout: table_wrappers
           {% endif %}
         </nav>
         <div class="site-footer">
-          <p class="text-small text-grey-dk-100">See a problem? Submit <a href="https://github.com/opensearch-project/documentation-website/issues">issues</a> or <a href="https://github.com/opensearch-project/documentation-website/edit/main/{{ page.path }}">edit this page</a> on <a href="https://github.com/opensearch-project/documentation-website/">GitHub</a>.</p>
+          <!--<p class="text-small text-grey-dk-100">See a problem? Submit <a href="https://github.com/opensearch-project/documentation-website/issues">issues</a> or <a href="https://github.com/opensearch-project/documentation-website/edit/main/{{ page.path }}">edit this page</a> on <a href="https://github.com/opensearch-project/documentation-website/">GitHub</a>.</p>-->
         </div>
       </div>
       <div class="copy-banner">
@@ -212,6 +213,7 @@ layout: table_wrappers
   </body>
   </html>
 {% else %}
+
   <!DOCTYPE html>
   <html lang="{{ page.lang | default: site.lang | default: "en" }}">
     {%- include head.html -%}
