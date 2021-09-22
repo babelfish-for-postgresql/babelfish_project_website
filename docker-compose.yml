@@ -1,10 +1,11 @@
-version: '3.2'
+version: "3.5" # Picked the highest for Docker Engine version 17
+               # https://docs.docker.com/compose/compose-file/
 
 services:
   jekyll:
     build: ./docker/
-    container_name: opensearch-project-website
+    container_name: babelfishpg-project-website
     volumes:
       - .:/srv/jekyll
     ports:
-      - '4000:4000'
+      - "4000:4000"
