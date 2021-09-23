@@ -53,7 +53,7 @@ general answer holding true for all cases.
 ### How many concurrent users does Babelfish support?
 
 There are no practical limitations which harm daily operations. So far no
-problems in this area have been observed. TODO: Verify
+problems in this area have been observed.
 
 In case that you want to limit the number of users you can use the max_connections 
  postgres configuration
