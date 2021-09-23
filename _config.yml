@@ -1,4 +1,4 @@
-title: OpenSearch
+title: BabelfishPG
 description: ""
 baseurl: "/babelfishpg-project-website" # the subpath of your site, e.g. /blog
 url: "https://babelfish-for-postgresql.github.io" # the base hostname & protocol for your site, e.g. http://example.com
@@ -30,7 +30,7 @@ logo: "/assets/images/logo.svg"
 # Aux links for the upper right navigation
 aux_links:
 
-color_scheme: opensearch
+color_scheme: babelfishpg
 
 defaults:
   - scope:

@@ -434,10 +434,11 @@ blockquote {
 [role="banner"] {
     // Includes global navigation, logo, and tagline at top of document
     @include clearfix;
-    background: $accent-dark;
+    background: url('../images/bbfsh_header.png') center center no-repeat;
+    background-size: cover;
     overflow: hidden;
     margin: 0;
-    padding: 10px 0 6px;
+    padding: 35px 0;
     position: relative;
     z-index: 0;
 
@@ -548,7 +549,7 @@ blockquote {
     }
 
     [role="navigation"] {
-        background: $accent-dark;
+        background: transparent;
 
         width: 100%;
 
@@ -878,7 +879,8 @@ blockquote {
     }
 
     .footer {
-        background: $accent-dark;
+        background: url('../images/bbfsh_header.png') center center no-repeat;
+        background-size: cover;
         margin-top: 20px;
         padding: 10px 0 30px;
         color: $white;
@@ -916,7 +918,7 @@ blockquote {
     .logo {
         @include font-size(40);
         @include sans-serif;
-        background: url(../img/logo-search.png) 0 0 no-repeat;
+        background: url(../images/logo-search.png) 0 0 no-repeat;
         color: $accent-dark;
         display: block;
         font-weight: 700;
@@ -932,7 +934,7 @@ blockquote {
         }
 
         .mdzr-svg & {
-            background: url(../img/logo-search.svg) center center no-repeat;
+            background: url(../images/logo-search.svg) center center no-repeat;
             height: 39px;
             width: $logo_width;
         }
