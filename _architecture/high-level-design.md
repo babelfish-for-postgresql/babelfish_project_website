@@ -4,6 +4,7 @@ title: High-Level Design
 nav_order: 7
 has_children: false
 permalink: /docs/architecture/high-level-design
+user_mermaid: true
 ---
 
 On regular PostgreSQL there is a single listener that supports the FE/BE protocol, 
