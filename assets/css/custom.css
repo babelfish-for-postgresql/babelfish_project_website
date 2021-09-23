@@ -1,0 +1,20 @@
+/* Custom CSS to override default just-the-docs styling */
+
+[role="banner"], [role="contentinfo"] .footer {
+    background: url('../images/bbfsh_header.png') center center no-repeat;
+    background-size: cover;
+    padding: 35px 0;
+}
+
+[role="banner"] [role="navigation"] {
+    background: transparent;
+}
+
+[role="banner"] [role="navigation"] li a.in-category {
+    text-decoration: underline;
+    color: #fff;
+}
+
+[role="contentinfo"] .footer svg {
+    padding-top: 25px;
+}
