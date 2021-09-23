@@ -4,6 +4,7 @@ title: Protocol Hooks
 nav_order: 8
 has_children: false
 permalink: /docs/architecture/protocol-hooks
+user_mermaid: true
 ---
 
 At the moment of this writing, PostgreSQL only supports the FE/BE protocol and is handled by the [postmaster](https://github.com/postgres/postgres/blob/a1708ab652eaef3e9405d5119721a9a4ecb6fcbd/src/backend/postmaster/postmaster.c). 
