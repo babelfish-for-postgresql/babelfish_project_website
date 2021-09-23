@@ -21,7 +21,7 @@ Which are:
 
 To install this dependencies (assuming that you are using Ubuntu) run the following command:
 
-```sh
+``` sh
 apt-get install flex \
   bison \
   build-essential \
