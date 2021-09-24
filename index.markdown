@@ -44,7 +44,7 @@ callout_button:
 opendistro:
   head: Looking for Open Distro?
   img:
-    url: /assets/img/logo-opendistro.svg
+    url: /assets/images/logo-opendistro.svg
     alt: Open Distro Logo
   description: Open Distro for Elasticsearch is still available.
   link:
