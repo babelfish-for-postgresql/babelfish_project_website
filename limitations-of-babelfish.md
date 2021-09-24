@@ -82,9 +82,9 @@ The following is a list of functions that are not supported by Babelfish:
 | [is_member](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/is-member-transact-sql.md) | `select pg_has_role(CURRENT_USER,'pg_signal_backend', 'MEMBER')` |
 | [is_objectsigned](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/is-objectsigned-transact-sql.md) | |
 | [is_rolemember](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/is-rolemember-transact-sql.md) | `select pg_has_role('sa', 'pg_signal_backend','MEMBER')` |
-| [isjson](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/isjson-transact-sql.md) | create a plpgsql function using return expression `(p_json::json is not null)` |
-| [json_modify](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/json-modify-transact-sql.md) | create a plpgsql function to wrap `jsonb_set()` to return a varchar value |
-| [json_query](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/json-query-transact-sql.md) | create a plpgsql function to wrap `jspnb_path_query` to return varchar value |
+| [isjson](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/isjson-transact-sql.md) | create a PL/pgSQL function using return expression `(p_json::json is not null)` |
+| [json_modify](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/json-modify-transact-sql.md) | create a PL/pgSQL function to wrap `jsonb_set()` to return a varchar value |
+| [json_query](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/json-query-transact-sql.md) | create a PL/pgSQL function to wrap `jspnb_path_query` to return varchar value |
 | [json_value](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/json-value-transact-sql.md) | `select cast(jsonb_path_query('{"info":{"address":[{"town":"Paris"},{"town":"London"}]}}','$.info.address[0].town') as varchar(100) );` |
 | [key_guid](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/key-guid-transact-sql.md) | [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) |
 | [key_id](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/key-id-transact-sql.md) | [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) | 
