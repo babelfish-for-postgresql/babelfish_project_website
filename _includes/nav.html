@@ -58,7 +58,8 @@
   {%- assign pages_list = sorted_number_ordered_pages | concat: sorted_string_ordered_pages -%}
 
   {%- for node in pages_list -%}
-    {%- if node.parent == nil -%}
+    {%- if node.parent == nil and node.url contains '/docs' -%}
+
       {%- unless node.nav_exclude -%}
       <li class="nav-list-item{% if page.collection == include.key and page.url == node.url or page.parent == node.title or page.grand_parent == node.title %} active{% endif %}">
         {%- if node.has_children -%}

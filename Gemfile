@@ -8,9 +8,7 @@ source "https://rubygems.org"
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
-gem "jekyll", "~> 4.2.0"
 
-# This is the default theme for new Jekyll sites. You may change this to anything you like.
 gem "just-the-docs", "~> 0.3.3"
 gem "jekyll-remote-theme", "~> 0.4"
 gem "jekyll-redirect-from", "~> 0.16"
@@ -22,11 +20,11 @@ gem "jekyll-redirect-from", "~> 0.16"
 
 # If you have any plugins, put them here!
 group :jekyll_plugins do
-  gem "jekyll-sitemap"
   gem "jekyll-feed", "~> 0.12"
   gem "jekyll-paginate"
   gem "jekyll-last-modified-at"
-  gem 'jekyll-mermaid'
+  gem "jekyll-sitemap"
+  gem "github-pages", "~> 219"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

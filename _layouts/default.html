@@ -61,7 +61,6 @@ layout: table_wrappers
               | where_exp:"item", "item.title != nil"
               | where_exp:"item", "item.parent == nil"
               | where_exp:"item", "item.nav_exclude != true"
-              | where_exp:"item", "item.path contains 'docs' or item.permalink contains 'docs'"
               | size %}
           {% if pages_top_size > 0 %}
             {% include nav.html pages=site.html_pages key=nil %}
