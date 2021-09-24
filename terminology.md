@@ -11,8 +11,8 @@ Across the Babelfish documentation there could be several terms that could be co
 
 ### PL/pgSQL
 
-This acronym stands for Procedural Language/PostgreSQL Structured Query Language. This the programming language that is used to write functions and procedures in PostgreSQL
-
+This acronym stands for Procedural Language/PostgreSQL Structured Query Language. This the programming language that is used to write functions and procedures in PostgreSQL. You can 
+can read more [here](https://www.postgresql.org/docs/current/plpgsql.html)
 ### PL/Perl
 Is a procedular language to write functions and procedures in PostgreSQL using the Perl programming language. You can ready more about [here](https://www.postgresql.org/docs/current/plperl.html)
 
