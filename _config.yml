@@ -1,10 +1,14 @@
 title: BabelfishPG
 description: ""
-baseurl: "/babelfishpg-project-website" # the subpath of your site, e.g. /blog
+
+## To be changed on release
+#baseurl: "/babelfishpg-project-website" # the subpath of your site, e.g. /blog
 #url: "https://babelfish-for-postgresql.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
-## FIXME!: Trying temporal fix
+## FIXME!: Changing URLs to the temporal GH pages URI
+baseurl: "/"
 url: "https://urban-dollop-7b518de9.pages.github.io"
+
 permalink: /:path/
 email: 
 twitter_username:
