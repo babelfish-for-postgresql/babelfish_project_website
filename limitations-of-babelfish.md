@@ -6,7 +6,203 @@ has_children: false
 permalink: /docs/limitations-of-babelfish
 ---
 
-Some SQLServer features cannot be ported to PostgreSQL for various reasons.
+Supports the following features with some restrictions:
+
+* A DB cluster that supports babelfish supports only one babelfish database.
+* Works with the PostgreSQL engine version 13.x only
+
+Babelfish doesn't support the following SQL Server functionality:
+
+| Functionality | Notes | 
+| ------------- | ----- |
+| SELECT TOP x PERCENT WHERE x &lt; or &gt; 100 | |
+| SELECT TOP... WITH TIES | |
+| INSERT... TOP | |
+| INSERT... DEFAULT VALUES | |
+| MERGE | |
+| SELECT PIVOT/UNPIVOT | |
+| CROSS APPLY | |
+| OUTER APPLY | |
+| SET ROWCOUNT n WHERE n != 0 | Expecting to support n == 0 for GA | 
+| SET ROWCOUNT @variable | |
+| SELECT... FOR XML AUTO | |
+| SELECT... FOR XML EXPLICIT |
+| SELECT... FOR XML PATH, ELEMENTS | Supported without the ELEMENTS clause |
+| SELECT... FOR XML RAW, ELEMENTS | Supported without the ELEMENTS clause |
+| All XML methods | This includes .VALUES(), .NODES(), and other methods |
+| XPATH expressions | |
+| OPENXML() | |
+| XML indexes |  |
+| WITH XMLNAMESPACES construct |   |
+| APPROX_COUNT_DISTINCT |  |
+| CHECKSUM_AGG |   |
+| GROUPING ID |  |
+| ROWCOUNT_BIG |   |
+| STDEV |  |
+| STDEVP |   |
+| VAR |  |
+| VARP |   |
+| HIERARCHYID | datatype |
+| HIERARCHYID | All methods are unsupported |
+| GEOMETRY | datatype |
+| GEOMETRY | All associated functionality |
+| GEOGRAPHY | datatype |
+| GEOGRAPHY | All associated functionality |
+| Graph functionality | All SQL graph functionality is unsupported |
+| Temporal tables |  |
+| ROWVERSION | datatype |
+| TIMESTAMP | SQL Server's TIMESTAMP is unrelated to PostgreSQL TIMESTAMP |
+| XML datatype with schema (xmlschema) | XML type without schema is supported |
+| JSON | All Built in Functions and statements |
+| Fulltext Search | All Built in Functions and statements |
+| Encryption | All Built in Functions and statements |
+| HASHBYTES() | MD5, SHA1, SHA256 are supported |
+| NEWSEQUENTIALID() function | Implemented as NEWID(); sequential behavior is not supported. |
+| DATETIME | Numeric representation |
+| DATETIME | 3 millisecond rounding for DATETIME datatype |
+| ROWSET functions | OPENXML(),  OPENJSON(), OPENROWSET(), OPENQUERY(), OPENDATASOURCE() |
+| Cursors (Updatable) |  |
+| Cursors | GLOBAL |
+| Cursor (misc options) | SCROLL,KEYSET,DYNAMIC,FAST_FORWARD,SCROLL_LOCKS,OPTIMISTIC,TYPE_WARNING,FOR UPDATE |
+| Cursor (fetch behaviors) | FETCH PRIOR,FIRST,LAST,ABSOLUTE,RELATIVE |
+| Cursor-typed | variables and parameters |
+| ##TEMP tables (global) |  |
+| Virtual computed colums (non-persistant) | Will be created as persistant |
+| Views WITHOUT SCHEMABINDING clause |  |
+| Procedures WITHOUT SCHEMABINDING clause |  |
+| Functions WITHOUT SCHEMABINDING clause |  |
+| Triggers WITHOUT SCHEMABINDING clause |  |
+| Views WITH ENCRYPTION clause |  |
+| Procedures WITH ENCRYPTION clause |  |
+| Functions WITH ENCRYPTION clause |  |
+| Triggers WITH ENCRYPTION clause |  |
+| Procedures EXECUTE AS SELF clause |  |
+| Functions EXECUTE AS SELF clause |  |
+| Triggers EXECUTE AS SELF clause |  |
+|  Procedures EXECUTE AS USE clause |  |
+| Functions EXECUTE AS USE |  |
+| Triggers EXECUTE AS USE |  |
+| Procedures WITH RECOMPILE | Applies to both DECLARE and EXECUTE statements |
+| View VIEW_METADATA clause |  |
+| View CHECK clause |  |
+| Indexes with IGNORE_DUP_KEY | Indexes will be created without this property. |
+| Constraints with IGNORE_DUP_KEY | Constraints will be created without this property. |
+| Indexes (inline) |  |
+| Indexes (clustered) | Created as if NONCLUSTERED was specified |
+| ALTER INDEX |  |
+| Index clauses | The following clauses are not supported:  FILLFACTOR,  							ALLOW_PAGE_LOCKS, ALLOW_ROW_LOCKS, PAD_INDEX, STATISTICS_NORECOMPUTE,  							OPTIMIZE_FOR_SEQUENTIAL_KEY, SORT_IN_TEMPDB, DROP_EXISTING, ONLINE,  							COMPRESSION_DELAY, MAXDOP, DATA_COMPRESSION |
+| COLUMNSTORE indexes |  |
+| Constraints (DESC columns) | Constraints will be created as ASC. |
+| Query hints |  |
+| Table hints |  |
+| Join hints |  |
+| Column attributes | ROWGUIDCOL, SPARSE, FILESTREAM, MASKED |
+| Indexes with more than 32 columns | Where  'included' columns count |
+| Procedure declarations with more than 100 parameters |  |
+| Function declarations with more than 100 parameters |  |
+| Procedure calls that includes DEFAULT as a parameter value |  |
+| Function calls that includes DEFAULT as a parameter value |  |
+| ALTER PROCEDURE |  |
+| ALTER FUNCTION |  |
+| ALTER TRIGGER |  |
+| Procedures, externally defined | Including SQL Common Language Runtime (CLR) |
+| Functions, externally defined | Including SQL Common Language Runtime (CLR) |
+| Triggers, externally defined | Including SQL Common Language Runtime (CLR) |
+| INSTEAD_OF Triggers |  |
+| Using EXECUTE to call a SQL function |  |
+| Invoking a procedure whose name is in a variable |  |
+| Procedure versioning |  |
+| Database Console Command statements (DBCC) |  |
+| READTEXT |  |
+| WRITETEXT |  |
+| UPDATETEXT |  |
+| Transaction isolation levels other than READCOMMITTED and READUNCOMMITTED | READ UNCOMMITTED  is  treated the same as READ COMMITTED. |
+| Table partitioning |  |
+| Index partitioning |  |
+| DROP statements that drop multiple objects |  |
+| DROP IF EXISTS |  |
+| LOGINPROPERTY() |  |
+| COLUMNPROPERTY() |  |
+| OBJECTPROPERTY() |  |
+| OBJECTPROPERTYEX() |  |
+| TYPEPROPERTY() |  |
+| SERVERPROPERTY() | Unsupported properties include: BuildClrVersion, ComparisonStyle, ComputerNamePhysicalNetBIOS, EditionID, 							EngineEdition, HadrManagerStatus, InstanceDefaultDataPath, InstanceDefaultLogPath, InstanceName,  							IsAdvancedAnalyticsInstalled, IsBigDataCluster, IsClustered, IsFullTextInstalled, 							IsHadrEnabled, IsIntegratedSecurityOnly, IsLocalDB, IsPolyBaseInstalled, IsXTPSupported,  							LCID, LicenseType, MachineName, NumLicenses, ProcessID, ProductBuild, ProductBuildType,  							ProductLevel, ProductMajorVersion, ProductMinorVersion, ProductUpdateLevel, ProductUpdateReference,  							ProductVersion, ResourceLastUpdateDateTime, ResourceVersion, ServerName, SqlCharSet,  							SqlCharSetName, SqlSortOrder, SqlSortOrderName, FilestreamShareName, FilestreamConfiguredLevel,  							FilestreamEffectiveLevel |
+| CONNECTIONPROPERTY() | Unsupported properties include: local_net_address, client_net_address,  							physical_net_transport 						 |
+| COLLATIONPROPERTY() | Collation properties are only implemented for the supported BBF collation types. |
+| SESSIONPROPERTY() | Unsupported properties include: ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, ARITHABORT,  							CONCAT_NULL_YIELDS_NULL, NUMERIC_ROUNDABORT, QUOTED_IDENTIFIER 						 |
+| DDL trigger |  |
+| LOGON trigger |  |
+| EXECUTE with AS LOGIN or AT option |  |
+| CREATE DATABASE options | All options except COLLATE and CONTAINMENT=NONE |
+| ALTER DATABASE |  |
+| Contained databases |  |
+| Double-quoted strings |  |
+| SET QUOTED_IDENTIFIER OFF |  |
+| ODBC escape functions |  |
+| Cross-database object references | 3 part object names |
+| Remote object references | 4 part object names |
+| Column name: IDENTITYCOL |  |
+| Column name: $IDENTITY |  |
+| Column name: $ROWGUID |  |
+| WAITFOR DELAY |  |
+| WAITFOR TIME |  |
+| NEXT VALUE FOR sequence |  |
+| BACKUP statement |  |
+| RESTORE statement |  |
+| KILL statement |  |
+| SHUTDOWN statement |  |
+| BEGIN DISTRIBUTED TRANSACTION |  |
+| Using a transaction or savepoint name in a variable |  |
+| Catalogs are partially supported | SYS.DATABASES, SYSDATABASES, SYS.SCHEMAS are supported |
+| INFORMATION_SCHEMA catalogs |  |
+| Stored procedures are partially supported | SP_HELPDB, SP_GETAPPLOCK, SP_RELEASEAPPLOCK are supported |
+| SP_CONFIGURE |  |
+| System functions are partially supported | FN_HELPCOLLATION is supported |
+| GRANT |  |
+| REVOKE |  |
+| DENY |  |
+| ALTER AUTHORIZATION |  |
+| EXECUTE AS |  |
+| REVERT |  |
+| SETUSER |  |
+| GROUP BY ALL |  |
+| Bulk copy in and out |  |
+| Any locale other than en-US |  |
+| Service Broker functionality |  |
+| CREATE ROLE | Both server and database level |
+| ALTER ROLE | Both server and database level |
+| Server-level roles other than sysadmin |  |
+| Database-level roles other than db_owner |  |
+| ALTER SCHEME |  |
+| SYNONYM | All functionality related to this object type |
+| QUEUE | All functionality related to this object type |
+| AGGREGATE | All functionality related to this object type |
+| APPLICATION ROLE | All functionality related to this object type |
+| ASSEMBLY | All functionality related to this object type |
+| ASYMMETRIC KEY | All functionality related to this object type |
+| BULK INSERT |  |
+| COLUMN ENCRYPTION KEY | All functionality related to this object type |
+| COLUMN MASTER KEY | All functionality related to this object type |
+| MASTER KEY | All functionality related to this object type |
+| CERTIFICATE | All functionality related to this object type |
+| CONTRACT | All functionality related to this object type |
+| CREATE SCHEMA | With additional DDL statements |
+| CREATE USER |  |
+| CREDENTIAL | All functionality related to this object type |
+| CRYPTOGRAPHIC PROVIDER | All functionality related to this object type |
+| DEFAULT | All functionality related to this object type |
+| DIAGNOSTIC SESSION | All functionality related to this object type |
+| MESSAGE TYPE | All functionality related to this object type |
+| QUEUE | All functionality related to this object type |
+| ROUTE | All functionality related to this object type |
+| RULE | All functionality related to this object type |
+| SERVER ROLE | All functionality related to this object type |
+| SERVICE | All functionality related to this object type |
+| SERVICE MASTER KEY | All functionality related to this object type |
+| SYMMETRIC KEY | All functionality related to this object type |
+| UPDATE STATISTICS |  |
+| USER | All functionality related to this object type |
+| WORKLOAD GROUP | All functionality related to this object type |
 
 
 The following is a list of functions that are not supported by Babelfish:
