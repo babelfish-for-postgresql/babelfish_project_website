@@ -6,7 +6,9 @@ has_children: false
 permalink: /docs/limitations-of-babelfish
 ---
 
-Supports the following features with some restrictions:
+# Limitations
+
+Babelfish Supports the following features with some restrictions:
 
 * A DB cluster that supports babelfish supports only one babelfish database.
 * Works with the PostgreSQL engine version 13.x only
@@ -126,10 +128,10 @@ Babelfish doesn't support the following SQL Server functionality:
 | OBJECTPROPERTY() |  |
 | OBJECTPROPERTYEX() |  |
 | TYPEPROPERTY() |  |
-| SERVERPROPERTY() | Unsupported properties include: BuildClrVersion, ComparisonStyle, ComputerNamePhysicalNetBIOS, EditionID, 							EngineEdition, HadrManagerStatus, InstanceDefaultDataPath, InstanceDefaultLogPath, InstanceName,  							IsAdvancedAnalyticsInstalled, IsBigDataCluster, IsClustered, IsFullTextInstalled, 							IsHadrEnabled, IsIntegratedSecurityOnly, IsLocalDB, IsPolyBaseInstalled, IsXTPSupported,  							LCID, LicenseType, MachineName, NumLicenses, ProcessID, ProductBuild, ProductBuildType,  							ProductLevel, ProductMajorVersion, ProductMinorVersion, ProductUpdateLevel, ProductUpdateReference,  							ProductVersion, ResourceLastUpdateDateTime, ResourceVersion, ServerName, SqlCharSet,  							SqlCharSetName, SqlSortOrder, SqlSortOrderName, FilestreamShareName, FilestreamConfiguredLevel,  							FilestreamEffectiveLevel |
-| CONNECTIONPROPERTY() | Unsupported properties include: local_net_address, client_net_address,  							physical_net_transport 						 |
+| SERVERPROPERTY() | Unsupported properties include: BuildClrVersion, ComparisonStyle, ComputerNamePhysicalNetBIOS, EditionID, EngineEdition, HadrManagerStatus, InstanceDefaultDataPath, InstanceDefaultLogPath, InstanceName, IsAdvancedAnalyticsInstalled, IsBigDataCluster, IsClustered, IsFullTextInstalled, 							IsHadrEnabled, IsIntegratedSecurityOnly, IsLocalDB, IsPolyBaseInstalled, IsXTPSupported, LCID, LicenseType, MachineName, NumLicenses, ProcessID, ProductBuild, ProductBuildType, ProductLevel, ProductMajorVersion, ProductMinorVersion, ProductUpdateLevel, ProductUpdateReference, ProductVersion, ResourceLastUpdateDateTime, ResourceVersion, ServerName, SqlCharSet, SqlCharSetName, SqlSortOrder, SqlSortOrderName, FilestreamShareName, FilestreamConfiguredLevel, FilestreamEffectiveLevel |
+| CONNECTIONPROPERTY() | Unsupported properties include: local_net_address, client_net_address, physical_net_transport 						 |
 | COLLATIONPROPERTY() | Collation properties are only implemented for the supported BBF collation types. |
-| SESSIONPROPERTY() | Unsupported properties include: ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, ARITHABORT,  							CONCAT_NULL_YIELDS_NULL, NUMERIC_ROUNDABORT, QUOTED_IDENTIFIER 						 |
+| SESSIONPROPERTY() | Unsupported properties include: ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, ARITHABORT, CONCAT_NULL_YIELDS_NULL, NUMERIC_ROUNDABORT, QUOTED_IDENTIFIER |
 | DDL trigger |  |
 | LOGON trigger |  |
 | EXECUTE with AS LOGIN or AT option |  |
@@ -203,7 +205,6 @@ Babelfish doesn't support the following SQL Server functionality:
 | UPDATE STATISTICS |  |
 | USER | All functionality related to this object type |
 | WORKLOAD GROUP | All functionality related to this object type |
-
 
 The following is a list of functions that are not supported by Babelfish:
 
