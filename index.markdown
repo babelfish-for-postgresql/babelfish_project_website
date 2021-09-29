@@ -17,7 +17,7 @@ ctas:
   post: " on GitHub"
   primary:
     text: "Get Started"
-    url: "/downloads.html"
+    url: "/docs/quick-start/pre-requisites"
   roadmap:
     text: "View the project roadmap"
     url: https://github.com/orgs/babelfish-for-postgresql/projects/1
@@ -39,7 +39,7 @@ version_feature:
 
 callout_button:
   title: Get Started
-  url: /docs
+  url: /docs/quick-start/pre-requisites
 
 secondary:
   heading: "Stay in the loop"
