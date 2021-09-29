@@ -1,0 +1,41 @@
+-
+    shortname: patch
+    pinned: true
+    categories: 
+    - core
+    title: Babelfish Patch
+    description: Babelfish protocol hooks patch for PostgreSQL
+    url: https://github.com/babelfish-for-postgresql/babelfishpg-patch-for-postgresql
+-
+    shortname: tds
+    categories: 
+      - extension
+    title: Babelfish Extension
+    description: Babelfish TDS protocol implementation and tests
+    url: https://github.com/babelfish-for-postgresql/babelfishpg-extensions-and-tests
+    special_files:
+      -
+        title: Contributing
+        url: https://github.com/babelfish-for-postgresql/babelfishpg-extensions-and-tests/blob/main/CONTRIBUTING.md
+
+-
+    shortname: compass
+    categories: 
+      - tooling
+    title: Babelfish Compass
+    description: Baelfish Assesment Tool
+    url: https://github.com/babelfish-for-postgresql/babelfishpg-compass-tool
+
+- shortname: postgres
+  title: PostgreSQL Database
+  description: The PostgreSQL Database
+  categories: 
+    - database
+  url: https://github.com/postgres/postgres
+
+- shortname: fixeddecimal
+  title: Fixed Decimal
+  description: 2ndQuadrant Fixed Decimal Extension
+  categories: 
+    - extension
+  url: https://github.com/2ndQuadrant/fixeddecimal
