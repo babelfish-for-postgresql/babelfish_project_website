@@ -438,7 +438,7 @@ blockquote {
     background-size: cover;
     overflow: hidden;
     margin: 0;
-    padding: 35px 0;
+    padding: 33px 0;
     position: relative;
     z-index: 0;
 
@@ -475,12 +475,12 @@ blockquote {
         display: block;
         float: left;
         font-weight: 700;
-        margin: 10px;
+        margin: 0px;
         overflow: hidden;
         text-decoration: none;
         text-indent: 100%;
-        width: 170px;
-        height: 46px;
+        width: 250px;
+        height: 70px;
         position: relative;
         svg {
             position: absolute;
@@ -560,7 +560,7 @@ blockquote {
 
         ul {
             margin: 10px 0 0;
-            padding: 0;
+            padding: 10px 0 0;
 
             @include respond-min(768px) {
                 margin: 0;
@@ -576,6 +576,7 @@ blockquote {
             text-align: left;
             text-transform: uppercase;
             margin: 0 10px;
+            font-size: 1.6rem;
 
             @include respond-min(768px) {
                 margin: 0;

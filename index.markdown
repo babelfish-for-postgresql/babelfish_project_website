@@ -35,7 +35,7 @@ callouts_leader: "When we (the contributors) are successful, BabelfishPG will be
 
 version_feature:
   latest_label: "Current Version:"
-  date_label: " / "
+  date_label: "13.4 / Oct 30th, 2021"
 
 callout_button:
   title: Get Started
