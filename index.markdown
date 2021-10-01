@@ -22,20 +22,20 @@ ctas:
     text: "View the project roadmap"
     url: https://github.com/orgs/babelfish-for-postgresql/projects/1
 
-greeting: "More about BabelfishPG"
+greeting: "More about Babelfish for PostgreSQL"
 
-headline: "BabelfishPG accelerates your journey to migrate SQL Server applications to PostrgreSQL."
+headline: "Babelfish for PostgreSQL accelerates your journey to migrate SQL Server applications to PostrgreSQL."
 
 long_description: "Babelfish for PostgreSQL is an open source project licensed under Apache-2.0 and PostgreSQL. It adds a Microsoft SQL Server-compatible end-point to PostgreSQL to enable your PostgreSQL database to understand the SQL Server wire protocol and commonly used SQL Server commands. With Babelfish, PostgreSQL now understands T-SQL, Microsoft SQL Server's proprietary SQL dialect, and supports the same communications protocol, so your apps that were originally written for SQL Server can now work with PostgreSQL with fewer code changes and without changing database drivers."
 
-callouts_head: "The BabelfishPG project's principles for development"
+callouts_head: "Principles for development"
 callouts_class: list-features
 callouts_id: principles
-callouts_leader: "When we (the contributors) are successful, BabelfishPG will be:"
+callouts_leader: "When we (the contributors) are successful, Babelfish for PostgreSQL will be:"
 
 version_feature:
   latest_label: "Current Version:"
-  date_label: "13.4 / Oct 30th, 2021"
+  date_label: "1.0.0 / Oct 28th, 2021"
 
 callout_button:
   title: Get Started
