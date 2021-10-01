@@ -25,6 +25,12 @@
     title: Babelfish Compass
     description: Baelfish Assesment Tool
     url: https://github.com/babelfish-for-postgresql/babelfishpg-compass-tool
+- shortname: documentation
+  title: Babelfish Website
+  categories: 
+      - documentation
+  description: The Babelfish Website Project
+  url: https://github.com/babelfish-for-postgresql/babelfishpg-project-website
 
 - shortname: postgres
   title: PostgreSQL Database
