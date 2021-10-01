@@ -1,5 +1,5 @@
 {
-  "name": "opensearchwebsite",
+  "name": "babelfishpgwebsite",
   "private": true,
   "dependencies": {
     "jquery": "<2.0",

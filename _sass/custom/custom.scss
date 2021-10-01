@@ -532,9 +532,6 @@ main {
       top: 1px;
       left: 1px
     }
-    .mdzr-svg & { // deliver svg logo if applicable
-      /*background: url(../img/opensearch-logo-monochrome.svg) center center no-repeat;*/
-    }
 
     @include mq(md) {
       margin-left: 0;
