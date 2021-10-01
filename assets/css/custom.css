@@ -1,6 +1,11 @@
 /* Custom CSS to override default just-the-docs styling */
+[role="banner"] {
+    background: url('../images/bbfsh_header.png') center center no-repeat;
+    background-size: cover;
+    padding: 33px 0;
+}
 
-[role="banner"], [role="contentinfo"] .footer {
+[role="contentinfo"] .footer {
     background: url('../images/bbfsh_header.png') center center no-repeat;
     background-size: cover;
     padding: 35px 0;
@@ -10,9 +15,18 @@
     background: transparent;
 }
 
-[role="banner"] [role="navigation"] li a.in-category {
-    text-decoration: underline;
-    color: #fff;
+[role="banner"] [role="navigation"] ul{
+    margin: 10px 0 0;
+    padding: 0;
+}
+
+[role="banner"] [role="navigation"] li {
+    font-size: 1rem;
+    font-weight: 700
+}
+
+[role="banner"] [role="navigation"] li a.in-category {    
+    color: #3bf;
 }
 
 [role="contentinfo"] .footer svg {

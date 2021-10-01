@@ -292,7 +292,7 @@ p.label {
 }
 
 /* Website Header & Footer */
-$logo_width: 170px;
+$logo_width: 250px;
 
 $attention-light: #4fb3e3;
 $attention: #3bf; //formerly $green-medium, open sky
@@ -520,12 +520,12 @@ main {
     display: block;
     float: left;
     font-weight: 700;
-    margin: 10px;
+    margin: 0;
     overflow: hidden;
     text-decoration: none;
     text-indent: 100%;
-    width: 170px;
-    height: 46px;
+    width: $logo_width;
+    height: 70px;
     position: relative;
     svg {
       position: absolute;
