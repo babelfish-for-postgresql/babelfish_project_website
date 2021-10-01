@@ -1,4 +1,4 @@
-title: BabelfishPG
+title: Babelfish for PostgreSQL
 description: ""
 
 ## To be changed on release
@@ -21,8 +21,6 @@ headings:
   authors: "Authors"
   downloads: "Download & Get Started"
 
-opensearch_version: 1.0.1
-opensearch_major_minor_version: 1.0
 lucene_version: 8_8_2
 
 # Build settings

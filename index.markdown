@@ -43,7 +43,7 @@ callout_button:
 
 secondary:
   heading: "Stay in the loop"
-  content: "Check out the [forums](https://discuss.opendistrocommunity.dev/) to stay informed."
+  content: "Check out the [forums](https://discuss.babelfishpgcommunity.dev) to stay informed."
 
 sidebar:
   - title: Have a question?
@@ -52,7 +52,7 @@ sidebar:
       - title: Check out the FAQ
         url:  /docs/faq
       - title: Ask in the forums
-        url: https://discuss.opendistrocommunity.dev/
+        url: https://discuss.babelfishpgcommunity.dev/
   - title: Founding documents
     links:
       - title: Introducing Babelfish For PostgreSQL

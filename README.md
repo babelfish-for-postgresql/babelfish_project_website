@@ -1,6 +1,6 @@
 <img src="https://babelfishpg.org/assets/img/babelfishpg-logo-themed.svg" height="64px">
 
-- [babelfishpg.org Website](#opensearchorg-website)
+- [babelfishpg.org Website](#babelfishpgorg-website)
   - [Getting Help](#getting-help)
   - [Contributing](#contributing)
     - [Adding to the Partners Page](#adding-to-the-partners-page)
@@ -18,7 +18,7 @@ This repo contains the source for the [babelfishpg.org](https://babelfishpg.org/
 
 If you find a bug, or have a feature request, please don't hesitate to open an issue in this repository.
 
-If you need help and are unsure where to open an issue, try [forums](https://discuss.opendistrocommunity.dev/).
+If you need help and are unsure where to open an issue, try [forums](https://discuss.babelfishpgcommunity.dev/).
 
 ## Contributing
 
@@ -79,4 +79,4 @@ This website was forked from the BSD-licensed [djangoproject.com](https://github
 
 ## Copyright
 
-Copyright OpenSearch Contributors.
+Copyright Babelfish for PostgreSQL Contributors.

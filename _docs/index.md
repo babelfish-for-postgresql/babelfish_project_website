@@ -36,4 +36,4 @@ For specifics around the project, see the [FAQ]({{site.url}}{{site.baseurl}}/doc
 
 [Babelfish](https://babelfish-for-postgresql.github.io/babelfish-for-postgresql/) is supported by Amazon Web Services. All components are available under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.html) on [GitHub](https://github.com/babelfish-for-postgresql).
 
-The project welcomes GitHub issues, bug fixes, features, plugins, documentation---anything at all. To get involved, see [Contributing](https://opensearch.org/source.html) on the OpenSearch website.
+The project welcomes GitHub issues, bug fixes, features, plugins, documentation---anything at all. To get involved, see [Contributing](https://babelfish-for-postgresql.github.io/babelfish-for-postgresql/source) on the Babelfish for PostgreSQL website.
