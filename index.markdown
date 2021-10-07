@@ -59,4 +59,8 @@ sidebar:
         url: https://youtu.be/xZ3k7Fd6_eU?t=4407
       - title: "Open Sourcing Babelfish"
         url: https://aws.amazon.com/blogs/opensource/want-more-postgresql-you-just-might-like-babelfish/
+  - title: Quick Links
+    links: 
+      - title: Contributors
+        url: /contributors/
 ---
