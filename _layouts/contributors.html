@@ -1,0 +1,17 @@
+---
+layout: default
+---
+{% assign primary_title = site.headings.contributors %}
+{% assign layout_class = 'sidebar-right' %}
+
+{% capture content %}
+    {{ content }}
+    <dl class="contributions">
+    {% for contributor in site.data.contributors %}   
+    {%- include contributor.html contributor=contributor %}             
+    {% endfor %}
+    </dl>
+{% endcapture %}
+
+{% include copy_banner.html %}
+{% include base_3col.html %}

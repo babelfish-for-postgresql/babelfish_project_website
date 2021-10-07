@@ -140,6 +140,39 @@ dl.list-features {
     }
 }
 
+.contributors-page {
+    dt {
+        a {
+            text-decoration: none;
+            display: inline-block;
+            color: $core;
+            background-color: $background-darker;
+            padding: 0.25em 1em 0 1em;
+            border-top-right-radius: 5px;
+            border-top-left-radius: 5px;
+        }
+    }
+    dd {
+        padding: 0.5em 1em;
+        
+        background-color: $background-darker;
+        margin-bottom: 1em;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+    dd p {
+        margin-top: 0;
+        margin-bottom: 0.5em;
+    }
+    .link-readmore {
+        display: inline-block;
+        margin-right: 1.5em;
+    }
+    td.contribution{
+        padding-left: 1em;
+    }
+}
+
 .homepage .sidebar .cta + .link-readmore {
     margin-bottom: 0;
 }

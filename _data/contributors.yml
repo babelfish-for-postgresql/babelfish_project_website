@@ -1,0 +1,8 @@
+- name: Kuntal Ghosh
+  github: https://github.com/kuntalghosh
+  username: kuntalghosh
+  pic: "/assets/images/kuntal_gosh.jpg"
+  contribution: |
+    Kuntal is a Software Engineer on the Babelfish project. His major contributions include the design and implementation of pluggable protocol, TDS extension and integration of the TDS extension with the TSQL extension.
+    <br>
+    He has been involved with PostgreSQL since 2016 developing and reviewing new features
