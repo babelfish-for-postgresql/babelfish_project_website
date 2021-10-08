@@ -5,4 +5,10 @@
   contribution: |
     Kuntal is a Software Engineer on the Babelfish project. His major contributions include the design and implementation of pluggable protocol, TDS extension and integration of the TDS extension with the TSQL extension.
     <br>
-    He has been involved with PostgreSQL since 2016 developing and reviewing new features
+    He has been involved with PostgreSQL since 2016, developing and reviewing new features.
+- name: Di Wu
+  github: https://github.com/macwoody
+  username: macwoody
+  pic: "/assets/images/di_wu.jpg"
+  contribution: |
+    Di is currently Senior Software Engineer on the Babelfish project. He contributed to the design and implementation of various major features and component of Babelfish, including sql_varaint data type, PL/TSQL executor framework, access control / database management statements and schema mapping based multi-tenancy solution.
