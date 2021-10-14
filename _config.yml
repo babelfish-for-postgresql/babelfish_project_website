@@ -83,6 +83,9 @@ collections:
   quickStart:
     permalink: /:collection/:path/
     output: true
+  gettingStarted:
+    permalink: /:collection/:path/
+    output: true
   docs:
     output: true
   events:
@@ -116,7 +119,10 @@ just_the_docs:
       name: Quickstart Guide
       # nav_exclude: true
       nav_fold: true
-      # search_exclude: true
+      # search_exclude: 
+    gettingStarted:
+      name: Getting Started
+      nav_fold: true
 
 # Enable or disable the site search
 # Supports true (default) or false
