@@ -51,8 +51,8 @@ sidebar:
     links:
       - title: Check out the FAQ
         url:  /docs/faq
-      - title: Ask in the forums
-        url: https://discuss.babelfishpgcommunity.dev/
+      - title: Ask a question
+        url: https://github.com/babelfish-for-postgresql/babelfishpg-extensions-and-tests/issues
   - title: Founding documents
     links:
       - title: Introducing Babelfish For PostgreSQL
