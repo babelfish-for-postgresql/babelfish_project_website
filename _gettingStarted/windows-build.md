@@ -73,7 +73,6 @@ our $config = {
 1;
 ```
 
-
 ### Compiling Babelfish
 Open the [Developer Command Prompt for VS 2019](https://docs.microsoft.com/en-gb/visualstudio/ide/reference/command-prompt-powershell?view=vs-2019). 
   It should be located in the path `C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Visual Studio 2019\Visual Studio Tools`
