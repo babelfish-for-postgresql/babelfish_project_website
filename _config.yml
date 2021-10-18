@@ -21,6 +21,7 @@ headings:
   authors: "Authors"
   downloads: "Download & Get Started"
   contributors: "Contributors"
+  getstarted: "Get Started"
 
 lucene_version: 8_8_2
 
@@ -83,9 +84,6 @@ collections:
   quickStart:
     permalink: /:collection/:path/
     output: true
-  gettingStarted:
-    permalink: /:collection/:path/
-    output: true
   docs:
     output: true
   events:
@@ -120,9 +118,6 @@ just_the_docs:
       # nav_exclude: true
       nav_fold: true
       # search_exclude: 
-    gettingStarted:
-      name: Getting Started
-      nav_fold: true
 
 # Enable or disable the site search
 # Supports true (default) or false
