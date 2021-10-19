@@ -53,15 +53,15 @@ Depending on which PostgreSQL features are needed to be enabled you would need t
 Babelfish is separated in two repos, the first of them containes the PostgreSQL database engine, with some changes 
  that enables the protocol hooks. The second one contains extensions to support the T-SQL prototcol, T-SQL Database, etc..
 
-The Babelfish PostgreSQL engine can be downloaded from [here](https://github.com/babelfish-for-postgresql/babelfishpg-patch-for-postgresql). 
+The Babelfish PostgreSQL engine can be downloaded from [here](https://github.com/babelfish-for-postgresql/postgresql_modified_for_babelfish). 
 
-The Babelfish extensions can be downloaded from [here](https://github.com/babelfish-for-postgresql/babelfishpg-extensions-and-tests).
+The Babelfish extensions can be downloaded from [here](https://github.com/babelfish-for-postgresql/babelfish_extensions).
 
 If you have git installed, you can clone the repos with the following command: 
 
 ``` sh
-git clone https://github.com/babelfish-for-postgresql/babelfishpg-patch-for-postgresql.git
-git clone https://github.com/babelfish-for-postgresql/babelfishpg-extensions-and-tests.git
+git clone https://github.com/babelfish-for-postgresql/postgresql_modified_for_babelfish.git
+git clone https://github.com/babelfish-for-postgresql/babelfish_extensions.git
 ```
 
 ## Installation from source code

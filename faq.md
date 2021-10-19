@@ -15,7 +15,7 @@ Babelfish and MS SQL server compatibility.
 ## Can we use Babelfish for free?
 
 Yes, Babelfish can be used free of charge. It is Open Source software which is
-provided under the terms of the TODO license.
+provided under the terms of the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.html).
 
 
 ## Is Babelfish 100% compatible with MS SQL?
@@ -40,7 +40,7 @@ The ultimate goal is to make that happen. However, to make Babelfish work
 PostgreSQL needs [protocol hooks](architecture/protocol-hooks) which are
 currently not part of the standard version of PostgreSQL. Therefore a special
 source tree of Babelfish is needed which is provided via the [Babelfish Github
-repository](TODO).
+repository](https://github.com/babelfish-for-postgresql/postgresql_modified_for_babelfish).
 
 
 ## What is the performance difference between MS SQL and Babelfish?
@@ -107,7 +107,7 @@ of PostgreSQL.
 
 ## How can I report a bug?
 
-To report a bug checkout the [Github repository](TODO) and report your findings.
+To report a bug checkout the [Github repository](https://github.com/babelfish-for-postgresql/postgresql_modified_for_babelfish/issues) and report your findings.
 Please make sure that a test case as well as software versions and so are
 included in the report to make it easier to track down a problem. In case of a
 crash a gdb backtrace is highly appreciated. 
