@@ -25,8 +25,8 @@ Babelfish for PostgreSQL is well-suited to the following use cases:
 
 Component | Purpose
 :--- | :---
-[Babelfish Patch](https://github.com/babelfish-for-postgresql/babelfishpg-patch-for-postgresql) | Enables protocol hooks for PostgreSQL
-[Babelfish extension](https://github.com/babelfish-for-postgresql/babelfishpg-extensions-and-tests) | Implements the TDS protocol
+[Babelfish Patch](https://github.com/babelfish-for-postgresql/postgresql_modified_for_babelfish) | Enables protocol hooks for PostgreSQL
+[Babelfish extension](https://github.com/babelfish-for-postgresql/babelfish_extensions) | Implements the TDS protocol
 
 
 For specifics around the project, see the [FAQ]({{site.url}}{{site.baseurl}}/docs/faq).
@@ -34,6 +34,6 @@ For specifics around the project, see the [FAQ]({{site.url}}{{site.baseurl}}/doc
 
 ## Get involved
 
-[Babelfish](https://babelfish-for-postgresql.github.io/babelfish-for-postgresql/) is supported by Amazon Web Services. All components are available under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.html) on [GitHub](https://github.com/babelfish-for-postgresql).
+[Babelfish](https://babelfishpg.org/) is supported by Amazon Web Services. All components are available under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.html) on [GitHub](https://github.com/babelfish-for-postgresql).
 
-The project welcomes GitHub issues, bug fixes, features, plugins, documentation---anything at all. To get involved, see [Contributing](https://babelfish-for-postgresql.github.io/babelfish-for-postgresql/source) on the Babelfish for PostgreSQL website.
+The project welcomes GitHub issues, bug fixes, features, plugins, documentation---anything at all. To get involved, see [Contributing](https://github.com/babelfish-for-postgresql/babelfish_extensions/blob/main/CONTRIBUTING.md) on the Babelfish for PostgreSQL website.

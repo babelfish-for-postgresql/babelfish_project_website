@@ -5,18 +5,18 @@
     - core
     title: Babelfish Patch
     description: Babelfish protocol hooks patch for PostgreSQL
-    url: https://github.com/babelfish-for-postgresql/babelfishpg-patch-for-postgresql
+    url: https://github.com/babelfish-for-postgresql/postgresql_modified_for_babelfish
 -
     shortname: tds
     categories: 
       - extension
     title: Babelfish Extension
     description: Babelfish TDS protocol implementation and tests
-    url: https://github.com/babelfish-for-postgresql/babelfishpg-extensions-and-tests
+    url: https://github.com/babelfish-for-postgresql/babelfish_extensions
     special_files:
       -
         title: Contributing
-        url: https://github.com/babelfish-for-postgresql/babelfishpg-extensions-and-tests/blob/main/CONTRIBUTING.md
+        url: https://github.com/babelfish-for-postgresql/babelfish_extensions/blob/main/CONTRIBUTING.md
 
 -
     shortname: compass
@@ -24,13 +24,19 @@
       - tooling
     title: Babelfish Compass
     description: Baelfish Assesment Tool
-    url: https://github.com/babelfish-for-postgresql/babelfishpg-compass-tool
+    url: https://github.com/babelfish-for-postgresql/babelfish_compass
+- shortname: test
+  title: Babelfish Test Framework
+  categories: 
+      - test
+  description: The Babelfish Test Framework
+  url: https://github.com/babelfish-for-postgresql/babelfish_testframework
 - shortname: documentation
   title: Babelfish Website
   categories: 
       - documentation
   description: The Babelfish Website Project
-  url: https://github.com/babelfish-for-postgresql/babelfishpg-project-website
+  url: https://github.com/babelfish-for-postgresql/babelfish_project_website
 
 - shortname: postgres
   title: PostgreSQL Database
