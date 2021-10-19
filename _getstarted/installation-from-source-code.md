@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Install from source code
-nav_order: 1
+nav_order: 2
 has_children: false
 permalink: /docs/gettingstarted/sourcecodebuild
 ---
