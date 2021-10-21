@@ -430,3 +430,64 @@ dl.list-features {
     background-color: $highlight;
     color: $white;
 }
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    [role="banner"] .logo {
+        width: 145px;
+        height: 40px;
+        margin-left: 5vw;
+    }
+
+    [role="banner"] .menu-button {
+        margin: -4px 5vw 5px;
+    }
+    
+    [role="banner"] a.logo + .menu-button {
+        display: none;
+    }
+
+    [role="banner"] .nav-menu-on.active {
+        background: #32a2ec;
+        padding-bottom: 20px;
+        margin-bottom: -5px;
+    }
+
+    [role="banner"] {
+        padding: 15px 0 5px;
+    }
+
+    [role="banner"] [role="navigation"] a {
+        padding: 0;
+    }
+
+    body [role="complementary"], [role="main"], .main-content-wrap, .copy-banner, .site-footer {
+        padding-right: 5vw;
+        padding-left: 5vw;
+    }
+
+    [role="banner"] [role="navigation"] li {
+        margin: 0 5vw;
+    }
+
+    [role="banner"] [role="navigation"] li a.in-category {
+        color: #2851b1;
+    }
+
+    [role="contentinfo"] .footer {
+        padding: 0 5vw 20px;
+    }
+
+    [role="contentinfo"] .footer svg {
+        padding-right: 10px;
+    }
+
+    [role="contentinfo"] .footer svg {
+        padding-top: 25px;
+    }
+
+    [role="contentinfo"] .footer .copyright {
+        margin-top: 35px;
+    }
+  }
+  

@@ -32,3 +32,72 @@
 [role="contentinfo"] .footer svg {
     padding-top: 25px;
 }
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    [role="banner"] .logo {
+        width: 145px;
+        height: 40px;
+        margin-left: 5vw;
+    }
+
+    [role="banner"] .menu-button {
+        margin: -4px 5vw 5px;
+    }
+
+    [role="banner"] .menu-button.active ~ .nav-menu-on {
+        background: #32a2ec;
+        padding-bottom: 20px;
+        margin-bottom: -5px;
+    }
+
+    [role="banner"] {
+        padding: 15px 0 5px;
+    }
+
+    [role="banner"] [role="navigation"] a {
+        padding: 0;
+    }
+
+    body [role="complementary"], .main-content-wrap, .site-header a, .site-footer {
+        padding-right: 5vw;
+        padding-left: 5vw;
+    }
+
+    .site-footer {
+        position: initial;
+    }
+
+    [role="banner"] [role="navigation"] li {
+        margin: 0 5vw;
+    }
+
+    [role="banner"] [role="navigation"] li a.in-category {
+        color: #2851b1;
+    }
+
+    body {
+        padding-bottom: 0;
+    }
+
+    [role="contentinfo"] .footer {
+        padding: 0 5vw 20px;
+    }
+
+    [role="contentinfo"] .footer svg {
+        padding-right: 10px;
+    }
+
+    [role="contentinfo"] .footer svg {
+        padding-top: 25px;
+    }
+
+    [role="contentinfo"] .footer .copyright {
+        margin-top: 35px;
+    }
+
+    [role="banner"] .nav-menu-on .small-nav li {
+        line-height: 1.5;
+        font-size: 1.2em;
+    }
+  }
