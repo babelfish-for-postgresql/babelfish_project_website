@@ -6,26 +6,23 @@ has_children: false
 permalink: /docs/quick-start/pre-requisites
 ---
 
-The first that you need to have to run Babelfish is a linux environment.
+Depending of the installation method that you choose, the requirements may vary. 
 
-In order to build and run we need the following dependencies installed in our environment.
+Regarldless of the case only `amd64` architectures are supported. 
 
-Which are:
+At this moment we have two installtion methods: 
 
-- Bison
-- Flex
-- Jacc
-- Build-essentials
-- Redline
-- Zlib1g-dev
+- Docker installation
+- Installation from source code. 
 
-To install this dependencies (assuming that you are using Ubuntu) run the following command:
+If you choose the Docker installation, you will need:
 
-``` sh
-apt-get install flex \
-  bison \
-  build-essential \
-  libreadline6-dev \
-  zlib1g-dev \
-  --yes
-```
+- Docker 20.10.9
+
+The details of this method are explained in detail [here](/docs/quick-start/installation#installing-from-docker).
+
+If you choose the Installation from source you would need:
+
+- Ubuntu 20.04
+
+The details of this installation methos are explained [here](/docs/quick-start/installation#installing-from-source-code)

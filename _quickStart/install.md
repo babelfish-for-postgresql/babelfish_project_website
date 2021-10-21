@@ -26,29 +26,6 @@ After the above command completes Babelfish should be up and running. The port `
 ## Installing from source code
 
 Babelfish can be installed by compiling its source code. 
-
-### Requirements
-
-Regardless of the OS that it's being used, there are three tools that are requiered to compile Babelfish, which are:
-
-- [Bison](https://www.gnu.org/software/bison/)
-- [Flex](https://github.com/westes/flex)
-- [Python 2.7](https://www.python.org/downloads/release/python-2714/)
-- [Libxml2](http://xmlsoft.org/)
-- [OSSP uuid](http://www.ossp.org/pkg/lib/uuid/)
-- A C compiler
-
-#### Recommended tools to install
-Depending on which PostgreSQL features are needed to be enabled you would need to 
- install additional tools, but the following are recommended in all cases:
-
-- readline: it's required to compile by default, but you can disable it by using 
- the flag `--without-readline`. Nonetheless, it recommended to install it because 
- it allows [psql](https://www.postgresql.org/docs/13/app-psql.html) to remember 
- the commands that you type, which it be very useful.
-- zlib: it's required to compile by default, you can disable it by using the flag
- `--without-zlib`.  If is disabled, pg_dump and pg_restore will not be available. 
-
 ### Getting the source code
 Babelfish is separated in two repos, the first of them containes the PostgreSQL database engine, with some changes 
  that enables the protocol hooks. The second one contains extensions to support the T-SQL prototcol, T-SQL Database, etc..
@@ -64,101 +41,101 @@ git clone https://github.com/babelfish-for-postgresql/postgresql_modified_for_ba
 git clone https://github.com/babelfish-for-postgresql/babelfish_extensions.git
 ```
 
-## Installation from source code
-Depending of your environment, the building procedure would be different. 
-
-- [Installation from source code on Linux](#linux-installation)
-- [Installation from source code on Windows](#windows-installation)
-
-
-### Linux Installation
-Intalling Babelfish on a linux system is very straigthforward, the steps in this 
-  section are explained assuming that Ubuntu is being used. 
-
 #### Requirements
 Additionally, to the tools mentioned before there are some additional tools that we need to install
-TODO: describe every package that is going to be installed
+
+- [Flex 2.6.4](https://github.com/westes/flex)
+- [Libxml2](http://xmlsoft.org/) development libraries
+- [Libxstl](http://www.xmlsoft.org/libxslt/) development libraries
+- [xsltproc](http://xmlsoft.org/XSLT/xsltproc2.html)
+- [Open SSL](https://www.openssl.org/) development libraries
+- [Readline](https://tiswww.cwru.edu/php/chet/readline/rltop.html) development libraries
+- [Zlib](https://zlib.net/)
+- [OpenLDAP](https://www.openldap.org/) development libraries
+- [Linux-PAM](http://www.linux-pam.org/) development libraries
+- [gettext](https://www.gnu.org/software/gettext/)
+- [Python 2.7](https://www.python.org/downloads/release/python-2714/)
+- [OSSP uuid](http://www.ossp.org/pkg/lib/uuid/) development libraries
+- [LLVM-based linker](https://lld.llvm.org/)
+- [pkg-config](https://linux.die.net/man/1/pkg-config)
+- [Gnulib](https://www.gnu.org/software/gnulib/)
+- [ICU](https://icu.unicode.org/) development libraries
+- [Gawk](https://www.gnu.org/software/gawk/) 
+- [Bison 3.0.5](https://www.gnu.org/software/bison/)
 
 #### Installing the requirements
-You can install the tools mentioned above but antlr4 with command:
+
+You can install most the requirements with the following command, depending of your system configuration 
+ you migth need to run these commands with sudo:
+
 ``` sh
-apt-get install flex \
-  bison \
-  libreadline-dev \
-  zlib1g-dev \
-  build-essential \
-  libxml2-dev \
-  libossp-uuid-dev \
-  icu-devtools \
-  libssl-dev \
-  uuid-dev \
-  pkgconf \
-  postgresql-server-dev-all \
-  libantlr4-runtime-dev \
-  libantlr4-runtime4.7.2
-  --yes
+apt install -y build-essential flex libxml2-dev libxslt-dev libssl-dev
+apt install -y libreadline-dev zlib1g-dev libldap2-dev libpam0g-dev gettext python2.7 python2.7-dev
+apt install -y uuid uuid-dev lld pkg-config libossp-uuid-dev gnulib
+apt install -y cmake libxml2-utils xsltproc icu-devtools libicu66 libicu-dev gawk
 ```
 
-##### Installing antlr4 runtime
-
-In order to build the Babeldish T-SQL extension with need to install antlr4 and its runtime environment. 
-
-The first thing that we need to do is download antlr4 jar file and install it in `/usr/local/lib`: 
+Nonetheless, for bison is better to install it from its source code. 
+##### Installing bison
+We can download the bison source code with the following command:
 
 ``` sh
-cd /usr/local/lib
-sudo wget http://www.antlr.org/download/antlr-4.7.2-complete.jar
+curl http://ftp.gnu.org/gnu/bison/bison-3.0.5.tar.gz --output /tmp/bison-3.0.5.tar.gz
 ```
 
-Then, we need to create an executable script so we start antlr4 from everywhere, we can create 
- the script with the following command:
-
+Once downloaded, we can uncompress source code:
 ``` sh
-cat << EOF > /usr/local/lib/antlr4 
-#!/bin/bash
-export CLASSPATH=".:/usr/local/lib/antlr-4.7.2-complete.jar:$CLASSPATH"
-java -jar /usr/local/lib/antlr-4.7.2-complete.jar "$@"
-EOF
+tar xzf /tmp/bison-3.0.5.tar.gz  -C /opt/
 ```
 
-We also need to give them execution permissions by executing:
-
+Now we can compile and install bison:
 ``` sh
-chmod +x /usr/local/lib/antlr4
-```
-
-###### Build antlr4 from source code. 
-We need to download the antlr4 source code and compile it. To so, let's create a folder and download it there
-
-``` sh
-mkdir ~/antlr-src
-cd ~/antlr-crd
-wget http://www.antlr.org/download/antlr4-cpp-runtime-4.7.2-source.zip
-unzip antlr4-cpp-runtime-4.7.2-source.zip
-```
-
-Now we to create a build folder and build and install antlr4 from there:
-``` sh
-mkdir build && cd build
-## The following creates the makefiles
-cmake .. -DANTLR_JAR_LOCATION=/usr/local/lib/antlr-4.7.2-complete.jar -DCMAKE_INSTALL_PREFIX=/usr/local -DWITH_DEMO=True 
-make
-sudo make install
+cd /opt/bison-3.0.5
+./configure 
+make 
+make install 
 ```
 
 
-#### Configuring the source tree
+#### Configuring the Babelfish PosgresSQL source tree
 
-Before compiling the source code we need to configure the build. To do that we 
- need to run `configure` script:
+Before compiling the Babelfish PosgresSQL source code we need to configure the build. To do that we 
+ need to run `configure` script, in the directory where you have downloaded the Babelfish PostgreSQL Engine sources:
 ``` sh
-./configure --with-libxml --with-uuid=ossp --with-icu
+./configure CFLAGS="-ggdb -g -O0 -fno-omit-frame-pointer" CPPFLAGS="-DWAL_DEBUG" \
+  --enable-thread-safety \
+  --enable-cassert \
+  --enable-debug \
+  --with-ldap \
+  --with-python \
+  --with-libxml \
+  --with-pam \
+  --with-uuid=ossp \
+  --enable-nls \
+  --with-libxslt \
+  --with-icu \
+  --with-python PYTHON=/usr/bin/python2.7 \
+  --with-extra-version=" Babelfish for PostgreSQL"
 ```
 The above would configure the installation path under `/usr/local/pgsql`, if you 
  want to change the installation directory you can use the `prefix` flag. Therefore, if you want to change the path to `/usr/local/pgsql-13.4`, you can run the configure script as it follows.
 
  ``` sh
- ./configure --prefix=/usr/local/pgsql-13.4  --with-libxml --with-uuid=ossp --with-icu 
+ ./configure CFLAGS="-ggdb -g -O0 -fno-omit-frame-pointer" CPPFLAGS="-DWAL_DEBUG" \
+  --prefix=/usr/local/pgsql-13.4 \
+  --enable-thread-safety \
+  --enable-cassert \
+  --enable-debug \
+  --with-ldap \
+  --with-python \
+  --with-libxml \
+  --with-pam \
+  --with-uuid=ossp \
+  --enable-nls \
+  --with-libxslt \
+  --with-icu \
+  --with-python PYTHON=/usr/bin/python2.7 \
+  --with-extra-version=" Babelfish for PostgreSQL"
  ```
 
 #### Building Babelfish PostgreSQL engine
@@ -166,124 +143,121 @@ Now that we have configured the source tree, we can build Babelfish with the
  following command:
 
 ``` sh
+INSTALLATION_PATH=<the path you specified as prefix>
+mkdir "$INSTALLATION_PATH"
+make # Compiles the Babefish PostgreSQL engine
+cd contrib 
+make # Compiles the PostgreSQL default extensions
+cd ..
+make install # Installs the Babelfish PostgreSQL engine
+cd contrib
+make install # Installs the PostgreSQL default extensions
+```
+
+#### Building Babelfish Extensions
+
+In order to build the extensions we would need to install some additional tool: 
+
+##### Additional requied tools
+- [Antlr 4.9.2 Runtime](https://www.antlr.org/)
+- [Open Java 8](https://openjdk.java.net/)
+- Unzip
+- [libpq](https://www.postgresql.org/docs/13/libpq.html)
+- [pkgconf](http://pkgconf.org/)
+- libutfcpp development libraries
+- [CMake 3.20.6](https://cmake.org/)
+
+You can install most of this tools by running the command:
+
+``` sh
+apt install -y openjdk-8-jre openssl python-dev libpq-dev pkgconf unzip libutfcpp-dev
+```
+
+For the CMake and Antlr4 Runtime is better to install it from it source code. 
+
+##### Installing CMake
+
+We can intall CMake by running the following script:
+
+``` sh
+curl -L https://github.com/Kitware/CMake/releases/download/v3.20.6/cmake-3.20.6-linux-x86_64.sh --output /opt/cmake-3.20.6-linux-x86_64.sh
+chmod +x /opt/cmake-3.20.6-linux-x86_64.sh 
+/opt/cmake-3.20.6-linux-x86_64.sh --prefix=/usr/bin --skip-license --include-subdir
+```
+##### Installing antlr4 runtime
+
+Before installing the Antlr4 runtime, we need to install Antlr4 first. 
+We can install Antlr4 with the following script:
+
+``` sh
+curl https://www.antlr.org/download/antlr-4.9.2-complete.jar --output /usr/local/lib/antlr-4.9.2-complete.jar 
+chmod +x /usr/local/lib/antlr-4.9.2-complete.jar
+```
+
+Now we can install the Antlr4 Runtime, this script would compile and install it:
+``` sh
+# Dowloads the compressed Antlr4 Runtime sources on /opt/antlr4-cpp-runtime-4.9.2-source.zip 
+curl https://www.antlr.org/download/antlr4-cpp-runtime-4.9.2-source.zip \
+  --output /opt/antlr4-cpp-runtime-4.9.2-source.zip 
+
+# Uncompress the source into /opt/antlr4
+unzip -d /opt/antlr4 /opt/antlr4-cpp-runtime-4.9.2-source.zip
+
+mkdir /opt/antlr4/build
+cd /opt/antlr4/build
+
+# Generates the make files for the build
+cmake .. -DANTLR_JAR_LOCATION=/usr/local/lib/antlr-4.9.2-complete.jar \
+         -DCMAKE_INSTALL_PREFIX=/usr/local -DWITH_DEMO=True
+# Compiles and install
 make
 make install
 ```
 
-#### Building Babelfish Extensions
+Now that we have the antlr4 runtime installed, we need to copy the `libantlr4-runtime.so.4.9.2` library into the installed Babelfish 
+ PostgresSQL Engine libs folder. We can do that by running the following command:
+
+``` sh
+cp /usr/local/lib/libantlr4-runtime.so.4.9.2 "$INSTALLATION_PATH/lib"
+```
+# Build and install the extensions
 
 Once that we have Babelfish PostgreSQL builded, we can build the Babelfish extensions. 
 
 To do so, we need to configure some environment variables: 
 
-- `PG_CONFIG`: should point to the location of the pg_config file in the Babelfish PostgreSQL Engine installation, in our case: `/usr/local/pgsql-13.4/bin/pg_config`
+- `PG_CONFIG`: should point to the location of the pg_config file in the Babelfish PostgreSQL Engine installation, in our case: `$INSTALLATION_PATH/bin/pg_config`.
 
-- `PG_SRC`: should point to the location of the Babelfish PostgreSQL engine source folder, something like: `~/babelfishpg-patch-for-postgresql/`
+- `PG_SRC`: should point to the location of the Babelfish PostgreSQL engine source folder.
 
+Supposing that you have installed the Babelfish PostgreSQL Engine in `/usr/local/pgsql-13.4/` and you have downloaded the Babelfish PostgreSQL Engine source code in `~/postgresql_modified_for_babelfish`, 
+you set up the environment variables like this:
 
+``` sh
+export PG_CONFIG=/usr/local/pgsql-13.4/bin/pg_config
+export PG_SRC=$HOME/postgresql_modified_for_babelfish
+```
 Now we have all set to build the extensions. To so, we need to go to the contrib folder in the Babelfish extension source code, and then build the 
 extensions one by one. We do it with the following script:
 
 ``` sh
+# Install babelfishpg_money extension
 cd contrib/babelfishpg_money
-make & make install
+make
+make install
+
+# Install babelfishpg_common extension
 cd ../babelfishpg_common
-make & make install
+make 
+make install
+
+# Install babelfishpg_tds extension
 cd ../babelfishpg_tds
-make & make install
+make 
+make install
+
+# Installs the babelfishpg_tsql extension
 cd ../babelfishpg_tsql
-make & make install
+make 
+make install
 ```
-
-### Windows Installation
-
-#### Requirements
-To be able to compile Babelfish on Windows. you would need to install:
-- Visual Studio 2019. 
-- ActiveState Perl
-- libxml2
-- libxslt
-- iconv
-
-
-##### Visual Studio 
-You can download Visual Studio from [here](https://visualstudio.microsoft.com/). 
-
-##### ActiveState Perl
-You can download ActiveState Perl from [here](https://www.activestate.com/products/perl/).
- Make sure that the installer configures the binaries in the environment variable `PATH`
-
-##### libxml, libxslt and inconv
-You can download these 3 libraries from [here](https://zlatkovic.com/pub/libxml/). Take note of where did you extracted the libraries, because we will need them later.
-
-#### Configuring the build
-To be able to build Babelfish we need to configure the paths of the extra libraries that are required. 
-
-To do that, go to the path src\tool\msvc, inside the Babelfish source code folder. 
-
-Copy the file config_default.pl to create a new file named config.pl. 
-
-Change the config.pl to add the paths of where you have extracted the libraries. 
-
-Suppose that you have extracted the libraries in the following paths:
-
-- libxml: D:\libxml2\libxml2-2.7.8.win32
-- xstl: D:\libxslt\libxslt-1.1.26.win32
-- iconv: D:\iconv\iconv-1.9.2.win32
-
-The config.pl file should look something like these:
-
-``` perl
-# Configuration arguments for vcbuild.
-use strict;
-use warnings;
-
-our $config = {
-        asserts => 0,    # --enable-cassert
-
-        # blocksize => 8,         # --with-blocksize, 8kB by default
-        # wal_blocksize => 8,     # --with-wal-blocksize, 8kB by default
-        ldap      => 1,        # --with-ldap
-        extraver  => undef,    # --with-extra-version=<string>
-        gss       => undef,    # --with-gssapi=<path>
-        icu       => undef,    # --with-icu=<path>
-        nls       => undef,    # --enable-nls=<path>
-        tap_tests => undef,    # --enable-tap-tests
-        tcl       => undef,    # --with-tcl=<path>
-        perl      => undef,    # --with-perl=<path>
-        python    => undef,    # --with-python=<path>
-        openssl   => undef,    # --with-openssl=<path>
-        uuid      => undef,    # --with-uuid=<path>
-        xml       => 'D:\libxml2\libxml2-2.7.8.win32',    # --with-libxml=<path>
-        xslt      => 'D:\libxslt\libxslt-1.1.26.win32',    # --with-libxslt=<path>
-        iconv     => 'D:\iconv\iconv-1.9.2.win32',    # (not in configure, path to iconv)
-        zlib      => undef     # --with-zlib=<path>
-};
-
-1;
-```
-
-#### Building Babelfish PostgreSQL Engine
-Open the [Developer Command Prompt for VS 2019](https://docs.microsoft.com/en-gb/visualstudio/ide/reference/command-prompt-powershell?view=vs-2019). 
-  It should be located in the path `C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Visual Studio 2019\Visual Studio Tools`
-
-In the command promt, navigate to the folder in which you downloaded the Babelfish 
-code. Once there, go to the msvc folder with the command:
-
-``` cmd
-cd src\tools\msvc
-```
-
-Now you can build Babelfish by executing:
-``` cmd
-build
-```
-
-#### Installing Babelfish 
-
-Once Babelfish is compiled, to install it we just need to run from the `src\tools\msvc` using the Developer Command Prompt, the following command:
-``` cmd
-install C:\destination\directory
-```
-
-TODO: Installing Babelfish extensions on windows
