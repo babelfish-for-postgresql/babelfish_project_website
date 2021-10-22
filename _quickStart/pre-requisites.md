@@ -6,7 +6,7 @@ has_children: false
 permalink: /docs/quick-start/pre-requisites
 ---
 
-Depending of the installation method that you choose, the requirements may vary. 
+Depending on the installation method that you choose, the requirements may vary. 
 
 Regarldless of the case only `amd64` architectures are supported. 
 
