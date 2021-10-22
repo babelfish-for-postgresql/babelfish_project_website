@@ -1,7 +1,11 @@
 <dt>
+    {% if include.contributor.github %}
     <a href="{{include.contributor.github}}">
         <span class="icon icon-github"></span> {{include.contributor.name}}
     </a>
+    {% else %}
+     <span>{{include.contributor.name}}</span>
+    {% endif %}
 </dt>
 <dd>
     <table>

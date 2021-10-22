@@ -197,7 +197,6 @@
   contribution: |
     Prateek is currently a Software Engineering Manager on Azure SQL. For the Babelfish Project, he helped with initial feature scoping and planning. He was responsible for TDS interfaces/extension and contributed to authentication, datatype support, prepare-exec support, error code mapping,  telemetry, interoperability and writing testing tools.
 - name: Richard Waymire
-  github: ""
   username: Richard Waymire
   pic: "/assets/images/profile_pics/richard-waymire.jpg"
   contribution: Richard is the Lead Product Manager providing overall leadership to the Babelfish project
@@ -208,9 +207,7 @@
   contribution: | 
     Simon is a product manager for the Babelfish project. Simon was engaged in the user research, planning, positioning and roadmap for the Babelfish project.
 - name: Suprio Pal
-  github: "" 
   username: Suprio Pal
-  pic: ""
   contribution: Suprio is the Lead Software Engineering Manager for the Babelfish project
 - name: Gopinath Pai
   github: https://github.com/gopinathpai
@@ -219,10 +216,6 @@
   contribution: |
     Gopinath is a Principal TPM on the project. He was responsible for the overall planning, design and delivery of the Babelfish Open Source Project.
 - name: Clint Fu
-  github: 
-  username:
-  pic:
-  contribution:
 - name: Abhinav Singh 
   github: https://github.com/fdrgiit
   username: fdrgiit
