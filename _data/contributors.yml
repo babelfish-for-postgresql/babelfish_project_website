@@ -1,14 +1,254 @@
 - name: Kuntal Ghosh
   github: https://github.com/kuntalghosh
   username: kuntalghosh
-  pic: "/assets/images/kuntal_gosh.jpg"
+  pic: "/assets/images/profile_pics/kuntal_ghosh.jpg"
   contribution: |
-    Kuntal is a Software Engineer on the Babelfish project. His major contributions include the design and implementation of pluggable protocol, TDS extension and integration of the TDS extension with the TSQL extension.
-    <br>
-    He has been involved with PostgreSQL since 2016, developing and reviewing new features.
+    Kuntal is a Software Engineer on the Babelfish project. His major contributions include the design and implementation of pluggable protocol, TDS extension and integration of the TDS extension with the TSQL extension. He has been involved with PostgreSQL since 2016, developing and reviewing new features.
 - name: Di Wu
   github: https://github.com/macwoody
   username: macwoody
-  pic: "/assets/images/di_wu.jpg"
+  pic: "/assets/images/profile_pics/di_wu.jpg"
   contribution: |
     Di is currently Senior Software Engineer on the Babelfish project. He contributed to the design and implementation of various major features and component of Babelfish, including sql_varaint data type, PL/TSQL executor framework, access control / database management statements and schema mapping based multi-tenancy solution.
+- name: Rob Verschoor
+  github: https://github.com/rcv-aws
+  username: rcv-aws
+  pic: "/assets/images/profile_pics/rob_verschoor.jpg"
+  contribution: |
+    Rob is a Principal Database Engineer on the Babelfish project, with a long history in SQL dialects (Sybase, SQL Server and others). He has been involved in many aspects of Babelfish. Notable Babelfish contributions include the design of the migrating the multi-database SQL Server structure to PG, as well as creating the Babelfish Compass compatibility assessment tool.
+- name: Sangil Song
+  github: https://github.com/sangilsong
+  username: sangilsong
+  pic: "/assets/images/profile_pics/sangil_song.png"
+  contribution: |
+    Sangil is a Senior Software Engineer on Babelfish project. He mainly contributed to the design and implementation of various features of PL/TSQL langauge component: PL/TSQL parser, cursor, datatype coercion and unspported feature handler including ecape hatches.
+- name: Bill Ramos
+  github: https://github.com/billramo
+  username: billramo
+  pic: "/assets/images/profile_pics/bill_ramos.jpg"
+  contribution: |
+    Bill is a Senior Product Manager on the AWS Database Migration Service team. Bill is providing his SQL Server expertise to improve the migration experiance to Babelfish.  
+- name: Zheng Li
+  github: https://github.com/zli236
+  username: zli236
+  pic: "/assets/images/profile_pics/zheng_li.jpg"
+  contribution: |
+    Zheng is a Software Engineer on Babelfish project. He mainly contributed to the design and implementation of compatible data types such as the (var)binary, bit, numeric and money types; compatible create trigger statement, select for xml statement; and various @@OPTIONS session settings.
+- name: Zitao Quan
+  github: https://github.com/quanzitao
+  username: quanzitao
+  pic: "/assets/images/profile_pics/zitao_quan.jpg"
+  contribution: |
+    Zitao is a Software Engineer on the Babelfish project. He contributed to the design and implementation of various T-SQL data types and built-in functions, as well as T-SQL language features including table variable, table-valued functions and parameters, and INSERT EXEC statement.
+- name: Susan Douglas
+  github: https://github.com/susanmdouglas-aws
+  username: susanmdouglas-aws
+  pic: "/assets/images/profile_pics/susan_douglas.jpeg"
+  contribution: |
+    Susan is a documentation writer on the Babelfish project.
+- name: Jason Teng
+  github: https://github.com/Sairakan
+  username: Sairakan
+  pic: "/assets/images/profile_pics/jason_teng.png"
+  contribution: | 
+    Jason is a Software Engineer on the Babelfish project. He contributed to the testing of Entity Framework functionality with Babelfish, as well as maintaining the development and testing pipelines.
+- name: Jignesh Shah 
+  github: https://github.com/jk-shah
+  username: jk-shah
+  pic: "/assets/images/profile_pics/jignesh_shah.png"
+  contribution: |
+    Jignesh Shah is Senior Software Development Manager for Amazon RDS with Amazon Web Services. At AWS, he works on PostgreSQL engines including Amazon RDS PostgreSQL managed database service. He helped the Babelfish project and team members on adapting to open source PostgreSQL.
+- name: Avantika Dasgupta
+  github: https://github.com/AvantikaDG
+  username: AvantikaDG
+  pic: "/assets/images/profile_pics/avantika_dasgupta.jpg"
+  contribution: |
+    Avantika Dasgupta is a Software Engineer on the Babelfish project. She contributed to the design and implementation of DML components such as OUTPUT clause and triggers, and helped maintain the development pipeline.
+- name: Tim Galvin 
+  github: https://github.com/timgalvin
+  username: timgalvin
+  pic: "/assets/images/profile_pics/tim_galvin.png"
+  contribution: |
+    Tim Galvin is a Software Engineer in the Amazon Aurora organization. He helped make Babelfish available to Aurora customers and played a role in defining the overall customer experience.
+- name: Mohamed Ali
+  github: https://github.com/mmohali
+  username: mmohali
+  pic: "/assets/images/profile_pics/mohamed_ali.png"
+  contribution: |
+    Mohamed Ali is a Senior database engineer for Amazon RDS with Amazon Web Services. At AWS, he works on PostgreSQL engine including Amazon RDS PostgreSQL and Aurora PostgreSQL. He contributed to the design and the integration between Babelfish and PostgreSQL 
+- name: Nathan Bossart
+  github: https://github.com/bossartn
+  username: bossartn
+  pic: "/assets/images/profile_pics/nathan_bossart.jpg"
+  contribution: |
+    Nathan Bossart is a Senior Software Engineer for Amazon Web Services and a PostgreSQL contributor. He is a founding member of the RDS PostgreSQL team and is currently focused on PostgreSQL development with the community. Nathan helped with the open source strategy for the Babelfish project.
+- name: Tony Lin 
+  github: https://github.com/tonylin098
+  username: tonylin098
+  pic: "/assets/images/profile_pics/tony_lin.png"
+  contribution: |
+    Tony Lin is a Software Engineer on the Babelfish project. He contributed mainly to the design and implementation of major features including identity and sequence compatibility, identity_insert, ownership management with the login concept, and various built-in functions
+- name: Snigdha Goel
+  github: https://github.com/snigdhagoel
+  username: snigdhagoel
+  pic: "/assets/images/profile_pics/snigdha_goel.png"
+  contribution: |
+    Snigdha Goel is a Software Engineer for Amazon Aurora with Amazon Web Services. She helped with the initial launch of Babelfish for Aurora customers, and assisted with subsequent releases and customer experience.
+- name: Jungkook Lee
+  github: https://github.com/2jungkook
+  username: 2jungkook
+  pic: "/assets/images/profile_pics/jungkook_lee.png"
+  contribution: |
+    Jungkook is a Software Engineer on the Babelfish project. He contributed to the design and implementation of string data types and PL/TSQL parsers.
+- name: Sharayu Mungel
+  github: https://github.com/sharayumungel
+  username: sharayumungel
+  pic: "/assets/images/profile_pics/sharayu_mungel.jpg"
+  contribution: |
+    Sharayu Mungel is a Software Engineer for Amazon Aurora with Amazon Web Services. Her major contribution to the Babelfish project includes design and implementation of Kerberos Authentication features.
+- name: Stefan Karlsson
+  github: https://github.com/sksql
+  username: sksql
+  pic: "/assets/images/profile_pics/stefan_karlsson.jpg"
+  contribution: |
+    Stefan is contracting as database engineer and has a 30 year background in DBMS development, from SQL to kernel. Contributions to Babelfish project include in-depth research as well as trying his best to break it before release.
+- name: Anand Sriramulu
+  github: https://github.com/anandsriram
+  username: anandsriram
+  pic: "/assets/images/profile_pics/anand_sriramulu.jpg"
+  contribution: |
+    Anand Sriramulu is a Software Engineer for Amazon Aurora with AWS. He helped with babelfish integration with AWS RDS services and Aurora Postgresql.
+- name: Brent Sienko
+  github: https://github.com/brentsienko
+  username: brentsienko
+  pic: "/assets/images/profile_pics/brent_sienko.png"
+  contribution: |
+    Brent Sienko is a Software Engineer on the Babelfish project. He contributed to the design and implementation of datetime/datetime2 datatypes, datatype coercion, and Tinker Banking highconcurrency xact correctness test suite.
+- name: Korry Douglas
+  github: https://github.com/korryd 
+  username: korryd
+  pic: "/assets/images/profile_pics/korry_douglas.jpeg"
+  contribution: |
+    Korry is a Database Engineer although he does a lot of coding too. Korry led the architectural design of Babelfish and has contributed many features.
+- name: Sravani Puttagunta
+  github: https://github.com/sputtag1
+  username: sputtag1
+  pic: "/assets/images/profile_pics/sravani_puttagunta.jpeg"
+  contribution: |
+    Sravani is a Software Engineer for AWS RDS Console. She worked on integrating the Babelfish for Aurora PostgreSQL into RDS Console.
+- name: Xiaohui Fanhe 
+  github: https://github.com/xhfanhe
+  username: xhfanhe
+  pic: "/assets/images/profile_pics/xiaohui_fanhe.jpeg"
+  contribution: |
+    Xiaohui is a Software Engineer on the Babelfish project. She contributed to the design and implementation of stored procedure sp_executesql and exception handling functions including RAISERROR, THROW and ERROR_*.
+- name: Rajnish Chitkara
+  github: https://github.com/Rajnish-Chitkara
+  username: Rajnish-Chitkara
+  pic: "/assets/images/profile_pics/rajnish_chitkara.jpg"
+  contribution: |
+    Rajnish is a Principal Security Engineer on the Babelfish project. Rajnish contributed to the security reviews for the project.
+- name: Dipesh Dhameliya
+  github: https://github.com/Deepesh125
+  username: Deepesh125
+  pic: "/assets/images/profile_pics/dipesh_dhameliya.jpg"
+  contribution: |
+    Dipesh is software engineer on Babelfish project. He mainly contributed to the design and implementation of various features like Encoding support for string based datatypes and Error code mapping on TDS listener. He also contributed to the implementation of support for sender/receivers for string datatypes and some minor features on language extension. And He involved in maintaining development pipelines.
+- name: Sharu Goel 
+  github: https://github.com/thephantomthief
+  username: thephantomthief
+  pic: "/assets/images/profile_pics/sharu_goel.jpeg"
+  contribution: |
+    Sharu is a Software Engineer on the Babelfish project. He mainly contributed to the design and implementation of the T-SQL IMPLICIT_TRANSACTIONS and JDBC framework for testing Babelfish. He also contributed to the implementation of TDS extension features like varchar/nvarchar(max) data types and some cursor system procedures.
+- name: Kushaal Shroff
+  github: https://github.com/KushaalShroff
+  username: KushaalShroff
+  pic: "/assets/images/profile_pics/kushaal_shroff.jpg"
+  contribution: |
+    Kushaal is a software engineer on the Babelfish Project. He contributed to the design and implementation of major features like Remote Procedure Calls, Table Valued Parameters, Logging and Monitoring, Fault-injection, Insert Bulk/Bulk Load and Led the Support for all TDS Protocol versions along with various other features in TDS extension. He also developed the .NET Babelfish Framework, troubleshoot TDS and helped in maintaining the pipeline.
+- name: Zhe Liu
+  github: https://github.com/770120041
+  username: "770120041"
+  pic: "/assets/images/profile_pics/zhe_liu.png"
+  contribution: |
+    Zhe is a Software Engineer on the Babelfish Project. He contributed to the desing and implementaion of various areas of T-SQL, including data types, system functions, parser, testing framework migration and collation support.
+- name: Shalini Lohia
+  github: https://github.com/shalinilohia50
+  username: shalinilohia50
+  pic: "/assets/images/profile_pics/shalini_lohia.jpg"
+  contribution: |
+    Shalini is a software engineer on the Babelfish project. She contributed to the design and implementation of some features like Encoding conversions, TSQL and Postgres interoperability tests, Troubleshooting TDS and Logging at TDS. She was also involved in maintaining development pipelines.
+- name: Maria Raphaeil
+  github: https://github.com/m-raphaeil
+  username: m-raphaeil
+  pic: "/assets/images/profile_pics/maria_raphaeil.jpeg"
+  contribution: |
+    Maria is a UX design Lead for AWS RDS. She worked on defining the overall Babelfish user experience in the RDS console, making it easy to use and configure especially for the first time users.
+- name: Rishabh Tanwar
+  github: https://github.com/rishabhtanwar29
+  username: rishabhtanwar29
+  pic: "/assets/images/profile_pics/rishabh_tanwar.png"
+  contribution: |
+    Rishabh is a software engineer on the Babelfish project. He contributed to the design and implementation Error code mapping on TDS listener and he was involved in maintaining development pipelines.
+- name: Prateek Goel 
+  github: https://github.com/prateekgoel01
+  username: prateekgoel01
+  pic: "/assets/images/profile_pics/prateek_goel.jpeg"
+  contribution: |
+    Prateek is currently a Software Engineering Manager on Azure SQL. For the Babelfish Project, he helped with initial feature scoping and planning. He was responsible for TDS interfaces/extension and contributed to authentication, datatype support, prepare-exec support, error code mapping,  telemetry, interoperability and writing testing tools.
+- name: Richard Waymire
+  github: ""
+  username: Richard Waymire
+  pic: "/assets/images/profile_pics/richard-waymire.jpg"
+  contribution: Richard is the Lead Product Manager providing overall leadership to the Babelfish project
+- name: Simon Lightstone
+  github: https://github.com/slightst
+  username: slightst
+  pic: "/assets/images/profile_pics/simon_lightstone.jpg"
+  contribution: | 
+    Simon is a product manager for the Babelfish project. Simon was engaged in the user research, planning, positioning and roadmap for the Babelfish project.
+- name: Suprio Pal
+  github: "" 
+  username: Suprio Pal
+  pic: ""
+  contribution: Suprio is the Lead Software Engineering Manager for the Babelfish project
+- name: Gopinath Pai
+  github: https://github.com/gopinathpai
+  username: gopinathpai
+  pic: "/assets/images/profile_pics/gopinath_pai.jpg"
+  contribution: |
+    Gopinath is a Principal TPM on the project. He was responsible for the overall planning, design and delivery of the Babelfish Open Source Project.
+- name: Clint Fu
+  github: 
+  username:
+  pic:
+  contribution:
+- name: Abhinav Singh 
+  github: https://github.com/fdrgiit
+  username: fdrgiit
+  pic: "/assets/images/profile_pics/abhinav_singh.jpg"
+  contribution: |
+    Abhinav is currently a Senior Database Engineer on the Application Resiliency team. At AWS he has a long history of working on design and development of migration projects as well as helped customers to provide technical assistance on moving their workloads and helping them improve the value of their solutions when using AWS. He helped make Babelfish available to the early adopters in preview scope and played a role in on-boarding and defining the overall customer experience.
+- name: Harsh Lunagariya
+  github: https://github.com/HarshLunagariya
+  username: HarshLunagariya
+  pic: "/assets/images/profile_pics/harsh_lunagariya.jpg"
+  contribution: | 
+    Harsh is a Software Engineer on the Babelfish Project. He contributed to error mapping analysis, maintained python framework for testing.
+- name: Tim Chang 
+  github: https://github.com/timchang514
+  username: timchang514
+  pic: "/assets/images/profile_pics/tim_chang.png"
+  contribution: | 
+    Tim is a software engineer on the Babelfish project. He implemented various TSQL functions and assisted in infrastructure work. He also led the effort for compatibility with Import-Export Wizard through SSMS.
+- name: Vinicius Schmidt
+  github: https://github.com/vinnix/ 
+  username: vinnix
+  pic: 
+  contribution:
+- name: Stefano Stefani
+  github: ""
+  username: Stefano Stefani
+  pic: 
+  contribution: |
+    Stefano, a Distinguished Engineer in the Babelfish project contributed in an architectural/consulting role
