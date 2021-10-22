@@ -220,7 +220,7 @@ cp /usr/local/lib/libantlr4-runtime.so.4.9.2 "$INSTALLATION_PATH/lib"
 ```
 # Build and install the extensions
 
-Now that have all tools installed to build the Babelfish extension, we need to configure some environment variables: 
+Now that we have all of the tools installed to build the Babelfish extension, we need to configure some environment variables: 
 
 - `PG_CONFIG`: should point to the location of the pg_config file in the Babelfish PostgreSQL Engine installation, in our case: `$INSTALLATION_PATH/bin/pg_config`.
 
