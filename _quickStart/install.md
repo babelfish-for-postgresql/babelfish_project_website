@@ -237,7 +237,7 @@ export PG_SRC=$HOME/postgresql_modified_for_babelfish
 export cmake=/usr/local/bin/cmake
 ```
 
-Now we have all set to build the extensions. To so, we need to go to the contrib folder in the Babelfish extension source code, and then build the 
+Now we have all set to build the extensions. To do so, we need to go to the contrib folder in the Babelfish extension source code, and then build the 
 extensions one by one. We do it with the following script:
 
 ``` sh
