@@ -64,7 +64,7 @@ To be able to build Babelfish, you need to install the following tools:
 
 #### Installing the requirements
 
-You can install most the requirements with the following command, depending of your system configuration 
+You can install most of the requirements with the following command, depending of your system configuration 
  you might need to run these commands with sudo:
 
 ``` sh
