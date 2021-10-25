@@ -12,11 +12,11 @@ Postgres is, possibly, the most extensible database. Extensible in the sense tha
 
 Due to its feature set, clean code, and liberal license, Postgres has also led to many proprietary forks that also enhanced its functionality. But they have done so by modifying the code base. Some examples may be data warehouses or an Oracle compatibility layer.
 
-Today, AWS is announcing the open source <b>Babelfish for PostgreSQL</b> (“Babelfish” in short): a compatibility layer that adds SQL Server compatibility on top of PostgreSQL. Yet Babelfish is neither proprietary nor a fork: it is fully available under the open source, liberal, Apache 2 License; and builds on top of existing PostgreSQL. Babelfish enhancements will be prepared and submitted to be merged upstream.
+Today, AWS is announcing the open source <b>Babelfish for PostgreSQL</b> (“Babelfish” in short): a compatibility layer that adds SQL Server compatibility on top of PostgreSQL. Yet Babelfish is neither proprietary nor a fork: it is fully available under the open source, liberal, Apache 2 and PostgreSQL License; and builds on top of existing PostgreSQL. Babelfish enhancements will be prepared and submitted to be merged upstream.
 
 This announcement follows the public statement that Andy Jassy made on December 1st, 2020:
 
-<i>“We are open sourcing Babelfish in 2021. […] We are releasing Babelfish under the Apache 2.0 license. We invite others to become active in the project, and we will see it as a sign of success when developers outside of AWS become committers or maintainers. You can help by adding or extending Babelfish functionality, submitting feature requests, working on documentation, and contributing test cases”<i>
+<i>“We are open sourcing Babelfish in 2021. […] We are releasing Babelfish under the Apache 2.0 and PostgreSQL license. We invite others to become active in the project, and we will see it as a sign of success when developers outside of AWS become committers or maintainers. You can help by adding or extending Babelfish functionality, submitting feature requests, working on documentation, and contributing test cases”<i>
 
 Today AWS is delivering on its promise, and publishing Babelfish code and documentation to a [GitHub repository](https://github.com/babelfish-for-postgresql) and a new [Babelfish website](https://babelfish-for-postgresql.github.io/). As we shall see later, Babelfish is structured in two parts: a patch against modern PostgreSQL versions, which will be submitted for inclusion upstream; and a few extensions on top of it. Starting today, you can clone GitHub’s repository, compile it, install and run Babelfish on your own environments, with SQL Server compatibility.
 

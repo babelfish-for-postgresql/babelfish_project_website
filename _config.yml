@@ -78,10 +78,10 @@ collections:
   architecture:
     permalink: /:collection/:path/
     output: true
-  definition:
+  installation:
     permalink: /:collection/:path/
     output: true
-  quickStart:
+  connecting:
     permalink: /:collection/:path/
     output: true
   docs:
@@ -108,16 +108,14 @@ just_the_docs:
       # nav_exclude: true
       nav_fold: true
       # search_exclude: true
-    definition:
-      name: What is Babelfish
-      # nav_exclude: true
-      nav_fold: true
-      # search_exclude: true
-    quickStart:
-      name: Quickstart Guide
+    installation:
+      name: Installation Guide
       # nav_exclude: true
       nav_fold: true
       # search_exclude: 
+    connecting:
+      name: Connecting to Babelfish
+      nav_fold: true
 
 # Enable or disable the site search
 # Supports true (default) or false

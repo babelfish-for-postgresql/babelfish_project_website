@@ -34,7 +34,7 @@ DESC
   s.homepage = 'http://github.com/typekit/webfontloader'
 
   ## License
-  s.license = "Apache 2.0"
+  s.license = "Apache 2.0 and PostgreSQL"
 
   ## This gets added to the $LOAD_PATH so that 'lib/NAME.rb' can be required as
   ## require 'NAME.rb' or'/lib/NAME/file.rb' can be as require 'NAME/file.rb'

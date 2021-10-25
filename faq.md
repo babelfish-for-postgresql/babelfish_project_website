@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Frequently asked questions
-nav_order: 4
+nav_order: 22
 has_children: false
 permalink: /docs/faq
 ---
@@ -9,13 +9,12 @@ permalink: /docs/faq
 # Babelfish: Frequently asked questions
 
 This page contains some of the most frequently asked question related to
-Babelfish and MS SQL server compatibility.
-
+Babelfish- and MS SQL server- compatibility.
 
 ## Can we use Babelfish for free?
 
 Yes, Babelfish can be used free of charge. It is Open Source software which is
-provided under the terms of the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0).
+provided under the terms of the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0) and [PostgreSQL license](https://www.postgresql.org/about/licence/).
 
 ## Is Babelfish 100% compatible with MS SQL?
 
@@ -85,11 +84,10 @@ Other tools such as FreeTDS are known to work but are not officially supported
 
 ## Can Babelfish be used as an extension for PostgreSQL?
 
-The ultimate goal is to make that happen. However, to make Babelfish work
-PostgreSQL needs [protocol hooks](architecture/protocol-hooks) which are
+The ultimate goal is to make that happen. However, Babelfish worrequires [protocol hooks](architecture/protocol-hooks) which are
 currently not part of the standard version of PostgreSQL. Therefore a special
 source tree of Babelfish is needed - 
-check out our [installation guide](quick-start/installation). 
+check out our [installation guide](installation-guide/build-from-source). 
 
 ## What is the performance difference between MS SQL and Babelfish?
 
@@ -100,20 +98,13 @@ general answer which holds true for all cases.
 
 ## How many concurrent users does Babelfish support?
 
-There are no practical limitations which harm daily operations. So far, no
+There are no hard limits which harm daily operations. So far, no
 problems in this area have been observed. Basically, the same limitations as in
-standard PostgreSQL apply.
-
-## Does Babelfish support replication?
-
-Yes, Babelfish is a tool that speaks the MS SQL wire protocl (TDS). It does not
-impact the way PostgreSQL stores data, does WAL handling and so on. Therefore
-replication is of course possible without restrictions. 
-
+standard PostgreSQL apply with some overhead.
 
 ## Is it possible to run T-SQL?
 
-Yes, support for a great deal of T-SQL code is available. Here is an example:
+Yes, support for a great deal of T-SQL language is available. Here is an example:
 
 ```sql
 CREATE PROCEDURE [HumanResources].[uspUpdateEmployeePersonalInfo]
@@ -141,15 +132,12 @@ BEGIN
 END; $$ LANGUAGE 'pltsql';
 ```
 If you want to learn more about T-SQL, we have compiled an entire page focusing
-on this important topic: [T-SQL in action](handling_tsql.html).
+on this important topic: [T-SQL in action](architecture/handling-tsql).
 
 
 ## Will Babelfish be available for new versions of PostgreSQL?
 
-Yes, the community will maintain the code. We have yet to see if [protocol
-hooks](architecture/protocol-hooks) have a chance to make into PostgreSQL core or not,
-but if they don't, a separate source tree will be provided for recent versions
-of PostgreSQL.
+There are efforts ongoing to incorporate [Babelfish hooks](architecture/protocol-hooks) into PostgreSQL, in the meantime, a separate code tree will be available separate from the extensions, with all the hooks built into it. This code tree will be maintained for the subsequent versions of PostgreSQL
 
 
 ## How can I report a bug?
