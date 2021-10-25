@@ -1,13 +1,23 @@
 <dt>
+    {% if include.contributor.github %}
     <a href="{{include.contributor.github}}">
         <span class="icon icon-github"></span> {{include.contributor.name}}
     </a>
+    {% else %}
+     <span class="name">{{include.contributor.name}}</span>
+    {% endif %}
 </dt>
 <dd>
     <table>
         <tr>
-            <td>
-                <img src="{{include.contributor.pic}}">
+            <td class="photo">
+                {% if include.contributor.pic %}
+                    <div class="pic" style="background-image: url({{include.contributor.pic}})">
+                        <img src="{{include.contributor.pic}}">
+                    </div>
+                {% else %}
+                    <div class="pic none"></div>
+                {% endif %}
             </td>
             <td class="contribution">
                 <p>{{include.contributor.contribution}}</p>
