@@ -4,6 +4,7 @@ title: Troubleshooting
 nav_order: 20
 has_children: false
 permalink: /docs/troubleshooting
+footer_nav: true
 ---
 
 ## Babelfish troubleshooting

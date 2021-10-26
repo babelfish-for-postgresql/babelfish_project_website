@@ -4,6 +4,7 @@ title: Contributing code
 nav_order: 23
 has_children: false
 permalink: /docs/contributing
+footer_nav: true
 ---
 
 ## Contributing code
