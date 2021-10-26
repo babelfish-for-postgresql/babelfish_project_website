@@ -16,7 +16,7 @@ procedures. The MS SQL equivalent to PL/pgSQL is called T-SQL (Transact-SQL).
 To make Babelfish as compatible with MS SQL as possible, it provides a T-SQL
 implementation capable of understanding MS SQL Server code. As with every
 software which is modeling some other software's behavior, there are some 
-differences and [limitations](limitations-of-babelfish). 
+differences and [limitations](/docs/limitations-of-babelfish). 
 
 
 ### Deploying T-SQL code in Babelfish

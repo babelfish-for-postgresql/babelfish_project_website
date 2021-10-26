@@ -551,7 +551,7 @@ what is possible:
   CONTEXT_INFO, QUERY_GOVERNOR_COST_LIMIT, STATISTICS</code>, XML modify method.
 
 
-### Unsupported functions 
+### Dealing with unsupported functions 
 
 The following is a list of functions that are not supported by Babelfish:
 

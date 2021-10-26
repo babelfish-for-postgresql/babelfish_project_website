@@ -32,7 +32,7 @@ and more easily, even while some migration work might still be going on.
 A second option is to move application from MS SQL to PostgreSQL without
 touching the application at all. Why is that so important? If you get your
 source code under control, life is usually easier. But what if you want to move
-old legancy applications from Microsoft SQL Server to PostgreSQL, legacy applications which cannot be
+old legacy applications from Microsoft SQL Server to PostgreSQL, legacy applications which cannot be
 modified easily, because the source code is not open, is lost, or is simply too hard to
 change? Babelfish is an excellent vehicle to help in this case as well. You can
 move away from expensive MS SQL deployments without doing a painful app
