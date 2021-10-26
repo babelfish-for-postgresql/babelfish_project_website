@@ -57,13 +57,14 @@ layout: table_wrappers
           </a>
         </div>
         <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav">
-          {% assign pages_top_size = site.html_pages
+          {% assign pages_top = site.html_pages
               | where_exp:"item", "item.title != nil"
               | where_exp:"item", "item.parent == nil"
               | where_exp:"item", "item.nav_exclude != true"
-              | size %}
-          {% if pages_top_size > 0 %}
-            {% include nav.html pages=site.html_pages key=nil %}
+              | where_exp:"item", "item.footer_nav == nil"
+          %}
+          {% if pages_top.size > 0 %}
+            {% include nav.html pages=pages_top key=nil %}
           {% endif %}
           {% if site.just_the_docs.collections %}
             {% assign collections_size = site.just_the_docs.collections | size %}
@@ -92,6 +93,16 @@ layout: table_wrappers
                 {% endif %}
               {% endif %}
             {% endfor %}
+          {% endif %}
+          <!-- Footer Navigation -->
+          {% assign pages_bottom = site.html_pages
+            | where_exp:"item", "item.title != nil"
+            | where_exp:"item", "item.parent == nil"
+            | where_exp:"item", "item.nav_exclude != true"
+            | where_exp:"item", "item.footer_nav == true"
+          %}
+          {% if pages_bottom.size > 0 %}
+            {% include nav.html pages=pages_bottom key=nil %}
           {% endif %}
         </nav>
         <div class="site-footer">

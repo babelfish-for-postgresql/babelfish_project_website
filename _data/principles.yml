@@ -1,7 +1,7 @@
 - title: Great software.
   description: If it doesn’t solve your problems, everything else is moot. It’s going to be software you love to use.
 - title: Open source like we mean it.
-  description: We are invested in this being a successful open source project for the long term. It’s all Apache 2.0. There’s no Contributor License Agreement. Easy.
+  description: We are invested in this being a successful open source project for the long term. It’s all Apache 2.0 and PostgreSQL. There’s no Contributor License Agreement. Easy.
 - title: A level playing field.
   description: We will not tweak the software so that it runs better for any vendor (including AWS) at the expense of others. If this happens, call it out and we will fix it as a community.
 - title: Used everywhere.
