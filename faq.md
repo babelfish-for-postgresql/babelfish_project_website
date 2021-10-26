@@ -4,6 +4,7 @@ title: Frequently asked questions
 nav_order: 22
 has_children: false
 permalink: /docs/faq
+footer_nav: true
 ---
 
 # Babelfish: Frequently asked questions
