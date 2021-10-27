@@ -2,8 +2,6 @@
 layout: default
 title: Missing Features
 nav_order: 6
-has_children: false
-permalink: /docs/architecture/missing-features
 ---
 
 ## Managing differences in behavior

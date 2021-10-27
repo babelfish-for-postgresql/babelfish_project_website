@@ -2,8 +2,6 @@
 layout: default
 title: Query Handling
 nav_order: 9
-has_children: false
-permalink: /docs/architecture/query-handling
 ---
 
 ## Babelfish query handling

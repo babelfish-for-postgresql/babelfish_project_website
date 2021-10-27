@@ -3,7 +3,6 @@ layout: default
 title: Migrating to Babelfish
 nav_order: 3
 has_children: false
-permalink: /docs/migration
 ---
 
 ## Migrating to Babelfish

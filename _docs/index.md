@@ -1,9 +1,9 @@
 ---
 layout: default
 title: Get started
-nav_order: 1
 redirect_from: /404.html
-permalink: /docs
+nav_exclude: true
+permalink: /docs/
 ---
 
 # Babelfish for PostgreSQL documentation

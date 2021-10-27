@@ -1,9 +1,7 @@
 ---
 layout: default
-title: Single vs. multiple instances
+title: Single vs. Multiple Instances
 nav_order: 11
-has_children: false
-permalink: /docs/architecture/single-multiple
 ---
 ## Single vs. multiple instances
 

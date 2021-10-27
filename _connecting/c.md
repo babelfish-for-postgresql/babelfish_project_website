@@ -2,8 +2,6 @@
 layout: default
 title: C
 nav_order: 18
-has_children: false
-permalink: /docs/connecting-to-babelfish/c
 ---
 
 ## Preparing to write C code 

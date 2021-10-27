@@ -1,9 +1,7 @@
 ---
 layout: default
-title: Locales and language support  
+title: Locales and Language Support  
 nav_order: 7
-has_children: false
-permalink: /docs/architecture/locales
 ---
 
 ## Locales and language support

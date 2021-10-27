@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Frequently asked questions
+title: Frequently Asked Questions
 nav_order: 22
 has_children: false
-permalink: /docs/faq
+permalink: /docs/faq/
 footer_nav: true
 ---
 

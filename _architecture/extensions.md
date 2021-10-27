@@ -2,8 +2,6 @@
 layout: default
 title: Extensions
 nav_order: 8
-has_children: false
-permalink: /docs/architecture/extensions
 ---
 
 Given below is the overall strategy for Extensions. Team is in the process of creating these extensions.

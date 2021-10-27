@@ -2,8 +2,6 @@
 layout: default
 title: Python
 nav_order: 17
-has_children: false
-permalink: /docs/connecting-to-babelfish/python
 ---
 
 ## Using Python with Babelfish
