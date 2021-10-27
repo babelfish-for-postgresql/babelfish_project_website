@@ -1,9 +1,7 @@
 ---
 layout: default
-title: System views
+title: System Views
 nav_order: 13
-has_children: false
-permalink: /docs/architecture/system-views
 ---
 
 ## Babelfish system views 

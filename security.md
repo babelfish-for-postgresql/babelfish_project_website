@@ -3,7 +3,7 @@ layout: default
 title: Security
 nav_order: 21
 has_children: false
-permalink: /docs/security
+permalink: /docs/security/
 footer_nav: true
 ---
 

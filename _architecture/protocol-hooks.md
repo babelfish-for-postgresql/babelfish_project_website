@@ -3,8 +3,6 @@ layout: default
 title: Protocol Hooks
 nav_order: 5
 has_children: false
-permalink: /docs/architecture/protocol-hooks
-use_mermaid: true
 ---
 
 ## Protocol hooks

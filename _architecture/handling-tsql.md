@@ -2,8 +2,6 @@
 layout: default
 title: Handling Transact-SQL
 nav_order: 10
-has_children: false
-permalink: /docs/architecture/handling-tsql
 ---
 
 ## Handling Transact-SQL

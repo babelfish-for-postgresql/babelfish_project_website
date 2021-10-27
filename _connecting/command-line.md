@@ -2,8 +2,6 @@
 layout: default
 title: Command Line
 nav_order: 14
-has_children: false
-permalink: /docs/connecting-to-babelfish/command-line
 ---
 
 ## Using the command line to work with Babelfish

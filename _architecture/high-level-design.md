@@ -2,8 +2,6 @@
 layout: default
 title: High-Level Design
 nav_order: 4
-has_children: false
-permalink: /docs/architecture/high-level-design
 use_mermaid: true
 ---
 

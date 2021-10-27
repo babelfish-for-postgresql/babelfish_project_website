@@ -2,8 +2,6 @@
 layout: default
 title: C#
 nav_order: 15
-has_children: false
-permalink: /docs/connecting-to-babelfish/csharp
 ---
 
 ## Programming in C#

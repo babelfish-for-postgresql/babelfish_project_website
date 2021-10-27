@@ -1,9 +1,7 @@
 ---
 layout: default
-title: Build from source code
+title: Build from Source Code
 nav_order: 13
-has_children: false
-permalink: /docs/installation-guide/build-from-source
 ---
 
 # Compiling Babelfish from source

@@ -2,8 +2,6 @@
 layout: default
 title: Compatibility
 nav_order: 9
-has_children: false
-permalink: /docs/architecture/compatibility
 ---
 
 # Babelfish Compatibility

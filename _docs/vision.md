@@ -2,8 +2,6 @@
 layout: default
 title: Vision for Babelfish
 nav_order: 1
-has_children: false
-permalink: /docs/vision
 ---
 
 ## Vision of Babelfish

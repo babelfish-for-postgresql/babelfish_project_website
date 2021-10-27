@@ -2,8 +2,6 @@
 layout: default
 title: Configuration
 nav_order: 14
-has_children: false
-permalink: /docs/installation-guide/configuration
 ---
 
 ## Configuring Babelfish

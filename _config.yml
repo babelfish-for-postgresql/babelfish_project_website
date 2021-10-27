@@ -76,23 +76,22 @@ defaults:
 collections:
   # Define a collection named "tests", its documents reside in the "_tests" directory
   architecture:
-    permalink: /:collection/:path/
+    permalink: /docs/:collection/:path/
     output: true
   installation:
-    permalink: /:collection/:path/
+    permalink: /docs/installation-guide/:path/
     output: true
   connecting:
-    permalink: /:collection/:path/
+    permalink: /docs/connecting-to-babelfish/:path/
     output: true
   docs:
+    permalink: /:collection/:path/
     output: true
   events:
     output: true
   artifacts:
     output: true
   versions:
-    output: true
-  docs:
     output: true
   faqs:
     output: true
@@ -103,6 +102,7 @@ paginate_path: "/blog/page:num/"
 just_the_docs:
   # Define the collections used in the theme
   collections:
+    docs:
     architecture:
       name: Babelfish Architecture
       # nav_exclude: true
@@ -181,3 +181,4 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - README.md
+  - .idea/
