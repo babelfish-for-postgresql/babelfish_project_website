@@ -1,9 +1,7 @@
 ---
 layout: default
-title: The TDS wire protocol 
+title: The TDS protocol
 nav_order: 8
-has_children: false
-permalink: /docs/architecture/tds-protocol
 ---
 
 ## The TDS wire protocol

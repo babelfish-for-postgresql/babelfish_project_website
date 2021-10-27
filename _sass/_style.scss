@@ -470,7 +470,7 @@ blockquote {
     .logo {
         @include font-size(40);
         @include sans-serif;
-        /*background: url(../img/logo-search.png) 0 0 no-repeat;*/
+        background: url(../images/dark-logo.svg) 0 0 / contain no-repeat;
         color: $background-lightest;
         display: block;
         float: left;
@@ -482,11 +482,6 @@ blockquote {
         width: 250px;
         height: 70px;
         position: relative;
-        svg {
-            position: absolute;
-            top: 1px;
-            left: 1px
-        }
         
         @include respond-min(768px) {
             margin-left: 0;

@@ -1,14 +1,8 @@
 title: Babelfish for PostgreSQL
 description: ""
 
-## To be changed on release
-#baseurl: "/babelfishpg-project-website" # the subpath of your site, e.g. /blog
-#url: "https://babelfish-for-postgresql.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-
-## FIXME!: Changing URLs to the temporal GH pages URI
 baseurl: ""
-url: "https://urban-dollop-7b518de9.pages.github.io"
-#url: "https://urban-dollop-7b518de9.pages.github.io"
+url: "https://babelfishpg.org"
 
 permalink: /:path/
 email: 
@@ -75,24 +69,29 @@ defaults:
 # Define Jekyll collections
 collections:
   # Define a collection named "tests", its documents reside in the "_tests" directory
-  architecture:
-    permalink: /:collection/:path/
-    output: true
   installation:
-    permalink: /:collection/:path/
+    permalink: /docs/installation/:path/
     output: true
-  connecting:
-    permalink: /:collection/:path/
+  usage:
+    permalink: /docs/usage/:path/
+    output: true
+  client:
+    permalink: /docs/client/:path/
+    output: true
+  internals:
+    permalink: /docs/internals/:path/
+    output: true
+  faq:
+    permalink: /docs/faq/:path/
     output: true
   docs:
+    permalink: /:collection/:path/
     output: true
   events:
     output: true
   artifacts:
     output: true
   versions:
-    output: true
-  docs:
     output: true
   faqs:
     output: true
@@ -103,18 +102,21 @@ paginate_path: "/blog/page:num/"
 just_the_docs:
   # Define the collections used in the theme
   collections:
-    architecture:
-      name: Babelfish Architecture
-      # nav_exclude: true
-      nav_fold: true
-      # search_exclude: true
+    docs:
     installation:
-      name: Installation Guide
-      # nav_exclude: true
+      name: Installing Babelfish
+      nav_fold: true      
+    usage:
+      name: Using Babelfish
       nav_fold: true
-      # search_exclude: 
-    connecting:
-      name: Connecting to Babelfish
+    client:
+      name: Client programming
+      nav_fold: true
+    internals:
+      name: Babelfish internals
+      nav_fold: true
+    faq:
+      name: FAQ and getting help
       nav_fold: true
 
 # Enable or disable the site search
@@ -181,3 +183,4 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - README.md
+  - .idea/

@@ -1,9 +1,7 @@
 ---
 layout: default
-title: Other tools
-nav_order: 19
-has_children: false
-permalink: /docs/connecting-to-babelfish/other-tools
+title: Using other client tools
+nav_order: 5
 ---
 
 ## Using other tools

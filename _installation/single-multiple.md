@@ -1,9 +1,7 @@
 ---
 layout: default
-title: Single vs. multiple instances
-nav_order: 11
-has_children: false
-permalink: /docs/architecture/single-multiple
+title: Single vs. multiple database setups
+nav_order: 4
 ---
 ## Single vs. multiple instances
 

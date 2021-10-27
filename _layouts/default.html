@@ -1,7 +1,7 @@
 ---
 layout: table_wrappers
 ---
-{% if page.path contains 'docs' or page.permalink contains 'docs'  %}
+{% if page.path contains 'docs' or page.permalink contains 'docs' or page.url contains 'docs'  %}
   <!DOCTYPE html>
 
   <html lang="{{ site.lang | default: 'en-US' }}">
@@ -85,7 +85,9 @@ layout: table_wrappers
                       </li>
                     </ul>
                   {% else %}
+                    {% if collection_value.name %}
                     <div class="nav-category">{{ collection_value.name }}</div>
+                    {% endif %}
                     {% include nav.html pages=collection key=collection_key %}
                   {% endif %}
                 {% else %}

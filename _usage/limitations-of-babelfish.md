@@ -1,9 +1,7 @@
 ---
 layout: default
-title: Limitations of Babelfish
-nav_order: 2
-has_children: false
-permalink: /docs/limitations-of-babelfish
+title: Babelfish compatibility
+nav_order: 5
 ---
 
 ## T-SQL limitations
@@ -33,7 +31,6 @@ features are discovered, and additional features are added to MS SQL:
 | Assembly modules and CLR routines | Functionality related to assembly modules and CLR routines is not supported. |
 | `CREATE/ALTER/DROP AUTHORIZATION AVAILABILITY GROUP` | Functionality related to these commands. |
 | `CREATE/ALTER/DROP` | Functionality related to these commands. |
-| | |
 | `BACKUP` statement | PostgreSQL snapshots of a database are dissimilar to backup files created in SQL Server. Also, the granularity of when a backup and restore occurs might be different between SQL Server and PostgreSQL. |
 | `BEGIN DISTRIBUTEDi TRANSACTION` | Functionality related to this syntax is not supported |
 | `CREATE/ALTER/DROP BROKER PRIORITY` | Functionality related to these command is |
@@ -44,15 +41,15 @@ features are discovered, and additional features are added to MS SQL:
 | `CERTPRIVATEKEY` function | This function is not supported. |
 | `CERTPROPERTY` function | This function is not supported. |
 | SQL keywords `CLUSTERED` and `NONCLUSTERED` for indexes and constraints | Babelfish accepts and ignores the `CLUSTERED` and `NONCLUSTERED` keywords. |
-| Collation, index on type dependant on the ICU library | An index on a user-defined type that depends on the ICU collation library (the library used by Babelfish) will not be invalidated when the version of the library is changed. For more information about collations, [see](locales.html) |
-| `COLLATIONPROPERTY` function | Collation properties are only implemented for the supported BBF collation types. For more information about collations [see](locales.html) |
+| Collation, index on type dependant on the ICU library | An index on a user-defined type that depends on the ICU collation library (the library used by Babelfish) will not be invalidated when the version of the library is changed. For more information about collations, [see](../locales) |
+| `COLLATIONPROPERTY` function | Collation properties are only implemented for the supported BBF collation types. For more information about collations [see](../locales) |
 | Column default | When creating a column default, the constraint name is ignored. To drop a column default, use the following syntax: `ALTER TABLE...ALTER COLUMN..DROP DEFAULT...` |
 | Column name: `IDENTITYCOL` | This column name is not supported. |
 | Column name: `$IDENTITY` | This column name is not supported. |
 | Column name: `$ROWGUID` | This column name is not supported. |
 | `COLUMNPROPERTY()` | This function is not supported. |
 | Blank column names with no column alias  | The `sqlcmd` and `psql` utilities handle columns with blank names in different ways. SQL Server `sqlcmd` returns a blank column name  PostgreSQL `psql` returns a generated column name. |
-| Column name case | Column names will be stored as lowercase in the PostgreSQL catalogs, and will be returned to the client in lowercase as well. This is also the case when column names are delimited by square brackets or double quotes. Likewise, column alias names in queries will always be returned as lowercase. In general, [all schema identifiers will be stored in lowercase in the PostgreSQL catalogs ](https://www.postgresql.org/docs/current/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS). |
+| Column name case | Column names will be stored as lowercase in the PostgreSQL pg_attribute catalogs, but are stored in whatever case was specified in the `CREATE TABLE` statement in an internal Babelfish catalog. The `SELECT *` operation currently returns column names in lower case rather than in the case specified on the CREATE TABLE statement. This will be fixed in a future version of Babelfish, but until then a workaround is to either specify the columns explicitly in the SELECT statement, or to use SELECT * from a view.|
 | Virtual computed columns (non-persistent) | Will be created as persistent |
 | Column attributes | `ROWGUIDCOL`, `SPARSE`, `FILESTREAM`, `MASKED` |
 | `CREATE/ALTER/DROP COLUMN ENCRYPTION KEY` | Functionality related to these commands. |
@@ -73,7 +70,7 @@ features are discovered, and additional features are added to MS SQL:
 | `ALTER DATABASE` | This syntax is not supported. |
 | `ALTER DATABASE SCOPED CREDENTIAL` | This syntax is not supported. |
 | `CREATE statement` | You can\'t use a `CREATE` statement to create the following object types: `AGGREGATE`, `APPLICATION ROLE`, `ASSEMBLY`, `ASYMMETRIC KEY`, `AUTHORIZATION`, `AVAILABILITY GROUP`, `BROKER`, `PRIORITY`, `COLUMN ENCRYPTION KEY`, `CONTRACT`, `BACKUP CERTIFICATE`, `CREDENTIAL`, `TABLE ...`, `IDENTITY`, `USER`, `CRYPTOGRAPHIC PROVIDER`, `DATABASE ENCRYPTION KEY`, `DATABASE AUDIT`, `SPECIFICATION`, `DEFAULT`, `ENDPOINT`, `EXTERNAL`, `FILE FORMAT`, `EVENT NOTIFICATION`, `EVENT`, `SESSION`, `FULLTEXT CATALOG`, `FULLTEXT INDEX`, `FULLTEXT STOPLIST`, `INDEX`, `SPATIAL INDEX`, `XML`, `INDEX`, `COLUMNSTORE INDEX`, `EXTERNAL LANGUAGE`, `EXTERNAL LIBRARY`, `LOGIN`, `MASTER KEY`, `MESSAGE`, `TYPE`, `EXTERNAL LANGUAGE`, `EXTERNAL LIBRARY`, `LOGIN`, `PARTITION FUNCTION`, `PARTITION SCHEME`, `QUEUE`, `REMOTE SERVICE BINDING`, `RESOURCE POOL`, `EXTERNAL RESOURCE POOL`, `RESOURCE GOVERNOR`, `ROLE`, `ROUTE`, `RULE`, `SCHEMA`, `SEARCH PROPERTY`, `LIST`, `SECURITY POLICY`, `SEARCH PROPERTY LIST`, `SERVER AUDIT`, `SERVER AUDIT SPECIFICATION`, `SERVER ROLE`, `SERVICE`, `SERVICE MASTER KEY`, `SYMMETRIC KEY`, `TABLE ... GRANT/IDENTITY` clauses, `EXTERNAL TABLE`, `TRIGGER` (schema qualified), `TYPE`, `USER`, `WORKLOAD GROUP`, `WORKLOAD CLASSIFIER`, `SELECTIVE XML INDEX`, `XML`, `SCHEMA COLLECTION`
-| `CREATE DATABASE` keywords and clauses | Options except `COLLATE` and `CONTAINMENT=NONE` | are not supported. |
+| `CREATE DATABASE` keywords and clauses | Options except `COLLATE` and `CONTAINMENT=NONE` are not supported. |
 | CREDENTIAL | Functionality related to this object type is not supported. |
 | Cross-database object referemce | Three part object names are not supported. |
 | Remote object references | Four part object names are not supported. |
@@ -124,7 +121,7 @@ features are discovered, and additional features are added to MS SQL:
 | Full-text Search | Full-text search built-in functions and statements are not supported. |
 | `ALTER FUNCTION` | This syntax is not supported. |
 | Function declarations with \> 100 parameters | Function declarations that contain more than  100 parameters are not supported. |
-| Function calls that | DEFAULT is not a supported parameter value | `DEFAULT` is not a supported parameter value for a function call. |
+| Function calls that calls DEFAULT | `DEFAULT` is not a supported parameter value for a function call. |
 | Function calls that include :: | Function calls that include :: are not supported. |
 | Functions, externally defined | Including SQL Common Language Runtime (CLR) |
 | `GEOMETRY` | Datatype and all associated functionality is not supported. |
@@ -155,7 +152,7 @@ features are discovered, and additional features are added to MS SQL:
 | `CREATE/ALTER/DROP INDEX` | This syntax is not supported. |
 | `CREATE/ALTER/DROP SPATIAL INDEX` | This syntax is not supported. |
 | `CREATE/ALTER/DROP XML INDEX` | This syntax is not supported. |
-| Index clauses | The following clauses are ignored: | `FILLFACTOR`, `ALLOW_PAGE_LOCKS`, `ALLOW_ROW_LOCKS`, `PAD_INDEX`, `STATISTICS_NORECOMPUTE`, `OPTIMIZE_FOR_SEQUENTIAL_KEY`, `SORT_IN_TEMPDB`, `DROP_EXISTING`, `ONLINE`, `COMPRESSION_DELAY`, `MAXDOP`, `DATA_COMPRESSION` |
+| Index clauses | The following clauses are ignored: `FILLFACTOR`, `ALLOW_PAGE_LOCKS`, `ALLOW_ROW_LOCKS`, `PAD_INDEX`, `STATISTICS_NORECOMPUTE`, `OPTIMIZE_FOR_SEQUENTIAL_KEY`, `SORT_IN_TEMPDB`, `DROP_EXISTING`, `ONLINE`, `COMPRESSION_DELAY`, `MAXDOP`, `DATA_COMPRESSION` |
 | `INSERT ... TOP` | This syntax is not supported. |
 | `INSERT ... DEFAULT VALUES` | This syntax is not supported. |
 | JSON | Datatypes, Built-in Functions, and statements are unsupported. |
@@ -215,7 +212,7 @@ features are discovered, and additional features are added to MS SQL:
 | `CREATE SCHEMA ...` supporting clause | You can use the `CREATE SCHEMA` command to create an empty schema. Use later commands to create schema objects. |
 | `CREATE/ALTER/DROP SECURITY POLICY` | This syntax is not supported. |
 | `CREATE/ALTER/DROP SEARCH PROPERTY LIST` | This syntax is not supported. |
-| `SEQUENCE` object support | `SEQUENCE` objects are supported for data support | types `tinyint`, `smallint`, `int`, `bigint`, `numeric`, and `decimal`. PostgreSQL supports precision to 19 places for data types `numeric` and `decimal` in a `SEQUENCE`. |
+| `SEQUENCE` object support | `SEQUENCE` objects are supported for data support types `tinyint`, `smallint`, `int`, `bigint`, `numeric`, and `decimal`. PostgreSQL supports precision to 19 places for data types `numeric` and `decimal` in a `SEQUENCE`. |
 | `CREATE/ALTER/DROP SERVER AUDIT` | Functionality related to this object type |
 | `CREATE/ALTER/DROP SERVER AUDIT SPECIFICATION` | Functionality related to this object type |
 | `SELECT PIVOT/UNPIVOT` | This syntax is not supported. |
@@ -321,6 +318,6 @@ features are discovered, and additional features are added to MS SQL:
 
 However, more is missing than just features. In some case there are also some
 corner cases which will provide the end user with a [different
-behavior](/docs/architecture/missing-features) than otherwise expected from MS SQL. It is
+behavior](../missing-features) than otherwise expected from MS SQL. It is
 important to understand those corner cases, as well.
 

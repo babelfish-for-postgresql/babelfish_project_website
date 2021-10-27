@@ -1,9 +1,7 @@
 ---
 layout: default
-title: C#
-nav_order: 15
-has_children: false
-permalink: /docs/connecting-to-babelfish/csharp
+title: Programming in C#
+nav_order: 2
 ---
 
 ## Programming in C#

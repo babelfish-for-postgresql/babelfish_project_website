@@ -1,9 +1,7 @@
 ---
 layout: default
-title: Vision for Babelfish
+title: A vision of Babelfish
 nav_order: 1
-has_children: false
-permalink: /docs/vision
 ---
 
 ## Vision of Babelfish
@@ -49,7 +47,7 @@ The same is of course true for PostgreSQL and therefore some exotic features can
 However, we do our best to keep this list as short as humanly possible.
 
 If you want to find out more about limitations: We have dedicated an entire
-[section dealing with limitations incompatibilities](limitations-of-babelfish).
+[section dealing with limitations incompatibilities](../usage/limitations-of-babelfish).
 
 ### Preparing for the future
 
@@ -60,6 +58,6 @@ We have an exciting future ahead. Many more features will be developed as
 people improve the user experience, raising it to new levels. 
 
 Be part of the community and help to improve Babelfish even more.
-If you want to [contribute to Babelfish](/docs/contributing) simply reach
+If you want to [contribute to Babelfish](contributing) simply reach
 out to the community.
 

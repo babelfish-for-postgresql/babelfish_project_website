@@ -1,9 +1,7 @@
 ---
 layout: default
-title: Java
-nav_order: 16
-has_children: false
-permalink: /docs/connecting-to-babelfish/java
+title: Using JDBC
+nav_order: 4
 ---
 
 ## Utilizing JDBC

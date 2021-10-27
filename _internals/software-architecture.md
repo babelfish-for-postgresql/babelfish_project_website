@@ -1,9 +1,7 @@
 ---
 layout: default
-title: High-Level Design
-nav_order: 4
-has_children: false
-permalink: /docs/architecture/high-level-design
+title: Software architecture
+nav_order: 1
 use_mermaid: true
 ---
 
@@ -12,8 +10,7 @@ couple of areas had to be modified inside the PostgreSQL core. PostgreSQL does
 not offer this capability out-of-the-box, therefore addons have to be provided 
 to make this happen.
 
-The way Babelfish emulates MS SQL behavior is by using [protocol
-hooks](protocol-hooks). The idea is to make database protocols plugable
+The way Babelfish emulates MS SQL behavior is by using [hooks](../postgresql-hooks). The idea is to make database protocols plugable
 which means that PostgreSQL can expose itself as a different database. In fact, it
 is even possible to speak more than a single protocol at the same time, making
 the setup even more flexible and easy to handle. 
@@ -45,8 +42,7 @@ part' is not 100% identical with what one would expect from PostgreSQL. Some
 behavior had to be changed to be MS SQL compatible. Keep that in mind.
 
 To find out more about what has to be changed and which challenges there are, check
-out our section about [limitations and compatibility
-issues](/docs/limitations-of-babelfish).
+out our section about [limitations and compatibility issues](../../usage/limitations-of-babelfish).
 
 ### Databases vs. schemas
 
@@ -71,7 +67,7 @@ schemas. Understanding this fact is important in case you want to organize data
 properly and query it using both protocols.
 
 If you want to find out more about single and multi database 
-setups [check out the documentation](single-multiple)
+setups [check out the documentation](../../installation/single-multiple)
 which deals with this topic in more detail.
 
 ### Extensions needed for Babelfish
@@ -144,4 +140,4 @@ Without it, writing stored procedure code is impossible.
 It contains a large number of functions, system views and other infrastructure
 needed to make PostgreSQL look like MS SQL. 
 
-Babelfish provides [a variety of system views](system-views).
+Babelfish provides [a variety of system views](../system-views).

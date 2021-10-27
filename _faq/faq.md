@@ -1,10 +1,7 @@
 ---
 layout: default
-title: Frequently asked questions
-nav_order: 22
-has_children: false
-permalink: /docs/faq
-footer_nav: true
+title: FAQ
+nav_order: 2
 ---
 
 # Babelfish: Frequently asked questions
@@ -21,7 +18,7 @@ provided under the terms of the [Apache 2.0 license](https://www.apache.org/lice
 
 The Babelfish community tries to be as compatible as possible but there will
 always be some limitations. If you want to learn more about those limitations
-check out our [documentation](limitations-of-babelfish)  which gives a more detailed description.
+check out our [documentation](../../usage/limitations-of-babelfish)  which gives a more detailed description.
 
 Babelfish supports TDS protocol versions 7.1 and higher.
 
@@ -85,10 +82,11 @@ Other tools such as FreeTDS are known to work but are not officially supported
 
 ## Can Babelfish be used as an extension for PostgreSQL?
 
-The ultimate goal is to make that happen. However, Babelfish worrequires [protocol hooks](architecture/protocol-hooks) which are
-currently not part of the standard version of PostgreSQL. Therefore a special
+The ultimate goal is to make that happen. However, to make Babelfish work,
+PostgreSQL needs [postgresql hooks](../../internals/postgresql-hooks) which are
+currently not part of the standard version of PostgreSQL. Therefore, a special
 source tree of Babelfish is needed - 
-check out our [installation guide](installation-guide/build-from-source). 
+check out our [installation guide](../../installation/compiling-babelfish-from-source). 
 
 ## What is the performance difference between MS SQL and Babelfish?
 
@@ -133,12 +131,12 @@ BEGIN
 END; $$ LANGUAGE 'pltsql';
 ```
 If you want to learn more about T-SQL, we have compiled an entire page focusing
-on this important topic: [T-SQL in action](architecture/handling-tsql).
+on this important topic: [T-SQL in action](../../using/handling-tsql).
 
 
 ## Will Babelfish be available for new versions of PostgreSQL?
 
-There are efforts ongoing to incorporate [Babelfish hooks](architecture/protocol-hooks) into PostgreSQL, in the meantime, a separate code tree will be available separate from the extensions, with all the hooks built into it. This code tree will be maintained for the subsequent versions of PostgreSQL
+There are efforts ongoing to incorporate [Babelfish hooks](../../internals/postgresql-hooks) into PostgreSQL, in the meantime, a separate code tree will be available separate from the extensions, with all the hooks built into it. This code tree will be maintained for the subsequent versions of PostgreSQL
 
 
 ## How can I report a bug?

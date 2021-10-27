@@ -1,10 +1,7 @@
 ---
 layout: default
-title: Protocol Hooks
+title: PostgreSQL hooks
 nav_order: 5
-has_children: false
-permalink: /docs/architecture/protocol-hooks
-use_mermaid: true
 ---
 
 ## Protocol hooks
