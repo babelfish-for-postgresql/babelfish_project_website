@@ -9,9 +9,9 @@ nav_order: 1
 Every database behaves differently, often in very subtle ways. This can be quite
 painful for developers. Differences between various vendors do not make
 migrations easier, either. So why not create a solution which allows PostgreSQL
-to present itself as more than just one database? Why not create software which
-is capable of speaking various protocols and presenting itself as more than just
-PostgreSQL?
+to present itself as more than just one kind of database management system? Why 
+not create software which is capable of speaking many database protocols, instead
+of just one? 
 
 Welcome to Babelfish. The idea of the project is to close the gap between
 PostgreSQL and other systems by making PostgreSQL speak other protocols such as
@@ -20,15 +20,15 @@ it easier for people to move to PostgreSQL.
 
 However, moving applications is just one side of the equation. Migrating data
 is one thing - making sure that applications work properly is another, far
-more important thing. In fact, migrating data to PostgreSQL can be relatively
-easy, while migration entire application stacks can be really difficult. 
+more important goal. In fact, migrating data to PostgreSQL can be relatively
+easy, while migrating entire application stacks can be really difficult. 
 
 That's exactly why Babelfish is so important. It allows you to take existing
 applications, hook them up to TDS-enabled PostgreSQL and run them more quickly
-and more easily, even while some migration work might still be going on. 
+and easily, even while some migration work might still be going on. 
 
-A second option is to move application from MS SQL to PostgreSQL without
-touching the application at all. Why is that so important? If you get your
+A second option is to move applications from MS SQL to PostgreSQL without
+touching them at all. Why is that so important? If you get your
 source code under control, life is usually easier. But what if you want to move
 old legacy applications from Microsoft SQL Server to PostgreSQL, legacy applications which cannot be
 modified easily, because the source code is not open, is lost, or is simply too hard to
@@ -43,7 +43,7 @@ While Babelfish can ease a lot of the burden MS SQL users experience, it is not 
 replacement for everything. There is code (especially some server-side 
 procedures related to administration) that is not going
 to work on Babelfish. The reason is that every database engine has limitations.
-The same is of course true for PostgreSQL and therefore some exotic features cannot be mapped. 
+The same is of course true for PostgreSQL and therefore, some exotic features cannot be mapped. 
 However, we do our best to keep this list as short as humanly possible.
 
 If you want to find out more about limitations: We have dedicated an entire

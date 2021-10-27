@@ -7,9 +7,8 @@ nav_order: 4
 ## Utilizing JDBC
 
 After focusing on some other popular programming languages such as Python and C#,
-we also want to sit back and figure out how to use Babelfish in conjunction
-with Java and JDBC. Again, some basic operations will be shown to describe how
-code can be written.
+we also want to consider how to use Babelfish in conjunction with Java and JDBC. 
+Again, some basic operations will be shown to describe how code can be written.
 
 As we have seen before, there is no real difference between writing JDBC client
 code for MS SQL and Babelfish. Still, let's dive in and take a look at some
@@ -130,7 +129,7 @@ public class sample {
 ```
 
 First of all, a standard JDBC connection is created. JDBC is an abstraction
-layer, so the main magic is actually in the connect string: 'jdbc:sqlserver' will
+layer, so the main magic actually is in the connect string: 'jdbc:sqlserver' will
 tell our program to use the MS SQL driver to connect to Babelfish.
 
 Otherwise, the sample code is mostly trivial and pretty much represents a

@@ -18,10 +18,11 @@ This site contains the technical documentation for [Babelfish for PostgreSQL](ht
 
 ## Why use Babelfish for PostgreSQL?
 
-Babelfish for PostgreSQL is well-suited to the following use cases:
+Babelfish for PostgreSQL is well-suited to the following use case:
 
-* Smooth transition of your MSSQL Server compatible source code to an Open Source based database.
-* Babelfish for PostgreSQL intends to move forward on its integration to the PostgreSQL community.
+* A smooth transition of your MSSQL Server-compatible source code to an Open Source-based database.
+
+The Babelfish for PostgreSQL team intends to move forward with the integration of Babelfish into community PostgreSQL.
 
 Component | Purpose
 :--- | :---

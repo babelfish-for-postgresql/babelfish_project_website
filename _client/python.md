@@ -12,7 +12,7 @@ extract some data from the server. Two options will be shown:
 - Using Python and ODBC
 - Using Python and native TDS
 
-Both options are used in real life and thus it makes sense to take a look at
+Both options are used in real life, which is why it makes sense to consider
 both ways to handle Babelfish
 
 
@@ -72,7 +72,7 @@ for row in cursor.fetchall():
 ```
 
 To make this work, we have created a 'sample' table in Babelfish containing a
-couple of rows. Since we use a simple 'SELECT * FROM sample',
+couple of rows. Since we use a simple `SELECT * FROM sample`,
 the example is going to work with any data in 'sample'. But let's focus on the 
 code: The first thing we do here is to include pyodbc. In case it is not 
 available, make sure that all relevant packages are installed on your system. 

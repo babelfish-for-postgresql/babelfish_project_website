@@ -161,18 +161,18 @@ The first thing the code does is to include some header files. What we see here
 are sybfront.h, sybdb.h and syberror.h. In the next step, we define message and
 error handlers. Without these functions, the code can be executed normally, but the
 user experience won't be what people usually expect from a proper application.
-That's why it makes sense to have such functions around. In our case, all they do
-is to send messages to stderr. However, it is up to you how you want to handle
-the log.
+That's why it makes sense to have message and error handlers around. In our case, 
+all they do is to send messages to stderr. However, it is up to you to decide how 
+you want to handle the log.
 
-Then we can already get into the structures and continue the creation of our
+Then, we can get into the structures and continue the creation of our
 connection. It is usually not strictly necessary to set the desired port as
 an environment variable, but we have found it useful to do that in many cases. An
-example how to achieve that has been included in this sample.
+example of how to achieve that has been included in this sample.
 
-Finally the connection is opened (dbopen) and we check for errors. Overall more
-code is needed than in the case of a simple libpq program, but it is not too
-complicated either. 
+Finally, the connection is opened (dbopen) and we check for errors. Overall, more
+code is needed than in the case of a simple libpq program, but fortunately, it is 
+not too complicated. 
 
 
 

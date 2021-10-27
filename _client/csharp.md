@@ -8,7 +8,7 @@ nav_order: 2
 
 MS SQL is one of the dominant database systems on Microsoft Windows
 platforms and C# is one of the more popular languages used in this ecosystem.
-So it is important to see how a C# connection can be established and how
+That means it's important to see how a C# connection can be established and how
 data can be fetched. 
 
 ### Sample code in C#
@@ -152,20 +152,20 @@ namespace sample
 ```
 
 The code is relatively straightforward. First, a connection is allocated and
-opened. In C#, error handling can easily be done using try / catch. In our case
-the program simply terminates in case no connection can be opened. 
+opened. In C#, error handling can easily be done using try / catch. In our case,
+the program simply terminates in the event that no connection can be opened. 
 
-Then we call the select\_all function. What it does is to create an SQL command
+Then we call the select\_all function. What that function does is to create an SQL command
 which simply reads all the data in a 'sample' table and loops over all rows and
 all columns to display them on the screen. At the end, the SqlDataReader is
 closed. This constitutes a simple example showing how data can easily be extracted from
 Babelfish.
 
 The next thing is an example showing how to run a transaction. The way to do
-that is to run the BeginTransaction method. After running the SQL we can commit
+that is to run the BeginTransaction method. After running the SQL, we can commit
 the transaction. Error handling is done by the try / catch block.
 
 The code can be compiled using Microsoft Studio or any other tool of your
 choice. What is important to note is that you can implement code for Babelfish
-the same way you would normally implement code, talking to MS SQL directly.
+the same way you would normally implement code: by talking to MS SQL directly.
 
