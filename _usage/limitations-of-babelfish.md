@@ -31,7 +31,6 @@ features are discovered, and additional features are added to MS SQL:
 | Assembly modules and CLR routines | Functionality related to assembly modules and CLR routines is not supported. |
 | `CREATE/ALTER/DROP AUTHORIZATION AVAILABILITY GROUP` | Functionality related to these commands. |
 | `CREATE/ALTER/DROP` | Functionality related to these commands. |
-| | |
 | `BACKUP` statement | PostgreSQL snapshots of a database are dissimilar to backup files created in SQL Server. Also, the granularity of when a backup and restore occurs might be different between SQL Server and PostgreSQL. |
 | `BEGIN DISTRIBUTEDi TRANSACTION` | Functionality related to this syntax is not supported |
 | `CREATE/ALTER/DROP BROKER PRIORITY` | Functionality related to these command is |
@@ -71,7 +70,7 @@ features are discovered, and additional features are added to MS SQL:
 | `ALTER DATABASE` | This syntax is not supported. |
 | `ALTER DATABASE SCOPED CREDENTIAL` | This syntax is not supported. |
 | `CREATE statement` | You can\'t use a `CREATE` statement to create the following object types: `AGGREGATE`, `APPLICATION ROLE`, `ASSEMBLY`, `ASYMMETRIC KEY`, `AUTHORIZATION`, `AVAILABILITY GROUP`, `BROKER`, `PRIORITY`, `COLUMN ENCRYPTION KEY`, `CONTRACT`, `BACKUP CERTIFICATE`, `CREDENTIAL`, `TABLE ...`, `IDENTITY`, `USER`, `CRYPTOGRAPHIC PROVIDER`, `DATABASE ENCRYPTION KEY`, `DATABASE AUDIT`, `SPECIFICATION`, `DEFAULT`, `ENDPOINT`, `EXTERNAL`, `FILE FORMAT`, `EVENT NOTIFICATION`, `EVENT`, `SESSION`, `FULLTEXT CATALOG`, `FULLTEXT INDEX`, `FULLTEXT STOPLIST`, `INDEX`, `SPATIAL INDEX`, `XML`, `INDEX`, `COLUMNSTORE INDEX`, `EXTERNAL LANGUAGE`, `EXTERNAL LIBRARY`, `LOGIN`, `MASTER KEY`, `MESSAGE`, `TYPE`, `EXTERNAL LANGUAGE`, `EXTERNAL LIBRARY`, `LOGIN`, `PARTITION FUNCTION`, `PARTITION SCHEME`, `QUEUE`, `REMOTE SERVICE BINDING`, `RESOURCE POOL`, `EXTERNAL RESOURCE POOL`, `RESOURCE GOVERNOR`, `ROLE`, `ROUTE`, `RULE`, `SCHEMA`, `SEARCH PROPERTY`, `LIST`, `SECURITY POLICY`, `SEARCH PROPERTY LIST`, `SERVER AUDIT`, `SERVER AUDIT SPECIFICATION`, `SERVER ROLE`, `SERVICE`, `SERVICE MASTER KEY`, `SYMMETRIC KEY`, `TABLE ... GRANT/IDENTITY` clauses, `EXTERNAL TABLE`, `TRIGGER` (schema qualified), `TYPE`, `USER`, `WORKLOAD GROUP`, `WORKLOAD CLASSIFIER`, `SELECTIVE XML INDEX`, `XML`, `SCHEMA COLLECTION`
-| `CREATE DATABASE` keywords and clauses | Options except `COLLATE` and `CONTAINMENT=NONE` | are not supported. |
+| `CREATE DATABASE` keywords and clauses | Options except `COLLATE` and `CONTAINMENT=NONE` are not supported. |
 | CREDENTIAL | Functionality related to this object type is not supported. |
 | Cross-database object referemce | Three part object names are not supported. |
 | Remote object references | Four part object names are not supported. |
@@ -122,7 +121,7 @@ features are discovered, and additional features are added to MS SQL:
 | Full-text Search | Full-text search built-in functions and statements are not supported. |
 | `ALTER FUNCTION` | This syntax is not supported. |
 | Function declarations with \> 100 parameters | Function declarations that contain more than  100 parameters are not supported. |
-| Function calls that | DEFAULT is not a supported parameter value | `DEFAULT` is not a supported parameter value for a function call. |
+| Function calls that calls DEFAULT | `DEFAULT` is not a supported parameter value for a function call. |
 | Function calls that include :: | Function calls that include :: are not supported. |
 | Functions, externally defined | Including SQL Common Language Runtime (CLR) |
 | `GEOMETRY` | Datatype and all associated functionality is not supported. |
@@ -153,7 +152,7 @@ features are discovered, and additional features are added to MS SQL:
 | `CREATE/ALTER/DROP INDEX` | This syntax is not supported. |
 | `CREATE/ALTER/DROP SPATIAL INDEX` | This syntax is not supported. |
 | `CREATE/ALTER/DROP XML INDEX` | This syntax is not supported. |
-| Index clauses | The following clauses are ignored: | `FILLFACTOR`, `ALLOW_PAGE_LOCKS`, `ALLOW_ROW_LOCKS`, `PAD_INDEX`, `STATISTICS_NORECOMPUTE`, `OPTIMIZE_FOR_SEQUENTIAL_KEY`, `SORT_IN_TEMPDB`, `DROP_EXISTING`, `ONLINE`, `COMPRESSION_DELAY`, `MAXDOP`, `DATA_COMPRESSION` |
+| Index clauses | The following clauses are ignored: `FILLFACTOR`, `ALLOW_PAGE_LOCKS`, `ALLOW_ROW_LOCKS`, `PAD_INDEX`, `STATISTICS_NORECOMPUTE`, `OPTIMIZE_FOR_SEQUENTIAL_KEY`, `SORT_IN_TEMPDB`, `DROP_EXISTING`, `ONLINE`, `COMPRESSION_DELAY`, `MAXDOP`, `DATA_COMPRESSION` |
 | `INSERT ... TOP` | This syntax is not supported. |
 | `INSERT ... DEFAULT VALUES` | This syntax is not supported. |
 | JSON | Datatypes, Built-in Functions, and statements are unsupported. |
@@ -213,7 +212,7 @@ features are discovered, and additional features are added to MS SQL:
 | `CREATE SCHEMA ...` supporting clause | You can use the `CREATE SCHEMA` command to create an empty schema. Use later commands to create schema objects. |
 | `CREATE/ALTER/DROP SECURITY POLICY` | This syntax is not supported. |
 | `CREATE/ALTER/DROP SEARCH PROPERTY LIST` | This syntax is not supported. |
-| `SEQUENCE` object support | `SEQUENCE` objects are supported for data support | types `tinyint`, `smallint`, `int`, `bigint`, `numeric`, and `decimal`. PostgreSQL supports precision to 19 places for data types `numeric` and `decimal` in a `SEQUENCE`. |
+| `SEQUENCE` object support | `SEQUENCE` objects are supported for data support types `tinyint`, `smallint`, `int`, `bigint`, `numeric`, and `decimal`. PostgreSQL supports precision to 19 places for data types `numeric` and `decimal` in a `SEQUENCE`. |
 | `CREATE/ALTER/DROP SERVER AUDIT` | Functionality related to this object type |
 | `CREATE/ALTER/DROP SERVER AUDIT SPECIFICATION` | Functionality related to this object type |
 | `SELECT PIVOT/UNPIVOT` | This syntax is not supported. |

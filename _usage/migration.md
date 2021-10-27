@@ -15,11 +15,11 @@ smooth transition to Babelfish.
 
 ### Create a Babelfish deployment
 
-The first thing to do is to [install Babelfish](../installation/compiling-babelfish-from-source) and
+The first thing to do is to [install Babelfish](/docs/installation/compiling-babelfish-from-source/) and
 make sure that a connection can be established. 
 
 A good way to check connectivity on Linux is to use the FreeTDS command line
-client as described in the [Babelfish documentation](../command-line).
+client as described in the [Babelfish documentation](/docs/usage/command-line).
 
 Once your deployment is ready for action, you can move forward and proceed with
 the next step.
@@ -57,7 +57,7 @@ Make code adjustments as needed. Most of the code is expected to work out of the
 box. 
 
 In case you are facing errors or problems, we recommend you check out our [discussion about
-differences in functionality](/docs/limitations-of-babelfish).
+differences in functionality](/docs/usage/limitations-of-babelfish).
 
 In the next step you can already move the data from one server to the other.
 Once the data structure has been adjusted properly and once it has been deployed
@@ -71,7 +71,7 @@ your database connections. Simply make your applications point to the new data
 source and launch your tests.
 
 To a client, Babelfish is expected to look just like a normal SQL Server. Unless
-you hit a [missing feature](/docs/architecture/missing-features) your apps are expected to work
+you hit a [missing feature](/docs/usage/missing-features) your apps are expected to work
 normally under most circumstances. However, we recommend thorough testing, and
 adjusting details here and there.
 
