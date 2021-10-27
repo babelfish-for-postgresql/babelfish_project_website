@@ -1,7 +1,7 @@
 ---
 layout: default
-title: System Views
-nav_order: 13
+title: Babelfish system view
+nav_order: 4
 ---
 
 ## Babelfish system views 

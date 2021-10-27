@@ -1,8 +1,7 @@
 ---
 layout: default
-title: Protocol Hooks
+title: PostgreSQL hooks
 nav_order: 5
-has_children: false
 ---
 
 ## Protocol hooks

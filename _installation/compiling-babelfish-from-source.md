@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Build from Source Code
-nav_order: 13
+title: Compiling Babelfish from source
+nav_order: 2
 ---
 
 # Compiling Babelfish from source
@@ -39,6 +39,8 @@ To compile Babelfish, you have to make sure that a variety of software component
 are available on your system. These packages should be part of every modern
 Linux distribution, under similar - but not identical - names. 
 
+Also keep in mind that you will need a user with root priviledges, so you can be able to run commands with `sudo`
+
 If you want to run more than just the bare version of Babelfish, we recommend
 installing the following additional packages on top of the hard requirements listed
 above.
@@ -52,8 +54,6 @@ above.
 - [Zlib](https://zlib.net/)
 - [OpenLDAP](https://www.openldap.org/) development libraries
 - [Linux-PAM](http://www.linux-pam.org/) development libraries
-- [gettext](https://www.gnu.org/software/gettext/)
-- [Python 2.7](https://www.python.org/downloads/release/python-2714/)
 - [OSSP uuid](http://www.ossp.org/pkg/lib/uuid/) development libraries
 - [LLVM-based linker](https://lld.llvm.org/)
 - [pkg-config](https://linux.die.net/man/1/pkg-config)
@@ -66,14 +66,11 @@ If you happen to use Debian or Ubuntu, you might want to use the following
 commands to install dependencies:
 
 ``` sh
-apt install -y build-essential flex libxml2-dev libxslt-dev libssl-dev
-apt install -y libreadline-dev zlib1g-dev libldap2-dev libpam0g-dev gettext python2.7 python2.7-dev
-apt install -y uuid uuid-dev lld pkg-config libossp-uuid-dev gnulib
-apt install -y libxml2-utils xsltproc icu-devtools libicu66 libicu-dev gawk
+sudo apt install -y build-essential flex libxml2-dev libxslt-dev libssl-dev
+sudo apt install -y libreadline-dev zlib1g-dev libldap2-dev libpam0g-dev bison
+sudo apt install -y uuid uuid-dev lld pkg-config libossp-uuid-dev gnulib
+sudo apt install -y libxml2-utils xsltproc icu-devtools libicu66 libicu-dev gawk
 ```
-
-Nonetheless, for bison it is better to install it from its source code.
-
 
 ## Compiling the code 
 
@@ -159,7 +156,7 @@ In order to build the extensions we would need to install some additional tools:
 You can install most of these tools by running the command:
 
 ``` sh
-apt install -y openjdk-8-jre openssl python-dev libpq-dev pkgconf unzip libutfcpp-dev
+sudo apt install -y openjdk-8-jre openssl python-dev libpq-dev pkgconf unzip libutfcpp-dev
 ```
 
 For the CMake and Antlr4 Runtime, it's better to install it from the source code. 
@@ -170,9 +167,9 @@ For the CMake and Antlr4 Runtime, it's better to install it from the source code
 We can install CMake by running the following script:
 
 ``` sh
-curl -L https://github.com/Kitware/CMake/releases/download/v3.20.6/cmake-3.20.6-linux-x86_64.sh --output /opt/cmake-3.20.6-linux-x86_64.sh
-chmod +x /opt/cmake-3.20.6-linux-x86_64.sh 
-/opt/cmake-3.20.6-linux-x86_64.sh --prefix=/usr/local --skip-license
+sudo curl -L https://github.com/Kitware/CMake/releases/download/v3.20.6/cmake-3.20.6-linux-x86_64.sh --output /opt/cmake-3.20.6-linux-x86_64.sh
+sudo chmod +x /opt/cmake-3.20.6-linux-x86_64.sh 
+sudo /opt/cmake-3.20.6-linux-x86_64.sh --prefix=/usr/local --skip-license
 ```
 
 
@@ -185,23 +182,23 @@ Keeping this in mind, we can install Antlr4 runtime by running:
 
 ``` sh
 # Dowloads the compressed Antlr4 Runtime sources on /opt/antlr4-cpp-runtime-4.9.2-source.zip 
-curl https://www.antlr.org/download/antlr4-cpp-runtime-4.9.2-source.zip \
+sudo curl https://www.antlr.org/download/antlr4-cpp-runtime-4.9.2-source.zip \
   --output /opt/antlr4-cpp-runtime-4.9.2-source.zip 
 
 # Uncompress the source into /opt/antlr4
-unzip -d /opt/antlr4 /opt/antlr4-cpp-runtime-4.9.2-source.zip
+sudo unzip -d /opt/antlr4 /opt/antlr4-cpp-runtime-4.9.2-source.zip
 
-mkdir /opt/antlr4/build 
+sudo mkdir /opt/antlr4/build 
 cd /opt/antlr4/build
 
 EXTENSIONS_SOURCE_CODE_PATH="<the patch in which you downloaded the Babelfish extensions source code>"
 
 # Generates the make files for the build
-cmake .. -DANTLR_JAR_LOCATION="$EXTENSIONS_SOURCE_CODE_PATH/contrib/babelfishpg_tsql/antlr/thirdparty/antlr/antlr-4.9.2-complete.jar" \
+sudo cmake .. -DANTLR_JAR_LOCATION="$EXTENSIONS_SOURCE_CODE_PATH/contrib/babelfishpg_tsql/antlr/thirdparty/antlr/antlr-4.9.2-complete.jar" \
          -DCMAKE_INSTALL_PREFIX=/usr/local -DWITH_DEMO=True
 # Compiles and install
 make
-make install
+sudo make install
 ```
 
 Now that we have the antlr4 runtime installed, we need to copy the
@@ -209,7 +206,7 @@ Now that we have the antlr4 runtime installed, we need to copy the
 engine libs folder. We can do that by running the following command:
 
 ``` sh
-cp /usr/local/lib/libantlr4-runtime.so.4.9.2 "$INSTALLATION_PATH/lib"
+sudo cp /usr/local/lib/libantlr4-runtime.so.4.9.2 "$INSTALLATION_PATH/lib"
 ```
 
 
@@ -245,22 +242,22 @@ extensions one by one. We do it with the following script:
 # Install babelfishpg_money extension
 cd contrib/babelfishpg_money
 make
-make install
+sudo make install
 
 # Install babelfishpg_common extension
 cd ../babelfishpg_common
 make 
-make install
+sudo make install
 
 # Install babelfishpg_tds extension
 cd ../babelfishpg_tds
 make 
-make install
+sudo make install
 
 # Installs the babelfishpg_tsql extension
 cd ../babelfishpg_tsql
 make 
-make install
+sudo make install
 ```
 
 Once all extensions have been compiled you can start PostgreSQL manually.

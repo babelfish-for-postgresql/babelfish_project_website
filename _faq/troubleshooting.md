@@ -1,10 +1,7 @@
 ---
 layout: default
 title: Troubleshooting
-nav_order: 20
-has_children: false
-permalink: /docs/troubleshooting/
-footer_nav: true
+nav_order: 3
 ---
 
 ## Babelfish troubleshooting
@@ -25,7 +22,7 @@ engines as well. To handle the specific behavior, code has to be loaded. In case
 this is not done, Babelfish will not expose itself as MS SQL Server on TCP port
 1433.
 
-Check out the [installation page](/docs/installation-guide/build-from-source) and make sure that
+Check out the [installation page](../../installation/compiling-babelfish-from-source) and make sure that
 everything of importance has been done.
 
 A second problem that may occur is that the port is closed due to firewall issues. Make

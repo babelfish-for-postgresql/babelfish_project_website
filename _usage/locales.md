@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Locales and Language Support  
-nav_order: 7
+title: Locales and language support
+nav_order: 4
 ---
 
 ## Locales and language support

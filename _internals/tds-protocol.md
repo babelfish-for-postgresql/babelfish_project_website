@@ -1,6 +1,6 @@
 ---
 layout: default
-title: The TDS Wire Protocol 
+title: The TDS protocol
 nav_order: 8
 ---
 

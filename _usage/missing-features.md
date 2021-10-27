@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Missing Features
+title: Babelfish / MS SQL comparison
 nav_order: 6
 ---
 
@@ -16,13 +16,13 @@ each other and which incompatibilities are known to exist.
 - Babelfish: This is currently not supported.
 
 
-#### COMPATIBILITY_LEVEL
+#### `COMPATIBILITY_LEVEL`
 
 - MS SQL: Backwards compatibility is set with <code>COMPATIBILITY_LEVEL</code>
 - Babelfish: <code>ALTER DATABASE... SET COMPATIBILITY LEVEL</code> will be accepted and ignored 
 
 
-#### sysdatabases.cmptlevel
+#### `sysdatabases.cmptlevel`
 
 - MS SQL: <code>sysdatabases.cmptlevel</code> will always be NULL
 - Babelfish: <code>ALTER DATABASE... SET COMPATIBILITY LEVEL</code> will be accepted and ignored
@@ -146,7 +146,7 @@ each other and which incompatibilities are known to exist.
 	  currently supported.
 
 
-#### NEWSEQUENTIALID() function
+#### `NEWSEQUENTIALID()` function
 
 - MS SQL: SQL Server supports the <code>NEWSEQUENTIALID()</code> function to 
 	  generate a GUID value, which is guaranteed to have a higher value than 
@@ -170,7 +170,7 @@ each other and which incompatibilities are known to exist.
 - Babelfish: Currently not supported.
 
 
-#### ROWGUIDCOL
+#### `ROWGUIDCOL`
 
 - Babelfish: Currently ignored. Queries referencing <code>$GUIDGOL</code> will 
 	  cause a syntax error.
@@ -182,7 +182,7 @@ each other and which incompatibilities are known to exist.
 	  table-valued functions is currently not supported.
 
 
-#### SEQUENCE objects support
+#### `SEQUENCE` objects support
 
 - MS SQL: <code>SEQUENCE</code> objects are supported for data types 
 	  <code>tiny int</code>, <code>smallint</code>, <code>int</code>, 
@@ -194,7 +194,7 @@ each other and which incompatibilities are known to exist.
 	  objects.
 
 
-#### SQL keywords CLUSTERED and UNCLUSTERED constraints
+#### SQL keywords `CLUSTERED` and `UNCLUSTERED` constraints
 
 - Babelfish: Currently not supported. PostgreSQL ignores <code>CLUSTERED</code> 
 	  and <code>UNCLUSTERED</code> keywords for indexes or constraints. 
@@ -204,20 +204,20 @@ each other and which incompatibilities are known to exist.
 	  precise effects are non-trivial.
 
 
-#### SQL keyword FILLFACTOR
+#### SQL keyword `FILLFACTOR`
 
 - MS SQL: Related to SQL Server-specific aspects of data storage. 
 - Babelfish: Currently ignored.
 
 
-#### SQL keyword NONCLUSTERED for indexes and constraints
+#### SQL keyword `NONCLUSTERED` for indexes and constraints
 
 - MS SQL: SQL Server uses <code>NONCLUSTERED</code> keywords for indexes 
 	  and constraints.
 - Babelfish: Currently ignored. PostgreSQL supports heap structures.
 
 
-#### SQL keyword clause NOT FOR REPLICATION
+#### SQL keyword clause `NOT FOR REPLICATION`
 
 - MS SQL: Related to SQL Server-specific aspects of data storage.<
 - Babelfish: Currently ignored
@@ -525,6 +525,8 @@ what is possible:
 - <code>language_non_english</code>: Create databases with default languages other than
   english
 - <code>compatibility_level</code>: Currently no options.
+- <code>CHARINDEX</index>: not supported on case-insensitive or accent-insensitive collations
+
 - <code>fulltext</code>: Databases with default fulltext languages. <code>CREATE FULLTEXT INDEX,
   ALTER FULL TEXT INDEX, DROP FULL TEXT INDEX</code>
 - <code>schemabinding_function</code>: Handles errors when no SCHEMABINDING option is given
@@ -556,35 +558,35 @@ The following is a list of functions that are not supported by Babelfish:
 | MSSQL Function | Babelfish potential workaround |
 | -------------- | ------------------------------ |
 | [app_name](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/app-name-transact-sql.md) | `SELECT application_name FROM pg_stat_activity WHERE pid = pg_backend_pid();` |
-| [approx_count_distinct](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/approx-count-distinct-transact-sql.md) | |
-| [assemblyproperty](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/assemblyproperty-transact-sql.md) | |
+| [approx_count_distinct](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/approx-count-distinct-transact-sql.md) |
+| [assemblyproperty](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/assemblyproperty-transact-sql.md) |
 | [asymkey_id](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/asymkey-id-transact-sql.md) | [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) | 
 | [asymkeyproperty](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/asymkeyproperty-transact-sql.md) | [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) |
 | [atn2](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/atn2-transact-sql.md) | atan2 |
-| [cast_and_convert](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/cast-and-convert-transact-sql.md) | |
+| [cast_and_convert](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/cast-and-convert-transact-sql.md) |
 | [cert_id](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/cert-id-transact-sql.md) | Use [OpenSSL flag](https://www.postgresql.org/docs/13/install-procedure.html) at build time |
 | [certencoded](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/certencoded-transact-sql.md) | Use [OpenSSL flag](https://www.postgresql.org/docs/13/install-procedure.html) at build time |
 | [certprivatekey](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/certprivatekey-transact-sql.md) | Use [OpenSSL flag](https://www.postgresql.org/docs/13/install-procedure.html) at build time |
 | [certproperty](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/certproperty-transact-sql.md) | Use [OpenSSL flag](https://www.postgresql.org/docs/13/install-procedure.html) at build time |
-| [checksum_agg](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/checksum-agg-transact-sql.md) | |
+| [checksum_agg](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/checksum-agg-transact-sql.md) |
 | [col_length](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/col-name-transact-sql.md) | User Defined Function |
 | [col_name](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/col-name-transact-sql.md) | `SELECT attname FROM pg_attribute WHERE attrelid = object_id('public.info') and attnum = 1` |
 | [columnproperty](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/columnproperty-transact-sql.md) | User defined function to match property names                               |
 | [columns_updated](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/columns-updated-transact-sql.md) | SQL allows you to define aliases for the "old" and "new" rows or tables for use in the definition of the triggered action (e.g., CREATE TRIGGER ... ON tablename REFERENCING OLD ROW AS somename NEW ROW AS othername ...). More information [here](https://www.postgresql.org/docs/13/sql-createtrigger.html) | 
 | [compress](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/compress-transact-sql.md) | [Gzip extension](https://pgxn.org/dist/gzip/?spm=a2c65.11461447.0.0.7ab13d3a2dbsHD) |
 | [connections](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/connections-transact-sql.md) | Can only get active/idle connections with `SELECT count(*) FROM pg_stat_activity;` |
-| [context_info](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/context-info-transact-sql.md) | |
+| [context_info](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/context-info-transact-sql.md) |
 | [cpu_busy](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/cpu-busy-transact-sql.md) | |
 | [crypt_gen_random](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/crypt-gen-random-transact-sql.md) | Use [gen_random_uuid()](https://www.postgresql.org/docs/13/pgcrypto.html#id-1.11.7.34.10) with [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) |
-| [current_request_id](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/current-request-id-transact-sql.md) | |
-| [current_timezone](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/current-timezone-transact-sql.md) | |
-| [current_transaction_id](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/current-transaction-id-transact-sql.md) | |
+| [current_request_id](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/current-request-id-transact-sql.md) |
+| [current_timezone](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/current-timezone-transact-sql.md) |
+| [current_transaction_id](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/current-transaction-id-transact-sql.md) |
 | [database_principal_id](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/database-principal-id-transact-sql.md) | See [pg_database](https://www.postgresql.org/docs/13/catalog-pg-database.html), [pg_db_role_setting](https://www.postgresql.org/docs/13/catalog-pg-db-role-setting.html), [pg_roles](https://www.postgresql.org/docs/13/view-pg-roles.html) |
 | [datediff_big](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/datediff-big-transact-sql.md) | Need to create UDF similar to one in [this post](http://www.sqlines.com/postgresql/how-to/datediff) using DATE_PART |
 | [datefirst](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/datefirst-transact-sql.md) | `SELECT setting FROM pg_settings WHERE name = 'datefirst'` |
-| [datetimeoffsetfromparts](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/datetimeoffsetfromparts-transact-sql.md) | |
+| [datetimeoffsetfromparts](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/datetimeoffsetfromparts-transact-sql.md) |
 | [dbts](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/dbts-transact-sql.md) | Use txid_currrent() |
-| [decompress](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/decompress-transact-sql.md) | |
+| [decompress](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/decompress-transact-sql.md) |
 | [decryptbyasymkey](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/decryptbyasymkey-transact-sql.md) | [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) |
 | [decryptbycert](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/decryptbycert-transact-sql.md) | [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) |
 | [decryptbykey](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/decryptbykey-transact-sql.md) | [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) |
@@ -596,17 +598,17 @@ The following is a list of functions that are not supported by Babelfish:
 | [encryptbycert](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/encryptbycert-transact-sql.md) | [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) |
 | [encryptbykey](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/encryptbykey-transact-sql.md) | [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) |
 | [encryptbypassphrase](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/encryptbypassphrase-transact-sql.md) | [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) |
-| [eomonth](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/eomonth-transact-sql.md) | |
-| [eventdata](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/eventdata-transact-sql.md) | |
-| [file_id](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/file-id-transact-sql.md) | |
-| [file_idex](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/file-idex-transact-sql.md) | |
-| [file_name](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/file-name-transact-sql.md) | |
-| [filegroup_id](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/filegroup-id-transact-sql.md) | |
-| [filegroup_name](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/filegroup-name-transact-sql.md) | | 
-| [filegroupproperty](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/filegroupproperty-transact-sql.md) | |
-| [fileproperty](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/fileproperty-transact-sql.md) | |
-| [filepropertyex](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/filepropertyex-transact-sql.md) | |
-| [format](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/format-transact-sql.md) | Currently, there is no overrtide for the PF Format command so it behaves completely different than T-SQL. The [to_char function](https://www.postgresql.org/docs/13/functions-formatting.html) is the closest match to T-SQL format.) | |
+| [eomonth](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/eomonth-transact-sql.md) |
+| [eventdata](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/eventdata-transact-sql.md) |
+| [file_id](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/file-id-transact-sql.md) |
+| [file_idex](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/file-idex-transact-sql.md) |
+| [file_name](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/file-name-transact-sql.md) |
+| [filegroup_id](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/filegroup-id-transact-sql.md) |
+| [filegroup_name](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/filegroup-name-transact-sql.md) |
+| [filegroupproperty](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/filegroupproperty-transact-sql.md) |
+| [fileproperty](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/fileproperty-transact-sql.md) |
+| [filepropertyex](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/filepropertyex-transact-sql.md) |
+| [format](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/format-transact-sql.md) | Currently, there is no overrtide for the PF Format command so it behaves completely different than T-SQL. The [to_char function](https://www.postgresql.org/docs/13/functions-formatting.html) is the closest match to T-SQL format.) |
 | [fulltextcatalogproperty](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/fulltextcatalogproperty-transact-sql.md) | |
 | [fulltextserviceproperty](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/fulltextserviceproperty-transact-sql.md) | |
 | [get_filestream_transaction_context](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/t-sql/functions/get-filestream-transaction-context-transact-sql.md) | |

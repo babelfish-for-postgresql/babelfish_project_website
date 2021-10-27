@@ -1,8 +1,7 @@
 ---
 layout: default
-title: Migrating to Babelfish
+title: Using Babelfish to migrate to PostgreSQL
 nav_order: 3
-has_children: false
 ---
 
 ## Migrating to Babelfish
@@ -16,11 +15,11 @@ smooth transition to Babelfish.
 
 ### Create a Babelfish deployment
 
-The first thing to do is to [install Babelfish](/docs/installation-guide/build-from-source) and
+The first thing to do is to [install Babelfish](../installation/compiling-babelfish-from-source) and
 make sure that a connection can be established. 
 
 A good way to check connectivity on Linux is to use the FreeTDS command line
-client as described in the [Babelfish documentation](/docs/connecting-to-babelfish/command-line).
+client as described in the [Babelfish documentation](../command-line).
 
 Once your deployment is ready for action, you can move forward and proceed with
 the next step.
