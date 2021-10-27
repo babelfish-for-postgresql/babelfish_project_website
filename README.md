@@ -1,4 +1,4 @@
-<img src="https://babelfishpg.org/assets/img/babelfishpg-logo-themed.svg" height="64px">
+![Babelfish for PostgreSQL logo](assets/images/themed-logo.svg)
 
 - [babelfishpg.org Website](#babelfishpgorg-website)
   - [Getting Help](#getting-help)

@@ -11,7 +11,9 @@
       {% endif %}
     {% endunless %}
 
-    <link rel="shortcut icon" type="image/png" href="{{'/assets/images/icon.svg' | relative_url }}">
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" type="image/png" href="{{'assets/images/themed-icon.svg' | relative_url }}">
+    <link rel="icon" href="{{'assets/images/themed-icon.svg' | relative_url }}">
 
     <link rel="stylesheet" href="{{ '/assets/css/just-the-docs-default.css' | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
@@ -94,9 +96,8 @@
 
     {{ page.link_rel_tags }}
     <!-- Favicons -->
-    <link rel="apple-touch-icon" type="image/png" href="{{'assets/images/icon.svg' | relative_url }}">
-    <link rel="icon" type="image/png"  href="{{'assets/images/icon.svg' | relative_url }}">
-    <link rel="shortcut icon" type="image/png" href="{{'/assets/images/icon.svg' | relative_url }}">
+    <link rel="apple-touch-icon" type="image/png" href="{{'assets/images/themed-icon.svg' | relative_url }}">
+    <link rel="icon" href="{{'assets/images/themed-icon.svg' | relative_url }}">
 
     <link rel="canonical" href="{%if page.canonical %}{{page.canonical}}{%else%}{{site.url | append: page.url}}{%endif%}" />
 
