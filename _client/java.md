@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Java
-nav_order: 16
+title: Using JDBC
+nav_order: 4
 ---
 
 ## Utilizing JDBC

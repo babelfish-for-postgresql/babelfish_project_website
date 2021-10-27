@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Python
-nav_order: 17
+title: Using Python
+nav_order: 3
 ---
 
 ## Using Python with Babelfish

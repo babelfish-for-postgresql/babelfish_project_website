@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Handling Transact-SQL
-nav_order: 10
+title: Handling T-SQL 
+nav_order: 2
 ---
 
 ## Handling Transact-SQL
@@ -14,7 +14,7 @@ procedures. The MS SQL equivalent to PL/pgSQL is called T-SQL (Transact-SQL).
 To make Babelfish as compatible with MS SQL as possible, it provides a T-SQL
 implementation capable of understanding MS SQL Server code. As with every
 software which is modeling some other software's behavior, there are some 
-differences and [limitations](/docs/limitations-of-babelfish). 
+differences and [limitations](limitations-of-babelfish). 
 
 
 ### Deploying T-SQL code in Babelfish
@@ -485,7 +485,7 @@ If you look at T-SQL code, you'll see that there is a bit more magic involved.
 The code is in prosrc just like in other cases. However, the probin column is
 used to store a JSON document dealing with typmod-related information. This
 behavior is specific to T-SQL and is handled by [Babelfish specific
-hooks](postgresql_protocol_hooks.html). 
+hooks](../internals/configuration). 
 
 The MS SQL equivalent to this query is the <code>sp_helptext</code> function
 which is currently not supported by Babelfish. 

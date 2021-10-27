@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Configuration
-nav_order: 14
+title: Configuration variables
+nav_order: 3
 ---
 
 ## Configuring Babelfish

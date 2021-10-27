@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Other tools
-nav_order: 19
+title: Using other client tools
+nav_order: 5
 ---
 
 ## Using other tools

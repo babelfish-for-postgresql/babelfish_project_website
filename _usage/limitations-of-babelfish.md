@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Limitations of Babelfish
-nav_order: 2
+title: Babelfish compatibility
+nav_order: 5
 ---
 
 ## T-SQL limitations
@@ -42,15 +42,15 @@ features are discovered, and additional features are added to MS SQL:
 | `CERTPRIVATEKEY` function | This function is not supported. |
 | `CERTPROPERTY` function | This function is not supported. |
 | SQL keywords `CLUSTERED` and `NONCLUSTERED` for indexes and constraints | Babelfish accepts and ignores the `CLUSTERED` and `NONCLUSTERED` keywords. |
-| Collation, index on type dependant on the ICU library | An index on a user-defined type that depends on the ICU collation library (the library used by Babelfish) will not be invalidated when the version of the library is changed. For more information about collations, [see](locales.html) |
-| `COLLATIONPROPERTY` function | Collation properties are only implemented for the supported BBF collation types. For more information about collations [see](locales.html) |
+| Collation, index on type dependant on the ICU library | An index on a user-defined type that depends on the ICU collation library (the library used by Babelfish) will not be invalidated when the version of the library is changed. For more information about collations, [see](../locales) |
+| `COLLATIONPROPERTY` function | Collation properties are only implemented for the supported BBF collation types. For more information about collations [see](../locales) |
 | Column default | When creating a column default, the constraint name is ignored. To drop a column default, use the following syntax: `ALTER TABLE...ALTER COLUMN..DROP DEFAULT...` |
 | Column name: `IDENTITYCOL` | This column name is not supported. |
 | Column name: `$IDENTITY` | This column name is not supported. |
 | Column name: `$ROWGUID` | This column name is not supported. |
 | `COLUMNPROPERTY()` | This function is not supported. |
 | Blank column names with no column alias  | The `sqlcmd` and `psql` utilities handle columns with blank names in different ways. SQL Server `sqlcmd` returns a blank column name  PostgreSQL `psql` returns a generated column name. |
-| Column name case | Column names will be stored as lowercase in the PostgreSQL catalogs, and will be returned to the client in lowercase as well. This is also the case when column names are delimited by square brackets or double quotes. Likewise, column alias names in queries will always be returned as lowercase. In general, [all schema identifiers will be stored in lowercase in the PostgreSQL catalogs ](https://www.postgresql.org/docs/current/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS). |
+| Column name case | Column names will be stored as lowercase in the PostgreSQL pg_attribute catalogs, but are stored in whatever case was specified in the `CREATE TABLE` statement in an internal Babelfish catalog. The `SELECT *` operation currently returns column names in lower case rather than in the case specified on the CREATE TABLE statement. This will be fixed in a future version of Babelfish, but until then a workaround is to either specify the columns explicitly in the SELECT statement, or to use SELECT * from a view.|
 | Virtual computed columns (non-persistent) | Will be created as persistent |
 | Column attributes | `ROWGUIDCOL`, `SPARSE`, `FILESTREAM`, `MASKED` |
 | `CREATE/ALTER/DROP COLUMN ENCRYPTION KEY` | Functionality related to these commands. |
@@ -319,6 +319,6 @@ features are discovered, and additional features are added to MS SQL:
 
 However, more is missing than just features. In some case there are also some
 corner cases which will provide the end user with a [different
-behavior](/docs/architecture/missing-features) than otherwise expected from MS SQL. It is
+behavior](../missing-features) than otherwise expected from MS SQL. It is
 important to understand those corner cases, as well.
 

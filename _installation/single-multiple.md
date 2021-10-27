@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Single vs. Multiple Instances
-nav_order: 11
+title: Single vs. multiple database setups
+nav_order: 4
 ---
 ## Single vs. multiple instances
 

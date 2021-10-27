@@ -1,7 +1,7 @@
 ---
 layout: default
-title: C
-nav_order: 18
+title: Programming in C 
+nav_order: 1
 ---
 
 ## Preparing to write C code 

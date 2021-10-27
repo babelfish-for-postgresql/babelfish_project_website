@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Query Handling
-nav_order: 9
+title: Babelfish query handling
+nav_order: 2
 ---
 
 ## Babelfish query handling

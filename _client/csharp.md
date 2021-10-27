@@ -1,7 +1,7 @@
 ---
 layout: default
-title: C#
-nav_order: 15
+title: Programming in C#
+nav_order: 2
 ---
 
 ## Programming in C#
