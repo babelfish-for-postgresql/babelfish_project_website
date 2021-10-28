@@ -59,14 +59,14 @@ box.
 In case you are facing errors or problems, we recommend you check out our [discussion about
 differences in functionality](/docs/usage/limitations-of-babelfish).
 
-In the next step you can already move the data from one server to the other.
-Once the data structure has been adjusted properly and once it has been deployed
-successfully moving the data itself is not expected to cause errors anymore.
+In the next step you can move the data from one server to the other.
+Once the data structure has been adjusted properly, and once it has been deployed
+successfully, moving the data itself is not expected to cause errors anymore.
 
 
 ### Reconfiguring client applications
 
-Once structure and data have been migrated successfully it is time to adjust
+Once structure and data have been migrated successfully, it is time to adjust
 your database connections. Simply make your applications point to the new data
 source and launch your tests.
 

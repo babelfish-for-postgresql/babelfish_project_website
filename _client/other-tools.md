@@ -6,7 +6,7 @@ nav_order: 5
 
 ## Using other tools
 
-Basically you can use any tool capable of understanding the TDS protocol.
+Basically, you can use any tool capable of understanding the TDS protocol.
 However, there might still be errors or problems. Some client tools might work better than
 others. 
 
