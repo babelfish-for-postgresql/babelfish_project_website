@@ -6,7 +6,7 @@ nav_order: 3
 
 ## Babelfish troubleshooting
 
-In this section, you will learn about the most common problems users are facing
+In this section, you will learn about the most common problems users face
 when dealing with Babelfish. It contains an overview of the most substantial
 issues and give solutions to common problems.
 
@@ -19,7 +19,7 @@ Why is this important? MS SQL support is loaded as a library which has to be
 configured at startup. Basically, the design of the hooks used to make MS SQL
 support work is set up in a way that it is supposed to work for other database
 engines as well. To handle the specific behavior, code has to be loaded. In case
-this is not done, Babelfish will not expose itself as MS SQL Server on TCP port
+this is not done, Babelfish will not present itself as MS SQL Server on TCP port
 1433.
 
 Check out the [installation page](../../installation/compiling-babelfish-from-source) and make sure that
@@ -55,7 +55,7 @@ randomly, it is possible that Babelfish has crashed. In fact,
 reproducible connection losses are often related to crashes.
 
 If you want to help the team, it is highly appreciated if you can provide a
-backtrace of a crashes database. How can you produce such a backtrace, in case of
+backtrace of a crashed database. How can you produce such a backtrace, in case of
 a severe crash?
 
 The [PostgreSQL wiki page](https://wiki.postgresql.org/wiki/Getting_a_stack_trace_of_a_running_PostgreSQL_backend_on_Linux/BSD) 

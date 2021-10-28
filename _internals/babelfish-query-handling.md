@@ -42,7 +42,7 @@ However, this is not true for data types such as varchar or numeric. Both data t
 can be 'configured' (e.g. <code>varchar(20)</code> ). A <code>typmod</code> 
 is therefore a means to add parameters to data types. 
 
-Let us take a look at the new variable:
+Let's take a look at the new variable:
 
 ```sql
 SELECT name, setting FROM pg_settings WHERE name LIKE 'enable%';
