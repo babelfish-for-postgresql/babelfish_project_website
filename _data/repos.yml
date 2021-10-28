@@ -16,7 +16,7 @@
     special_files:
       -
         title: Contributing
-        url: https://github.com/babelfish-for-postgresql/babelfish_extensions/blob/main/CONTRIBUTING.md
+        url: https://github.com/babelfish-for-postgresql/babelfish_extensions/blob/BABEL_1_X_DEV/CONTRIBUTING.md
 
 -
     shortname: compass
@@ -25,12 +25,6 @@
     title: Babelfish Compass
     description: Babelfish Compass Tool
     url: https://github.com/babelfish-for-postgresql/babelfish_compass
-- shortname: test
-  title: Babelfish Test Framework
-  categories: 
-      - test
-  description: The Babelfish Test Framework
-  url: https://github.com/babelfish-for-postgresql/babelfish_testframework
 - shortname: documentation
   title: Babelfish Website
   categories: 
