@@ -48,12 +48,12 @@ With no requirement to replace the database drivers, and significantly reduced e
 ### The Structure of Babelfish
 
 Babelfish is composed of two main components:
-  - A patch against PostgreSQL. This patch will be submitted to the community for inclusion in a future version of PostgreSQL (available on GitHub [here](https://github.com/babelfish-for-postgresql/postgresql_modified_for_babelfish).)
-  - The Babelfish extensions (available on GitHub [here](https://github.com/babelfish-for-postgresql/babelfish_extensions/issues).)
-    - babelfishpg_tsql: supports the T-SQL language
-    - babelfishpg_tds: supports the TDS wire protocol
-    - babelfishpg_common: supports new datatypes found in T-SQL
-    - babelfishpg_money: supports the money type in SQL Server. This is a modification of the already open-source [fixeddecimal extension](https://github.com/2ndQuadrant/fixeddecimal). 
+  - A patch against PostgreSQL. This patch will be submitted to the community for inclusion in a future version of PostgreSQL (available on GitHub [here](https://github.com/babelfish-for-postgresql/postgresql_modified_for_babelfish)).
+  - The Babelfish extensions (available on GitHub [here](https://github.com/babelfish-for-postgresql/babelfish_extensions/)):
+    - [babelfishpg_tsql](https://github.com/babelfish-for-postgresql/babelfish_extensions/contrib/babelfishpg_tsql): supports the T-SQL language
+    - [babelfishpg_tds](https://github.com/babelfish-for-postgresql/babelfish_extensions/contrib/babelfishpg_tds): supports the TDS wire protocol
+    - [babelfishpg_common](https://github.com/babelfish-for-postgresql/babelfish_extensions/contrib/babelfishpg_common): supports new datatypes found in T-SQL
+    - [babelfishpg_money](https://github.com/babelfish-for-postgresql/babelfish_extensions/contrib/babelfishpg_money): supports the money type in SQL Server. This is a modification of the already open-source [fixeddecimal extension](https://github.com/2ndQuadrant/fixeddecimal). 
 
 ### How to get started
 The Babelfish documentation contains detailed instructions on how to compile and install Babelfish. This can be found on the Babelfish [website](https://www.babelfishpg.org/). 
