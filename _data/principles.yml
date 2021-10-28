@@ -14,7 +14,7 @@
   description: This will be a community where you will be heard, accepted, and valued, whether you are a new or experienced user or contributor.
 - title: A place to invent.
   description: You will be able to innovate rapidly. This project will have a stable and predictable foundation that is modular, making it easy to extend.
-- title: Pull Requests acceptance
-  description: Pull requests submitted should be aligned with the overall vision for Babelfish and enhance PostgreSQL core engine
-- title: Contributions are always welcome
-  description: We welcome active contributions of all kinds and recognize and reward deeper engagement
+- title: Pull Requests acceptance.
+  description: Pull requests submitted should be aligned with the overall vision for Babelfish and enhance PostgreSQL core engine.
+- title: Contributions are always welcome.
+  description: We welcome active contributions of all kinds and recognize and reward deeper engagement.
