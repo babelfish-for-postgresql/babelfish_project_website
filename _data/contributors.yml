@@ -21,7 +21,7 @@
   username: sangilsong
   pic: "/assets/images/profile_pics/sangil_song.png"
   contribution: |
-    Sangil is a Senior Software Engineer on Babelfish project. He mainly contributed to the design and implementation of various features of PL/TSQL langauge component: PL/TSQL parser, cursor, datatype coercion and unspported feature handler including ecape hatches.
+    Sangil is a Senior Software Engineer on Babelfish project. He mainly contributed to the design and implementation of various features of PL/TSQL language component: PL/TSQL parser, cursor, datatype coercion and unspported feature handler including ecape hatches.
 - name: Bill Ramos
   github: https://github.com/billramo
   username: billramo
@@ -117,13 +117,13 @@
   username: anandsriram
   pic: "/assets/images/profile_pics/anand_sriramulu.jpg"
   contribution: |
-    Anand Sriramulu is a Software Engineer for Amazon Aurora with AWS. He helped with babelfish integration with AWS RDS services and Aurora Postgresql.
+    Anand Sriramulu is a Software Engineer for Amazon Aurora with AWS. He helped with babelfish integration with AWS RDS services and Aurora PostgreSQL.
 - name: Brent Sienko
   github: https://github.com/brentsienko
   username: brentsienko
   pic: "/assets/images/profile_pics/brent_sienko.png"
   contribution: |
-    Brent Sienko is a Software Engineer on the Babelfish project. He contributed to the design and implementation of datetime/datetime2 datatypes, datatype coercion, and Tinker Banking highconcurrency xact correctness test suite.
+    Brent Sienko is a Software Engineer on the Babelfish project. He contributed to the design and implementation of datetime/datetime2 datatypes, datatype coercion, and Tinker Banking high-concurrency xact correctness test suite.
 - name: Korry Douglas
   github: https://github.com/korryd 
   username: korryd
@@ -153,7 +153,7 @@
   username: Deepesh125
   pic: "/assets/images/profile_pics/dipesh_dhameliya.jpg"
   contribution: |
-    Dipesh is software engineer on Babelfish project. He mainly contributed to the design and implementation of various features like Encoding support for string based datatypes and Error code mapping on TDS listener. He also contributed to the implementation of support for sender/receivers for string datatypes and some minor features on language extension. And He involved in maintaining development pipelines.
+    Dipesh is software engineer on Babelfish project. He mainly contributed to the design and implementation of various features like Encoding support for string based datatypes and Error code mapping on TDS listener. He also contributed to the implementation of support for sender/receivers for string datatypes and some minor features on language extension. He's also involved in maintaining development pipelines.
 - name: Sharu Goel 
   github: https://github.com/thephantomthief
   username: thephantomthief
@@ -171,7 +171,7 @@
   username: "770120041"
   pic: "/assets/images/profile_pics/zhe_liu.png"
   contribution: |
-    Zhe is a Software Engineer on the Babelfish Project. He contributed to the desing and implementaion of various areas of T-SQL, including data types, system functions, parser, testing framework migration and collation support.
+    Zhe is a Software Engineer on the Babelfish Project. He contributed to the design and implementaion of various areas of T-SQL, including data types, system functions, parser, testing framework migration and collation support.
 - name: Shalini Lohia
   github: https://github.com/shalinilohia50
   username: shalinilohia50
@@ -323,3 +323,7 @@
   pic: "/assets/images/profile_pics/tobias_ternstrom.jpg"
   contribution: |
     Co-founder and Author of key design principles (i.e. principle of correctness, etc.)
+- name: Murali Brahmadesam
+  pic: "/assets/images/profile_pics/murali-brahmadesam.jpg"
+  contribution: |
+    Murali is the Director of Engineering of Aurora providing the initial strategy and technical direction for the Babelfish project. 

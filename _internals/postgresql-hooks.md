@@ -4,7 +4,7 @@ title: PostgreSQL hooks
 nav_order: 5
 ---
 
-## Protocol hooks
+## PostgreSQL hooks
 
 In this document, we have already mentioned protocol hooks more than once, since they
 form the backbone of the entire Babelfish product. 

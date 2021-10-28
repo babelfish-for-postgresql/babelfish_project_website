@@ -485,7 +485,7 @@ If you look at T-SQL code, you'll see that there is a bit more magic involved.
 The code is in prosrc just like in other cases. However, the probin column is
 used to store a JSON document dealing with typmod-related information. This
 behavior is specific to T-SQL and is handled by [Babelfish specific
-hooks](../internals/configuration). 
+hooks](/docs/internals/postgresql-hooks). 
 
 The MS SQL equivalent to this query is the <code>sp_helptext</code> function
 which is currently not supported by Babelfish. 

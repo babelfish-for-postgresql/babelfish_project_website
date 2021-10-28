@@ -9,12 +9,8 @@
 - title: Made with your input.
   description: We will ask for public input on direction, requirements, and implementation for any feature we build.
 - title: Open to contributions.
-  description: Great open source software is built together, with a diverse community of contributors. If you want to get involved at any level - big, small, or huge - we will find a way to make that happen. We don’t know what that looks like yet, and we look forward to figuring it out together.
+  description: Great open source software is built together, with a diverse community of contributors. If you want to get involved at any level - big, small, or huge - we will find a way to make that happen.
 - title: Respectful, approachable, and friendly.
   description: This will be a community where you will be heard, accepted, and valued, whether you are a new or experienced user or contributor.
 - title: A place to invent.
   description: You will be able to innovate rapidly. This project will have a stable and predictable foundation that is modular, making it easy to extend.
-- title: Pull Requests acceptance
-  description: Pull requests submitted should be aligned with the overall vision for Babelfish and enhance PostgreSQL core engine
-- title: Contributions are always welcome
-  description: We welcome active contributions of all kinds and recognize and reward deeper engagement
