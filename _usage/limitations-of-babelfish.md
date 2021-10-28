@@ -41,8 +41,8 @@ features are discovered, and additional features are added to MS SQL:
 | `CERTPRIVATEKEY` function | This function is not supported. |
 | `CERTPROPERTY` function | This function is not supported. |
 | SQL keywords `CLUSTERED` and `NONCLUSTERED` for indexes and constraints | Babelfish accepts and ignores the `CLUSTERED` and `NONCLUSTERED` keywords. |
-| Collation, index on type dependant on the ICU library | An index on a user-defined type that depends on the ICU collation library (the library used by Babelfish) will not be invalidated when the version of the library is changed. For more information about collations, [see](../locales) |
-| `COLLATIONPROPERTY` function | Collation properties are only implemented for the supported BBF collation types. For more information about collations [see](../locales) |
+| Collation, index on type dependant on the ICU library | An index on a user-defined type that depends on the ICU collation library (the library used by Babelfish) will not be invalidated when the version of the library is changed. For more information about collations, [see](/docs/usage/locales) |
+| `COLLATIONPROPERTY` function | Collation properties are only implemented for the supported BBF collation types. For more information about collations [see](/docs/usage/locales) |
 | Column default | When creating a column default, the constraint name is ignored. To drop a column default, use the following syntax: `ALTER TABLE...ALTER COLUMN..DROP DEFAULT...` |
 | Column name: `IDENTITYCOL` | This column name is not supported. |
 | Column name: `$IDENTITY` | This column name is not supported. |
@@ -318,6 +318,6 @@ features are discovered, and additional features are added to MS SQL:
 
 However, more is missing than just features. In some case there are also some
 corner cases which will provide the end user with a [different
-behavior](../missing-features) than otherwise expected from MS SQL. It is
+behavior](/docs/usage/missing-features) than otherwise expected from MS SQL. It is
 important to understand those corner cases, as well.
 

@@ -22,7 +22,7 @@ engines as well. To handle the specific behavior, code has to be loaded. In case
 this is not done, Babelfish will not present itself as MS SQL Server on TCP port
 1433.
 
-Check out the [installation page](../../installation/compiling-babelfish-from-source) and make sure that
+Check out the [installation page](/docs/installation/compiling-babelfish-from-source) and make sure that
 everything of importance has been done.
 
 A second problem that may occur is that the port is closed due to firewall issues. Make
