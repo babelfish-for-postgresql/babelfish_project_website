@@ -21,7 +21,7 @@
   username: sangilsong
   pic: "/assets/images/profile_pics/sangil_song.png"
   contribution: |
-    Sangil is a Senior Software Engineer on Babelfish project. He mainly contributed to the design and implementation of various features of PL/TSQL langauge component: PL/TSQL parser, cursor, datatype coercion and unspported feature handler including ecape hatches.
+    Sangil is a Senior Software Engineer on Babelfish project. He mainly contributed to the design and implementation of various features of PL/TSQL language component: PL/TSQL parser, cursor, datatype coercion and unspported feature handler including ecape hatches.
 - name: Bill Ramos
   github: https://github.com/billramo
   username: billramo
