@@ -2,13 +2,13 @@
 date: 2021-10-28
 
 product: Babelfish for PostgreSQL
-version: '1.0'
+version: '1.0.0'
 
 components:
   -
     role: engine
     artifact: babelfish
-    version: 1.0
+    version: 1.0.0
 sections:
   source:
     explanation: "downloads/babelfish-source.markdown"

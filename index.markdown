@@ -35,7 +35,7 @@ callouts_leader: "When we (the contributors) are successful, Babelfish for Postg
 
 version_feature:
   latest_label: "Current Version:"
-  date_label: "1.0.0 / Oct 28th, 2021"
+  date_label: "/ Oct 28th, 2021"
 
 callout_button:
   title: Get Started
