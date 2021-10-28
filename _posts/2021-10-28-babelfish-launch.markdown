@@ -1,5 +1,6 @@
 ---
 layout: post
+author: The Babelfish Project Team
 authors: 
     - The Babelfish Project Team
 comments: true
@@ -12,8 +13,7 @@ An extraordinary advantage to using PostgreSQL is that it is extensible. Develop
 core functionality through extensions and thereby add support for interesting features, such as
 geospatial queries, job scheduling or graph database capabilities.
 
-Over the last several months, the AWS Babelfish project team has been working hard. Today, we are
-excited to announce the release of the open source Babelfish for PostgreSQL (Babelfish): a capability
+Today, we are excited to announce the release of the open source Babelfish for PostgreSQL (Babelfish): a capability
 that lets PostgreSQL understand queries from applications written for Microsoft SQL Server.
 Babelfish is a set of extensions that provide both T-SQL capabilities and a Tabular Data Stream (TDS)
 listener port as enhancements to PostgreSQL. It supports the SQL Server dialect, T-SQL, and notable
@@ -47,8 +47,8 @@ With no requirement to replace the database drivers, and significantly reduced e
 ### The Structure of Babelfish
 
 Babelfish is composed of two main components:
-  - A patch against PostgreSQL. This patch will be submitted to the community for inclusion in a future version of PostgreSQL. (Available on GitHub [here](https://github.com/babelfish-for-postgresql/postgresql_modified_for_babelfish).)
-  - The Babelfish extensions. (Available on GitHub [here](https://github.com/babelfish-for-postgresql/babelfish_extensions/issues).)
+  - A patch against PostgreSQL. This patch will be submitted to the community for inclusion in a future version of PostgreSQL (available on GitHub [here](https://github.com/babelfish-for-postgresql/postgresql_modified_for_babelfish).)
+  - The Babelfish extensions (available on GitHub [here](https://github.com/babelfish-for-postgresql/babelfish_extensions/issues).)
     - babelfishpg_tsql: supports the T-SQL language
     - babelfishpg_tds: supports the TDS wire protocol
     - babelfishpg_common: supports new datatypes found in T-SQL
