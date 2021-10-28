@@ -23,7 +23,7 @@
     categories: 
       - tooling
     title: Babelfish Compass
-    description: Baelfish Assesment Tool
+    description: Baelfish Compass Tool
     url: https://github.com/babelfish-for-postgresql/babelfish_compass
 - shortname: test
   title: Babelfish Test Framework
