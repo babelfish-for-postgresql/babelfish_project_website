@@ -25,12 +25,6 @@
     title: Babelfish Compass
     description: Babelfish Compass Tool
     url: https://github.com/babelfish-for-postgresql/babelfish_compass
-- shortname: test
-  title: Babelfish Test Framework
-  categories: 
-      - test
-  description: The Babelfish Test Framework
-  url: https://github.com/babelfish-for-postgresql/babelfish_testframework
 - shortname: documentation
   title: Babelfish Website
   categories: 
