@@ -197,6 +197,7 @@
   contribution: |
     Prateek is currently a Software Engineering Manager on Azure SQL. For the Babelfish Project, he helped with initial feature scoping and planning. He was responsible for TDS interfaces/extension and contributed to authentication, datatype support, prepare-exec support, error code mapping,  telemetry, interoperability and writing testing tools.
 - name: Richard Waymire
+  github: https://github.com/waymire
   username: Richard Waymire
   pic: "/assets/images/profile_pics/richard-waymire.jpg"
   contribution: Richard is the Lead Product Manager providing overall leadership to the Babelfish project
@@ -207,7 +208,9 @@
   contribution: | 
     Simon is a product manager for the Babelfish project. Simon was engaged in the user research, planning, positioning and roadmap for the Babelfish project.
 - name: Suprio Pal
+  github: https://github.com/suprio-amzn
   username: Suprio Pal
+  pic: "/assets/images/profile_pics/suprio_pal.jpg"
   contribution: Suprio is the Lead Software Engineering Manager for the Babelfish project
 - name: Gopinath Pai
   github: https://github.com/gopinathpai
@@ -216,6 +219,11 @@
   contribution: |
     Gopinath is a Principal TPM on the project. He was responsible for the overall planning, design and delivery of the Babelfish Open Source Project.
 - name: Clint Fu
+  github: https://github.com/cmf9073
+  username: cmf9073
+  pic: /assets/images/profile_pics/clint_fu.jpg
+  contribution: |
+    Clint is a Software Development Manager for the Aurora Control Plane team responsible for the provisioning and management of the Babelfish extension on the Aurora PostgreSQL platform.
 - name: Abhinav Singh 
   github: https://github.com/fdrgiit
   username: fdrgiit
@@ -237,11 +245,81 @@
 - name: Vinicius Schmidt
   github: https://github.com/vinnix/ 
   username: vinnix
-  pic: 
-  contribution:
+  pic: "/assets/images/profile_pics/vinicius_schmidt.jpg"
+  contribution: |
+    Vinicius Schmidt is a Database Engineer, PostgreSQL Specialist currently working for AWS. He has helped the project performing different component tests, documentation review, etc.
 - name: Stefano Stefani
-  github: ""
   username: Stefano Stefani
-  pic: 
+  pic: "/assets/images/profile_pics/stefano_stefani.jpg"
   contribution: |
     Stefano, a Distinguished Engineer in the Babelfish project contributed in an architectural/consulting role
+- name: Rudi Leibbrandt
+  github: https://github.com/rleibbrandt-aws 
+  username: rleibbrandt-aws
+  pic: "/assets/images/profile_pics/rudi_leibbrandt.jpg"
+  contribution: |
+    Rudi Leibbrandt leads Product Management for open source databases for Amazon RDS, and was one of the initial contributors to Babelfish.
+- name: Prashant Bondada
+  github: https://github.com/prashantbondada
+  username: prashantbondada
+  pic: "/assets/images/profile_pics/prashant_bondada.png"
+  contribution: |
+    Prashant Bondada is a Principal Database Engineer at AWS with many years of experience across comerical and open source database engines. He contributed to the Babelfish architecture design, end user experience, migration strategies and end to end testing.
+- name: Sertay Sener
+  github: https://github.com/ssertay
+  username: ssertay
+  contribution: |
+    Sertay Sener is a Software Engineer at Bit Quill Technologies who is working on the Babelfish project. He contributed to the testing frameworks and tools, open-source integration, and stored procedures compatibility.
+- name: Avneet Toor 
+  github: https://github.com/avneettoor
+  username: avneettoor
+  contribution: |
+    Avneet is a Software Engineer at Bit Quill Technologies who is working on the Babelfish project. Avneet contributed to the testing frameworks and tools, open-source integration, and stored procedures compatibility.
+- name: Aaron Congo 
+  github: https://github.com/acongo
+  username: acongo
+  pic: "/assets/images/profile_pics/aaron_congo.png"
+  contribution: |
+    Aaron is a Software Engineer at Bit Quill Technologies who is working on the Babelfish project. He contributed to the testing frameworks and tools, open-source integration, and stored procedures compatibility.
+- name: Leszek Kurzyna 
+  github: https://github.com/leszek-bq
+  username: leszek-bq
+  pic: "/assets/images/profile_pics/leszek_kurzyna.png"
+  contribution: |
+    Leszek is a Software Engineer at Bit Quill Technologies who is working on the Babelfish project. He contributed to the testing frameworks and tools, open-source integration, and stored procedures compatibility.
+- name: Sergiy Voshchykov
+  github: https://github.com/sergiyvamz 
+  username: sergiyvamz
+  pic: "/assets/images/profile_pics/sergiy_voshchykov.jpeg"
+  contribution: |
+    Sergiy is a Software Engineer at Bit Quill Technologies who is working on the Babelfish project. He contributed to ensuring the accuracy of translations regarding SQL Server error codes.
+- name: Karen Chen 
+  github: https://github.com/karenc-bq
+  username: karenc-bq
+  pic: "/assets/images/profile_pics/karen_chen.jpeg"
+  contribution: |
+    Karen is a Software Engineer at Bit Quill Technologies who is working on the Babelfish project. She contributed to the Babelfish Compass project.
+- name: Matthew Hsu
+  github: https://github.com/Matthew-Hsu
+  username: Matthew-Hsu
+  pic: "/assets/images/profile_pics/matthew_hsu.png"
+  contribution: |
+    Matthew is a Software Development Manager at Bit Quill Technologies who is working on the Babelfish project. He's been helping with Babelfish Compass, testing frameworks and tools, opensource integration, and stored procedures compatibility
+- name: Favian (Ian) Samatha 
+  github: https://github.com/faviansamatha
+  username: faviansamatha
+  pic: "/assets/images/profile_pics/favian_samatha.png"
+  contribution: |
+    Ian is a Software Engineer at Bit Quill Technologies who is working on the Babelfish project. He contributed to ensuring the accuracy of translations regarding SQL Server error codes and contributed towards the testing frameworks.
+- name: Jim Finnerty
+  github: https://github.com/JimFinnerty
+  username: JimFinnerty
+  pic: "/assets/images/profile_pics/jim_finnerty.jpg"
+  contribution: |
+    Jim is a Principal Software Engineer and a veteran of the database industry, with experience building database server software at Microsoft (SQL Server), Oracle, HP Vertica, DB2, InterSystems, Netezza, and way back in the day, Rdb. Jim's contributions to Babelfish include its support for collations and identifier parsing.
+- name: Tobias Ternstrom
+  github: https://github.com/TobiasSQL 
+  username: TobiasSQL
+  pic: "/assets/images/profile_pics/tobias_ternstrom.jpg"
+  contribution: |
+    Co-founder and Author of key design principles (i.e. principle of correctness, etc.)
