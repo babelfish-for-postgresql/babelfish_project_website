@@ -323,3 +323,7 @@
   pic: "/assets/images/profile_pics/tobias_ternstrom.jpg"
   contribution: |
     Co-founder and Author of key design principles (i.e. principle of correctness, etc.)
+- name: Murali Brahmadesam
+  pic: "/assets/images/profile_pics/murali-brahmadesam.jpg"
+  contribution: |
+    Murali is the Director of Engineering of Aurora providing the initial strategy and technical direction for the Babelfish project. 
