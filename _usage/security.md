@@ -8,7 +8,7 @@ nav_order: 7
 
 Security is an important topic which has to be addressed in a professional
 manner. Therefore we want to give an overview of how security is handled and
-what can be done to make the database more robust and resistent against attack.
+what can be done to make the database more robust and resistant against attack.
 To cover the topic, we need to address the following issues:
 
 - Network security and authentication
@@ -57,7 +57,7 @@ installation:
 - `tempdb_dbo`
 - `tempdb_guest`
 
-These users are MS SQL specific and try to mimic what the target database is
+These users are MS SQL-specific and try to mimic what the target database is
 supposed to look like. 
 
 In addition to that, all users that are normally available in PostgreSQL are
@@ -73,5 +73,5 @@ available as well:
 - `pg_execute_server_program`
 - `pg_signal_backend`
 
-These users are unchanged and can be used just like in a normal PostgreSQL
+These users are unchanged, and can be used just like in a normal PostgreSQL
 installation.

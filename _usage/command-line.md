@@ -8,7 +8,7 @@ nav_order: 1
 
 Many people use MS Windows to connect to Babelfish. However, there is an 
 ever-growing community which prefers to use the command line to work with the server.
-Those users have two choices on Linux:
+Those users have the following choices on Linux:
 
 - sqlcmd: Using the MS SQL interface
 - SSMS: SQL Server Management Studio
@@ -85,7 +85,7 @@ Currently you can not connect using the SSMS Object Explorer.
 
 ### Using tsql to connect
 
-Let us take a look at the FreeTDS version of things first. tsql is a command
+Let's take a look at the FreeTDS version of things first. tsql is a command
 line tool that is shipped as part of FreeTDS. It allows you to quickly connect
 using your Linux terminal, and to easily interact with Babelfish (or any TDS
 enabled data source).
@@ -209,4 +209,4 @@ therefore be abused as a command line client.
 
 However, as stated before: This ONLY works with the Babelfish
 incarnation of psql. The standard version of the client as shipped with
-PostgreSQL does not have this feature and most likely never will.
+PostgreSQL does not have this feature, and most likely never will.

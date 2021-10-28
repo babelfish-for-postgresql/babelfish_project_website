@@ -39,7 +39,7 @@ To compile Babelfish, you have to make sure that a variety of software component
 are available on your system. These packages should be part of every modern
 Linux distribution, under similar - but not identical - names. 
 
-Also keep in mind that you will need a user with root priviledges, so you can be able to run commands with `sudo`
+Also keep in mind that you will need a user with root priviledges, so that you are able to run commands with `sudo`
 
 If you want to run more than just the bare version of Babelfish, we recommend
 installing the following additional packages on top of the hard requirements listed
