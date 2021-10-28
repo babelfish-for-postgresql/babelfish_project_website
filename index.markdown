@@ -26,7 +26,7 @@ greeting: "More about Babelfish for PostgreSQL"
 
 headline: "Babelfish for PostgreSQL accelerates your journey to migrate SQL Server applications to PostrgreSQL."
 
-long_description: "Babelfish for PostgreSQL is an open source project licensed under Apache-2.0 and PostgreSQL. It adds a Microsoft SQL Server-compatible end-point to PostgreSQL to enable your PostgreSQL database to understand the SQL Server wire protocol and commonly used SQL Server commands. With Babelfish, PostgreSQL now understands T-SQL, Microsoft SQL Server's proprietary SQL dialect, and supports the same communications protocol, so your apps that were originally written for SQL Server can now work with PostgreSQL with fewer code changes and without changing database drivers."
+long_description: "Babelfish for PostgreSQL is an open source project licensed under Apache-2.0 and PostgreSQL. It provides the capability for PostgreSQL to understand queries from applications written for Microsoft SQL Server. Babelfish understands the SQL Server wire-protocol and T-SQL, the Microsoft SQL Server query language, so you don't have to switch database drivers or re-write all of your application queries. With Babelfish, applications currently running on SQL Server can now run directly on PostgreSQL with fewer code changes."
 
 callouts_head: "Principles for development"
 callouts_class: list-features
