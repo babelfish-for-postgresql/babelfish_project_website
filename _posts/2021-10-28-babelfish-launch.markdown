@@ -7,10 +7,11 @@ title: "Announcing Open Source Babelfish for PostgreSQL: An Accelerator for SQL 
 categories:
 - releases
 ---
-
-An extraordinary advantage to using PostgreSQL is that it is extensible. Developers can augment its
-core functionality through extensions and thereby add support for interesting features, such as
-geospatial queries, job scheduling or graph database capabilities.
+One of the features that sets PostgreSQL apart from other databases is
+its extensibility. Today there are 329 open-source extensions registered in the
+[PostgreSQL Extension Network](https://pgxn.org/about/), adding
+functionality that includes handling geospacial data, computational
+biology, statistics, job scheduling, graph databases and more.
 
 Over the last several months, the AWS Babelfish project team has been working hard. Today, we are
 excited to announce the release of the open source Babelfish for PostgreSQL (Babelfish): a capability
