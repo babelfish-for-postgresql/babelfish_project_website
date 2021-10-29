@@ -401,7 +401,7 @@ typedef void (*validate_numeric_typmods_hook_type) (List **typmods,
 
 <code>numeric</code> is slightly different in Babelfish than in standard 
 PostgreSQL. This has been outlined in the section about
-[extensions](high-level-design) already. This hooks will ensure that
+[extensions](/docs/internals/software-architecture/) already. This hooks will ensure that
 validating typmods for numeric types can be influenced accordingly. 
 
 
