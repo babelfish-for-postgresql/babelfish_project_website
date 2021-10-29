@@ -70,19 +70,19 @@ defaults:
 collections:
   # Define a collection named "tests", its documents reside in the "_tests" directory
   installation:
-    permalink: /docs/installation/:path/
+    permalink: /docs/:collection/:path/
     output: true
   usage:
-    permalink: /docs/usage/:path/
+    permalink: /docs/:collection/:path/
     output: true
   client:
-    permalink: /docs/client/:path/
+    permalink: /docs/:collection/:path/
     output: true
   internals:
-    permalink: /docs/internals/:path/
+    permalink: /docs/:collection/:path/
     output: true
   faq:
-    permalink: /docs/faq/:path/
+    permalink: /docs/:collection/:path/
     output: true
   docs:
     permalink: /:collection/:path/
@@ -92,8 +92,6 @@ collections:
   artifacts:
     output: true
   versions:
-    output: true
-  faqs:
     output: true
 
 paginate: 5
@@ -149,7 +147,7 @@ search:
 
 # Google Analytics Tracking (optional)
 # e.g, UA-1234567-89
-ga_tracking: G-BQV14XK08F
+ga_tracking: G-N5LPQD8JX3
 
 # Disable the just-the-docs theme anchor links in favor of our custom ones
 # See _includes/head_custom.html
