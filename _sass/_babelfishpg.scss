@@ -1,3 +1,7 @@
+[role="main"] {
+    min-height: calc(100vh - 450px);
+}
+
 dl.list-features {
     counter-reset: list-features;
     h2 {
