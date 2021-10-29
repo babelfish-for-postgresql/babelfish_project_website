@@ -1,4 +1,8 @@
 /* Custom CSS to override default just-the-docs styling */
+[role="main"] {
+        min-height: calc(100vh - 450px);
+}
+
 [role="banner"] {
     background: url('../images/bbfsh_header.png') center center no-repeat;
     background-size: cover;
