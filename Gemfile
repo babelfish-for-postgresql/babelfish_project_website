@@ -8,6 +8,7 @@ source "https://rubygems.org"
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
+gem "jekyll", "~> 4.2.0"
 
 gem "just-the-docs", "~> 0.3.3"
 gem "jekyll-remote-theme", "~> 0.4"
@@ -24,7 +25,6 @@ group :jekyll_plugins do
   gem "jekyll-paginate"
   gem "jekyll-last-modified-at"
   gem "jekyll-sitemap"
-  gem "github-pages", "~> 219"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

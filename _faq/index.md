@@ -2,6 +2,7 @@
 layout: default
 title: FAQ
 nav_order: 2
+permalink: /docs/faq/
 ---
 
 # Babelfish: Frequently asked questions

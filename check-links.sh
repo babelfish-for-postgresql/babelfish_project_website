@@ -1,5 +1,11 @@
-# Checks for broken link in the documentation.
-# Run `bundle exec jekyll serve` first.
-# Uses https://github.com/stevenvachon/broken-link-checker
-# I have no idea why we have to exclude the ISM section, but that's the only way I can get this to run. - ae
-blc http://localhost:4000 -ro --exclude "*babelfishpg.org/*" --exclude "*github.com/babelfish-for-postgresql/babelfish_project_website/*" --exclude "*apache.org*" --exclude "https://localhost:5601/"
+##
+# From _plugins/link-checker.rb
+#
+# `JEKYLL_CHECK_EXTERNAL_LINKS`, set on the environment, will cause verification of external links, irrespective of its
+# value. Usage: `JEKYLL_CHECK_EXTERNAL_LINKS= bundle exec jekyll build --trace`
+#
+# `JEKYLL_FATAL_LINK_CHECKER`, set on the environment, will cause the build to fail if an internal dead link is found.
+# If set as `JEKYLL_FATAL_LINK_CHECKER=2`, the build will fail for internal and external dead links; in this case, there
+# is no need to set `JEKYLL_CHECK_EXTERNAL_LINKS`.
+
+JEKYLL_FATAL_LINK_CHECKER= bundle exec jekyll build --trace

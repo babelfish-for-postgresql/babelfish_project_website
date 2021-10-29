@@ -50,7 +50,7 @@ sidebar:
     description: Do you have a question regarding Babelfish? Maybe you aren’t the first to ask it. Checkout our frequently asked questions (FAQ) to see if your question is already answered. If not, don’t hesitate to ask in the community forums.
     links:
       - title: Check out the FAQ
-        url:  /docs/faq/faq
+        url:  /docs/faq/
       - title: Ask a question
         url: https://github.com/babelfish-for-postgresql/babelfish_extensions/issues
   - title: Founding documents
