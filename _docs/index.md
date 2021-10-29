@@ -27,18 +27,18 @@ The Babelfish for PostgreSQL team intends to move forward with the integration o
 Component | Purpose
 :--- | :---
 [Babelfish Patch](https://github.com/babelfish-for-postgresql/postgresql_modified_for_babelfish) | Enables Babelfish hooks for PostgreSQL.
-[Babelfish TDS Extension](https://github.com/babelfish-for-postgresql/babelfish_extensions/tree/main/contrib/babelfishpg_tds) | TDS - provides a secondary endpoint that speaks the TDS (SQL Server) network protocol.
-[Balbelfish Language Extension](https://github.com/babelfish-for-postgresql/babelfish_extensions/tree/main/contrib/babelfishpg_tsql) | Provides a procedural language compatible with TSQL Uses ANTLR parser.
-[Babelfish Money Type](https://github.com/babelfish-for-postgresql/babelfish_extensions/tree/main/contrib/babelfishpg_money) | Supports the money type in MSSQL. This is a variation of the opensource fixeddecimal extension.
-[Babelfish Common](https://github.com/babelfish-for-postgresql/babelfish_extensions_internal/tree/main/contrib/babelfishpg_common) | Supports the various datatypes in MSSQL.
+[Babelfish TDS Extension](https://github.com/babelfish-for-postgresql/babelfish_extensions/tree/BABEL_1_X_DEV/contrib/babelfishpg_tds) | TDS - provides a secondary endpoint that speaks the TDS (SQL Server) network protocol.
+[Balbelfish Language Extension](https://github.com/babelfish-for-postgresql/babelfish_extensions/tree/BABEL_1_X_DEV/contrib/babelfishpg_tsql) | Provides a procedural language compatible with TSQL Uses ANTLR parser.
+[Babelfish Money Type](https://github.com/babelfish-for-postgresql/babelfish_extensions/tree/BABEL_1_X_DEV/contrib/babelfishpg_money) | Supports the money type in MSSQL. This is a variation of the opensource fixeddecimal extension.
+[Babelfish Common](https://github.com/babelfish-for-postgresql/babelfish_extensions/tree/BABEL_1_X_DEV/contrib/babelfishpg_common) | Supports the various datatypes in MSSQL.
 
 
 
-For specifics around the project, see the [FAQ]({{site.url}}{{site.baseurl}}/docs/faq).
+For specifics around the project, see the [FAQ]({{site.url}}{{site.baseurl}}/docs/faq/faq).
 
 
 ## Get involved
 
 [Babelfish](https://babelfishpg.org/) is supported by Amazon Web Services. All components are available under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.html) and the [PostgreSQL License](https://www.postgresql.org/about/licence/) on [GitHub](https://github.com/babelfish-for-postgresql).
 
-The project welcomes GitHub issues, bug fixes, features, plugins, documentation---anything at all. To get involved, see [Contributing](https://github.com/babelfish-for-postgresql/babelfish_extensions/blob/main/CONTRIBUTING.md) on the Babelfish for PostgreSQL website.
+The project welcomes GitHub issues, bug fixes, features, plugins, documentation---anything at all. To get involved, see [Contributing](https://github.com/babelfish-for-postgresql/babelfish_extensions/blob/BABEL_1_X_DEV/CONTRIBUTING.md) on the Babelfish for PostgreSQL website.

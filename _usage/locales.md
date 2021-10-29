@@ -243,8 +243,8 @@ optimizer to perform equality and grouping operations efficiently.
 When collations that begin with SQL are used for char or varchar
 data types, the sort order for characters above ASCII 127 is
 determined by the specific code page for that SQL collation. For SQL
-collations, strings declared as char or varchar may sort differently
-than strings declared as nchar or nvarchar.
+collations, strings declared as char or varchar may sort in a different 
+way from strings declared as nchar or nvarchar.
 
 PostgreSQL encodes all strings with the database encoding, so will
 convert all characters to UTF-8 and sort using Unicode rules.
@@ -312,7 +312,7 @@ collation should certainly be considered, but could result in data
 being displayed on the client in an order that is culturally
 unexpected. New mappings to lower-case characters are added to
 Unicode as time progresses, so the `LOWER` function may perform
-differently on different versions of ICU. This is a special case of
+in a different way on different versions of ICU. This is a special case of
 the more general collation versioning problem rather than 
 something specific to the BIN2 collation. Babelfish will
 provide the `BBF_Latin1_General_BIN2` collation with the
@@ -320,7 +320,7 @@ Babelfish distribution to collate in Unicode code point order.
 In a BIN collation only the first character is sorted as a wchar,
 and remaining characters are sorted byte-by-byte, effectively in
 code point order according to its encoding. This does not follow
-Unicode collation rules and it will not be supported by
+Unicode collation rules and it won't be supported by
 Babelfish.
 
 

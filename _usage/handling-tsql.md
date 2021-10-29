@@ -13,7 +13,7 @@ procedures. The MS SQL equivalent to PL/pgSQL is called T-SQL (Transact-SQL).
 
 To make Babelfish as compatible with MS SQL as possible, it provides a T-SQL
 implementation capable of understanding MS SQL Server code. As with every
-software which is modeling some other software's behavior, there are some 
+software which models some other software's behavior, there are some 
 differences and [limitations](/docs/usage/limitations-of-babelfish). 
 
 
@@ -117,7 +117,7 @@ would instantly create an error. Babelfish (and MS SQL) are way more tolerant
 in this case. 
 
 What is also important: If you want to ensure that the data is safe and visible:
-Don't forget to COMMIT. Otherwise data will be lost. Babelfish is not playing to
+Don't forget to COMMIT. Otherwise, data will be lost. Babelfish is not playing to
 the same transactional rules as standard PostgreSQL. You need to keep that in
 mind.
 
@@ -234,7 +234,7 @@ if_samples
 
 What might seem strange for PostgreSQL users is the way Babelfish (and therefore
 MS SQL) handles procedures vs. functions. In PostgreSQL, these two things are
-totally different and using a procedure in the content of a function will
+totally different, and using a procedure in the content of a function will
 certainly error out. In Babelfish the situation is as follows:
 
 ```sql
@@ -256,8 +256,8 @@ MS SQL and PostgreSQL differ in one important point. Often, the return data type
 of a function in PostgreSQL is <code>void</code>. In other words: A function can
 return nothing. 
 
-That is not possible in Babelfish and MS SQL. Let us modify the function we just
-used and see what happens:
+That is not possible in Babelfish and MS SQL. Let's modify the function we just
+used, and see what happens:
 
 ```sql
 postgres=> CREATE OR REPLACE FUNCTION if_samples() 
@@ -293,7 +293,7 @@ INFO:  @a < 1
 ```
 
 Calling the same function via TDS will error out because <code>void</code> is
-not supported. You need to be aware of this fact:
+not supported. You need to be aware of this fact.
 
 ```sql
 bash# tsql -H PUT_HOSTNAME_HERE -p 1433 -U PUT_USER_HERE \
@@ -446,7 +446,7 @@ internally. To understand how this works, we first need to connect using a norma
 PostgreSQL connection (so <code>psql</code> on the PostgreSQL port and not
 <code>tsql</code> on the MS SQL port.
 
-What we see here is that PostgreSQL stores T-SQL code not quite like other code:
+What we see here is that PostgreSQL stores T-SQL code in a way not quite like other code:
 
 ```sql
 postgres=> SELECT proname, prosrc, probin 
@@ -462,7 +462,7 @@ postgres=> SELECT proname, prosrc, probin
 (1 row)
 ``` 
 
-In case of other languages it works like this: If you are writing plain SQL or
+In the case of other languages, it works like this: If you are writing plain SQL or
 PL/pgSQL, the code is normally only stored in prosrc (plain text). If you happen to
 use a C function, you will find the function name of the C level in prosrc and
 the link to the shared library in the probin column. To show how this works, we
@@ -485,13 +485,13 @@ If you look at T-SQL code, you'll see that there is a bit more magic involved.
 The code is in prosrc just like in other cases. However, the probin column is
 used to store a JSON document dealing with typmod-related information. This
 behavior is specific to T-SQL and is handled by [Babelfish specific
-hooks](../internals/configuration). 
+hooks](/docs/internals/postgresql-hooks). 
 
 The MS SQL equivalent to this query is the <code>sp_helptext</code> function
 which is currently not supported by Babelfish. 
 
 Let's take a look at one more example using the "PostgreSQL style interface" to
-writing stored procedures. The following code shows some more complex behavior:
+write stored procedures. The following code shows some more complex behavior:
 
 ```sql
 CREATE PROCEDURE [HumanResources].[uspUpdateEmployeePersonalInfo]

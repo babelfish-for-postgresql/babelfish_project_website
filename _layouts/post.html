@@ -7,14 +7,7 @@ layout: default
     <h1>{{page.title}}</h1>
     
     <div class="meta">
-        {{ page.date | date: "%a, %b %d, %Y" }} 
-        
-        {% if page.authors %}
-            &middot; {% for author_short_name in page.authors %}
-                {% assign author = site.authors | where: 'short_name', author_short_name | first %}
-                <em>{{ author.name }}</em>{% if forloop.length > 1 and forloop.last != true %}, {% endif %}
-            {% endfor %}
-        {% endif %}
+        By: {{ page.author }}. On: {{ page.date | date: "%b %d, %Y" }}.
     </div>
 
     {% include post_import.html %}

@@ -302,7 +302,7 @@ each other and which incompatibilities are known to exist.
 
 #### @@version
 
-- Babelfish: The contents of <code>@@version</code> in Babelfish than the 
+- Babelfish: The contents of <code>@@version</code> in Babelfish differs from the 
 	native content for SQL Server. Your code might not work correctly if
 	it depends on the native formatting of <code>@@version</code>, such
 	as to extract specific minor version numbers.
@@ -315,7 +315,7 @@ handling easier, or in some cases make it possible at all. However, some of thes
 supported by Babelfish. 
 
 
-### Missing catalog related procedures
+### Missing catalog-related procedures
 
 The following catalog procedures are currently not supported:
 
@@ -331,7 +331,7 @@ The following catalog procedures are currently not supported:
 - <code>sp_table_privileges</code>
 
 
-### Missing cursor related procedures
+### Missing cursor-related procedures
 
 The following list contains an overview of missing cursor-related procedures:
 
@@ -339,7 +339,7 @@ The following list contains an overview of missing cursor-related procedures:
 - <code>sp_describe_cursor_tables</code>
 
 
-### Missing database engine related procedures
+### Missing database engine-related procedures
 
 This is a list of database engine-related functionality which is not yet available:
 
@@ -425,7 +425,7 @@ This is a list of database engine-related functionality which is not yet availab
 - <code>sp_who</code>
 
 
-### Missing security related procedures
+### Missing security-related procedures
 
 - <code>sp_add_trusted_assembly</code>
 - <code>sp_addapprole</code>
@@ -509,7 +509,7 @@ hatch should be set to <code>ignored</code> or <code> strict</code>.
 
 If set to <code>strict</code>, Babelfish will return an error that you must 
 correct before continuing. Include the <code>cluster</code>keyword to apply 
-the changes to the current session and on a cluster level.
+the changes to the current session as well as on a cluster level.
 
 The following types of hatches exist. The list should give you an impression of
 what is possible:

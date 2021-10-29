@@ -43,14 +43,24 @@ dl.list-features {
     li a {
         display: inline;
         color: white;
+        position: relative;
     }
-    li a.in-category {
-        color: $attention;
+    
+    
+    li a.in-category:after {
+        content: " ";
+        width: 100%;
+        height: 1px;
+        background: #fff;
+        display: block;
+        position: absolute;
+        bottom: 22px;
+        left: 0;
     }
 
     li + li:before {
         content: "·";
-        color: $text-light;
+        color: #fff;
         display: inline-block;
         margin-right: 0.25em;
     }
@@ -531,5 +541,10 @@ dl.list-features {
     .contributors-page td.contribution, .contributors-page td.photo {
         display: block;
         padding: 10px 0;
+    }
+
+    [role="banner"] [role="navigation"] li a.in-category:after {
+        background: #2851b1;
+        bottom: 0;
     }
   }
