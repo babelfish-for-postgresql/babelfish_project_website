@@ -16,7 +16,7 @@ Linux (and thus UNIX-style systems in general).
 The first thing to do is to actually download the source code you want to build.
 Babelfish is separated into two repositories, the first of them contains 
 the PostgreSQL database engine, with some changes that enables the 
-procotols, language parsers, and more features to be hoooked into PostgreSQL that are required by Babelfish to work. 
+protocols, language parsers, and more features to be hooked into PostgreSQL that are required by Babelfish to work. 
 The second one contains extensions to support the T-SQL protocol, the T-SQL language, the TDS Protocol, etc.
 
 The Babelfish PostgreSQL engine source code can be downloaded 
@@ -39,7 +39,7 @@ To compile Babelfish, you have to make sure that a variety of software component
 are available on your system. These packages should be part of every modern
 Linux distribution, under similar - but not identical - names. 
 
-Also keep in mind that you will need a user with root priviledges, so that you are able to run commands with `sudo`
+Also keep in mind that you will need a user with root privileges, so that you are able to run commands with `sudo`
 
 If you want to run more than just the bare version of Babelfish, we recommend
 installing the following additional packages on top of the hard requirements listed
