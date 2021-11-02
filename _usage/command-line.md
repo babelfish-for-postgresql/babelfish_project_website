@@ -4,14 +4,14 @@ title: Using the command line
 nav_order: 1
 ---
 
-## Using the command line to work with Babelfish
+## Using client tools to work with Babelfish
 
-Many people use MS Windows to connect to Babelfish. However, there is an 
-ever-growing community which prefers to use the command line to work with the server.
-Those users have the following choices on Linux:
+Many people use SQL Server Management Studio (SSMS) on MS Windows to connect to Babelfish. 
+
+However, there is an ever-growing community which prefers to use the command line to work with the server.
+Those users have the following command-line tool choices on Linux:
 
 - sqlcmd: Using the MS SQL interface
-- SSMS: SQL Server Management Studio
 - tsql: Using the FreeTDS command line tool
 - psql: Using an extended version of psql
 
