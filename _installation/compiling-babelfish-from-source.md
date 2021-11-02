@@ -47,7 +47,7 @@ above.
 
 - [Flex 2.6.4](https://github.com/westes/flex)
 - [Libxml2](http://xmlsoft.org/) development libraries
-- [Libxstl](http://www.xmlsoft.org/libxslt/) development libraries
+- [Libxslt](http://www.xmlsoft.org/libxslt/) development libraries
 - [xsltproc](http://xmlsoft.org/XSLT/xsltproc2.html)
 - [Open SSL](https://www.openssl.org/) development libraries
 - [Readline](https://tiswww.cwru.edu/php/chet/readline/rltop.html) development libraries
