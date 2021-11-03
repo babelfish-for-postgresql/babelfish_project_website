@@ -7,8 +7,9 @@ nav_order: 2
 ## Contributing code
 
 Babelfish is available as Open Source software and can be downloaded from Github
-for free under the terms of the [Apache 2.0
-license](https://www.apache.org/licenses/LICENSE-2.0) and [PostgreSQL lincense](https://www.postgresql.org/about/licence/).
+for free under the terms of the
+[Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0) and the
+[PostgreSQL license](https://www.postgresql.org/about/licence/).
 
 The project is open to contributions. Simple send a [pull request via
 Github](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
