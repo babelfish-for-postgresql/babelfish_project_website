@@ -27,7 +27,7 @@
   username: billramo
   pic: "/assets/images/profile_pics/bill_ramos.jpg"
   contribution: |
-    Bill is a Senior Product Manager on the AWS Database Migration Service team. Bill is providing his SQL Server expertise to improve the migration experiance to Babelfish.  
+    Bill is a Senior Product Manager on the AWS Database Migration Service team. Bill is providing his SQL Server expertise to improve the migration experience to Babelfish.  
 - name: Zheng Li
   github: https://github.com/zli236
   username: zli236
@@ -45,7 +45,7 @@
   username: susanmdouglas-aws
   pic: "/assets/images/profile_pics/susan_douglas.jpeg"
   contribution: |
-    Susan is a documentation writer on the Babelfish project.
+    Susan contributed on the Babelfish project as a documentation writer.
 - name: Jason Teng
   github: https://github.com/Sairakan
   username: Sairakan
@@ -190,6 +190,16 @@
   pic: "/assets/images/profile_pics/rishabh_tanwar.png"
   contribution: |
     Rishabh is a software engineer on the Babelfish project. He contributed to the design and implementation Error code mapping on TDS listener and he was involved in maintaining development pipelines.
+- name: Ashutosh Agarwal
+  github: https://github.com/Ashutosh-R-Agarwal​
+  pic: "/assets/images/profile_pics/ashutosh_agarwal.jpg"
+  contribution: |
+    Ashutosh is a Software Development Engineer. On the Bablefish Project his major contributions include the design and implementation of TDS protocol features. He implemented TDS remote procedure calls parsing, sender and receiver functions for on the wire datatypes (Integer, String, Binary, XML & Uniqueidentifier), TLS encryption and Telemetry extension for Babelfish.
+- name: Huansong Fu
+  github: https://github.com/huansong
+  pic: "/assets/images/profile_pics/huansong_fu.jpg"
+  contribution: |
+    Huansong is a Software Engineer on the Babelfish project. He mainly contributed to the design and implementation of features including local temporary tables, application-level locks, various T-SQL built-in stored procedures and system views, and pg_dump compatibility.
 - name: Prateek Goel 
   github: https://github.com/prateekgoel01
   username: prateekgoel01
@@ -327,3 +337,37 @@
   pic: "/assets/images/profile_pics/murali-brahmadesam.jpg"
   contribution: |
     Murali is the Director of Engineering of Aurora providing the initial strategy and technical direction for the Babelfish project.
+- name: Hans-Jürgen Schönig
+  github: https://github.com/postgresql007
+  pic: "/assets/images/profile_pics/hans_jurgen_schonig.jpg"
+  contribution: |
+    Hans-Jürgen Schönig has been a PostgreSQL expert and database specialist since the 1990s. He is the founder, CEO and technical director of CYBERTEC, which is one of the global database market leaders and has been serving countless customers around the globe since 2000. He contributed to the Babelfish project in testing, review, documentation and patching.
+- name: Laurenz Albe
+  github: https://github.com/laurenz
+  pic: "/assets/images/profile_pics/laurenz_albe.png"
+  contribution: |
+    Dipl. Ing. Mag.rer.nat Laurenz Albe is Senior Database Consultant at CYBERTEC. Mr. Albe has more than 13 years of experience in this field. In addition to support and consulting activities, he also gives various training, develops extensions for PostgreSQL and contributes to core PostgreSQL. He contributed with patching, documentation, and testing of the on the Babelfish project.
+- name: Bernd Helmle
+  pic: "/assets/images/profile_pics/bernd_helmle.png"
+  contribution: |
+    Bernd Helmle is senior database engineer at CYBERTEC and mainly deals with topics around migration, operation and high availability of PostgreSQL databases. He is a PostgreSQL enthusiast and very passionate Open Source developer, so as to when time allows, he contributes code to PostgreSQL and regularly participates in CommitFest as a reviewer. Bernd Helmle is also co-author of the book "PostgreSQL Administration". He contributed with patching, documentation, and testing of the on the Babelfish project.
+- name: Álvaro Hernandez Tortosa
+  pic: "/assets/images/profile_pics/alvaro_hernandez.jpg"
+  github: https://github.com/ahachete
+  contribution: |
+    Álvaro Hernandez Tortosa is the founder of OnGres and a well-known PostgreSQL community member. He contributed to the Babelfish project on documentation, and annoucements. 
+- name: Emanuel Calvo
+  github: https://github.com/3manuek
+  pic: "/assets/images/profile_pics/emanuel_calvo.jpg"
+  contribution: |
+    Emanuel Calvo is a Senior Database Engineer at OnGres. He contributed to the Babelfish project on testing, patching, compilation review, and website building.
+- name: Xavier Sierra
+  github: https://github.com/xaviersierra
+  pic: "/assets/images/profile_pics/xavier_sierra.jpg"
+  contribution: |
+    Xavier Sierra is a Senior Software Developer at OnGres, with extensive experience in PostgreSQL, and developer of StackGres operator. He contributed on the Babelfish project in documentation, testing, and website building.
+- name: Luis García
+  github: https://github.com/lgarciaog
+  pic: "/assets/images/profile_pics/luis_garcia.jpg"
+  contribution: |
+    Luís García is a Senior Front-End Developer at OnGres, and he contributed in the website and theme building.
