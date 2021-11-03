@@ -71,7 +71,7 @@ your database connections. Simply make your applications point to the new data
 source and launch your tests.
 
 To a client, Babelfish is expected to look just like a normal SQL Server. Unless
-you hit a [missing feature](/docs/usage/missing-features) your apps are expected to work
+you hit a [limitation](/docs/usage/limitations-of-babelfish), your apps are expected to work
 normally under most circumstances. However, we recommend thorough testing, and
 adjusting details here and there.
 
