@@ -6,14 +6,18 @@ nav_order: 1
 
 ## Using client tools to work with Babelfish
 
-Many people use SQL Server Management Studio (SSMS) on MS Windows to connect to Babelfish. 
+Most people use SQL Server Management Studio (SSMS) on Microsoft Windows to
+connect to Babelfish.
 
-However, there is an ever-growing community which prefers to use the command line to work with the server.
+However, there is an ever-growing community which prefers to use the command
+line to work with the server.
 Those users have the following command-line tool choices on Linux:
 
 - sqlcmd: Using the MS SQL interface
 - tsql: Using the FreeTDS command line tool
-- psql: Using an extended version of psql
+
+Note that there is also a `psql` version for Babelfish, but that is not reliable.
+Therefore, it is strongly recommended not to use it.
 
 
 ### Using sqlcmd to connect to the DB cluster {#babelfish-connect-sqlcmd}
@@ -35,7 +39,7 @@ Where:
 
 ### Connecting with SSMS
 
-The SQL Server Management Studio is an additional option to talk to Babelfish. 
+The SQL Server Management Studio is an additional option to talk to Babelfish.
 
 In the following procedure, you connect to your Babelfish database by
 using Microsoft SQL Server Management Studio (SSMS). You can use the
@@ -93,7 +97,7 @@ enabled data source).
 Here is the syntax of the command line tool:
 
 ```bash
-Usage: tsql [-a <appname>] [-S <server> | -H <hostname> -p <port>] -U <username> 
+Usage: tsql [-a <appname>] [-S <server> | -H <hostname> -p <port>] -U <username>
 	[-P <password>] [-I <config file>] [-o <options>] [-t delim] [-r delim] [-D database]
   or:  tsql -C
   or:  tsql -L -H <hostname>
@@ -120,7 +124,7 @@ If -L is specified with a host name (-H) instances found are printed.
 	Default column delimitor is <tab>; default row delimiter is <newline>
 ```
 
-As you can see, the syntax is relatively easy and straightforward. 
+As you can see, the syntax is relatively easy and straightforward.
 
 If you want to see which compile time settings are available in your client
 interface, use the -C flag as shown in the next listing:
@@ -190,10 +194,12 @@ works with MS SQL as well as PostgreSQL.
 
 ### Using psql to connect
 
-If you don't want to use tsql as your Linux command line interface, you can use a
-modified version of psql which comes as part of the Babelfish package. Note:
-This HAS to be the Babelfish version of psql - otherwise the following feature
-will NOT work.
+You can also use PostgreSQL's `psql` to connect to Babelfish. However, this is
+**strongly** discouraged, and the behavior will be unpredictable. It is
+therefore not recommended to to that &ndash; in fact it can be pretty dangerous.
+
+Babelfish comes with a modified version of `psql`, which allows to set
+the SQL dialect:
 
 ```bash
 SET babelfishpg_tsql.sql_dialect = 'tsql';
@@ -203,10 +209,5 @@ INSERT INTO some_table VALUES (1);
 GO
 ```
 
-As you can see, the \\tsql setting will enable the MS SQL mode. You can now use 'GO' instead of a
-semi-colon to start the execution of commands. psql can
-therefore be abused as a command line client.
-
-However, as stated before: This ONLY works with the Babelfish
-incarnation of psql. The standard version of the client as shipped with
-PostgreSQL does not have this feature, and most likely never will.
+However, this feature is aiming at Babelfish developers. It is *not* meant to be
+used by ordinary users looking for a command line replacement.
