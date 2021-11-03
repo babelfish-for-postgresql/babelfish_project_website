@@ -10,13 +10,20 @@ Babelfish offers two modes of operation:
 - `single-db`
 - `multi-db`
 
-What is the purpose of these two modes? In MS SQL, it is really cheap to perform
-joins between tables located in different databases. In PostgreSQL, it is also
-possible to join between databases, but it is far more expensive to do so. Since
-joining different databases is pretty common in MS SQL, this is an important
-issue. The question now is: How can Babelfish model the desired MS SQL behavior?
-In the case of `single-db`, MS SQL databases are mapped to schemas in PostgreSQL. In
-the case of `multi-db`, many databases are used instead of just one.
+When you create a Babelfish cluster, you choose between using a single
+SQL Server database on its own or multiple SQL Server databases together.
+Your choice affects how the names of SQL Server schemas inside the Babelfish
+database appear in PostgreSQL.
+
+If you specify `single-db`, you can create only a single SQL Server database in
+Babelfish, and SQL Server schemas will be created as regular PostgreSQL schemas
+in your Babelfish database.  If you specify `multi-db`, you can create
+several SQL Server databases with schemas in them, and an SQL Server schema will
+be created as PostgreSQL schema `<database name>_<schema_name>` to avoid name
+collisions.
+
+The migration mode is stored in the `migration_mode` parameter. You can't change
+this parameter after creating your cluster.
 
 During the deployment process you can decide which mode to use.
 How does this work? Consider the following code snippet:  
@@ -26,16 +33,59 @@ CREATE USER babelfish_user WITH CREATEDB
 	CREATEROLE PASSWORD '<PUT_SECRET_PASS_HERE>' INHERIT;
 DROP DATABASE IF EXISTS demo;
 
+/* the Babelfish database */
 CREATE DATABASE demo OWNER babelfish_user;
+ALTER SYSTEM SET babelfishpg_tsql.database_name = 'demo';
+SELECT pg_reload_conf();
+
+/* determine the migration mode */
+ALTER DATABASE demo SET babelfishpg_tsql.migration_mode = 'single-db'|'multi-db';
 
 \c demo
 
 CREATE EXTENSION IF NOT EXISTS "babelfishpg_tds" CASCADE;
-ALTER SYSTEM SET babelfishpg_tsql.database_name = 'demo';
-ALTER DATABASE demo SET babelfishpg_tsql.migration_mode = 'single-db'|'multi-db';
 CALL SYS.INITIALIZE_BABELFISH('babelfish_user');
 ```
 
-The `ALTER DATABASE` statement assigns the correct parameter to the database.
-The init function will then perform all the steps needed to perform the setup.
+The `ALTER DATABASE` statement assigns the correct migration mode to the
+database.  The `SYS.INITIALIZE_BABELFISH` function will then perform all
+the steps needed to set up Babelfish.
 
+Once you are connected to the database via TDS, you can utilize the `USE`
+command to select the current database as you would do it in Microsoft
+SQL Server (with `single-db`, you can have only a single database).
+
+
+### Choosing a migration mode
+
+Each migration mode has advantages and disadvantages. Choose your migration
+mode based on the number of user databases you have, and your migration plans.
+After you create a cluster for use with Babelfish, you can't change the
+migration mode. When choosing a migration mode, consider the requirements of
+your user databases and clients.
+
+When you initialize Babelfish, Babelfish creates the system databases
+`master`. and `tempdb`.  If you created or modified objects in the
+system databases (`master` or `tempdb`), make sure to re-create those objects
+in your new cluster.  Unlike SQL Server, Babelfish doesn't reinitialize `tempdb`
+after a cluster reboot.
+
+Use single database migration mode in the following cases:
+
+- If you are migrating a single SQL Server database. In single database mode,
+  migrated schema names are identical to the original SQL Server schema names.
+  When you migrate your application, you need to make fewer changes to your
+  SQL code.
+
+- If your end goal is a complete migration to native PostgreSQL.  Before
+  migrating, consolidate your schemas into a single schema (`dbo`) and then migrate
+  into a single cluster to reduce the required changes.
+
+Use multiple database migration mode in the following cases:
+
+- If you are trying out Babelfish and you aren't sure of your future needs.
+
+- If multiple user databases need to be migrated together, and the end goal isn't
+  to perform a fully native PostgreSQL migration.
+
+- If you might be migrating multiple databases in the future.
