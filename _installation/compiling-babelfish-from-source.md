@@ -128,7 +128,7 @@ Now that we have configured the source tree, we can build Babelfish with the
 INSTALLATION_PATH=<the path you specified as prefix>
 mkdir "$INSTALLATION_PATH"
 
-make            # Compiles the Babefish PostgreSQL engine
+make            # Compiles the Babefish for PostgreSQL engine
 cd contrib 
 
 make            # Compiles the PostgreSQL default extensions
