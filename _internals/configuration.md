@@ -236,17 +236,17 @@ Defines compatibility level.
 
 ### `babelfishpg_tsql.escape_hatch_constraint_name_for_default`
 
-Escape hatch for `DEFAULT` option in `ALTER TABLE ADD` constraint
+Escape hatch for `DEFAULT` option in `ALTER TABLE ADD` constraint.
 
 
 ### `babelfishpg_tsql.escape_hatch_database_misc_options`
 
-Escape hatch for misc options in `CREATE/ALTER DATABASE`
+Escape hatch for misc options in `CREATE/ALTER DATABASE`.
 
 
 ### `babelfishpg_tsql.escape_hatch_for_replication`
 
-Escape hatch for `[NOT] FOR REPLICATION` option
+Escape hatch for `[NOT] FOR REPLICATION` option.
 
 
 ### `babelfishpg_tsql.escape_hatch_fulltext`
@@ -256,7 +256,7 @@ Escape hatch for fulltext search.
 
 ### `babelfishpg_tsql.escape_hatch_index_clustering`
 
-Escape hatch for `CLUSTERED` option in `CREATE INDEX`
+Escape hatch for `CLUSTERED` option in `CREATE INDEX`.
 
 
 ### `babelfishpg_tsql.escape_hatch_index_columnstore`
@@ -301,7 +301,7 @@ Escape hatch for login passwords unlock option.
 
 ### `babelfishpg_tsql.escape_hatch_nocheck_add_constraint`
 
-Escape hatch for `WITH [NO]CHECK` option in `ALTER TABLE ADD`
+Escape hatch for `WITH [NO]CHECK` option in `ALTER TABLE ADD`.
 
 
 ### `babelfishpg_tsql.escape_hatch_nocheck_existing_constraint`
@@ -317,7 +317,7 @@ Escape hatch for query hints.
 
 ### `babelfishpg_tsql.escape_hatch_rowguidcol_column`
 
-Escape hatch for `ROWGUIDCOL` option
+Escape hatch for `ROWGUIDCOL` option.
 
 
 ### `babelfishpg_tsql.escape_hatch_schemabinding_function`
@@ -392,12 +392,12 @@ Defines if multiple databases are supported. Valid options are:
 
 ### `babelfishpg_tsql.nocount`
 
-T-SQL compatibility `NOCOUNT` option
+T-SQL compatibility `NOCOUNT` option.
 
 
 ### `babelfishpg_tsql.noexec`
 
-SQL-Server compatibility `NOEXEC` option
+SQL-Server compatibility `NOEXEC` option.
 
 
 ### `babelfishpg_tsql.numeric_roundabort`
@@ -451,27 +451,27 @@ Sets the dialect for SQL commands. Valid options are
 
 ### `babelfishpg_tsql.trace_tree`
 
-Dump compiled parse tree prior to code generation
+Dump compiled parse tree prior to code generation.
 
 
 ### `babelfishpg_tsql.trace_exec_codes`
 
-Trace execution code of iterative executor
+Trace execution code of iterative executor.
 
 
 ### `babelfishpg_tsql.trace_exec_counts`
 
-Trace execution count of each code for iterative executor
+Trace execution count of each code for iterative executor.
 
 
 ### `babelfishpg_tsql.trace_exec_time`
 
-Trace execution time of each code for iterative executor
+Trace execution time of each code for iterative executor.
 
 
 ### `babelfishpg_tsql.textsize`
 
-Set `TEXTSIZE`
+Set `TEXTSIZE`.
 
 
 ### `babelfishpg_tsql.use_antlr`
