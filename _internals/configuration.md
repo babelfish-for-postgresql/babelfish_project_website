@@ -104,6 +104,9 @@ Here are the TDS related settings:
 
 Let us discuss these parameters in more detail.
 
+Escape hatches are described in more detail in the
+[section on limitations](usage/limitations-of-babelfish#dealing-with-limitations).
+
 ### `babelfishpg_tsql.allow_antlr_to_unsupported_grammar_for_testing`
 
 Variable for internal testing - make `antlr` allow some unsupported grammar.
@@ -206,6 +209,9 @@ What is the purpose of this variable? It controls whether a savepoint is created
 handle undo if a command fails. Savepoints are not started for batch commands, as
 error handling must be taken care of at the statement level.
 
+This setting is for Babelfish development only and should not be used by end
+users.
+
 
 ### `babelfishpg_tsql.disable_txn_in_triggers`
 
@@ -226,12 +232,13 @@ Enable detailed ATNLR parser logging.
 
 ### `babelfishpg_tsql.enable_ownership_structure`
 
-Enable Babelfish ownership structure.
+Enable Babelfish ownership structure.  This flag is for Babelfish development
+and should not be used by end users.
 
 
 ### `babelfishpg_tsql.escape_hatch_compatibility_level`
 
-Defines compatibility level.
+Suppresses the error when trying to set the compatibility level.
 
 
 ### `babelfishpg_tsql.escape_hatch_constraint_name_for_default`
@@ -256,7 +263,7 @@ Escape hatch for fulltext search.
 
 ### `babelfishpg_tsql.escape_hatch_index_clustering`
 
-Escape hatch for `CLUSTERED` option in `CREATE INDEX`.
+Escape hatch for `CLUSTERED` option in `CREATE INDEX` and constraints.
 
 
 ### `babelfishpg_tsql.escape_hatch_index_columnstore`
@@ -368,7 +375,7 @@ Escape hatch for unique constraints.
 
 ### `babelfishpg_tsql.fmtonly`
 
-SQL-Server compatibility `FMTONLY` option.
+SQL Server compatibility `FMTONLY` option.
 
 
 ### `babelfishpg_tsql.implicit_transactions`
@@ -386,8 +393,9 @@ T-SQL compatibility language option.
 
 ### `babelfishpg_tsql.migration_mode`
 
-Defines if multiple databases are supported. Valid options are:
+Defines if multiple T-SQL databases are supported. Valid options are:
 `single-db`, `multi-db` and `NULL` (same as `single-db`).
+See the [discussion of single-DB versus multiple-DB setup](docs/installation/single-multiple).
 
 
 ### `babelfishpg_tsql.nocount`
@@ -397,7 +405,7 @@ T-SQL compatibility `NOCOUNT` option.
 
 ### `babelfishpg_tsql.noexec`
 
-SQL-Server compatibility `NOEXEC` option.
+SQL Server compatibility `NOEXEC` option.
 
 
 ### `babelfishpg_tsql.numeric_roundabort`
@@ -405,7 +413,6 @@ SQL-Server compatibility `NOEXEC` option.
 Ends a query when an overflow or division-by-zero error occurs
 during query execution.
 The setting `ON` is not allowed for this option.
-Please use `babelfishpg_tsql.escape_hatch_session_settings` to ignore.
 
 
 ### `babelfishpg_tsql.quoted_identifier`
@@ -427,17 +434,17 @@ Name of the default server collation. The default value is
 
 ### `babelfishpg_tsql.showplan_all`
 
-SQL-Server compatibility `SHOWPLAN_ALL` option.
+SQL Server compatibility `SHOWPLAN_ALL` option.
 
 
 ### `babelfishpg_tsql.showplan_text`
 
-SQL-Server compatibility `SHOWPLAN_TEXT` option.
+SQL Server compatibility `SHOWPLAN_TEXT` option.
 
 
 ### `babelfishpg_tsql.showplan_xml`
 
-SQL-Server compatibility `SHOWPLAN_XML` option.
+SQL Server compatibility `SHOWPLAN_XML` option.
 
 
 ### `babelfishpg_tsql.sql_dialect`
