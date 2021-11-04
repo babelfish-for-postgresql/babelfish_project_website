@@ -23,7 +23,8 @@ be created as PostgreSQL schema `<database name>_<schema_name>` to avoid name
 collisions.
 
 The migration mode is stored in the `migration_mode` parameter. You can't change
-this parameter after creating your cluster.
+this parameter after creating your cluster (if you want to change the migration
+mode, you'll have to create a new cluster).
 During the deployment process you must decide which mode to use.  If you don't
 set `migration_mode`, the default value of `single-db` is chosen.
 
