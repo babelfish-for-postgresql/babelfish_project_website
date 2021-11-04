@@ -13,7 +13,7 @@ However, there is an ever-growing community which prefers to use the command
 line to work with the server.
 Those users have the following command-line tool choices on Linux:
 
-- sqlcmd: Using the MS SQL interface
+- sqlcmd: Using the Microsoft SQL Server interface
 - tsql: Using the FreeTDS command line tool
 
 Note that there is also a `psql` version for Babelfish, but that is not reliable.
@@ -39,11 +39,10 @@ Where:
 
 ### Connecting with SSMS
 
-The SQL Server Management Studio is an additional option to talk to Babelfish.
+SSMS is an additional option to talk to Babelfish.
 
 In the following procedure, you connect to your Babelfish database by
-using Microsoft SQL Server Management Studio (SSMS). You can use the
-SSMS query editor to connect to a Babelfish database.
+using SSMS. You can use the SSMS query editor to connect to a Babelfish database.
 
 #### Start SSMS.
 
@@ -189,7 +188,7 @@ as well as in Sybase. But there is more, which might be alien to users
 experienced with PostgreSQL: <code>SELECT 1+1</code> does not yield a column title, so to
 ensure that a title is provided, we need to alias the column. You need to be aware
 of such small details in order to ensure that the code written stays portable, and still
-works with MS SQL as well as PostgreSQL.
+works with Microsoft SQL Server as well as PostgreSQL.
 
 
 ### Using psql to connect
