@@ -1,0 +1,184 @@
+title: Babelfish for PostgreSQL
+description: ""
+
+baseurl: ""
+url: "https://babelfish-for-postgresql.github.io/babelfish_project_website"
+
+permalink: /:path/
+email: 
+twitter_username:
+github_username:
+
+headings:
+  news: "News"
+  source: "Source Code"
+  authors: "Authors"
+  downloads: "Download & Get Started"
+  contributors: "Contributors"
+  getstarted: "Get Started"
+
+lucene_version: 8_8_2
+
+# Build settings
+markdown: kramdown
+remote_theme: pmarsceill/just-the-docs@v0.3.3
+
+# Kramdown settings
+kramdown:
+  toc_levels: 2..3
+
+logo: "/assets/images/logo.svg"
+
+# Aux links for the upper right navigation
+aux_links:
+
+color_scheme: babelfishpg
+
+defaults:
+  - scope:
+      type: "posts"
+    values:
+      permalink: blog/:categories/:year/:month/:title/
+  - scope:
+      path: ""
+      type: "authors"
+    values:
+      layout: "author"
+      permalink: /:collection/:name/
+  - scope:
+      type: javadocs
+    values:
+      layout: javadocs
+      permalink: /:collection/:name.html
+  - scope:
+      type: events
+    values:
+      layout: event
+      permalink: events/:title/
+  - scope:
+      type: versions
+    values:
+      layout: versions
+      permalink: versions/:categories/:slug.html
+  - scope:
+      type: artifacts
+    values:
+      layout: artifact
+      permalink: :collection/:categories/:slug.html
+
+# Define Jekyll collections
+collections:
+  # Define a collection named "tests", its documents reside in the "_tests" directory
+  installation:
+    permalink: /docs/:collection/:path/
+    output: true
+  usage:
+    permalink: /docs/:collection/:path/
+    output: true
+  client:
+    permalink: /docs/:collection/:path/
+    output: true
+  internals:
+    permalink: /docs/:collection/:path/
+    output: true
+  faq:
+    permalink: /docs/:collection/:path/
+    output: true
+  docs:
+    permalink: /:collection/:path/
+    output: true
+  events:
+    output: true
+  artifacts:
+    output: true
+  versions:
+    output: true
+
+paginate: 5
+paginate_path: "/blog/page:num/"
+
+just_the_docs:
+  # Define the collections used in the theme
+  collections:
+    docs:
+    installation:
+      name: Installing Babelfish
+      nav_fold: true      
+    usage:
+      name: Using Babelfish
+      nav_fold: true
+    client:
+      name: Client programming
+      nav_fold: true
+    internals:
+      name: Babelfish internals
+      nav_fold: true
+    faq:
+      name: FAQ and getting help
+      nav_fold: true
+
+# Enable or disable the site search
+# Supports true (default) or false
+search_enabled: true
+
+search:
+  # Split pages into sections that can be searched individually
+  # Supports 1 - 6, default: 2
+  heading_level: 2
+  # Maximum amount of previews per search result
+  # Default: 3
+  previews: 3
+  # Maximum amount of words to display before a matched word in the preview
+  # Default: 5
+  preview_words_before: 5
+  # Maximum amount of words to display after a matched word in the preview
+  # Default: 10
+  preview_words_after: 10
+  # Set the search token separator
+  # Default: /[\s\-/]+/
+  # Example: enable support for hyphenated search words
+  tokenizer_separator: /[\s/]+/
+  # Display the relative url in search results
+  # Supports true (default) or false
+  rel_url: true
+  # Enable or disable the search button that appears in the bottom right corner of every page
+  # Supports true or false (default)
+  button: false
+
+# Google Analytics Tracking (optional)
+# e.g, UA-1234567-89
+ga_tracking: G-N5LPQD8JX3
+
+# Disable the just-the-docs theme anchor links in favor of our custom ones
+# See _includes/head_custom.html
+heading_anchors: false
+
+# Adds on-hover anchor links to h2-h6
+anchor_links: true
+
+footer_content:
+
+# Build settings
+plugins:
+  - jekyll-remote-theme
+  - jekyll-redirect-from
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-last-modified-at
+  - jekyll-sitemap
+
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - bower.json
+  - package.json
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+  - .idea/
