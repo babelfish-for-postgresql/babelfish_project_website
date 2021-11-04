@@ -53,30 +53,26 @@ code that may require changing before executing against Babelfish.
 ### Deploying the schema and migrating the data
 
 Run the DDL on your new Babelfish server to recreate your schema on Babelfish. 
-Make SQL code adjustments as needed. Most of the SQL is expected to work out of
-the box.
+Make SQL code adjustments as needed.
 
 In case you are facing errors or problems, we recommend you check out our [discussion about
 differences in functionality](/docs/usage/limitations-of-babelfish).
 
 In the next step you can move the data from one server to the other.
-Once the schema has been adjusted properly, and once it has been deployed
-successfully, moving the data itself is not expected to cause errors anymore.
 
 
 ### Reconfiguring client applications
 
-Once structure and data have been migrated successfully, it is time to adjust
+Once structure and data have been migrated successfully, you can adjust
 your database connections. Simply make your applications point to the new data
 source and launch your tests.
 
 To a client, Babelfish is expected to look just like a normal SQL Server. Unless
-you hit a [limitation](/docs/usage/limitations-of-babelfish), your apps are expected to work
-normally under most circumstances. However, we recommend thorough testing, and
-adjusting details here and there.
+you hit a [limitation](/docs/usage/limitations-of-babelfish), your apps should work
+normally. However, we recommend thorough testing.
 
-In particular, complex SQL might exhibit performance differences on different platforms. Thus
-performance adjustments may be necessary during a migration.
+In particular, complex SQL might exhibit performance differences on different
+platforms. Thus performance adjustments may be necessary during a migration.
 
 
 ### Moving to production
