@@ -11,21 +11,22 @@ Babelfish offers two modes of operation:
 - `multi-db`
 
 When you create a Babelfish cluster, you choose between using a single
-SQL Server database on its own or multiple SQL Server databases together.
-Your choice affects how the names of SQL Server schemas inside the Babelfish
+T-SQL database on its own or multiple T-SQL databases together.
+Your choice affects how the names of T-SQL schemas inside the Babelfish
 database appear in PostgreSQL.
 
-If you specify `single-db`, you can create only a single SQL Server database in
-Babelfish, and SQL Server schemas will be created as regular PostgreSQL schemas
+If you specify `single-db`, you can create only a single T-SQL database in
+Babelfish, and T-SQL schemas will be created as regular PostgreSQL schemas
 in your Babelfish database.  If you specify `multi-db`, you can create
-several SQL Server databases with schemas in them, and an SQL Server schema will
+several T-SQL databases, each with its own schemas, and an T-SQL schema will
 be created as PostgreSQL schema `<database name>_<schema_name>` to avoid name
 collisions.
 
 The migration mode is stored in the `migration_mode` parameter. You can't change
 this parameter after creating your cluster.
+During the deployment process you must decide which mode to use.  If you don't
+set `migration_mode`, the default value of `single-db` is chosen.
 
-During the deployment process you can decide which mode to use.
 How does this work? Consider the following code snippet:  
 
 ```sql
@@ -51,9 +52,10 @@ The `ALTER DATABASE` statement assigns the correct migration mode to the
 database.  The `SYS.INITIALIZE_BABELFISH` function will then perform all
 the steps needed to set up Babelfish.
 
-Once you are connected to the database via TDS, you can utilize the `USE`
-command to select the current database as you would do it in Microsoft
-SQL Server (with `single-db`, you can have only a single database).
+When you connect to the TDS port, you will be connected to the PostgreSQL
+database defined by `babelfishpg_tsql.database_name`.  You can then use the
+`CREATE DATABASE` and `USE` statements as you would in Microsoft SQL Server.
+(If you use `single-db` mode, you can only have a single T-SQL database.)
 
 
 ### Choosing a migration mode
@@ -73,9 +75,10 @@ after a cluster reboot.
 Use single database migration mode in the following cases:
 
 - If you are migrating a single SQL Server database. In single database mode,
-  migrated schema names are identical to the original SQL Server schema names.
-  When you migrate your application, you need to make fewer changes to your
-  SQL code.
+  migrated schema names (when seen from PostgreSQL) are identical to the
+  original SQL Server schema names.
+  In case you plan to ultimately migrate your application to native
+  PostgreSQL, your SQL code will require fewer modifications.
 
 - If your end goal is a complete migration to native PostgreSQL.  Before
   migrating, consolidate your schemas into a single schema (`dbo`) and then migrate
