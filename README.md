@@ -42,6 +42,15 @@ Alternatively, build the site with `bundle exec jekyll build`. The HTML output i
 
 ### Testing
 
+Local test:
+
+```
+$ bundle install
+$ bundle exec jekyll serve -w
+```
+
+For testing the GitHub CI locally, you can use [act](https://github.com/nektos/act) by running `act` at the repository's root.
+
 #### Link checker
 
 We use a link checker plugin to ensure that we don't have any broken links on the website. It does not run by default since it can slow down the build, especially when running `bundle exec jekyll serve`. To run the link checker, add the ENV flag `JEKYLL_LINK_CHECKER` or `JEKYLL_FATAL_LINK_CHECKER` with any one of the valid values `internal`,`forced`,`all` or `retry`. Each option tests a larger range of links. E.g.
