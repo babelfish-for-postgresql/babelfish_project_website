@@ -25,7 +25,7 @@ Once your deployment is ready for action, you can move forward and proceed with
 the next step.
 
 
-### Moving the data structure to Babelfish
+### Moving the schema to Babelfish
 
  The first step is to move your existing SQL Server schema to the new
  cluster. Export the DDL (data definition language) of the SQL Server
@@ -50,17 +50,17 @@ to what extent the T-SQL code will be supported by Babelfish, and identify T-SQL
 code that may require changing before executing against Babelfish. 
 
  
-### Deploying the data structure and move the data
+### Deploying the schema and migrating the data
 
 Run the DDL on your new Babelfish server to recreate your schema on Babelfish. 
-Make code adjustments as needed. Most of the code is expected to work out of the
-box. 
+Make SQL code adjustments as needed. Most of the SQL is expected to work out of
+the box.
 
 In case you are facing errors or problems, we recommend you check out our [discussion about
 differences in functionality](/docs/usage/limitations-of-babelfish).
 
 In the next step you can move the data from one server to the other.
-Once the data structure has been adjusted properly, and once it has been deployed
+Once the schema has been adjusted properly, and once it has been deployed
 successfully, moving the data itself is not expected to cause errors anymore.
 
 

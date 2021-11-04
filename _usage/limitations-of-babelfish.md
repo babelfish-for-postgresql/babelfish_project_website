@@ -16,7 +16,7 @@ Let's dive in and figure out what works, and where challenges still lay ahead.
 ### Missing features
 
 The following table contains a list of SQL Server features that are currently
-not implemented in Babelfish.  Note that the list of limitations will change
+not implemented in Babelfish.  Note that the list of limitations may change
 in the future as more features are added and additional features are added to
 Microsoft SQL Server.
 
@@ -32,7 +32,7 @@ Microsoft SQL Server.
 | Assembly modules and CLR routines | Functionality related to assembly modules and CLR routines is not supported. |
 | `CREATE/ALTER/DROP AUTHORIZATION` | Functionality related to these commands is not supported. |
 | `CREATE/ALTER/DROP AVAILABILITY GROUP` | Functionality related to these commands is not supported. |
-| `BACKUP` statement | PostgreSQL snapshots of a database are dissimilar to backup files created in SQL Server. Also, there may be differences between SQL Server and PostgreSQL in the granularity of when a backup and restore occurs. |
+| `BACKUP` statement | This command is not supported.  You have to backup the database using PostgreSQL techniques. |
 | `BEGIN DISTRIBUTED TRANSACTION` | Functionality related to this syntax is not supported. |
 | `CREATE/ALTER/DROP BROKER PRIORITY` | Functionality related to these command is not supported. |
 | Bulk copy in and out | Functionality related to bulk copy is not supported. |
@@ -73,7 +73,7 @@ Microsoft SQL Server.
 | `CREATE statement` | You can't use a `CREATE` statement to create the following object types: `AGGREGATE`, `APPLICATION ROLE`, `ASSEMBLY`, `ASYMMETRIC KEY`, `AUTHORIZATION`, `AVAILABILITY GROUP`, `BROKER`, `PRIORITY`, `COLUMN ENCRYPTION KEY`, `CONTRACT`, `BACKUP CERTIFICATE`, `CREDENTIAL`, `TABLE ...`, `IDENTITY`, `USER`, `CRYPTOGRAPHIC PROVIDER`, `DATABASE ENCRYPTION KEY`, `DATABASE AUDIT`, `SPECIFICATION`, `DEFAULT`, `ENDPOINT`, `EXTERNAL`, `FILE FORMAT`, `EVENT NOTIFICATION`, `EVENT`, `SESSION`, `FULLTEXT CATALOG`, `FULLTEXT INDEX`, `FULLTEXT STOPLIST`, `INDEX`, `SPATIAL INDEX`, `XML`, `INDEX`, `COLUMNSTORE INDEX`, `EXTERNAL LANGUAGE`, `EXTERNAL LIBRARY`, `LOGIN`, `MASTER KEY`, `MESSAGE`, `TYPE`, `EXTERNAL LANGUAGE`, `EXTERNAL LIBRARY`, `LOGIN`, `PARTITION FUNCTION`, `PARTITION SCHEME`, `QUEUE`, `REMOTE SERVICE BINDING`, `RESOURCE POOL`, `EXTERNAL RESOURCE POOL`, `RESOURCE GOVERNOR`, `ROLE`, `ROUTE`, `RULE`, `SCHEMA`, `SEARCH PROPERTY`, `LIST`, `SECURITY POLICY`, `SEARCH PROPERTY LIST`, `SERVER AUDIT`, `SERVER AUDIT SPECIFICATION`, `SERVER ROLE`, `SERVICE`, `SERVICE MASTER KEY`, `SYMMETRIC KEY`, `TABLE ... GRANT/IDENTITY` clauses, `EXTERNAL TABLE`, `TRIGGER` (schema qualified), `TYPE`, `USER`, `WORKLOAD GROUP`, `WORKLOAD CLASSIFIER`, `SELECTIVE XML INDEX`, `XML`, `SCHEMA COLLECTION`
 | `CREATE DATABASE` keywords and clauses | Options except `COLLATE` and `CONTAINMENT=NONE` are not supported. |
 | CREDENTIAL | Functionality related to this object type is not supported. |
-| Cross-database object referemce | Three-part object names are not supported. |
+| Cross-database object reference | Three-part object names are only supported if they refer to the current database. |
 | Remote object references | Four-part object names are not supported. |
 | `CRYPTOGRAPHIC PROVIDER` | Functionality related to this object type is not supported. |
 | Cursors (updatable) | Functionality related to this object type is not supported. |
@@ -169,7 +169,7 @@ Microsoft SQL Server.
 | `CREATE/ALTER/DROP MESSAGE TYPE`| This syntax is not supported. |
 | `NEWSEQUENTIALID()` function | Implemented as NEWID(); sequential behavior is not supported. |
 | `MERGE` | This syntax is not supported. |
-| `NEWSEQUENTIALID()` function | When calling `NEWSEQUENTIALID()`, PostgreSQL can't guarantee a higher GUID value so it will simply generate a new GUID value, just like `NEWID()` does. |
+| `NEWSEQUENTIALID()` function | When calling `NEWSEQUENTIALID()`, PostgreSQL cannot guarantee a higher GUID value, so it will instead generate a new GUID value, just like `NEWID()` does. |
 | `NEXT VALUE FOR` sequence clause | This syntax is not supported. |
 | `NOT FOR REPLICATION clause` | This syntax is accepted and ignored. |
 | `SET NUMERIC_ROUNDABORT ON` | This setting is not supported. |
@@ -195,7 +195,7 @@ Microsoft SQL Server.
 | `CREATE/ALTER/DROP RESOURCE POOL` | This syntax is not supported. |
 | `CREATE/ALTER/DROP EXTERNAL RESOURCE POOL` | Functionality related to this syntax is not supported. |
 | `CREATE/ALTER/DROP RESOURCE GOVERNOR` | Functionality related to this syntax is not supported. |
-| `RESTORE` statement | PostgreSQL snapshots of a database are different from to backup files created in SQL Server. Also, there may be differences between SQL Server and PostgreSQL in the granularity of when the backup and restore occurs. |
+| `RESTORE` statement | This command is not supported.  You have to backup and restore the database using PostgreSQL techniques. |
 | `REVERT` | This syntax is not supported. |
 | `REVOKE` | This syntax is not supported. |
 | `CREATE/ALTER/DROP ROLE` | This syntax is not supported. |
@@ -334,16 +334,15 @@ when it encounters an unsupported feature or syntax. Babelfish can either return
 an error or ignore the condition if the PostgreSQL result set is not a perfect
 match for the result set returned by SQL Server.
 
-You can use the `sp_babelfish_configure` stored procedure to control
+You can use the `sp_babelfish_configure` stored procedure to display or change
 the settings of each escape hatch. Use the script to specify if each escape
 hatch should be set to `ignored` or `strict`.
 
 If set to `strict`, Babelfish will return an error that you must
-correct before continuing. Include the `cluster` keyword to apply
+correct before continuing. Include the `server` keyword to apply
 the changes to the current session as well as on a cluster level.
 
-The following types of hatches exist. The list should give you an impression of
-what is possible:
+The following escape hatches exist:
 
 - `storage_options`: Controls treatment of
 	- Column options (sparse files, file streams, `ROWGUIDCOL`)
