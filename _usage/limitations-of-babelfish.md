@@ -6,11 +6,7 @@ nav_order: 5
 
 ## T-SQL limitations
 
-In this chapter, you will learn about Babelfish limitations and compatibility.
-There is never going to be 100% compatibility between large database systems.
-However, much can be done to stay as compatible as possible, which is definitely
-the goal of Babelfish.
-
+In this chapter, you will learn about Babelfish limitations.
 Let's dive in and figure out what works, and where challenges still lay ahead.
 
 ### Missing features
