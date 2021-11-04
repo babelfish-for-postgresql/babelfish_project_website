@@ -6,8 +6,9 @@ nav_order: 2
 
 ## Contributing code
 
-Babelfish is available as Open Source software and can be downloaded from Github
-for free under the terms of the
+Babelfish for PostgreSQL (called &ldquo;Babelfish&rdquo; in the following)
+is available as Open Source software and can be downloaded from Github for
+free under the terms of the
 [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0) and the
 [PostgreSQL license](https://www.postgresql.org/about/licence/).
 
