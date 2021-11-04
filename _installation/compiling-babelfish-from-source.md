@@ -19,7 +19,7 @@ the PostgreSQL database engine, with some changes that enables the
 protocols, language parsers, and more features to be hooked into PostgreSQL that are required by Babelfish to work. 
 The second one contains extensions to support the T-SQL protocol, the T-SQL language, the TDS Protocol, etc.
 
-The Babelfish PostgreSQL engine source code can be downloaded 
+The Babelfish for PostgreSQL engine source code can be downloaded 
 from [here](https://github.com/babelfish-for-postgresql/postgresql_modified_for_babelfish).
 
 The Babelfish extensions source code can be downloaded 
@@ -47,7 +47,7 @@ above.
 
 - [Flex 2.6.4](https://github.com/westes/flex)
 - [Libxml2](http://xmlsoft.org/) development libraries
-- [Libxstl](http://www.xmlsoft.org/libxslt/) development libraries
+- [Libxslt](http://www.xmlsoft.org/libxslt/) development libraries
 - [xsltproc](http://xmlsoft.org/XSLT/xsltproc2.html)
 - [Open SSL](https://www.openssl.org/) development libraries
 - [Readline](https://tiswww.cwru.edu/php/chet/readline/rltop.html) development libraries
@@ -74,9 +74,9 @@ sudo apt install -y libxml2-utils xsltproc icu-devtools libicu66 libicu-dev gawk
 
 ## Compiling the code 
 
-Before compiling the Babelfish PostgreSQL source code, we need to configure the
+Before compiling the Babelfish for PostgreSQL source code, we need to configure the
 build. To do that we need to run the `configure` script in the directory where you
-have downloaded the Babelfish PostgreSQL engine sources:
+have downloaded the Babelfish for PostgreSQL engine sources:
 
 ``` sh
 ./configure CFLAGS="${CFLAGS:--Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Wendif-labels -Wmissing-format-attribute -Wformat-security -fno-strict-aliasing -fwrapv -fexcess-precision=standard -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches -m64 -mtune=generic}" \
@@ -119,7 +119,7 @@ run the configure script as follows.
   --with-extra-version=" Babelfish for PostgreSQL"
  ```
 
-#### Building Babelfish PostgreSQL engine
+#### Building Babelfish for PostgreSQL engine
 
 Now that we have configured the source tree, we can build Babelfish with the 
  following command:
@@ -128,13 +128,13 @@ Now that we have configured the source tree, we can build Babelfish with the
 INSTALLATION_PATH=<the path you specified as prefix>
 mkdir "$INSTALLATION_PATH"
 
-make            # Compiles the Babefish PostgreSQL engine
+make            # Compiles the Babefish for PostgreSQL engine
 cd contrib 
 
 make            # Compiles the PostgreSQL default extensions
 cd ..
 
-make install    # Installs the Babelfish PostgreSQL engine
+make install    # Installs the Babelfish for PostgreSQL engine
 cd contrib
 
 make install    # Installs the PostgreSQL default extensions
@@ -202,7 +202,7 @@ sudo make install
 ```
 
 Now that we have the antlr4 runtime installed, we need to copy the
-`libantlr4-runtime.so.4.9.2` library into the installed Babelfish PostgreSQL
+`libantlr4-runtime.so.4.9.2` library into the installed Babelfish for PostgreSQL
 engine libs folder. We can do that by running the following command:
 
 ``` sh
@@ -216,15 +216,15 @@ Now that we have all of the tools installed to build the Babelfish extension, we
 need to configure some environment variables: 
 
 - `PG_CONFIG`: should point to the location of the pg_config file in the
-  Babelfish PostgreSQL engine installation, in our case: `$INSTALLATION_PATH/bin/pg_config`.
+  Babelfish for PostgreSQL engine installation, in our case: `$INSTALLATION_PATH/bin/pg_config`.
 
-- `PG_SRC`: should point to the location of the Babelfish PostgreSQL engine
+- `PG_SRC`: should point to the location of the Babelfish for PostgreSQL engine
   source folder.
 
 - `cmake`: should contain the path of the cmake binary
 
-Supposing that you have installed the Babelfish PostgreSQL engine in
-`/usr/local/pgsql-13.4/`, you have downloaded the Babelfish PostgreSQL engine
+Supposing that you have installed the Babelfish for PostgreSQL engine in
+`/usr/local/pgsql-13.4/`, you have downloaded the Babelfish for PostgreSQL engine
 source code in `~/postgresql_modified_for_babelfish`, and cmake is installed in
 `/usr/local/bin/cmake`, the environment variables set up would be like this:
 
