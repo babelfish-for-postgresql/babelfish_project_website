@@ -14,7 +14,7 @@ is capable of speaking various protocols and presenting itself as more than just
 PostgreSQL?
 
 Welcome to Babelfish. The idea of the project is to close the gap between
-PostgreSQL and other systems by making PostgreSQL speak other protocols such as
+PostgreSQL and other systems by teaching PostgreSQL other protocols such as
 TDS, and maybe a lot more in the future. By implementing support for Microsoft
 SQL Server syntax, Babelfish makes it easier to move to PostgreSQL.
 
