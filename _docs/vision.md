@@ -49,14 +49,8 @@ However, we do our best to keep this list as short as humanly possible.
 If you want to find out more about limitations: We have dedicated an entire
 section to the [limitations](/docs/usage/limitations-of-babelfish).
 
-### Preparing for the future
-
-Nothing is perfect, but the community is working hard to make things
-function as smoothly as possible. Much of it works already, but more 
-work has to go into this area to be even more compatible. In other words: 
-We have an exciting future ahead. Many more features will be developed as 
-people improve the user experience, raising it to new levels. 
+### Join the Babelfish community
 
 Be part of the community and help to improve Babelfish even more.
-If you want to [contribute to Babelfish](/docs/contributing) simply reach
+If you want to [contribute to Babelfish](/docs/contributing), simply reach
 out to us.
