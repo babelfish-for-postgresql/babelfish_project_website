@@ -58,9 +58,9 @@ mistakes or other problems. Positive feedback is highly appreciated, and we are
 happy if people help us to detect bugs and find other problems such as typos in
 the documentation. 
 
-To help with code review, simply check out 
+To help with code review, please check out
 [Github](https://github.com/babelfish-for-postgresql/postgresql_modified_for_babelfish) 
-and help with the review process. 
+and help with the review process.
 
 
 ### Avoiding license violations
