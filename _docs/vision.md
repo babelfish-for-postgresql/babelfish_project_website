@@ -28,14 +28,10 @@ That's exactly why Babelfish is so important. It allows you to take existing
 applications, hook them up to TDS-enabled PostgreSQL and run them more quickly
 and more easily, even while some migration work might still be going on. 
 
-A second option is to move application from Microsoft SQL Server to PostgreSQL without
-touching the application at all. Why is that so important? If you get your
-source code under control, life is usually easier. But what if you want to move
-old legacy applications from Microsoft SQL Server to PostgreSQL, legacy applications which cannot be
-modified easily, because the source code is not open, is lost, or is simply too hard to
-change? Babelfish is an excellent vehicle to help in this case as well. You can
-move away from expensive Microsoft SQL Server deployments without doing a painful app
-migration. Brilliant, isn't it?
+If you are stuck with a legacy application, where the source code is not
+available or too hard to modify for technical or financial reasons, Babelfish
+can provide an easy way out.  The flexibility and cost savings offered by
+open source software projects like PostgreSQL with Babelfish can be significant.
 
 
 ### What Babelfish is not
