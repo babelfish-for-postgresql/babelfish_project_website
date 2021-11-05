@@ -26,9 +26,9 @@ maintenance, and make the code more readable for other community members.
 
 ### Testing and quality management
 
-Make sure that your code is properly tested. Babelfish comes with a standard
+Make sure that your code is properly tested. Babelfish comes with a
 test suite which covers a variety of scenarios. Changes made to the code should
-not break existing features. We strongly recommend running the standard tests
+not break existing features. We strongly recommend running the tests
 before you send a pull request to development. 
 
 If you add new features, you also need to add tests for functionality.
