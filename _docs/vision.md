@@ -13,10 +13,11 @@ to present itself as more than just one database? Why not create software which
 is capable of speaking various protocols and presenting itself as more than just
 PostgreSQL?
 
-Welcome to Babelfish. The idea of the project is to close the gap between
-PostgreSQL and other systems by teaching PostgreSQL other protocols such as
-TDS, and maybe a lot more in the future. By implementing support for Microsoft
-SQL Server syntax, Babelfish makes it easier to move to PostgreSQL.
+Welcome to Babelfish.  Babelfish closes the gap between PostgreSQL and
+Microsoft SQL Server by teaching PostgreSQL to speak TDS, the native
+client-server protocol of Microsoft SQL Server.  In addition, Babelfish
+implements support for Microsoft SQL Server syntax, which makes it easier to
+move to PostgreSQL.
 
 However, moving applications is just one side of the equation. Migrating data
 is one thing - making sure that applications work properly is another, far
