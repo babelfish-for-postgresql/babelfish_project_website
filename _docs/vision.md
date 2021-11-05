@@ -15,8 +15,8 @@ PostgreSQL?
 
 Welcome to Babelfish. The idea of the project is to close the gap between
 PostgreSQL and other systems by making PostgreSQL speak other protocols such as
-TDS, and maybe a lot more in the future. By implementing "Microsoft SQL Server"-slang, we make
-it easier for people to move to PostgreSQL. 
+TDS, and maybe a lot more in the future. By implementing support for Microsoft
+SQL Server syntax, Babelfish makes it easier to move to PostgreSQL.
 
 However, moving applications is just one side of the equation. Migrating data
 is one thing - making sure that applications work properly is another, far
