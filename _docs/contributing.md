@@ -31,7 +31,7 @@ test suite which covers a variety of scenarios. Changes made to the code should
 not break existing features. We strongly recommend running the tests
 before you send a pull request to development. 
 
-If you add new features, you also need to add tests for functionality.
+If you add new features, you also need to add tests for them.
 Patches that do not contain tests for new features will not be accepted by the
 community.
 
