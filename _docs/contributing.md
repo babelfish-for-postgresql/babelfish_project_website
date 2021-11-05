@@ -31,14 +31,17 @@ test suite which covers a variety of scenarios. Changes made to the code should
 not break existing features. We strongly recommend running the standard tests
 before you send a pull request to development. 
 
+If you add new features, you also need to add tests for functionality.
+Patches that do not contain tests for new features will not be accepted by the
+community.
+
 
 ### Documentation and help
 
-If you add new features, you also need to add tests for functionality.
-Patches that do not contain tests for new features will not be accepted by the
-community. The same is true for missing documentation. Documenting your feature
-is as important as having working code. That's why we encourage people to properly document
-their code. If you are having language troubles, or if you need help, we recommend
+The same is true for missing documentation: feature documentation and
+explanatory source comments are as important as working code.
+That's why we encourage people to properly document their contribution.
+If you are having language troubles, or if you need help, we recommend
 reaching out to the community for help via Github.
 
 For most new features, it is generally a good idea to provide working examples.
