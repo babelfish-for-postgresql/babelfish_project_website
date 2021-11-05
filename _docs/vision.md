@@ -49,5 +49,4 @@ section to the [limitations](/docs/usage/limitations-of-babelfish).
 ### Join the Babelfish community
 
 Be part of the community and help to improve Babelfish.
-If you want to [contribute to Babelfish](/docs/contributing), simply reach
-out to us.
+If you want to [contribute to Babelfish](/docs/contributing), you are welcome.
