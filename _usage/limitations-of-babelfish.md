@@ -45,7 +45,7 @@ Microsoft SQL Server.
 | Column name: `$IDENTITY` | This column name is not supported. |
 | Column name: `$ROWGUID` | This column name is not supported. |
 | `COLUMNPROPERTY()` | This function is not supported. |
-| Column without alias in result sets  | SQL Server and Babelfish handle result set columns without alias in different ways. SQL Server returns a blank column name, while Babelfish returns a generated column name. |
+| Column without alias in result sets  | SQL Server and Babelfish handle result set columns without aliases in different ways. SQL Server returns a blank column name, while Babelfish returns a generated column name. |
 | Column name case | Column names will be stored as lowercase in the PostgreSQL `pg_attribute` catalog, but are stored in whatever case was specified in the `CREATE TABLE` statement in an internal Babelfish catalog. The `SELECT *` operation currently returns column names in lower case rather than in the case specified on the CREATE TABLE statement. This will be fixed in a future version of Babelfish, but until then a workaround is to either specify the columns explicitly in the `SELECT` statement, or to use `SELECT *` from a view.|
 | Virtual computed columns (non-persistent) | The columns will be created as persistent. |
 | Column attributes | `ROWGUIDCOL`, `SPARSE`, `FILESTREAM`, `MASKED` aren't supported. |
@@ -165,7 +165,7 @@ Microsoft SQL Server.
 | `CREATE/ALTER/DROP MESSAGE TYPE`| This syntax is not supported. |
 | `NEWSEQUENTIALID()` function | Implemented as NEWID(); sequential behavior is not supported. |
 | `MERGE` | This syntax is not supported. |
-| `NEWSEQUENTIALID()` function | When calling `NEWSEQUENTIALID()`, PostgreSQL cannot guarantee a higher GUID value, so it will instead generate a new GUID value, just like `NEWID()` does. |
+| `NEWSEQUENTIALID()` function | When calling `NEWSEQUENTIALID()`, PostgreSQL cannot guarantee a higher GUID value, so it will generate a new GUID value instead, just like `NEWID()` does. |
 | `NEXT VALUE FOR` sequence clause | This syntax is not supported. |
 | `NOT FOR REPLICATION clause` | This syntax is accepted and ignored. |
 | `SET NUMERIC_ROUNDABORT ON` | This setting is not supported. |
@@ -313,7 +313,7 @@ Microsoft SQL Server.
 | `CREATE/ALTER/DROP SELECTIVE XML INDEX` clause | This syntax is not supported. |
 | `CREATE/ALTER/DROP XML SCHEMA COLLECTION` | This syntax is not supported. |
 
-However, more is different than just features.
+However, there are other differences besides the variations in features.
 For example, backup and recovery work differently in SQL Server and PostgreSQL,
 and you will have to use the PostgreSQL tools to backup Babelfish.
 It is important to understand such differences as well.
@@ -353,10 +353,10 @@ The following escape hatches exist:
 - `compatibility_level`: Currently no options.
 - `fulltext`: Databases with default fulltext languages. `CREATE FULLTEXT INDEX`,
   `ALTER FULL TEXT INDEX`, `DROP FULL TEXT INDEX`
-- `schemabinding_function`: Handles errors when no `SCHEMABINDING` option is given
-- `schemabinding_trigger`: Throw an error when it is not given
-- `schemabinding_procedure`: Throw an error when it is not given
-- `schemabinding_view`: Throw an error when it is not given
+- `schemabinding_function`: Handles errors if no `SCHEMABINDING` option is given for functions.
+- `schemabinding_trigger`: Handles errors if no `SCHEMABINDING` option is given for triggers.
+- `schemabinding_procedure`: Handles errors if no `SCHEMABINDING` option is given for procedures.
+- `schemabinding_view`: Handles errors if no `SCHEMABINDING` option is given for views.
 - `index_clustering`: `CLUSTERED` columns are not supported. Control this behavior.
 - `index_columnstore`: Column stores are not supported. Ignore or error out.
 - `for_replication`: Handle unsupported `ALTER PROCEDURE ... ENCRYPTION`, `ALTER
