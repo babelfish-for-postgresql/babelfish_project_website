@@ -16,8 +16,8 @@ PostgreSQL?
 Welcome to Babelfish.  Babelfish closes the gap between PostgreSQL and
 Microsoft SQL Server by teaching PostgreSQL to speak TDS, the native
 client-server protocol of Microsoft SQL Server.  In addition, Babelfish
-implements support for Microsoft SQL Server syntax, which makes it easier to
-move to PostgreSQL.
+implements support for Microsoft SQL Server's SQL syntax, which makes it easier
+to move to PostgreSQL.
 
 However, moving applications is just one side of the equation. Migrating data
 is one thing - making sure that applications work properly is another, far
