@@ -40,7 +40,7 @@ community.
 
 The same is true for missing documentation: feature documentation and
 explanatory source comments are as important as working code.
-That's why we encourage people to properly document their contribution.
+That's why we encourage people to properly document their contributions.
 If you are having language troubles, or if you need help, we recommend
 reaching out to the community for help via Github.
 

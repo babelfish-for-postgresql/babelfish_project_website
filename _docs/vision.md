@@ -26,11 +26,11 @@ easy, while migrating entire application stacks can be really difficult.
 
 That's exactly why Babelfish is so important. It allows you to take existing
 applications, hook them up to TDS-enabled PostgreSQL and run them more quickly
-and more easily, even while some migration work might still be going on. 
+and easily, even while some migration work is still going on.
 
-If you are stuck with a legacy application, where the source code is not
-available or too hard to modify for technical or financial reasons, Babelfish
-can provide an easy way out.  The flexibility and cost savings offered by
+If you are stuck with a legacy application where the source code is not
+available or is too hard to modify for technical or financial reasons, Babelfish
+provides an easy way out.  The flexibility and cost savings offered by
 open source software projects like PostgreSQL with Babelfish can be significant.
 
 
@@ -49,4 +49,4 @@ section to the [limitations](/docs/usage/limitations-of-babelfish).
 ### Join the Babelfish community
 
 Be part of the community and help to improve Babelfish.
-If you want to [contribute to Babelfish](/docs/contributing), you are welcome.
+If you want to [contribute to Babelfish](/docs/contributing), you're welcome to.
