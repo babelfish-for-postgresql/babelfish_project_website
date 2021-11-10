@@ -47,29 +47,20 @@ above.
 
 - [Flex 2.6.4](https://github.com/westes/flex)
 - [Libxml2](http://xmlsoft.org/) development libraries
-- [Libxslt](http://www.xmlsoft.org/libxslt/) development libraries
-- [xsltproc](http://xmlsoft.org/XSLT/xsltproc2.html)
 - [Open SSL](https://www.openssl.org/) development libraries
 - [Readline](https://tiswww.cwru.edu/php/chet/readline/rltop.html) development libraries
 - [Zlib](https://zlib.net/)
-- [OpenLDAP](https://www.openldap.org/) development libraries
-- [Linux-PAM](http://www.linux-pam.org/) development libraries
 - [OSSP uuid](http://www.ossp.org/pkg/lib/uuid/) development libraries
-- [LLVM-based linker](https://lld.llvm.org/)
 - [pkg-config](https://linux.die.net/man/1/pkg-config)
-- [Gnulib](https://www.gnu.org/software/gnulib/)
 - [ICU](https://icu.unicode.org/) development libraries
-- [Gawk](https://www.gnu.org/software/gawk/)
 - [Bison 3.0.5 or higher](https://www.gnu.org/software/bison/)
 
 If you happen to use Debian or Ubuntu, you might want to use the following
 commands to install dependencies:
 
 ``` sh
-sudo apt install -y build-essential flex libxml2-dev libxslt-dev libssl-dev
-sudo apt install -y libreadline-dev zlib1g-dev libldap2-dev libpam0g-dev bison
-sudo apt install -y uuid uuid-dev lld pkg-config libossp-uuid-dev gnulib
-sudo apt install -y libxml2-utils xsltproc icu-devtools libicu66 libicu-dev gawk
+sudo apt install -y build-essential flex libxml2-dev bison libreadline-dev zlib1g-dev
+sudo apt install -y uuid-dev pkg-config libossp-uuid-dev libssl-dev icu-devtools
 ```
 
 ## Compiling the code 
@@ -79,19 +70,11 @@ build. To do that we need to run the `configure` script in the directory where y
 have downloaded the Babelfish for PostgreSQL engine sources:
 
 ``` sh
-./configure CFLAGS="${CFLAGS:--Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Wendif-labels -Wmissing-format-attribute -Wformat-security -fno-strict-aliasing -fwrapv -fexcess-precision=standard -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches -m64 -mtune=generic}" \
-  --enable-thread-safety \
-  --enable-cassert \
+./configure CFLAGS="-ggdb" \
   --enable-debug \
-  --with-ldap \
-  --with-python \
   --with-libxml \
-  --with-pam \
   --with-uuid=ossp \
-  --enable-nls \
-  --with-libxslt \
   --with-icu \
-  --with-python PYTHON=/usr/bin/python2.7 \
   --with-extra-version=" Babelfish for PostgreSQL"
 ``` 
 
@@ -99,34 +82,41 @@ The above would configure the installation path under `/usr/local/pgsql`; if
 you want to change the installation directory, you can use the `prefix` flag.
 Therefore, if you want to change the path to `/usr/local/pgsql-13.4`, you can
 run the configure script as follows.
- 
 
  ``` sh
- ./configure CFLAGS="${CFLAGS:--Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Wendif-labels -Wmissing-format-attribute -Wformat-security -fno-strict-aliasing -fwrapv -fexcess-precision=standard -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches -m64 -mtune=generic}" \
+ ./configure CFLAGS="-ggdb" \
   --prefix=/usr/local/pgsql-13.4 \
-  --enable-thread-safety \
-  --enable-cassert \
   --enable-debug \
-  --with-ldap \
-  --with-python \
   --with-libxml \
-  --with-pam \
   --with-uuid=ossp \
-  --enable-nls \
-  --with-libxslt \
   --with-icu \
-  --with-python PYTHON=/usr/bin/python2.7 \
   --with-extra-version=" Babelfish for PostgreSQL"
  ```
 
 #### Building Babelfish for PostgreSQL engine
 
-Now that we have configured the source tree, we can build Babelfish with the 
- following command:
+Now that we have configured the source tree, is important to configure the installation folder. 
 
 ``` sh
 INSTALLATION_PATH=<the path you specified as prefix>
 mkdir "$INSTALLATION_PATH"
+```
+
+To avoid installation errors, you should own the installation directory. You can can change the 
+ ownership of the installation path with the following command:
+
+``` sh
+sudo chown -R <your user>:<your group> "$INSTALLATION_PATH"
+```
+
+For example, if your installation path is `/usr/local/pgsql-13.4` and your user is `johndoe`, 
+ the command should be as follows:
+
+``` sh
+sudo chown -R johndoe:johndoe /usr/local/pgsql-13.4
+```
+
+Now we can build Babelfish with the following commands:
 
 make            # Compiles the Babefish for PostgreSQL engine
 cd contrib 
@@ -148,35 +138,22 @@ In order to build the extensions we would need to install some additional tools:
 - [Antlr 4.9.2 Runtime](https://www.antlr.org/)
 - [Open Java 8](https://openjdk.java.net/)
 - Unzip
-- [libpq](https://www.postgresql.org/docs/13/libpq.html)
 - [pkgconf](http://pkgconf.org/)
 - libutfcpp development libraries
-- [CMake 3.20.6](https://cmake.org/)
+- [CMake](https://cmake.org/)
 
 You can install most of these tools by running the command:
 
 ``` sh
-sudo apt install -y openjdk-8-jre openssl python-dev libpq-dev pkgconf unzip libutfcpp-dev
+sudo apt install -y openjdk-8-jre unzip libutfcpp-dev cmake curl
 ```
-
-For the CMake and Antlr4 Runtime, it's better to install it from the source code. 
-
-
-##### Installing CMake
-
-We can install CMake by running the following script:
-
-``` sh
-sudo curl -L https://github.com/Kitware/CMake/releases/download/v3.20.6/cmake-3.20.6-linux-x86_64.sh --output /opt/cmake-3.20.6-linux-x86_64.sh
-sudo chmod +x /opt/cmake-3.20.6-linux-x86_64.sh 
-sudo /opt/cmake-3.20.6-linux-x86_64.sh --prefix=/usr/local --skip-license
-```
-
 
 ##### Installing Antlr4 runtime
 
-To install the Antlr4 runtime, we need to have the Antlr4 .jar. Babelfish extensions source code includes this .jar in 
-  the path `/contrib/babelfishpg_tsql/antlr/thirdparty/antlr`.
+> For Antlr4 4.9.2 Runtime, there are no available binaries for C++ in Ubuntu Focal, so it's necessary to compile it from source. Versions below 4.9 have not been fully tested yet. 
+
+To install the Antlr4 runtime, we need to have the Antlr4 .jar. Babelfish extensions source code includes 
+this .jar in the path `/contrib/babelfishpg_tsql/antlr/thirdparty/antlr`.
 
 Keeping this in mind, we can install Antlr4 runtime by running:
 
@@ -197,7 +174,7 @@ EXTENSIONS_SOURCE_CODE_PATH="<the patch in which you downloaded the Babelfish ex
 sudo cmake .. -DANTLR_JAR_LOCATION="$EXTENSIONS_SOURCE_CODE_PATH/contrib/babelfishpg_tsql/antlr/thirdparty/antlr/antlr-4.9.2-complete.jar" \
          -DCMAKE_INSTALL_PREFIX=/usr/local -DWITH_DEMO=True
 # Compiles and install
-make
+sudo make
 sudo make install
 ```
 
@@ -242,22 +219,67 @@ extensions one by one. We do it with the following script:
 # Install babelfishpg_money extension
 cd contrib/babelfishpg_money
 make
-sudo make install
+make install
 
 # Install babelfishpg_common extension
 cd ../babelfishpg_common
 make 
-sudo make install
+make install
 
 # Install babelfishpg_tds extension
 cd ../babelfishpg_tds
 make 
-sudo make install
+make install
 
 # Installs the babelfishpg_tsql extension
 cd ../babelfishpg_tsql
 make 
-sudo make install
+make install
 ```
 
 Once all extensions have been compiled you can start PostgreSQL manually.
+
+## Further installations steps
+
+Before starting Babelfish we need to do some changes in the installation folder. 
+ This is because, PostgreSQL wont start if its owner has root access. Also, we need to create 
+ a directory for PostgreSQL to store its data. 
+
+Let's first, create the data directory, in this example we will use `/usr/local/pgsql/data` as the data 
+ folder. 
+
+``` sh
+sudo mkdir -p /usr/local/pgsql/data
+```
+
+Now, let's create a postgres user
+
+``` sh
+sudo adduser postgres
+```
+
+With the created user, we can change the ownership the of the Babelfish binaries, and the data directory.
+
+``` sh
+sudo chown -R postgres:postgres $INSTALLATION_PATH
+sudo chown -R postgres:postgres /usr/local/pgsql/data
+```
+
+Now we can use the created postgres user to initialize the database directory.
+
+``` sh
+sudo su postgres
+$INSTALLATION_PATH/bin/initdb -D /usr/local/pgsql/data
+```
+
+Once the data directory has been initialized, we need to change the postgresql.conf file, by uncommenting and setting the following properties:
+
+``` conf
+listen_addresses = '*'
+shared_preload_libraries = 'babelfishpg_tds'
+```
+
+Now you can start Babelfish by running the command:
+``` sh
+$INSTALLATION_PATH/bin/pg_ctl -D /usr/local/pgsql/data start
+```
