@@ -333,9 +333,9 @@ You can use the `sp_babelfish_configure` stored procedure to display or change
 the settings of each escape hatch. Use the script to specify if each escape
 hatch should be set to `ignored` or `strict`.
 
-If set to `strict`, Babelfish will return an error that you must
-correct before continuing. Include the `server` keyword to apply
-the changes to the current session as well as on a cluster level.
+If an escape hatch set to `ignored`, Babelfish will suppress the error that
+the corresponding syntax would otherwise cause.  Include the `server` keyword
+to apply the changes to the current session as well as on the cluster level.
 
 The following escape hatches exist:
 
