@@ -13,8 +13,7 @@ Let's dive in and figure out what works, and where challenges still lay ahead.
 
 The following table contains a list of SQL Server features that are currently
 not implemented in Babelfish.  Note that the list of limitations may change
-in the future as more features are added and additional features are added to
-Microsoft SQL Server.
+in the future.
 
 | Functionality or Syntax | Notes |
 | ----------------------- | ----- |
