@@ -320,9 +320,12 @@ It is important to understand such differences as well.
 ## Dealing with limitations
 
 In this section, we've written a lot about limitations, unsupported features and
-such. However, how do you deal with these things in real life? If Babelfish
-runs a SQL statement that doesn't return a result set that is identical to the
-result set when run against SQL Server, the SQL statement will fail.
+such. However, how do you deal with these things in real life?
+If Babelfish threw an error whenever an application uses an unsupported feature,
+it could not be used with that application.  On the other hand, it should not
+silently ignore such syntax and then silently behave differently from what the
+user might expect.  So Babelfish gives you a choice.
+
 To better deal with statements that might fail, Babelfish allows you to define
 *escape hatches*. An escape hatch is a flag that specifies Babelfish behavior
 when it encounters an unsupported feature or syntax.
