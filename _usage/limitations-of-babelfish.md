@@ -325,9 +325,7 @@ runs a SQL statement that doesn't return a result set that is identical to the
 result set when run against SQL Server, the SQL statement will fail.
 To better deal with statements that might fail, Babelfish allows you to define
 *escape hatches*. An escape hatch is a flag that specifies Babelfish behavior
-when it encounters an unsupported feature or syntax. Babelfish can either return
-an error or ignore the condition if the PostgreSQL result set is not a perfect
-match for the result set returned by SQL Server.
+when it encounters an unsupported feature or syntax.
 
 You can use the `sp_babelfish_configure` stored procedure to display or change
 the settings of each escape hatch. Use the script to specify if each escape
