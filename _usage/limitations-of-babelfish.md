@@ -341,36 +341,43 @@ on the cluster level as well.
 
 The following escape hatches exist:
 
-- `storage_options`: Controls treatment of
+- `babelfishpg_tsql.escape_hatch_constraint_name_for_default`: Handle `CONSTRAINT DEFAULT`.
+- `babelfishpg_tsql.escape_hatch_database_misc_options`: Handle database chaining, database property
+  `TRUSTWORTHY`, databases with persistent log buffers.
+- `babelfishpg_tsql.escape_hatch_for_replication`: Handle unsupported
+  `ALTER PROCEDURE ... ENCRYPTION`, `ALTER PROCEDURE ... NATIVE_COMPILATION`, `ALTER PROCEDURE ... RECOMPILE`.
+- `babelfishpg_tsql.escape_hatch_fulltext`: Databases with default fulltext languages (`CREATE FULLTEXT INDEX`,
+  `ALTER FULL TEXT INDEX`, `DROP FULL TEXT INDEX`).
+- `babelfishpg_tsql.escape_hatch_index_clustering`: `CLUSTERED` columns are not supported. Control this behavior.
+- `babelfishpg_tsql.escape_hatch_index_columnstore`: Column stores are not supported. Ignore or error out.
+- `babelfishpg_tsql.escape_hatch_join_hints`: PostgreSQL does not support join hints.
+- `babelfishpg_tsql.escape_hatch_language_non_english`: Create
+  databases with default languages other than English.
+- `babelfishpg_tsql.escape_hatch_login_hashed_password`: `HASHED` password is not supported for `CREATE LOGIN` and `ALTER LOGIN`.
+- `babelfishpg_tsql.escape_hatch_login_misc_options`: This deals with various other unsupported options for `CREATE LOGIN` and `ALTER LOGIN`
+- `babelfishpg_tsql.escape_hatch_login_old_password`: The `OLD_PASSWORD` option of `ALTER LOGIN` is not supported.
+- `babelfishpg_tsql.escape_hatch_login_password_must_change`: The `MUST_CHANGE` password option
+  is not supported for `CREATE LOGIN` and `ALTER LOGIN`.
+- `babelfishpg_tsql.escape_hatch_login_password_unlock`: The `UNLOCK` password option
+  is not supported for `CREATE LOGIN` and `ALTER LOGIN`.
+- `babelfishpg_tsql.escape_hatch_nocheck_add_constraint`: Handle unsupported
+  `ALTER TABLE WITH [NO]CHECK ADD`.
+- `babelfishpg_tsql.escape_hatch_nocheck_existing_constraint`: Handle `ALTER TABLE [NO]CHECK`.
+- `babelfishpg_tsql.escape_hatch_query_hints`: PostgreSQL does not support query hints.
+- `babelfishpg_tsql.escape_hatch_rowguidcol_column`: Handle unsupported `ROWGUIDCOL` columns
+- `babelfishpg_tsql.escape_hatch_schemabinding_function`: Handles errors if no `SCHEMABINDING` option is given for functions.
+- `babelfishpg_tsql.escape_hatch_schemabinding_procedure`: Handles errors if no `SCHEMABINDING` option is given for procedures.
+- `babelfishpg_tsql.escape_hatch_schemabinding_trigger`: Handles errors if no `SCHEMABINDING` option is given for triggers.
+- `babelfishpg_tsql.escape_hatch_schemabinding_view`: Handles errors if no `SCHEMABINDING` option is given for views.
+- `babelfishpg_tsql.escape_hatch_session_settings`: Handle `SET SHOWPLAN_TEXT ON`, `FORCEPLAN`,
+  `OFFSETS`, `PARSEONLY`, `REMOTE_PROC_TRANSACTIONS`, `SHOWPLAN_ALL`, `SHOWPLAN_TEXT`,
+  `SHOWPLAN_XML`, `STATISTICS`, `DATEFORMAT`, `DEADLOCK_PRIORITY`, `LOCK_TIMEOUT`,
+  `CONTEXT_INFO`, `QUERY_GOVERNOR_COST_LIMIT`, `STATISTICS`, XML modify method.
+- `babelfishpg_tsql.escape_hatch_storage_on_partition`: Handle invalid partition streams.
+- `babelfishpg_tsql.escape_hatch_storage_options`: Controls treatment of
 	- Column options (sparse files, file streams, `ROWGUIDCOL`)
 	- Index options (`PAD_INDEX`, `FILLFACTOR`, `SORT_IN_TEMPDB`, `IGNORE_DUP_KEY`,
 	  `STATISTICS_NORECOMPUTE`, `STATISTICS_INCREMENTAL`, `ALLOW_ROW_LOCKS`,
 	  `ALLOW_PAGE_LOCKS`, `OPTIMIZE_FOR_SEQUENTIAL_KEY`, `MAXDOP`, `DATA_COMPRESSION`)
-- `storage_on_partition`: Handle invalid partition streams
-- `database_misc_options`: Handle database chaining, database property
-  `TRUSTWORTHY`, databases with persistent log buffers
-- `language_non_english`: Create databases with default languages other than
-  English
-- `compatibility_level`: Currently no options.
-- `fulltext`: Databases with default fulltext languages. `CREATE FULLTEXT INDEX`,
-  `ALTER FULL TEXT INDEX`, `DROP FULL TEXT INDEX`
-- `schemabinding_function`: Handles errors if no `SCHEMABINDING` option is given for functions.
-- `schemabinding_trigger`: Handles errors if no `SCHEMABINDING` option is given for triggers.
-- `schemabinding_procedure`: Handles errors if no `SCHEMABINDING` option is given for procedures.
-- `schemabinding_view`: Handles errors if no `SCHEMABINDING` option is given for views.
-- `index_clustering`: `CLUSTERED` columns are not supported. Control this behavior.
-- `index_columnstore`: Column stores are not supported. Ignore or error out.
-- `for_replication`: Handle unsupported `ALTER PROCEDURE ... ENCRYPTION`, `ALTER
-  PROCEDURE ... NATIVE_COMPILATION`, `ALTER PROCEDURE ... RECOMPILE`.
-- `rowguidcol_column`: Handle unsupported `ROWGUIDCOL` columns
-- `nocheck_add_constraint`: Handle unsupported `ALTER TABLE WITH [NO]CHECK
-  ADD`
-- `nocheck_existing_constraint`: Handle `ALTER TABLE [NO]CHECK`
-- `constraint_name_for_default`: Handle `CONSTRAINT DEFAULT`
-- `table_hints`: PostgreSQL does not support table hints
-- `query_hints`: PostgreSQL does not support query hints
-- `join_hints`: PostgreSQL does not support join hints
-- `session_settings`: Handle `SET SHOWPLAN_TEXT ON`, `FORCEPLAN`,
-  `OFFSETS`, `PARSEONLY`, `REMOTE_PROC_TRANSACTIONS`, `SHOWPLAN_ALL`, `SHOWPLAN_TEXT`,
-  `SHOWPLAN_XML`, `STATISTICS`, `DATEFORMAT`, `DEADLOCK_PRIORITY`, `LOCK_TIMEOUT`,
-  `CONTEXT_INFO`, `QUERY_GOVERNOR_COST_LIMIT`, `STATISTICS`, XML modify method.
+- `babelfishpg_tsql.escape_hatch_table_hints`: PostgreSQL does not support table hints.
+- `babelfishpg_tsql.escape_hatch_unique_constraint`: Nullable UNIQUE constraints are not supported.
