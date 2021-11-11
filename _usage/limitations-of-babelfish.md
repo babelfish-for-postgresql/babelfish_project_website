@@ -335,8 +335,9 @@ the settings of each escape hatch. Use the script to specify if each escape
 hatch should be set to `ignored` or `strict`.
 
 If an escape hatch set to `ignored`, Babelfish will suppress the error that
-the corresponding syntax would otherwise cause.  Include the `server` keyword
-to apply the changes to the current session as well as on the cluster level.
+the corresponding syntax would otherwise cause.  By default, the change applies
+to the current session only.  Include the `server` keyword to apply the changes
+on the cluster level as well.
 
 The following escape hatches exist:
 
