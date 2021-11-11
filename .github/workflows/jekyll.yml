@@ -17,4 +17,4 @@ jobs:
       run: |
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --config /srv/jekyll/_config_CI.yml --future"
+        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && sed 's/url\:.*/url\: \"https:\/\/babelfish-for-postgresql.github.io\/babelfish_project_website\"/g'  /srv/jekyll/_config.yml > /srv/jekyll/_config_CI.yml && jekyll build --config /srv/jekyll/_config_CI.yml --future"
