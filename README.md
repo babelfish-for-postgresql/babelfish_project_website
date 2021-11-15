@@ -1,3 +1,5 @@
+[![Babelfish Website Build Workload](https://github.com/babelfish-for-postgresql/babelfish_project_website/actions/workflows/jekyll.yml/badge.svg)](https://github.com/babelfish-for-postgresql/babelfish_project_website/actions/workflows/jekyll.yml)
+
 ![Babelfish for PostgreSQL logo](assets/images/themed-logo.svg)
 
 - [babelfishpg.org Website](#babelfishpgorg-website)
