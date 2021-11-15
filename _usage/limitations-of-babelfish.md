@@ -7,7 +7,7 @@ nav_order: 5
 ## T-SQL limitations
 
 In this chapter, you will learn about Babelfish limitations.
-Let's dive in and figure out what works, and where challenges still lay ahead.
+Let's dive in and figure out what works, and where challenges still lie ahead.
 
 ### Missing features
 
@@ -27,7 +27,7 @@ in the future.
 | Assembly modules and CLR routines | Functionality related to assembly modules and CLR routines is not supported. |
 | `CREATE/ALTER/DROP AUTHORIZATION` | Functionality related to these commands is not supported. |
 | `CREATE/ALTER/DROP AVAILABILITY GROUP` | Functionality related to these commands is not supported. |
-| `BACKUP` statement | This command is not supported.  You have to backup the database using PostgreSQL techniques. |
+| `BACKUP` statement | This command is not supported.  You will have to backup the database using PostgreSQL techniques. |
 | `BEGIN DISTRIBUTED TRANSACTION` | Functionality related to this syntax is not supported. |
 | `CREATE/ALTER/DROP BROKER PRIORITY` | Functionality related to these command is not supported. |
 | Bulk copy in and out | Functionality related to bulk copy is not supported. |
@@ -321,8 +321,8 @@ It is important to understand such differences as well.
 
 In this section, we've written a lot about limitations, unsupported features and
 such. However, how do you deal with these things in real life?
-If Babelfish threw an error whenever an application uses an unsupported feature,
-it could not be used with that application.  On the other hand, it should not
+If Babelfish threw an error whenever an application used an unsupported feature,
+it could would become effectively unusable with that application.  However, it should not
 silently ignore such syntax and then silently behave differently from what the
 user might expect.  So Babelfish gives you a choice.
 
@@ -334,7 +334,7 @@ You can use the `sp_babelfish_configure` stored procedure to display or change
 the settings of each escape hatch. Use the script to specify if each escape
 hatch should be set to `ignored` or `strict`.
 
-If an escape hatch set to `ignored`, Babelfish will suppress the error that
+If an escape hatch is set to `ignored`, Babelfish will suppress the error that
 the corresponding syntax would otherwise cause.  By default, the change applies
 to the current session only.  Include the `server` keyword to apply the changes
 on the cluster level as well.
@@ -354,7 +354,7 @@ The following escape hatches exist:
 - `babelfishpg_tsql.escape_hatch_language_non_english`: Create
   databases with default languages other than English.
 - `babelfishpg_tsql.escape_hatch_login_hashed_password`: `HASHED` password is not supported for `CREATE LOGIN` and `ALTER LOGIN`.
-- `babelfishpg_tsql.escape_hatch_login_misc_options`: This deals with various other unsupported options for `CREATE LOGIN` and `ALTER LOGIN`
+- `babelfishpg_tsql.escape_hatch_login_misc_options`: This deals with various other unsupported options for `CREATE LOGIN` and `ALTER LOGIN`-
 - `babelfishpg_tsql.escape_hatch_login_old_password`: The `OLD_PASSWORD` option of `ALTER LOGIN` is not supported.
 - `babelfishpg_tsql.escape_hatch_login_password_must_change`: The `MUST_CHANGE` password option
   is not supported for `CREATE LOGIN` and `ALTER LOGIN`.
@@ -364,7 +364,7 @@ The following escape hatches exist:
   `ALTER TABLE WITH [NO]CHECK ADD`.
 - `babelfishpg_tsql.escape_hatch_nocheck_existing_constraint`: Handle `ALTER TABLE [NO]CHECK`.
 - `babelfishpg_tsql.escape_hatch_query_hints`: PostgreSQL does not support query hints.
-- `babelfishpg_tsql.escape_hatch_rowguidcol_column`: Handle unsupported `ROWGUIDCOL` columns
+- `babelfishpg_tsql.escape_hatch_rowguidcol_column`: Handle unsupported `ROWGUIDCOL` columns.
 - `babelfishpg_tsql.escape_hatch_schemabinding_function`: Handles errors if no `SCHEMABINDING` option is given for functions.
 - `babelfishpg_tsql.escape_hatch_schemabinding_procedure`: Handles errors if no `SCHEMABINDING` option is given for procedures.
 - `babelfishpg_tsql.escape_hatch_schemabinding_trigger`: Handles errors if no `SCHEMABINDING` option is given for triggers.
