@@ -118,6 +118,7 @@ sudo chown -R johndoe:johndoe /usr/local/pgsql-13.4
 
 Now we can build Babelfish with the following commands:
 
+``` sh
 make            # Compiles the Babefish for PostgreSQL engine
 cd contrib 
 

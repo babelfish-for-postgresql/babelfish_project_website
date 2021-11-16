@@ -7,7 +7,7 @@ nav_order: 2
 ## Guidelines for Contributing Code
 
 Thank you for your interest in contributing to Babelfish!
-Please read through this document before you submit any pull requests or 
+Please read through this document before you submit any pull requests or
 issues. It will help us work together more effectively.
 
 Babelfish for PostgreSQL (called &ldquo;Babelfish&rdquo; in the following)
@@ -58,14 +58,14 @@ This is especially true for programming interfaces and new SQL functions.
 
 If you are not a coder yourself, or if you don't want to write your own patch, we
 can help you to find people who can review existing code and point to
-mistakes or other problems. Positive feedback is highly appreciated. 
-We are particularly interested in receiving your pull requests 
+mistakes or other problems. Positive feedback is highly appreciated.
+We are particularly interested in receiving your pull requests
 
-- for new content, 
-- to remove inaccuracies,  
-- to fill information gaps, 
+- for new content,
+- to remove inaccuracies,
+- to fill information gaps,
 - to fix typos or grammatical errors, and
-- for suggested rewrites to improve clarity. 
+- for suggested rewrites to improve clarity.
 
 To help with code review, please check out
 [Github](https://github.com/babelfish-for-postgresql/postgresql_modified_for_babelfish) 
@@ -75,8 +75,8 @@ and help with the review process.
 ### Avoiding license violations
 
 If you contribute code, make sure that you are not violating 3rd party rights.
-Checking for IP violations beforehand is expected by the community. We want 
-Babelfish to be free of 3rd party claims and we want to protect our users 
+Checking for IP violations beforehand is expected by the community. We want
+Babelfish to be free of 3rd party claims and we want to protect our users
 from such claims. Keeping the code clean is therefore a good
 idea, and benefits the community as well our users.
  
