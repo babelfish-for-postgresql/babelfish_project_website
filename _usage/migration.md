@@ -94,3 +94,24 @@ situations, it will not perform as well, which is to be expected.
 Adjusting database parameters properly does make a difference, but it might not
 be sufficient to fix each and every performance problem. In other words, expect
 to rewrite queries for good performance.
+
+### Accessing the data in PostgreSQL
+
+So far, we have described how to use Babelfish with your Microsoft SQL Server
+application.  But since the data are actually stored in a PostgreSQL database,
+you can access them with the PostgreSQL protocol as well.  To do that, you can
+use any PostgreSQL client.  Make sure that you connect to the PostgreSQL port
+(by default 5432) and not to the TDS port (by default 1433).
+
+While table and column names will be identical, the names of the schemas in
+PostgreSQL will depend on the
+[migration mode](docs/installation/single-multiple):
+
+- in `single-db` migration mode, the schema names will be the same, no matter
+  if you connect via TDS or via the PostgreSQL protocol
+
+- in `multi-db` migration mode, the schema names in PostgreSQL will be composed
+  of the database name and the schema name that you used when connected
+  via the TDS protocol.  For example, if you created a table `t1` in schema
+  `s1` of database `d1` while connected via TDS, the table will be `d1_s1.t1`
+  in PostgreSQL.
