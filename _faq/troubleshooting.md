@@ -11,24 +11,24 @@ when dealing with Babelfish. It contains an overview of the most substantial
 issues and give solutions to common problems.
 
 
-### Babelfish starts but I cannot run MS SQL code
+### Babelfish starts but I cannot run Microsoft SQL Server code
 
 There are a couple of reasons why this can happen. The most common one is that
 you have started Babelfish but `shared_preload_libraries` are not set properly.
-Why is this important? MS SQL support is loaded as a library which has to be
-configured at startup. Basically, the design of the hooks used to make MS SQL
+Why is this important? Microsoft SQL Server support is loaded as a library which has to be
+configured at startup. Basically, the design of the hooks used to make Microsoft SQL Server
 support work is set up in a way that it is supposed to work for other database
 engines as well. To handle the specific behavior, code has to be loaded. In case
-this is not done, Babelfish will not present itself as MS SQL Server on TCP port
+this is not done, Babelfish will not present itself as Microsoft SQL Server on TCP port
 1433.
 
 Check out the [installation page](/docs/installation/compiling-babelfish-from-source) and make sure that
-everything of importance has been done.
+you have followed the instructions there.
 
 A second problem that may occur is that the port is closed due to firewall issues. Make
-sure port 1433 is open and available so that your clients can connect. So how
-can we verify that the port is open and only the client does not work? One useful way
-we found is to simply use good old telnet:
+sure port 1433 is open and available so that your clients can connect. How
+is it possible to verify that the port is open, and only the client does not work? One useful way
+is to use telnet:
 
 ```bash
 [user@server ~]$ telnet localhost 1433
@@ -49,12 +49,11 @@ telnet: connect to address 127.0.0.1: Connection refused
 
 ### Babelfish aborts my connection
 
-If a connection is suddenly gone after performing an operation, there could be
-various reasons for that. Apart from network failures, which can pop up seemingly
-randomly, it is possible that Babelfish has crashed. In fact,
-reproducible connection losses are often related to crashes.
+If a connection is unexpectedly terminated, it could be
+a network failure, or Babelfish may have crashed.
+Reproducible connection losses are often related to crashes.
 
-If you want to help the team, it is highly appreciated if you can provide a
+If you want to help the team, you can provide a
 backtrace of a crashed database. How can you produce such a backtrace, in case of
 a severe crash?
 
