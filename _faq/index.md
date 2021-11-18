@@ -139,7 +139,8 @@ There are ongoing efforts to incorporate [Babelfish hooks](/docs/internals/postg
 
 ## How can I report a bug?
 
-To report a bug, check out the [Github repository](https://github.com/babelfish-for-postgresql/postgresql_modified_for_babelfish/issues) and report your findings.
+To report a bug, check out the [Github Babelfish Extensions repository](https://github.com/babelfish-for-postgresql/babelfish_extensions/issues) and report your findings.
+
 Please make sure that a test case as well as software versions and all other relevant information are
 included in the report, to make it easier to track down problems. In case of a
 crash, a gdb backtrace is highly appreciated.
