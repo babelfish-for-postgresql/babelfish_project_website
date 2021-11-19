@@ -5,10 +5,11 @@ nav_order: 1
 use_mermaid: true
 ---
 
-Babelfish implements Microsoft SQL Server behavior on top of PostgreSQL. To achieve this goal, a
-couple of areas had to be modified inside the PostgreSQL core. PostgreSQL does
-not offer this capability out-of-the-box, therefore add-ons had to be provided
-to make this happen.
+Babelfish implements Microsoft SQL Server behavior on top of PostgreSQL.
+To achieve this goal, the server had to me modified.  This was mostly done
+using [extensions](https://www.postgresql.org/docs/current/extend-extensions.html),
+and the goal was to keep modifications of the actual PostgreSQL server to
+a minimum.
 
 The way Babelfish implements Microsoft SQL Server behavior is by using
 [hooks](/docs/internals/postgresql-hooks). The idea is to make database protocols &ldquo;pluggable&rdquo;,
