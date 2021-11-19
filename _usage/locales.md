@@ -27,13 +27,13 @@ Babelfish supports *deterministic* and *non-deterministic*
 collations:
 
 - A collation that is *deterministic* will consider two characters as
-  equal if, and only if, they have the same byte sequence; therefore x
-  is not equal to X for a deterministic collation. Collations that are
+  equal if, and only if, they have the same byte sequence.  For example, `x`
+  is not equal to `X` for a deterministic collation.  Collations that are
   deterministic are case-sensitive (CS) and accent-sensitive (AS).
 
-- A non-deterministic collation does not require an identical match;
-  case-insensitivity (CI) is an example of a non-deterministic
-  collation. To have x compare equally to X, choose a
+- A non-deterministic collation does not require an identical match.
+  Case-insensitivity (CI) is an example of a non-deterministic
+  collation. To have `x` compare equal to `X`, choose a
   non-deterministic collation that supports case-insensitivity.
 
 Babelfish and SQL Server follow a naming convention for collations
@@ -49,9 +49,9 @@ that describe the collation attributes, as shown in the table below:
 | CS          | Case sensitive                                         |
 | PREF        | To sort uppercase letters before lowercase letters, use a PREF collation. If comparison is case-insensitive, the uppercase version of a letter sorts before the lowercase version, if there is no other distinction. The ICU library supports uppercase preference with `colCaseFirst=upper`, but not for `CI_AS` collations. PREF can be applied only to `CS_AS` - deterministic.  |
 
-PostgreSQL doesn\'t support the `LIKE` clause on non-deterministic
+PostgreSQL doesn't support the `LIKE` clause on non-deterministic
 collations, but Babelfish supports it for `CI_AS` collations.
-Babelfish doesn\'t support `LIKE` on AI collations. Pattern matching
+Babelfish doesn't support `LIKE` on AI collations. Pattern matching
 operations on non-deterministic collations are also not supported.
 
 To establish Babelfish collation behavior, set the following
@@ -59,49 +59,49 @@ parameters :
 
 | Parameter             | Description                                   |
 | --------------------- | --------------------------------------------- |
-| `default_locale`      | The ` default_locale ` parameter is used in combination with the collation attributes in the table above to customize collations for a specific language and region. The default value is `en-US`. The default locale applies to all Babelfish collations and to all SQL Server collations that are mapped to Babelfish collations. This parameter may be changed after initial Babelfish database creation time, but it won\'t affect the locale of existing collations.            |
-| `server_collation_name`  | The collation used as the default collation at both the server level and the database level. The default value is `sql_latin1_general_cp1_ci_as`. You can choose from the collations in the table that follows for the Collation name field when you create your PostgreSQL cluster for use with Babelfish. Don\'t modify the `server_collation_name` after the Babelfish database is created.  |
+| `default_locale`      | The `default_locale` parameter is used in combination with the collation attributes in the table above to customize collations for a specific language and region. The default value is `en-US`. The default locale applies to all Babelfish collations and to all SQL Server collations that are mapped to Babelfish collations. This parameter may be changed after initial Babelfish database creation time, but it won't affect the locale of existing collations.            |
+| `server_collation_name`  | The collation used as the default collation at both the server level and the database level. The default value is `sql_latin1_general_cp1_ci_as`. When you create your PostgreSQL cluster for use with Babelfish, you can choose the &ldquo;Collation name&rdquo; from the following table. Don't modify `server_collation_name` after the Babelfish database is created!  |
 
-Use the following collations as a server collation or an object
+The following collations can be used as a server collation or an object
 collation:
 
-| Collation ID          | Notes                                         |
+| Collation Name        | Notes                                         |
 | --------------------- | --------------------------------------------- |
-| `BBF_Unicode_General_CI_AS` | Supports case-insensitive comparison and the `LIKE` operator. |
-| `BBF_Unicode_CP1_CI_AS` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1252.txt) also known as CP1252. |
-| `BBF_Unicode_CP1250_CI_AS` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1250.txt) used to represent texts in Central European and Eastern European languages that use Latin script. |
-| `BBF_Unicode_CP1251_CI_AS` | [Deterministic 8-bit character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1251.txt), designed to cover languages that use the Cyrillic script. |
-| `BBF_Unicode_CP1251_CI_AS` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1253.txt), used to write modern Greek. |
-| `BBF_Unicode_CP1254_CI_AS` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1254.txt) that provides support for Turkish. |
-| `BBF_Unicode_CP1255_CI_AS` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1255.txt) that provides support for Hebrew. |
-| `BBF_Unicode_CP1256_CI_AS` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1256.txt) used to write languages that use Arabic script. |
-| `BBF_Unicode_CP1257_CI_AS` | [Deterministic 8-bit, single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1257.txt) used to support the Estonian, Latvian and Lithuanian languages. |
-| `BBF_Unicode_CP1258_CI_AS` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1258.txt) used to write Vietnamese characters. |
-| `BBF_Unicode_CP874_CI_AS` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit874.txt) used to write Thai characters. |
-| `sql_latin1_general_cp1250_ci_as` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1250.txt) used to represent Latin characters. |
-| `sql_latin1_general_cp1251_ci_as` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1251.txt) that provides support for Latin characters. |
-| `sql_latin1_general_cp1_ci_as` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1252.txt) that provides support for Latin characters.  |
-| `sql_latin1_general_cp1253_ci_as` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1253.txt) that provides support for Latin characters.   |
-| `sql_latin1_general_cp1254_ci_as` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1254.txt) that provides support for Latin characters. |
-| `sql_latin1_general_cp1255_ci_as` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1255.txt) that provides support for Latin characters.   |
-| `sql_latin1_general_cp1256_ci_as` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1256.txt) used to write languages that use Latin characters. |
-| `sql_latin1_general_cp1257_ci_as` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1257.txt) that provides support for Latin characters. |
-| `sql_latin1_general_cp1258_ci_as` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1258.txt) used to write Latin characters. |
-| `chinese_prc_ci_as`  | Provides support for Chinese (PRC).  |
-| `cyrillic_general_ci_as` | Provides support for Cyrillic. |
-| `finnish_swedish_ci_as` | Provides support for Finnish.  |
-| `french_ci_as` | Provides support for French. |
-| `korean_wansung_ci_as` | Provides support for Korean (with dictionary sort) |
-| `latin1_general_ci_as` | Provides support for Latin characters. |
-| `modern_spanish_ci_as` | Provides support for Modern Spanish. |
-| `polish_ci_as` | Provides support for Polish. |
-| `thai_ci_as` | Provides support for Thai. |
-| `traditional_spanish_ci_as` | Provides support for Spanish (Traditional sort) |
-| `turkish_ci_as`  | Provides support for Turkish. |
-| `ukrainian_ci_as`   | Provides support for Ukranian.   |
-| `vietnamese_ci_as`  | Provides support for Vietnamese. |
+| `BBF_Unicode_General_CS_AS` | A collation that is designed to work as well as possible in multi-language environments. |
+| `BBF_Unicode_CP1_CS_AS` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1252.txt); CP1 is the abbreviated name for CP1252. |
+| `BBF_Unicode_CP1250_CS_AS` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1250.txt) used to represent texts in Central European and Eastern European languages that use Latin script. |
+| `BBF_Unicode_CP1251_CS_AS` | [Deterministic 8-bit character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1251.txt), designed to cover languages that use the Cyrillic script. |
+| `BBF_Unicode_CP1251_CS_AS` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1253.txt), used to write modern Greek. |
+| `BBF_Unicode_CP1254_CS_AS` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1254.txt) that provides support for Turkish. |
+| `BBF_Unicode_CP1255_CS_AS` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1255.txt) that provides support for Hebrew. |
+| `BBF_Unicode_CP1256_CS_AS` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1256.txt) used to write languages that use Arabic script. |
+| `BBF_Unicode_CP1257_CS_AS` | [Deterministic 8-bit, single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1257.txt) used to support the Estonian, Latvian and Lithuanian languages. |
+| `BBF_Unicode_CP1258_CS_AS` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1258.txt) used to write Vietnamese characters. |
+| `BBF_Unicode_CP874_CS_AS` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit874.txt) used to write Thai characters. |
+| `sql_latin1_general_cp1250_cs_as` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1250.txt) used to represent Latin characters. |
+| `sql_latin1_general_cp1251_cs_as` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1251.txt) that provides support for Latin characters. |
+| `sql_latin1_general_cp1_cs_as` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1252.txt) that provides support for Latin characters.  |
+| `sql_latin1_general_cp1253_cs_as` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1253.txt) that provides support for Latin characters.   |
+| `sql_latin1_general_cp1254_cs_as` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1254.txt) that provides support for Latin characters. |
+| `sql_latin1_general_cp1255_cs_as` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1255.txt) that provides support for Latin characters.   |
+| `sql_latin1_general_cp1256_cs_as` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1256.txt) used to write languages that use Latin characters. |
+| `sql_latin1_general_cp1257_cs_as` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1257.txt) that provides support for Latin characters. |
+| `sql_latin1_general_cp1258_cs_as` | [Deterministic single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1258.txt) used to write Latin characters. |
+| `chinese_prc_cs_as`  | Provides support for Chinese (PRC).  |
+| `cyrillic_general_cs_as` | Provides support for Cyrillic. |
+| `finnish_swedish_cs_as` | Provides support for Finnish.  |
+| `french_cs_as` | Provides support for French. |
+| `korean_wansung_cs_as` | Provides support for Korean (with dictionary sort) |
+| `latin1_general_cs_as` | Provides support for Latin characters. |
+| `modern_spanish_cs_as` | Provides support for Modern Spanish. |
+| `polish_cs_as` | Provides support for Polish. |
+| `thai_cs_as` | Provides support for Thai. |
+| `traditional_spanish_cs_as` | Provides support for Spanish (Traditional sort) |
+| `turkish_cs_as`  | Provides support for Turkish. |
+| `ukrainian_cs_as`   | Provides support for Ukranian.   |
+| `vietnamese_cs_as`  | Provides support for Vietnamese. |
 
-You can use the following collations for database objects:
+You can use the following collations for database objects, if you want to support more than one locale in a single database:
 
 | Dialect   | Deterministic options | Non-deterministic options         |
 | --------- | --------------------- | --------------------------------- |
@@ -141,7 +141,7 @@ WHERE 	c.collversion < > pg_collation_actual_version(c.oid)
 ORDER BY 1, 2;
 ```
 
-Predefined collations are stored in the <code>sys.fn_helpcollations</code> table.
+Predefined collations are stored in the `sys.fn_helpcollations` table.
 You can use the following command to display information about a
 collation (such as its lcid, style, and collate flags). To retrieve the
 list, connect a psql client to the PostgreSQL port (by default, `5432`)
@@ -169,11 +169,12 @@ Babelfish collations.
 
 #### Unicode sorting rules
 
-SQL Server collations sort Unicode-encoded data (`nchar` and
+In SQL Server, &ldquo;SQL&rdquo; collations (those that start with the
+letters `SQL_`) sort Unicode-encoded data (`nchar` and
 `nvarchar`) one way, but non-Unicode encoded data (`char` and
 `varchar`) a different way. Babelfish databases will always be
 UTF-8 encoded and will always apply Unicode sorting rules
-consistently, regardless of data type.
+consistently, regardless of the data type.
 
 
 #### Secondary-equal collations
@@ -181,8 +182,9 @@ consistently, regardless of data type.
 The default ICU Unicode secondary-equal (`CI_AS`) collation sorts
 punctuation marks and other non-alphanumeric characters before
 numeric characters, and numeric characters before alphabetic
-characters; however, the order of punctuation and other special
-characters is different.
+characters; however, within the set of punctuation or special characters,
+the order may be different from that of the corresponding collation
+in SQL Server.
 
 
 #### Tertiary collations
@@ -201,32 +203,29 @@ A similar result can be obtained with Babelfish by adding a
 Unfortunately the `colCaseFirst` modifier applies only to strings
 that are tertiary-equal (rather than secondary-equal like a `CI_AS`
 collation); therefore, tertiary SQL collations cannot be emulated
-using a single ICU collation. As a workaround, we recommend you
-modify applications that use the `SQL_Latin1_General_Pref_CP1_CI_AS`
-collation to use the `BBF_SQL_Latin1_General_CP1_CI_AS` collation
-first, and then add `COLLATE BBF_SQL_Latin1_General_Pref_CP1_CS_AS`
-to any `ORDER BY` clause for this column.
+using a single ICU collation. As a workaround, we recommend that
+you use a different collation for `GROUP BY` than you use for `ORDER BY`.
 
-#### PostgreSQL uses a specific version of ICU and can match at most one
+#### PostgreSQL supports exactly one version of each collation
 
-version of a collation. Variations across versions are unavoidable,
-as are minor variations across time as languages evolve.
-
+PostgreSQL supports exactly one version of each collation, whereas SQL
+Server can support multiple versions of the same collation, typically
+by modifying the collation name with a version suffix such as `_80` or `_100`.
 
 #### Character(SC) expansion
 
 A character expansion treats a single character as equal to a
-sequence of characters at the primary level. SQL Server\'s default
+sequence of characters at the primary level. SQL Server's default
 `CI_AS` collation supports character expansion, whereas ICU
 collations support character expansion only for accent-insensitive
 collations.
 
 Character reordering options are currently more restricted in
-PostgreSQL than in ICU, and the order of special characters can\'t
+PostgreSQL than in ICU, and the order of special characters can't
 be made to follow the order of special characters in SQL Server
 exactly.
 
-When character expansion is required, then a `AI` collation must be
+When character expansion is required, then an `AI` collation must be
 used for comparisons, but such collations are not currently
 supported by the `LIKE` operator. A column declared using the default
 `CI_AS` collation can use the `LIKE` operator without character
@@ -263,7 +262,7 @@ Plane (BMP), whereas non-SC collations use surrogate pair characters
 to handle supplementary characters. For Unicode data types, SQL
 Server can represent up to 65,535 characters using UCS-2, or the
 full Unicode range (‭1,114,111‬ characters) if supplementary
-characters are used. Supplementary characters aren\'t supported for
+characters are used. Supplementary characters aren't supported for
 use in metadata, such as in names of database objects, and
 collations without SC in the name behave differently in SQL Server
 depending on whether the encoding is UTF-16 or UCS-2.
@@ -285,7 +284,7 @@ first release.
 When a single-byte character (half-width) and the same character
 represented as a double-byte character (full-width) are treated
 differently, the collation is called *width-sensitive (WS)*. WS
-collations with the same name as SQL Server won\'t be provided by
+collations with the same name as SQL Server won't be provided by
 Babelfish in the first release.
 
 
@@ -295,8 +294,8 @@ Variation-Selector Sensitivity (VSS) collations distinguish between
 ideographic variation selectors in Japanese collations
 `Japanese_Bushu_Kakusu_140` and `Japanese_XJIS_140`. A variation
 sequence is made up of a base character plus an additional variation
-selector. If you don\'t the select the `_VSS` option, the variation
-selector isn\'t considered in the comparison.
+selector. If you don't the select the `_VSS` option, the variation
+selector isn't considered in the comparison.
 
 VSS collations will not be provided by Babelfish in the first
 release.
