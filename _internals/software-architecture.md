@@ -85,27 +85,27 @@ will learn which ones are important and what their purpose is.
 
 Here is a more detailed description of these extensions:
 
-#### `babelfishpg_common`: MS SQL data types
+#### `babelfishpg_common`: Microsoft SQL Server data types
 
 Data types are often really similar but not necessarily 100% identical.
 Therefore, the Babelfish development team provides specific data types which
 mimic Microsoft SQL Server behavior. Fortunately, there were only a handful of
 types which behave differently. Here is a complete list of these types:
 
-- `sys.BBF_BINARY`: Data type for binary data.
-- `sys.BIT`: Converts 1 or 0 to `t` or `f`.
-- `sys.BPCHAR` and `sys.VARCHAR`: Microsoft SQL Server specific `varchar` implementation
-- `sys.DATETIME`: A simple data type for time and date. For more precision use
-  `DATETIME2`.
-- `sys.DATETIME2`: An extension for `DATETIME` with more
-  precision and functionality.
-- `sys.DATETIMEOFFSET`: Like `DATETIME2`, but with timezone awareness.
-- `sys.SMALLDATETIME`: Defines a date that is combined with a time of day. The time
-  is based on a 24-hour day, with seconds always zero (:00) and without
-  fractional seconds.
-- `sys.SQL_VARIANT`: Enables these database objects to support values of
-  other data types.
-- `sys.UNIQUEIDENTIFIER`: 16 byte GUID (e.g. `6F9619FF-8B86-D011-B42D-00C04FC964FF`)
+- `sys.BBF_BINARY`
+- `sys.BIT`
+- `sys.BPCHAR`
+- `sys.VARCHAR`
+- `sys.DATETIME`
+- `sys.DATETIME2`
+- `sys.DATETIMEOFFSET`
+- `sys.SMALLDATETIME`
+- `sys.SQL_VARIANT`
+- `sys.UNIQUEIDENTIFIER`
+
+See the [Microsoft documentation][types] for details on Microsoft SQL Server data types.
+
+ [types]: https://docs.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql
 
 #### `babelfishpg_money`: Fixed precision numeric type
 
