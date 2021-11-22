@@ -8,15 +8,20 @@ nav_order: 3
 
 Babelfish offers a path to migrate from licensed Microsoft SQL Server to PostgreSQL, which is a capable open source product.
 
-In this section, you will learn how to approach a migration and how to transition to Babelfish.
+In this section, you will learn how to approach a migration to Babelfish.
 
 
 ### Create a Babelfish instance
 
-The first thing to do is to [install Babelfish](/docs/installation/compiling-babelfish-from-source/) and for Windows users, make sure a connection can be established with a client tool like SSMS or sqlcmd. 
+The first thing to do is to
+[install Babelfish](/docs/installation/compiling-babelfish-from-source/)
+and to make sure a connection can be established with a client tool like SSMS or `sqlcmd`.
 
-For Linux users, a good way to check connectivity is to use the FreeTDS command line
-client as described in the [Babelfish documentation](/docs/usage/command-line).
+For Linux users, the recommended way to check connectivity is `sqlcmd` from the
+Linux distribution of Microsoft SQL Server.  Another option is to use the
+FreeTDS command line client as described in the
+[Babelfish documentation](/docs/usage/command-line), although that is not
+officially supported.
 
 Once your Babelfish instance has been set up, you can move forward and proceed with
 the next step.
@@ -30,20 +35,19 @@ Run the Babelfish Compass tool on the DDL and determine to what extent the T-SQL
 be supported by Babelfish, and identify T-SQL code that may require changing before
 executing against Babelfish.
 
-To download Babelfish Compass, see here https://github.com/babelfish-for-postgresql/babelfish_compass/releases/latest and here https://github.com/babelfish-for-postgresql/babelfish_compass/blob/main/BabelfishCompass_UserGuide.pdf (for the user guide).
+To download Babelfish Compass, see
+[here](https://github.com/babelfish-for-postgresql/babelfish_compass/releases/latest).
+There is also a
+[user guide](https://github.com/babelfish-for-postgresql/babelfish_compass/blob/main/BabelfishCompass_UserGuide.pdf).
 
-### Reverse-engineer the SQL Server schema
+### Reverse-engineering the SQL Server schema
 
 Once you have run an assessment, migrate your existing SQL Server schema to the new
-cluster. Generate the DDL for all SQL Server user databases which you want to migrate.
-The DDL is SQL code that describes database objects such
-as those that contain user data (for example, tables, indexes, and
-views) and user-written database code (stored procedures,
-user-defined functions, or triggers).
-
+cluster. Generate the DDL statements for all SQL Server user databases which you
+want to migrate.
 You can use SQL Server Management Studio (SSMS) to reverse-engineer the DDL.
 Generate the script by clicking on your database in SSMS and use the
-functionality provided by the tool to generate the export.
+functionality provided by the tool to generate the script.
 
 Do not forget to enable triggers, logins, owners, and
 permissions. These are disabled by default in SSMS.
@@ -55,7 +59,7 @@ we recommend you check out our [discussion about differences in functionality](/
 Run the DDL on your new Babelfish server to recreate your schema on Babelfish,
 either with sqlcmd or with SSMS. 
 
-In the next step you can migrate the data from one server to the other.
+After that, you can migrate the data from one server to the other.
 
 
 ### Reconfiguring client applications
@@ -69,23 +73,21 @@ you hit a [limitation](/docs/usage/limitations-of-babelfish), your apps should w
 normally. However, we recommend thorough testing.
 
 
-
-
 ### Moving to production
 
 When you are satisfied with your application test results, start using your
-Babelfish database for production. During this time, DMS needs to continue
-to incrementally replicate changes to the Babelfish database(s). When ready,
-temporarily quiesce the original database and redirect live client applications
-to use the Babelfish TDS port.
+Babelfish database for production.  Note that you have incurred downtime from
+the time you started migrating the data to the time you start using the
+Babelfish database.  Reducing this downtime is complicated and beyond the
+scope of this documentation.
 
 
 ### Performance considerations
 
 SQL might exhibit performance differences on different platforms, so performance
 adjustments may be necessary during a migration. You should keep in mind that you
-have just left the universe of Microsoft SQL Server and entered the world of PostgreSQL.
-Performance won't necessarily be identical. 
+have transitioned from one database management system to a different one.
+Performance won't necessarily be the same.
 
 Adjusting database parameters properly does make a difference, but it might not
 be sufficient to fix each and every performance problem. In other words, expect
@@ -100,14 +102,16 @@ use any PostgreSQL client.  Make sure that you connect to the PostgreSQL port
 (by default 5432) and not to the TDS port (by default 1433).
 
 While object names will be identical, the names of the schemas in the migrated SQL
-Server user databases may look different when access through PG, depending on the
-[migration mode_GUC](docs/installation/single-multiple):
+Server user databases may look different when accessed through PostgreSQL,
+depending on the configuration parameter
+[`migration_mode`](docs/installation/single-multiple):
 
 - in `single-db` migration mode, the schema names of the migrated SQL Server user
-databases will be the same when accessed using T-SQL or using PG SQL
+  databases will be the same, no matter if you are connected using TDS or
+  the PostgreSQL protocol.
 
-- in `multi-db` migration mode, the schema names in PostgreSQL will be composed
-  of the database name and the schema name that you used when connected
-  through the TDS port.  For example, if you created a table `t1` in schema
-  `s1` of database `d1` while accessing using T-SQL, the table needs to be referenced
-  (or accessed) as d1_s1.t1 when connected to the PostgreSQL protocol.
+- in `multi-db` migration mode, the schema names of the migrated databases will
+  be composed of the database name and the schema name that you used when connected
+  via TDS.  For example, if you created a table `t1` in schema
+  `s1` of database `d1` via TDS, the table needs to be referenced
+  as `d1_s1.t1` when connected via the PostgreSQL protocol.
