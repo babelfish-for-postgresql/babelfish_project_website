@@ -319,8 +319,9 @@ It is important to understand such differences as well.
 ## Babelfish escape hatches
 
 To better deal with statements that might fail, Babelfish allows you to define
-*escape hatches*. An escape hatch is a flag that specifies Babelfish behavior
-when it encounters an unsupported feature or syntax.
+*escape hatches*. An escape hatch is a flag that can be adjusted by the user and
+specifies the behavior of Babelfish when it encounters an unsupported feature or
+syntax.
 
 You can use the `sp_babelfish_configure` stored procedure to display or change
 the settings of each escape hatch.  Use it to specify if an escape hatch should
