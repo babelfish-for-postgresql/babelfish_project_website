@@ -128,8 +128,6 @@ BEGIN
     END CATCH;
 END; $$ LANGUAGE 'pltsql';
 ```
-If you want to learn more about T-SQL, we have compiled an entire page focusing
-on this topic: [T-SQL in action](/docs/usage/handling-tsql).
 
 
 ## Will Babelfish be available for new versions of PostgreSQL?
