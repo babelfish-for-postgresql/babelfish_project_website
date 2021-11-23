@@ -35,3 +35,9 @@ By default, to use the following dialects use the following ports:
 
 Babelfish runs the Transact-SQL (T-SQL) language with the exceptions documented
 in [T-SQL limitations](/docs/usage/limitations-of-babelfish).
+
+
+### Join the Babelfish community
+
+Be part of the community and help to make improvements.
+You're welcome to [contribute to Babelfish](/docs/contributing).
