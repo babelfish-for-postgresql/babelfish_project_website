@@ -6,16 +6,18 @@ nav_order: 1
 
 ## Using client tools to connect to Babelfish
 
-On Windows, most people use SQL Server Management Studio (SSMS) or `sqlcmd` to
-connect to SQL Server, and these can be used to connect to Babelfish as well.
-SSMS is not available on Linux, so you are limited to using `sqlcmd` there.
+You can use a SQL Server client to connect with Babelfish on the TDS port.
+When connecting from a Windows system, SQL Server Management Studio (SSMS) or
+`sqlcmd` are good choices of clients.  If you are connecting to the TDS port
+from a Linux system, `sqlcmd` is a good choice.
 
 Other clients that speak the TDS protocol can also be used, but are not
 officially supported by Babelfish.  On Linux, these include the FreeTDS command
 line tool `tsql`.
 
-Using the PostgreSQL protocol, you can use `psql` or any other client to
-connect to Babelfish.
+You can use any PostgreSQL client to connect to Babelfish on the PostgreSQL
+port.  `psql` and pgAdmin are examples of open-source clients that run on
+Windows and Linux platforms and speak the PostgreSQL protocol.
 
 
 ### Using `sqlcmd` to connect to the DB instance {#babelfish-connect-sqlcmd}
@@ -35,8 +37,8 @@ Where:
 - `-P` is the password associated with the user.
 - `-d` is the database that is selected initially.
 
-Use the `USE` command to select a database, and don't forget to enter `GO`
-after entering one or more SQL statements to send them to the server.
+After connecting with `sqlcmd`, you can use familiar T-SQL syntax to create and
+manage database objects.
 
 ### Using SSMS to connect
 
@@ -100,8 +102,8 @@ Here is an example how to connect to Babelfish with `tsql`:
 tsql -S database.example.com -p 1433 -U postgres -P secretpassword
 ```
 
-Like in `sqlcmd`, the command `USE` selects a database, and `GO` is used to send
-a batch of SQL statements to the server.
+For information about using `tsql`, consult
+[the FreeTDS documentation](https://www.freetds.org/userguide/).
 
 Note that `tsql` is not officially supported.
 
@@ -116,6 +118,5 @@ is changing the SQL dialect with the
 configuration parameter, but that recommendation is not specific to `psql`.
 
 Note that Babelfish ships with a modified version of `psql`, which is intended
-for use by Babelfish development and should not be used by the general public.
-This modified `psql` is not supported, and using it could produce incorrect
-results.
+for use by Babelfish development.  This version can produce incorrect results,
+and should not be used in production.
