@@ -42,10 +42,9 @@ The table below shows how Babelfish behaves for each combination:
 | `ENCRYPT_CLIENT_CERTYPT_CLIENT_CERT`  | `tds_ssl_encrypt=0` | Terminated | Unsupported  |
 
 
-
 ### User management and roles
 
-Babelfis creates a number of PostgreSQL roles:
+Babelfish creates a number of PostgreSQL roles:
 
 - `sysadmin`
 - `master_db_owner`
@@ -59,14 +58,13 @@ Moreover, there will be a <code>*dbname*&lowbar;db&lowbar;owner</code>
 and a <code>*dbname*&lowbar;dbo</code> for every database you create in
 Babelfish.
 
-These roles are there to implement the SQL Server ownership structure.
+These roles implement the SQL Server ownership structure.
 They are created and maintained by Babelfish and should not be used by
 the application or the end user.
 
-You can use `CREATE LOGIN` to create a new Babelfish login.  Babelfish logins
+You can use `CREATE LOGIN` to create a new Babelfish login, which
+automatically is a user in all databases.  Babelfish logins
 are implemented as PostgreSQL login roles of the same name.
 
 Note that Babelfish [does not support](/docs/usage/limitations-of-babelfish)
-`CREATE USER`, and any login you create is automatically a user in all
-databases.  `CREATE ROLE` is also not supported, so you cannot use roles in
-Babelfish.
+the statements `CREATE USER` and `CREATE ROLE`.
