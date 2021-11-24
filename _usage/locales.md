@@ -60,7 +60,7 @@ parameters :
 | Parameter             | Description                                   |
 | --------------------- | --------------------------------------------- |
 | `default_locale`      | The `default_locale` parameter is used in combination with the collation attributes in the table above to customize collations for a specific language and region. The default value is `en-US`. The default locale applies to all Babelfish collations and to all SQL Server collations that are mapped to Babelfish collations. This parameter may be changed after initial Babelfish database creation time, but it won't affect the locale of existing collations.            |
-| `server_collation_name`  | The collation used as the default collation at both the server level and the database level. The default value is `sql_latin1_general_cp1_ci_as`. When you create your PostgreSQL cluster for use with Babelfish, you can choose the &ldquo;Collation name&rdquo; from the following table. Don't modify `server_collation_name` after the Babelfish database is created!  |
+| `server_collation_name`  | The collation used as the default collation at both the server level and the database level. The default value is `sql_latin1_general_cp1_ci_as`. When you create your PostgreSQL cluster for use with Babelfish, you can choose the &ldquo;Collation name&rdquo; from the following table. Don't modify `server_collation_name` after the Babelfish database is created.  |
 
 The following collations can be used as a server collation or an object
 collation:
