@@ -55,14 +55,14 @@ permissions. These are disabled by default in SSMS.
 
 ### Deploying the schema and migrating the data
 
-Babelfish implements most T-SQL statements, including `CREATE FUNCTION` and
-`CREATE PROCEDURE`, so it should be easy to port the generated DDL to Babelfish.
-In case you are facing errors or problems, we recommend you check out our
-[discussion about differences in functionality](/docs/usage/limitations-of-babelfish).
-Adjust your DDL code if necessary.
+Babelfish implements most T-SQL statements, so it should be relatively easy to
+port the generated DDL to Babelfish.  If you are facing errors or problems,
+we recommend that you check out our
+[discussion about differences in functionality](/docs/usage/limitations-of-babelfish)
+and adjust your DDL code if necessary.
+
 Run the DDL on your new Babelfish server to recreate your schema on Babelfish,
 either with sqlcmd or with SSMS. 
-
 After that, you can migrate the data from one server to the other.
 
 
