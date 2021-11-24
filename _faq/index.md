@@ -8,7 +8,7 @@ permalink: /docs/faq/
 # Babelfish: Frequently asked questions
 
 This page contains some of the most frequently asked question related to
-Babelfish- and Microsoft SQL Server server- compatibility.
+Babelfish- and Microsoft SQL Server- compatibility.
 
 ## Can we use Babelfish for free?
 

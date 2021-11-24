@@ -12,12 +12,12 @@ with Java and JDBC. Again, some basic operations will be shown to describe how
 code can be written.
 
 As we have seen before, there is no real difference between writing JDBC client
-code for MS SQL and Babelfish. Still, let's dive in and take a look at some
+code for Microsoft SQL Server and Babelfish. Still, let's dive in and take a look at some
 examples:
 
 ### Sample code using JDBC
 
-To compile the Java code you will need the MS SQL JDBC driver. For the sake of
+To compile the Java code you will need the Microsoft SQL Server JDBC driver. For the sake of
 this example, we have used the version 9.4 (mssql-jdbc-9.4.0.jre11.jar). However,
 since the example features pretty basic code, it should be possible to run things
 with other versions of the driver as well.
@@ -131,7 +131,7 @@ public class sample {
 
 First of all, a standard JDBC connection is created. JDBC is an abstraction
 layer, so the main magic is actually in the connect string: 'jdbc:sqlserver' will
-tell our program to use the MS SQL driver to connect to Babelfish.
+tell our program to use the Microsoft SQL Server driver to connect to Babelfish.
 
 Otherwise, the sample code is mostly trivial and pretty much represents a
 standard JDBC application.

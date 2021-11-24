@@ -57,7 +57,7 @@ installation:
 - `tempdb_dbo`
 - `tempdb_guest`
 
-These users are MS SQL-specific and try to mimic what the target database is
+These users are Microsoft SQL Server-specific and try to mimic what the target database is
 supposed to look like. 
 
 In addition to that, all users that are normally available in PostgreSQL are

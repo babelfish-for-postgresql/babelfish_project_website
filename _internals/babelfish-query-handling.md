@@ -7,7 +7,7 @@ nav_order: 2
 ## Babelfish query handling
 
 In this section, you will learn about Babelfish query handling. The first and
-most important thing is: MS SQL and PostgreSQL differ quite substantially in their query handling.
+most important thing is: Microsoft SQL Server and PostgreSQL differ quite substantially in their query handling.
 For that reason, various transformations have to be applied to make it work.
 
 Let us therefore take a closer look, and discuss some of the changes made to PostgreSQL

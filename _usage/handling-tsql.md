@@ -6,13 +6,13 @@ nav_order: 2
 
 ## Handling Transact-SQL
 
-If you are already using T-SQL on MS SQL, you might be interested in using the
+If you are already using T-SQL on Microsoft SQL Server, you might be interested in using the
 same type of functionality in the Babelfish environment. PostgreSQL provides a
 language called PL/pgSQL which is often used to write functions as well as
-procedures. The MS SQL equivalent to PL/pgSQL is called T-SQL (Transact-SQL). 
+procedures. The Microsoft SQL Server equivalent to PL/pgSQL is called T-SQL (Transact-SQL). 
 
-To make Babelfish as compatible with MS SQL as possible, it provides a T-SQL
-implementation capable of understanding MS SQL Server code. As with every
+To make Babelfish as compatible with Microsoft SQL Server as possible, it provides a T-SQL
+implementation capable of understanding Microsoft SQL Server code. As with every
 software which models some other software's behavior, there are some 
 differences and [limitations](/docs/usage/limitations-of-babelfish). 
 
@@ -113,7 +113,7 @@ This example contains two things that are of importance. First of all, you can
 see a loop in action. That's pretty standard and straightforward. What you need 
 to be aware of here is the type mismatch. We create an integer variable which
 is returned. However, what is returned is a varchar. In standard PostgreSQL, this
-would instantly create an error. Babelfish (and MS SQL) are way more tolerant
+would instantly create an error. Babelfish (and Microsoft SQL Server) are way more tolerant
 in this case. 
 
 What is also important: If you want to ensure that the data is safe and visible:
@@ -233,7 +233,7 @@ if_samples
 ```
 
 What might seem strange for PostgreSQL users is the way Babelfish (and therefore
-MS SQL) handles procedures vs. functions. In PostgreSQL, these two things are
+Microsoft SQL Server) handles procedures vs. functions. In PostgreSQL, these two things are
 totally different, and using a procedure in the content of a function will
 certainly error out. In Babelfish the situation is as follows:
 
@@ -252,11 +252,11 @@ As you can see, the resultant behavior is slightly different.
 
 ### Return values and data types
 
-MS SQL and PostgreSQL differ in one important point. Often, the return data type
+Microsoft SQL Server and PostgreSQL differ in one important point. Often, the return data type
 of a function in PostgreSQL is <code>void</code>. In other words: A function can
 return nothing. 
 
-That is not possible in Babelfish and MS SQL. Let's modify the function we just
+That is not possible in Babelfish and Microsoft SQL Server. Let's modify the function we just
 used, and see what happens:
 
 ```sql
@@ -307,12 +307,12 @@ Msg 50856066 (severity 16, state 0) from BABEL Line 1:
 
 ```
 
-### Calling non-MS SQL functions
+### Calling non-Microsoft SQL Server functions
 
-In real life, Babelfish users will use T-SQL functions and utilize MS SQL
+In real life, Babelfish users will use T-SQL functions and utilize Microsoft SQL Server
 compatible functions (which is the whole idea of Babelfish in the first place).
 However, it can happen that an end user wants to call PostgreSQL code which does
-not exist in MS SQL.
+not exist in Microsoft SQL Server.
 
 The important point is that it is possible. Here is an example:
 
@@ -332,7 +332,7 @@ offer, unless there is a name conflict.
 
 ### Temporary tables in action
 
-PostgreSQL as well as Babelfish / MS SQL support the concept of a temporary
+PostgreSQL as well as Babelfish / Microsoft SQL Server support the concept of a temporary
 table. However, there are some major differences. To show how this works, we first create a
 standard table:
 
@@ -341,7 +341,7 @@ standard table:
 2> GO
 ```
 
-In Babelfish (and thus in MS SQL) a temporary table is prefixed using a hash as
+In Babelfish (and thus in Microsoft SQL Server) a temporary table is prefixed using a hash as
 shown in the next listing:
 
 ```sql
@@ -444,7 +444,7 @@ The behavior is similar to what one would expect in PostgreSQL.
 In this section, you will learn how Babelfish stores stored procedure code
 internally. To understand how this works, we first need to connect using a normal
 PostgreSQL connection (so <code>psql</code> on the PostgreSQL port and not
-<code>tsql</code> on the MS SQL port.
+<code>tsql</code> on the Microsoft SQL Server port.
 
 What we see here is that PostgreSQL stores T-SQL code in a way not quite like other code:
 
@@ -487,7 +487,7 @@ used to store a JSON document dealing with typmod-related information. This
 behavior is specific to T-SQL and is handled by [Babelfish specific
 hooks](/docs/internals/postgresql-hooks). 
 
-The MS SQL equivalent to this query is the <code>sp_helptext</code> function
+The Microsoft SQL Server equivalent to this query is the <code>sp_helptext</code> function
 which is currently not supported by Babelfish. 
 
 Let's take a look at one more example using the "PostgreSQL style interface" to
@@ -526,7 +526,7 @@ procedure language". The handlers take care of these syntax elements before the
 body of the real function starts. 
 
 Nevertheless, there are differences: We still see PostgreSQL-style dollar quoting and
-so on, which is different from a "real" MS SQL Server stored
+so on, which is different from a "real" Microsoft SQL Server stored
 procedure.
 
 

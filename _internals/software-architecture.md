@@ -84,7 +84,7 @@ will learn which ones are important and what their purpose is.
 
 Here is a more detailed description of these extensions:
 
-#### `babelfishpg_common`: MS SQL data types
+#### `babelfishpg_common`: Microsoft SQL Server data types
 
 Data types are often really similar but not necessarily 100% identical.
 Therefore, the Babelfish development team provides specific data types which
