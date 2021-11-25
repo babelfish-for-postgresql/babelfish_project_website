@@ -31,7 +31,8 @@ the next step.
 Babelfish comes with an assessment tool called Babelfish Compass to assist with
 determining the complexity of an application and the feasibility of migrating to Babelfish.
 The first step is to run an assessment with Babelfish Compass.
-Run the Babelfish Compass tool on the DDL and determine to what extent the T-SQL code will
+Run the Babelfish Compass tool on the <abbr title="Data Definition Language">DDL</abbr>
+and determine to what extent the T-SQL code will
 be supported by Babelfish, and identify T-SQL code that may require changing before
 executing against Babelfish.
 
@@ -54,11 +55,14 @@ permissions. These are disabled by default in SSMS.
 
 ### Deploying the schema and migrating the data
 
-Make SQL code adjustments as needed. In case you are facing errors or problems,
-we recommend you check out our [discussion about differences in functionality](/docs/usage/limitations-of-babelfish).
+Babelfish implements most T-SQL statements, so it should be relatively easy to
+port the generated DDL to Babelfish.  If you are facing errors or problems,
+we recommend that you check out our
+[discussion about differences in functionality](/docs/usage/limitations-of-babelfish)
+and adjust your DDL code if necessary.
+
 Run the DDL on your new Babelfish server to recreate your schema on Babelfish,
 either with sqlcmd or with SSMS. 
-
 After that, you can migrate the data from one server to the other.
 
 
