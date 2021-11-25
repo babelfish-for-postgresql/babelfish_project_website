@@ -21,7 +21,7 @@ Let's discuss each of those topics in more detail.
 
 When a client connects to port 1433, Babelfish compares the SSL setting sent
 during the client handshake to the Babelfish SSL parameter setting
-(<code>tds_ssl_encrypt</code>) and determines if a connection will be allowed.
+(`tds_ssl_encrypt`) and determines if a connection will be allowed.
 If a connection is allowed, encryption behavior is either enforced or not,
 depending on your parameter settings and the support for encryption offered by
 the client.
@@ -42,12 +42,9 @@ The table below shows how Babelfish behaves for each combination:
 | `ENCRYPT_CLIENT_CERTYPT_CLIENT_CERT`  | `tds_ssl_encrypt=0` | Terminated | Unsupported  |
 
 
-
 ### User management and roles
 
-By default, Babelfish comes with extra users on top of what PostgreSQL
-has to offer. Here is a list of users to be found in a fresh Babelfish
-installation: 
+Babelfish creates a number of PostgreSQL roles:
 
 - `sysadmin`
 - `master_db_owner`
@@ -57,21 +54,17 @@ installation:
 - `tempdb_dbo`
 - `tempdb_guest`
 
-These users are Microsoft SQL Server-specific and try to mimic what the target database is
-supposed to look like. 
+Moreover, there will be a <code>*dbname*&lowbar;db&lowbar;owner</code>
+and a <code>*dbname*&lowbar;dbo</code> for every database you create in
+Babelfish.
 
-In addition to that, all users that are normally available in PostgreSQL are
-available as well:
+These roles implement the SQL Server ownership structure.
+They are created and maintained by Babelfish and should not be used by
+the application or the end user.
 
-- `postgres`
-- `pg_monitor`
-- `pg_read_all_settings`
-- `pg_read_all_stats`
-- `pg_stat_scan_tables`
-- `pg_read_server_files`
-- `pg_write_server_files`
-- `pg_execute_server_program`
-- `pg_signal_backend`
+You can use `CREATE LOGIN` to create a new Babelfish login, which
+automatically is a user in all databases.  Babelfish logins
+are implemented as PostgreSQL login roles of the same name.
 
-These users are unchanged, and can be used just like in a normal PostgreSQL
-installation.
+Note that Babelfish [does not support](/docs/usage/limitations-of-babelfish)
+the statements `CREATE USER` and `CREATE ROLE`.
