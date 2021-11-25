@@ -183,7 +183,7 @@ x
 ```
 
 There are a couple of things worth mentioning here: First of all, we have to use
-<code>GO</code> to make Babelfish execute the command. This is just like in standard MS SQL,
+<code>GO</code> to make Babelfish execute the command. This is just like in standard Microsoft SQL Server,
 as well as in Sybase. But there is more, which might be alien to users
 experienced with PostgreSQL: <code>SELECT 1+1</code> does not yield a column title, so to
 ensure that a title is provided, we need to alias the column. You need to be aware
