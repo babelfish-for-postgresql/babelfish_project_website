@@ -112,10 +112,13 @@ Note that `tsql` is not officially supported.
 
 You can also use PostgreSQL's `psql` to connect to Babelfish.  `psql` has to
 connect to the PostgreSQL port (by default 5432), and you will have to use
-PostgreSQL SQL syntax instead of T-SQL.  The only thing that you should avoid
-is changing the SQL dialect with the
-[`babelfishpg_tsql.sql_dialect`](/docs/internals/configuration/#babelfishpg_tsqlsql_dialect)
-configuration parameter, but that recommendation is not specific to `psql`.
+PostgreSQL SQL syntax instead of T-SQL.
+
+Here is an example how to connect with `psql`:
+
+```bash
+psql -h database.example.com -p 5432 -U postgres -d dbname
+```
 
 Note that Babelfish ships with a modified version of `psql`, which is intended
 for use by Babelfish development.  This version can produce incorrect results,
