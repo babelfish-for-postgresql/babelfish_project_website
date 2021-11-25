@@ -6,7 +6,7 @@ nav_order: 8
 
 ## The TDS wire protocol
 
-Babelfish exposes PostgreSQL as an MS SQL Server. To achieve that, the community has
+Babelfish exposes PostgreSQL as an Microsoft SQL Server. To achieve that, the community has
 implemented the TDS wire protocol which forms the backbone of the entire solution.
 In this chapter, we want to take a deeper look at the details of the protocol's
 inner workings, and understand how things happen.

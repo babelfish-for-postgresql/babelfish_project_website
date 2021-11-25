@@ -6,10 +6,10 @@ nav_order: 4
 
 ## Babelfish system views
 
-Once in a while, an application has to access an MS SQL-compatible system view
+Once in a while, an application has to access an Microsoft SQL Server-compatible system view
 or a server side function to
 work properly. This is especially true for graphical user interfaces. However,
-accessing an MS SQL-compatible system view is also necessary for some applications
+accessing an Microsoft SQL Server-compatible system view is also necessary for some applications
 which have to collect information from the database to function properly.
 
 Providing support for system views is therefore important. The following views
@@ -46,7 +46,7 @@ are currently available:
 - `sys.types`
 - `sys.views`
 
-The content and the structure of these views are as compatible with MS SQL as
+The content and the structure of these views are as compatible with Microsoft SQL Server as
 technically possible. If you want to find out more check out the [Microsoft
 documentation](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/object-catalog-views-transact-sql?view=sql-server-ver15)
 describing this functionality.
