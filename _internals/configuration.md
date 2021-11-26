@@ -449,11 +449,9 @@ SQL Server compatibility `SHOWPLAN_XML` option.
 
 ### `babelfishpg_tsql.sql_dialect`
 
-Sets the dialect for SQL commands. Valid options are
-
-- `postgres`
-- `tsql`
-- `pg`
+Sets the dialect for SQL commands. Valid options are `postgres`, `tsql` and
+`pg`.  This parameter is set by Babelfish, and you should never change it in
+a database session.
 
 
 ### `babelfishpg_tsql.trace_tree`

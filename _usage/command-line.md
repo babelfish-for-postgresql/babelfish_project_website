@@ -1,29 +1,30 @@
 ---
 layout: default
-title: Using the command line
+title: Connecting to Babelfish
 nav_order: 1
 ---
 
-## Using client tools to work with Babelfish
+## Using client tools to connect to Babelfish
 
-Most people use SQL Server Management Studio (SSMS) on Microsoft Windows to
-connect to Babelfish.
+You can use a SQL Server client to connect with Babelfish on the TDS port.
+When connecting from a Windows system, SQL Server Management Studio (SSMS) or
+`sqlcmd` are good choices of clients.  If you are connecting to the TDS port
+from a Linux system, `sqlcmd` is a good choice.
 
-However, there is an ever-growing community which prefers to use the command
-line to work with the server.
-Those users have the following command-line tool choices on Linux:
+Other clients that speak the TDS protocol can also be used, but are not
+officially supported by Babelfish.  On Linux, these include the FreeTDS command
+line tool `tsql`.
 
-- sqlcmd: Using the Microsoft SQL Server interface
-- tsql: Using the FreeTDS command line tool
-
-Note that there is also a `psql` version for Babelfish, but that is not reliable.
-Therefore, it is strongly recommended not to use it.
+You can use any PostgreSQL client to connect to Babelfish on the PostgreSQL
+port.  `psql` and pgAdmin are examples of open-source clients that run on
+Windows and Linux platforms and speak the PostgreSQL protocol.
 
 
-### Using sqlcmd to connect to the DB cluster {#babelfish-connect-sqlcmd}
+### Using `sqlcmd` to connect to the DB instance {#babelfish-connect-sqlcmd}
 
 The most common way to connect to and interact with Babelfish
-is with the SQL Server <code>sqlcmd</code> utility, as shown in the following.
+is with the SQL Server `sqlcmd` utility, as shown in the following.
+
 
 ```bash
 sqlcmd -S host.sample.com,1433 -U PUT_USER_HERE -P PUT_PASSWORD_HERE -d PUT_DBNAME_HERE
@@ -31,182 +32,94 @@ sqlcmd -S host.sample.com,1433 -U PUT_USER_HERE -P PUT_PASSWORD_HERE -d PUT_DBNA
 
 Where:
 
-- -S is the endpoint and port of the DB cluster.
-- -U is the login name of the user.
-- -P is the password associated with the user.
-- -d is the name of your Babelfish database.
+- `-S` is the server name and port of the DB instance.
+- `-U` is the login name of the user.
+- `-P` is the password associated with the user.
+- `-d` is the database that is selected initially.
 
+After connecting with `sqlcmd`, you can use familiar T-SQL syntax to create and
+manage database objects.
 
-### Connecting with SSMS
+### Using SSMS to connect
 
-SSMS is an additional option to talk to Babelfish.
+SSMS is one of the most commonly used clients to connect to Babelfish.
 
 In the following procedure, you connect to your Babelfish database by
 using SSMS. You can use the SSMS query editor to connect to a Babelfish database.
+Currently, you can not connect using the SSMS Object Explorer.
 
-#### Start SSMS.
+#### Connecting with SSMS
 
-Open the Connect to Server dialog by doing one of the following:
+1. Open the Connect to Server dialog by doing one of the following:
 
--  Choose New Query.
--  If the Query Editor is open, choose Query, Connection, Connect.
+   - Choose &ldquo;New Query&rdquo;.
+   - If the Query Editor is open, choose &ldquo;Query&rdquo; &ndash;
+     &ldquo;Connection&rdquo; &ndash; &ldquo;Connect&rdquo;.
 
-Provide the following information for your database:
+2. Provide the following information for your database:
 
-For Server type, choose Database Engine.
+   - For &ldquo;Server type&rdquo;, choose &ldquo;Database Engine&rdquo;.
 
-For Server name, enter the DNS name. For example, your server name
-should look similar to the following.
+   - For &ldquo;Server name&rdquo;, enter the DNS name. For example, your server
+     name should look similar to the following:
 
-```bashsql
-    host.example.com,1433
-```
+     ```none
+     host.example.com,1433
+     ```
 
-For Authentication, choose SQL Server Authentication.
+   - For &ldquo;Authentication&rdquo;, choose &ldquo;SQL Server
+     Authentication&rdquo;.
 
-For Login, enter the user name that you chose to use when you created
-your database.
+   - For &ldquo;Login&rdquo;, enter the user name that you chose to use when you
+     created your database.
 
-For Password, enter the password that you chose when you created your
-database.
+   - For &ldquo;Password&rdquo;, enter the password corresponding to that user name.
 
-Optionally, choose Options, and then choose the Connection Properties
-tab.
+   - Optionally, choose &ldquo;Options&rdquo;, and then choose the
+     &ldquo;Connection Properties&rdquo; tab.
 
-For Connect to database, specify the name of the database to connect to,
-and choose Connect.
+   - For &ldquo;Connect to database&rdquo;, specify the name of the database
+     to connect to, and choose &ldquo;Connect&rdquo;.
 
-If a message appears indicating that SSMS can't apply connection
-strings, choose OK.
-
+3. If a message appears indicating that SSMS can't apply connection
+   strings, choose &ldquo;OK&rdquo;.
 
 
 #### Limitations
 
-Currently you can not connect using the SSMS Object Explorer.
+As previously stated, currently you can not connect using the SSMS Object Explorer.
 
 
-### Using tsql to connect
+### Using `tsql` to connect
 
-Let's take a look at the FreeTDS version of things first. tsql is a command
-line tool that is shipped as part of FreeTDS. It allows you to quickly connect
-using your Linux terminal, and to easily interact with Babelfish (or any TDS
-enabled data source).
+`tsql` is a command line tool that is shipped as part of FreeTDS. It allows you
+to connect and to interact with Babelfish (or any other TDS enabled data source)
+from your Linux terminal.
 
-Here is the syntax of the command line tool:
-
-```bash
-Usage: tsql [-a <appname>] [-S <server> | -H <hostname> -p <port>] -U <username>
-	[-P <password>] [-I <config file>] [-o <options>] [-t delim] [-r delim] [-D database]
-  or:  tsql -C
-  or:  tsql -L -H <hostname>
-If -C is specified just print configuration and exit.
-If -L is specified with a host name (-H) instances found are printed.
-  -a  specify application name
-  -S  specify server entry in freetds.conf to connect
-  -H  specify hostname to connect
-  -p  specify port to connect to
-  -U  specify username to use
-  -P  specify password to use
-  -D  specify database name to use
-  -I  specify old configuration file (called interface) to use
-  -J  specify character set to use
-  -v  verbose mode
--o options:
-	f	Do not print footer
-	h	Do not print header
-	t	Print time informations
-	v	Print TDS version
-	q	Quiet
-
-	Delimiters can be multi-char strings appropriately escaped for your shell.
-	Default column delimitor is <tab>; default row delimiter is <newline>
-```
-
-As you can see, the syntax is relatively easy and straightforward.
-
-If you want to see which compile time settings are available in your client
-interface, use the -C flag as shown in the next listing:
-
-```bash
-[user@host]$ tsql -C
-Compile-time settings (established with the "configure" script)
-                            Version: freetds v1.1.20
-             freetds.conf directory: /etc
-     MS db-lib source compatibility: yes
-        Sybase binary compatibility: yes
-                      Thread safety: yes
-                      iconv library: yes
-                        TDS version: auto
-                              iODBC: no
-                           unixodbc: yes
-              SSPI "trusted" logins: no
-                           Kerberos: yes
-                            OpenSSL: no
-                             GnuTLS: yes
-                               MARS: yes
-
-```
-
-Now that the syntax and the client settings are clear, we can easily connect to the server:
+Here is an example how to connect to Babelfish with `tsql`:
 
 ```bash
 tsql -S database.example.com -p 1433 -U postgres -P secretpassword
 ```
 
-A word of caution: The tsql binary allows you to send
-the password as part of the command. This normally results in a security
-problem. Fortunately, tsql replaces the command name so that the password is not
-visible in the process table, as shown in the next listing:
+For information about using `tsql`, consult
+[the FreeTDS documentation](https://www.freetds.org/userguide/).
+
+Note that `tsql` is not officially supported.
+
+
+### Using `psql` to connect
+
+You can also use PostgreSQL's `psql` to connect to Babelfish.  `psql` has to
+connect to the PostgreSQL port (by default 5432), and you will have to use
+PostgreSQL SQL syntax instead of T-SQL.
+
+Here is an example how to connect with `psql`:
 
 ```bash
- 425705 pts/5    Ss     0:00  |   \_ bash
- 426036 pts/5    S+     0:00  |   |   \_ tsql -H database.example..com -p 1433 -U postgres -P ************* -D postgres
+psql -h database.example.com -p 5432 -U postgres -d dbname
 ```
 
-If your connection has been established successfully, you should find yourself in
-a command line:
-
-```bash
-1> SELECT 1+1
-2> GO
-
-2
-(1 row affected)
-
-1> SELECT 1+1 AS x UNION ALL SELECT 2+2
-2> GO
-x
-2
-4
-(2 rows affected)
-```
-
-There are a couple of things worth mentioning here: First of all, we have to use
-<code>GO</code> to make Babelfish execute the command. This is just like in standard Microsoft SQL Server,
-as well as in Sybase. But there is more, which might be alien to users
-experienced with PostgreSQL: <code>SELECT 1+1</code> does not yield a column title, so to
-ensure that a title is provided, we need to alias the column. You need to be aware
-of such small details in order to ensure that the code written stays portable, and still
-works with Microsoft SQL Server as well as PostgreSQL.
-
-
-### Using psql to connect
-
-You can also use PostgreSQL's `psql` to connect to Babelfish. However, this is
-**strongly** discouraged, and the behavior will be unpredictable. It is
-therefore not recommended to to that &ndash; in fact it can be pretty dangerous.
-
-Babelfish comes with a modified version of `psql`, which allows to set
-the SQL dialect:
-
-```bash
-SET babelfishpg_tsql.sql_dialect = 'tsql';
-\tsql on
-
-INSERT INTO some_table VALUES (1);
-GO
-```
-
-However, this feature is aiming at Babelfish developers. It is *not* meant to be
-used by ordinary users looking for a command line replacement.
+Note that Babelfish ships with a modified version of `psql`, which is intended
+for use by Babelfish development.  This version can produce incorrect results,
+and should not be used in production.
