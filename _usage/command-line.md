@@ -16,8 +16,8 @@ Those users have the following command-line tool choices on Linux:
 - sqlcmd: Using the Microsoft SQL Server interface
 - tsql: Using the FreeTDS command line tool
 
-Note that there is also a `psql` version for Babelfish, but that is not reliable.
-Therefore, it is strongly recommended not to use it.
+Note that there is also a `psql` version for Babelfish. It is primarily intended
+for developers, see below for more information.
 
 
 ### Using sqlcmd to connect to the DB cluster {#babelfish-connect-sqlcmd}
@@ -46,44 +46,44 @@ using SSMS. You can use the SSMS query editor to connect to a Babelfish database
 
 #### Start SSMS.
 
-Open the Connect to Server dialog by doing one of the following:
+1. Open the Connect to Server dialog by doing one of the following:
 
 -  Choose New Query.
 -  If the Query Editor is open, choose Query, Connection, Connect.
 
-Provide the following information for your database:
+2. Provide the following information for your database:
 
-For Server type, choose Database Engine.
+- For Server type, choose Database Engine.
 
-For Server name, enter the DNS name. For example, your server name
+- For Server name, enter the DNS name. For example, your server name
 should look similar to the following.
 
 ```bashsql
     host.example.com,1433
 ```
 
-For Authentication, choose SQL Server Authentication.
+- For Authentication, choose SQL Server Authentication.
 
-For Login, enter the user name that you chose to use when you created
+- For Login, enter the user name that you chose to use when you created
 your database.
 
-For Password, enter the password that you chose when you created your
+- For Password, enter the password that you chose when you created your
 database.
 
-Optionally, choose Options, and then choose the Connection Properties
+- Optionally, choose Options, and then choose the Connection Properties
 tab.
 
-For Connect to database, specify the name of the database to connect to,
+- For Connect to database, specify the name of the database to connect to,
 and choose Connect.
 
-If a message appears indicating that SSMS can't apply connection
+3. If a message appears indicating that SSMS can't apply connection
 strings, choose OK.
 
 
 
 #### Limitations
 
-Currently you can not connect using the SSMS Object Explorer.
+Currently, you can not connect using the SSMS Object Explorer.
 
 
 ### Using tsql to connect
@@ -123,8 +123,6 @@ If -L is specified with a host name (-H) instances found are printed.
 	Default column delimitor is <tab>; default row delimiter is <newline>
 ```
 
-As you can see, the syntax is relatively easy and straightforward.
-
 If you want to see which compile time settings are available in your client
 interface, use the -C flag as shown in the next listing:
 
@@ -148,7 +146,7 @@ Compile-time settings (established with the "configure" script)
 
 ```
 
-Now that the syntax and the client settings are clear, we can easily connect to the server:
+Now that the syntax and the client settings are clear, we can connect to the server:
 
 ```bash
 tsql -S database.example.com -p 1433 -U postgres -P secretpassword
@@ -182,11 +180,11 @@ x
 (2 rows affected)
 ```
 
-There are a couple of things worth mentioning here: First of all, we have to use
-<code>GO</code> to make Babelfish execute the command. This is just like in standard Microsoft SQL Server,
-as well as in Sybase. But there is more, which might be alien to users
-experienced with PostgreSQL: <code>SELECT 1+1</code> does not yield a column title, so to
-ensure that a title is provided, we need to alias the column. You need to be aware
+There are a few things to keep in mind. First, as when using Microsoft SQL Server,
+don't forget to use the <code>GO</code> command after entering one or more SQL statements
+to instruct Babelfish to execute your commands. Also, users familiar with PostgreSQL may
+not be familiar with the following: <code>SELECT 1+1</code> does not yield a column title, so to
+make certain that a title is provided, we need to alias the column. You need to be aware
 of such small details in order to ensure that the code written stays portable, and still
 works with Microsoft SQL Server as well as PostgreSQL.
 
@@ -195,9 +193,9 @@ works with Microsoft SQL Server as well as PostgreSQL.
 
 You can also use PostgreSQL's `psql` to connect to Babelfish. However, this is
 **strongly** discouraged, and the behavior will be unpredictable. It is
-therefore not recommended to to that &ndash; in fact it can be pretty dangerous.
+not recommended.
 
-Babelfish comes with a modified version of `psql`, which allows to set
+Babelfish comes with a modified version of `psql`, which allows you to set
 the SQL dialect:
 
 ```bash
@@ -208,5 +206,5 @@ INSERT INTO some_table VALUES (1);
 GO
 ```
 
-However, this feature is aiming at Babelfish developers. It is *not* meant to be
+However, this feature is intended for use by Babelfish developers. It is *not* meant to be
 used by ordinary users looking for a command line replacement.
