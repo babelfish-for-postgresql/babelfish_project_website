@@ -84,7 +84,7 @@ will learn which ones are important and what their purpose is.
 
 Here is a more detailed description of these extensions:
 
-#### `babelfishpg_common`: MS SQL data types
+#### `babelfishpg_common`: Microsoft SQL Server data types
 
 Data types are often really similar but not necessarily 100% identical.
 Therefore, the Babelfish development team provides specific data types which
@@ -110,18 +110,11 @@ types which behave differently. Here is a complete list of these types:
 
 In addition to the core data types outlined in the previous section, there is
 one more data type which is packaged into a separate extension for licensing
-reasons: `FIXEDDECIMAL`. The length of the data type is 8 bytes. It
-is basically a subset of the standard PostgreSQL `NUMERIC` data types
-aligned as a fixed-length type to dramatically improve performance.
+reasons: `fixeddecimal`.
 
-What does the word &ldquo;subset&rdquo; mean in this context?
-
-- The precision and scale are limited to (17, 2).
-- `FIXEDDECIMAL` always rounds towards zero and not to the nearest number.
-- `NaN` (&ldquo;not a number&rdquo;) is not supported.
-- Changing the precision will lead to an error.  
-  For example: `SELECT '123.223'::FIXEDDECIMAL(4,1)` will
-  error out, which is not the case with `NUMERIC`.
+See the
+[documentation of the original software](https://github.com/2ndQuadrant/fixeddecimal/blob/master/README.md)
+for usage instructions and other information.
 
 #### `babelfishpg_tds`: TDS protocol extension
 

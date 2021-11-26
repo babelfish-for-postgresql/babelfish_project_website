@@ -12,7 +12,7 @@ form the backbone of the entire Babelfish product.
 The problem is that in many cases, Babelfish must behave differently than
 standard PostgreSQL. To handle this inconsistency, hooks are the only way to change the
 behavior of PostgreSQL. However, it is not only about changes in behavior. In some
-areas, MS SQL has more features than standard PostgreSQL. Hooks do a good job to
+areas, Microsoft SQL Server has more features than standard PostgreSQL. Hooks do a good job to
 fix many of those cases as well. That's why it's important to gain a decent
 general understanding of hooks, and to learn which ones have been added to the
 core of PostgreSQL so that things such as T-SQL can work in a satisfactory way.
@@ -26,7 +26,7 @@ typedef Oid (*relname_lookup_hook_type) (const char *relname, Oid relnamespace);
 ```
 
 This hook allows developers to replace the relation name lookup code with your
-own implementation. MS SQL handles relation names in a slighly different way and
+own implementation. Microsoft SQL Server handles relation names in a slighly different way and
 we need this hook to overwrite this behavior.
 
 
@@ -38,7 +38,7 @@ typedef Oid (*CLUSTER_COLLATION_OID_hook_type)(void);
 
 We provide a function hook variable that lets loadable plugins get control when 
 <code>CLUSTER_COLLATION_OID</code> is called. Collations are a bit different in
-MS SQL and thus more control over how they are handled is needed.
+Microsoft SQL Server and thus more control over how they are handled is needed.
 
 
 ### Preprocessing collation parameters
@@ -54,7 +54,7 @@ typedef void (*PreCreateCollation_hook_type) (char collprovider,
 
 A hook may be registered to preprocess the parameters that will be used to 
 create the collation. Again, this is necessary to adjust to locale-related
-differences between PostgreSQL and MS SQL.
+differences between PostgreSQL and Microsoft SQL Server.
 
 
 ### Manage collation names
@@ -66,7 +66,7 @@ typedef const char * (*TranslateCollation_hook_type) (const char *collname,
 ```
 
 If a collation does not exist you can use hook to do a second, customized
-lookup. We need this to handle MS SQL-specific collations.
+lookup. We need this to handle Microsoft SQL Server-specific collations.
 
 
 ### Managing AS clauses
@@ -105,7 +105,7 @@ typedef void (*pltsql_sequence_datatype_hook_type) (ParseState *pstate,
 		DefElem **max_value, DefElem **min_value);
 ```
 
-MS SQL has slightly different sequence handling. This hooks allows you to adjust
+Microsoft SQL Server has slightly different sequence handling. This hooks allows you to adjust
 sequence handling-related behavior in T-SQL.
 
 
@@ -334,7 +334,7 @@ typedef void (*resolve_target_list_unknowns_hook_type)(ParseState *pstate,
 					List *targetlist);
 ```
 
-Handle unknown entries in the target list. MS SQL and PostgreSQL are different in
+Handle unknown entries in the target list. Microsoft SQL Server and PostgreSQL are different in
 case columns have no assigned names.
 
 
@@ -422,7 +422,7 @@ grammar directly. It allows for <code>WITH</code> clauses to be named
 typedef bool (*truncate_identifier_hook_type)(char *ident, int len, bool warn);
 ```
 
-In MS SQL, identifiers can be longer than in PostgreSQL (the <code>name</code>
+In Microsoft SQL Server, identifiers can be longer than in PostgreSQL (the <code>name</code>
 datatype is limited to 255 bytes). Therefore, logic is needed to truncate the
 name of an identifier. 
 

@@ -6,8 +6,8 @@ nav_order: 5
 
 ## T-SQL limitations
 
-In this chapter, you will learn about Babelfish limitations.
-Let's dive in and figure out what works, and where challenges still lie ahead.
+In this chapter, you will learn about functional differences between Babelfish
+and Microsoft SQL Server.
 
 ### Missing features
 
@@ -85,7 +85,6 @@ in the future.
 | Contained databases | Contained databases with logins authenticated at the database level rather than at the server level are not supported. |
 | `CREATE/ALTER/DROP DATABASE AUDIT SPECIFICATION` | Functionality related to this object type is not supported. |
 | `CREATE/ALTER EXTERNAL DATA SOURCE` | Functionality related to this object type is not supported. |
-| Datatype: `DATETIME` | Numeric representation and 3 millisecond rounding for `DATETIME` is not supported. |
 | Datatype: `ROWVERSION` | This data type is not supported. |
 | Datatype: `NATIONAL CHARACTER` | This data type is not supported. |
 | `CREATE/DROP DEFAULT` | Functionality related to this object type is not supported. |
@@ -267,8 +266,8 @@ in the future.
 | `CREATE EXTERNAL TABLE` | Functionality related to this syntax is not supported. |
 | Table value constructor syntax (`FROM` clause) | The unsupported syntax is for a derived table constructed with the `FROM` clause. |
 | tempdb is not reinitialized at restart | Permanent objects (like tables and procedures) created in tempdb are not removed when the database is restarted. |
-| Time precision | Babelfish supports 6-digit precision for fractional seconds. Babelfish doesn\'t perform SQL Server 3-millisecond rounding. No adverse effects are anticipated with this behavior. |
-| `TIMESTAMP` | SQL Server\'s `TIMESTAMP` is unrelated to PostgreSQL `TIMESTAMP`. |
+| Time precision | Babelfish supports 6-digit precision for fractional seconds. Babelfish doesn't perform SQL Server 3-millisecond rounding. No adverse effects are anticipated with this behavior. |
+| `TIMESTAMP` | SQL Server's `TIMESTAMP` is unrelated to PostgreSQL `TIMESTAMP`. |
 | `TYPEPROPERTY()` function | This function is not supported. |
 | Global temporary tables (tables with names that start with `##`) | Global temporary tables are not supported. |
 | Temporary procedures are not dropped automatically | This functionality is not supported. |
@@ -317,67 +316,58 @@ For example, backup and recovery work differently in SQL Server and PostgreSQL,
 and you will have to use the PostgreSQL tools to backup Babelfish.
 It is important to understand such differences as well.
 
-## Dealing with limitations
-
-In this section, we've written a lot about limitations, unsupported features and
-such. However, how do you deal with these things in real life?
-If Babelfish threw an error whenever an application used an unsupported feature,
-it could would become effectively unusable with that application.  However, it should not
-silently ignore such syntax and then silently behave differently from what the
-user might expect.  So Babelfish gives you a choice.
+## Babelfish escape hatches
 
 To better deal with statements that might fail, Babelfish allows you to define
-*escape hatches*. An escape hatch is a flag that specifies Babelfish behavior
-when it encounters an unsupported feature or syntax.
+*escape hatches*. An escape hatch is a flag that can be adjusted by the user and
+specifies the behavior of Babelfish when it encounters an unsupported feature or
+syntax.
 
 You can use the `sp_babelfish_configure` stored procedure to display or change
-the settings of each escape hatch. Use the script to specify if each escape
-hatch should be set to `ignored` or `strict`.
+the settings of each escape hatch.  Use it to specify if an escape hatch should
+be set to `ignore` or `strict`.
 
-If an escape hatch is set to `ignored`, Babelfish will suppress the error that
+If an escape hatch is set to `ignore`, Babelfish will suppress the error that
 the corresponding syntax would otherwise cause.  By default, the change applies
 to the current session only.  Include the `server` keyword to apply the changes
-on the cluster level as well.
+persistently on the cluster level as well.
+
+When you create a new Babelfish cluster, various escape hatches are initialized
+to `strict`, meaning that you may encounter error messages if your SQL code
+contains unsupported syntax.  To suppress all these error messages, set all
+escape hatches to `ignore` with
+
+```none
+sp_babelfish_configure '%', 'ignore', 'server'
+```
 
 The following escape hatches exist:
 
-- `babelfishpg_tsql.escape_hatch_constraint_name_for_default`: Handle `CONSTRAINT DEFAULT`.
-- `babelfishpg_tsql.escape_hatch_database_misc_options`: Handle database chaining, database property
-  `TRUSTWORTHY`, databases with persistent log buffers.
-- `babelfishpg_tsql.escape_hatch_for_replication`: Handle unsupported
-  `ALTER PROCEDURE ... ENCRYPTION`, `ALTER PROCEDURE ... NATIVE_COMPILATION`, `ALTER PROCEDURE ... RECOMPILE`.
-- `babelfishpg_tsql.escape_hatch_fulltext`: Databases with default fulltext languages (`CREATE FULLTEXT INDEX`,
-  `ALTER FULL TEXT INDEX`, `DROP FULL TEXT INDEX`).
-- `babelfishpg_tsql.escape_hatch_index_clustering`: `CLUSTERED` columns are not supported. Control this behavior.
-- `babelfishpg_tsql.escape_hatch_index_columnstore`: Column stores are not supported. Ignore or error out.
-- `babelfishpg_tsql.escape_hatch_join_hints`: PostgreSQL does not support join hints.
-- `babelfishpg_tsql.escape_hatch_language_non_english`: Create
-  databases with default languages other than English.
-- `babelfishpg_tsql.escape_hatch_login_hashed_password`: `HASHED` password is not supported for `CREATE LOGIN` and `ALTER LOGIN`.
-- `babelfishpg_tsql.escape_hatch_login_misc_options`: This deals with various other unsupported options for `CREATE LOGIN` and `ALTER LOGIN`-
-- `babelfishpg_tsql.escape_hatch_login_old_password`: The `OLD_PASSWORD` option of `ALTER LOGIN` is not supported.
-- `babelfishpg_tsql.escape_hatch_login_password_must_change`: The `MUST_CHANGE` password option
-  is not supported for `CREATE LOGIN` and `ALTER LOGIN`.
-- `babelfishpg_tsql.escape_hatch_login_password_unlock`: The `UNLOCK` password option
-  is not supported for `CREATE LOGIN` and `ALTER LOGIN`.
-- `babelfishpg_tsql.escape_hatch_nocheck_add_constraint`: Handle unsupported
-  `ALTER TABLE WITH [NO]CHECK ADD`.
-- `babelfishpg_tsql.escape_hatch_nocheck_existing_constraint`: Handle `ALTER TABLE [NO]CHECK`.
-- `babelfishpg_tsql.escape_hatch_query_hints`: PostgreSQL does not support query hints.
-- `babelfishpg_tsql.escape_hatch_rowguidcol_column`: Handle unsupported `ROWGUIDCOL` columns.
-- `babelfishpg_tsql.escape_hatch_schemabinding_function`: Handles errors if no `SCHEMABINDING` option is given for functions.
-- `babelfishpg_tsql.escape_hatch_schemabinding_procedure`: Handles errors if no `SCHEMABINDING` option is given for procedures.
-- `babelfishpg_tsql.escape_hatch_schemabinding_trigger`: Handles errors if no `SCHEMABINDING` option is given for triggers.
-- `babelfishpg_tsql.escape_hatch_schemabinding_view`: Handles errors if no `SCHEMABINDING` option is given for views.
-- `babelfishpg_tsql.escape_hatch_session_settings`: Handle `SET SHOWPLAN_TEXT ON`, `FORCEPLAN`,
-  `OFFSETS`, `PARSEONLY`, `REMOTE_PROC_TRANSACTIONS`, `SHOWPLAN_ALL`, `SHOWPLAN_TEXT`,
-  `SHOWPLAN_XML`, `STATISTICS`, `DATEFORMAT`, `DEADLOCK_PRIORITY`, `LOCK_TIMEOUT`,
-  `CONTEXT_INFO`, `QUERY_GOVERNOR_COST_LIMIT`, `STATISTICS`, XML modify method.
-- `babelfishpg_tsql.escape_hatch_storage_on_partition`: Handle invalid partition streams.
-- `babelfishpg_tsql.escape_hatch_storage_options`: Controls treatment of
-	- Column options (sparse files, file streams, `ROWGUIDCOL`)
-	- Index options (`PAD_INDEX`, `FILLFACTOR`, `SORT_IN_TEMPDB`, `IGNORE_DUP_KEY`,
-	  `STATISTICS_NORECOMPUTE`, `STATISTICS_INCREMENTAL`, `ALLOW_ROW_LOCKS`,
-	  `ALLOW_PAGE_LOCKS`, `OPTIMIZE_FOR_SEQUENTIAL_KEY`, `MAXDOP`, `DATA_COMPRESSION`)
-- `babelfishpg_tsql.escape_hatch_table_hints`: PostgreSQL does not support table hints.
-- `babelfishpg_tsql.escape_hatch_unique_constraint`: Nullable UNIQUE constraints are not supported.
+| Escape hatch | Description | Default |
+| ------------ | ----------- | ------- |
+| `babelfishpg_tsql.escape_hatch_constraint_name_for_default` | Controls Babelfish behavior related to default constraint names. | strict |
+| `babelfishpg_tsql.escape_hatch_database_misc_options` | Controls Babelfish behavior related to the following options on `CREATE` or `ALTER DATABASE`: `CONTAINMENT`, `DB_CHAINING`, `TRUSTWORTHY`, `PERSISTENT_LOG_BUFFER`. | ignore |
+| `babelfishpg_tsql.escape_hatch_for_replication` | Controls Babelfish behavior related to the `[NOT] FOR REPLICATION` clause when creating or altering a table. | strict |
+| `babelfishpg_tsql.escape_hatch_fulltext` | Controls Babelfish behavior related to `FULLTEXT` features, such as `DEFAULT_FULLTEXT_LANGUAG` in `CREATE/ALTER DATABASE`, `CREATE FULLTEXT INDEX`, or `sp_fulltext_database`. | strict |
+| `babelfishpg_tsql.escape_hatch_index_clustering` | Controls Babelfish behavior related to the `CLUSTERED` or `NONCLUSTERED` keywords for indexes and `PRIMARY KEY` or `UNIQUE` constraints. When `CLUSTERED` is ignored, the index or constraint is still created as if `NONCLUSTERED` was specified. | ignore |
+| `babelfishpg_tsql.escape_hatch_index_columnstore` | Controls Babelfish behavior related to the `COLUMNSTORE` clause. If you specify ignore, Babelfish creates a regular B-tree index. | strict |
+| `babelfishpg_tsql.escape_hatch_join_hints` | Controls the behavior of keywords in a `JOIN` operator: `LOOP`, `HASH`, `MERGE`, `REMOTE`, `REDUCE`, `REDISTRIBUTE`, `REPLICATE`. | ignore |
+| `babelfishpg_tsql.escape_hatch_language_non_english` | Controls Babelfish behavior related to languages other than English for onscreen messages. Babelfish currently supports only `us_english` for on-screen messages. `SET LANGUAGE` might use a variable containing the language name, so the actual language being set can only be detected at run time. | strict |
+| `babelfishpg_tsql.escape_hatch_login_hashed_password` | `HASHED` password is not supported for `CREATE LOGIN` and `ALTER LOGIN`. | strict |
+| `babelfishpg_tsql.escape_hatch_login_misc_options` | This deals with various other unsupported options for `CREATE LOGIN` and `ALTER LOGIN` | strict |
+| `babelfishpg_tsql.escape_hatch_login_old_password` | The `OLD_PASSWORD` option of `ALTER LOGIN` is not supported. | strict |
+| `babelfishpg_tsql.escape_hatch_login_password_must_change` | The `MUST_CHANGE` password option is not supported for `CREATE LOGIN` and `ALTER LOGIN`. | strict |
+| `babelfishpg_tsql.escape_hatch_login_password_unlock` | The `UNLOCK` password option is not supported for `CREATE LOGIN` and `ALTER LOGIN`. | strict |
+| `babelfishpg_tsql.escape_hatch_nocheck_add_constraint` | Controls Babelfish behavior related to the `WITH CHECK` or `NOCHECK` clause for constraints. | strict |
+| `babelfishpg_tsql.escape_hatch_nocheck_existing_constraint` | Controls Babelfish behavior related to `FOREIGN KEY` or `CHECK` constraints. | strict |
+| `babelfishpg_tsql.escape_hatch_query_hints` | Controls Babelfish behavior related to query hints. When this option is set to ignore, the server ignores hints that use the `OPTION (...)` clause to specify query processing aspects. Examples include `SELECT FROM ... OPTION(MERGE JOIN HASH, MAXRECURSION 10))`. | ignore |
+| `babelfishpg_tsql.escape_hatch_rowguidcol_column` | Controls Babelfish behavior related to the `ROWGUIDCOL` clause when creating or altering a table. | strict |
+| `babelfishpg_tsql.escape_hatch_schemabinding_function` | Controls Babelfish behavior related to the `WITH SCHEMABINDING` clause. By default, the `WITH SCHEMABINDING` clause is ignored when specified with the `CREATE` or `ALTER FUNCTION` command. | ignore |
+| `babelfishpg_tsql.escape_hatch_schemabinding_procedure` | Controls Babelfish behavior related to the `WITH SCHEMABINDING` clause. By default, the `WITH SCHEMABINDING` clause is ignored when specified with the `CREATE` or `ALTER PROCEDURE` command. | ignore |
+| `babelfishpg_tsql.escape_hatch_schemabinding_trigger` | Controls Babelfish behavior related to the `WITH SCHEMABINDING` clause. By default, the `WITH SCHEMABINDING` clause is ignored when specified with the `CREATE` or `ALTER TRIGGER` command. | ignore |
+| `babelfishpg_tsql.escape_hatch_schemabinding_view` | Controls Babelfish behavior related to the `WITH SCHEMABINDING` clause. By default, the `WITH SCHEMABINDING` clause is ignored when specified with the `CREATE` or `ALTER VIEW` command. | ignore |
+| `babelfishpg_tsql.escape_hatch_session_settings` | Controls Babelfish behavior toward unsupported session-level `SET` statements. | ignore |
+| `babelfishpg_tsql.escape_hatch_storage_on_partition` | Controls Babelfish behavior related to the `ON partition_scheme` column clause when defining partitioning. Babelfish currently doesn't implement partitioning. | strict |
+| `babelfishpg_tsql.escape_hatch_storage_options` | Escape hatch on any storage option used in `CREATE`/`ALTER` for `DATABASE`, `TABLE` and `INDEX`.  This includes the clauses `(LOG) ON`, `TEXTIMAGE_ON`, `FILESTREAM_ON` that define storage locations (partitions, filegroups) for tables, indexes, and constraints, and also for a database. This escape hatch setting applies to all of these clauses (including `ON PRIMARY` and `ON DEFAULT`). The exception is when a partition is specified for a table or index with `ON partition_scheme (column)`. | ignore |
+| `babelfishpg_tsql.escape_hatch_table_hints` | Controls the behavior of table hints specified using the `WITH (...)` clause. | ignore |
+| `babelfishpg_tsql.escape_hatch_unique_constraint` | Controls Babelfish behavior toward unsupported session-level `SET` statements. | strict |

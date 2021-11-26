@@ -8,7 +8,7 @@ permalink: /docs/faq/
 # Babelfish: Frequently asked questions
 
 This page contains some of the most frequently asked question related to
-Babelfish- and Microsoft SQL Server server- compatibility.
+Babelfish- and Microsoft SQL Server- compatibility.
 
 ## Can we use Babelfish for free?
 
@@ -128,8 +128,6 @@ BEGIN
     END CATCH;
 END; $$ LANGUAGE 'pltsql';
 ```
-If you want to learn more about T-SQL, we have compiled an entire page focusing
-on this topic: [T-SQL in action](/docs/usage/handling-tsql).
 
 
 ## Will Babelfish be available for new versions of PostgreSQL?

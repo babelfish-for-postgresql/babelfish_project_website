@@ -6,7 +6,7 @@ nav_order: 2
 
 ## Programming in C#
 
-MS SQL is one of the dominant database systems on Microsoft Windows
+Microsoft SQL Server is one of the dominant database systems on Microsoft Windows
 platforms and C# is one of the more popular languages used in this ecosystem.
 So it is important to see how a C# connection can be established and how
 data can be fetched. 
@@ -167,5 +167,5 @@ the transaction. Error handling is done by the try / catch block.
 
 The code can be compiled using Microsoft Studio or any other tool of your
 choice. What is important to note is that you can implement code for Babelfish
-the same way you would normally implement code, talking to MS SQL directly.
+the same way you would normally implement code, talking to Microsoft SQL Server directly.
 
