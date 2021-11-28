@@ -284,3 +284,6 @@ Now you can start Babelfish by running the command:
 ``` sh
 $INSTALLATION_PATH/bin/pg_ctl -D /usr/local/pgsql/data start
 ```
+
+To finish the Babelfish setup, continue [here](/docs/installation/single-multiple)
+with the initialization.
