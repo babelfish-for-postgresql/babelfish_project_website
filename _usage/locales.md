@@ -286,7 +286,7 @@ supports the Japanese collation standard `JIS X 4061`. The now
 deprecated `colhiraganaQ [on | off]` locale modifier may provide the
 same functionality as KS collations, but KS collations of the same
 name as SQL Server will not be provided by Babelfish in the
-first release.
+current release.
 
 
 #### Width-Sensitive
@@ -295,7 +295,7 @@ When a single-byte character (half-width) and the same character
 represented as a double-byte character (full-width) are treated
 differently, the collation is called *width-sensitive (WS)*. WS
 collations with the same name as SQL Server won't be provided by
-Babelfish in the first release.
+Babelfish in the current release.
 
 
 #### Variation-Selector Sensitivity
@@ -307,7 +307,7 @@ sequence is made up of a base character plus an additional variation
 selector. If you don't the select the `_vss` option, the variation
 selector isn't considered in the comparison.
 
-VSS collations will not be provided by Babelfish in the first
+VSS collations will not be provided by Babelfish in the current
 release.
 
 
