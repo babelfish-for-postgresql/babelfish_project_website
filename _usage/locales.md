@@ -28,11 +28,11 @@ collations:
 - A collation that is *deterministic* will consider two characters as
   equal if, and only if, they have the same byte sequence.  For example, `x`
   is not equal to `X` for a deterministic collation.  Collations that are
-  deterministic are case-sensitive (CS) and accent-sensitive (AS).
+  deterministic are case-sensitive (cs) and accent-sensitive (as).
 
 - A non-deterministic collation does not require an identical match.
-  Case-insensitivity (CI) is an example of a non-deterministic
-  collation. To have `x` compare equal to `X`, choose a
+  Case-insensitivity (ci) is an example of a non-deterministic
+  characteristic. To have `x` compare equal to `X`, choose a
   non-deterministic collation that supports case-insensitivity.
 
 Babelfish and SQL Server follow a naming convention for collations
@@ -50,18 +50,20 @@ that describe the collation attributes, as shown in the table below:
 
 PostgreSQL doesn't support the `LIKE` clause on non-deterministic
 collations, but Babelfish supports it for `ci_as` collations.
-Babelfish doesn't support `LIKE` on AI collations. Pattern matching
+Babelfish doesn't support `LIKE` on `ai` collations. Pattern matching
 operations on non-deterministic collations are also not supported.
 
 To establish Babelfish collation behavior, set the following
-parameters :
+parameters:
 
 | Parameter             | Description                                   |
 | --------------------- | --------------------------------------------- |
 | `server_collation_name`  | The collation used as the default collation at both the server level and the database level. The default value is `sql_latin1_general_cp1_ci_as`. When you create your PostgreSQL cluster for use with Babelfish, you can choose the &ldquo;Collation name&rdquo; from the following table. Don't modify `server_collation_name` after the Babelfish database has been created.  |
-| `default_locale`      | The `default_locale` parameter is used to customize the collation chosen with `server_collation_name` for a specific language and region. The default value is `en-US`.  This parameter is ignored if the chosen collation already implies a locale.  This parameter may be changed after initial Babelfish database creation time, but it won't affect the locale of existing collations. |
+| `default_locale`      | The `default_locale` parameter is used to customize all locale agnostic collations (that do not have a language in their name) for a specific language and region. The default value is `en-US`.  This parameter is ignored if the chosen collation already implies a locale.  This parameter may be changed after initial Babelfish database creation time, but it won't affect the locale of existing collations. |
 
-The following collations (and versions with different modifier suffixes, like `ci_as`) can be used in `server_collation_name` or for column definitions:
+The following collations can be used in `server_collation_name` or for column
+definitions.  In addition to the ones listed, you can use variants with
+different suffixes, like `ci_as` or `ci_ai`.
 
 | Collation Name        | Notes                                         |
 | --------------------- | --------------------------------------------- |
@@ -233,7 +235,7 @@ PostgreSQL than in ICU, and the order of special characters can't
 be made to follow the order of special characters in SQL Server
 exactly.
 
-When character expansion is required, then an `AI` collation must be
+When character expansion is required, then an `ai` collation must be
 used for comparisons, but such collations are not currently
 supported by the `LIKE` operator. A column declared using the default
 `ci_as` collation can use the `LIKE` operator without character
@@ -322,8 +324,8 @@ Unicode as time progresses, so the `lower` function may perform
 in a different way on different versions of ICU. This is a special case of
 the more general collation versioning problem rather than 
 something specific to the `bin2` collation. Babelfish will
-provide the `bbf_latin1_general_bin2` collation with the
-Babelfish distribution to collate in Unicode code point order.
+provide the `bbf_latin1_general_bin2` collation to collate in Unicode code
+point order.
 In a BIN collation only the first character is sorted as a wchar,
 and remaining characters are sorted byte-by-byte, effectively in
 code point order according to its encoding. This does not follow
