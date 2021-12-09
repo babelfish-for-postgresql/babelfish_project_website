@@ -62,54 +62,53 @@ parameters:
 | `default_locale`      | The `default_locale` parameter is used to customize all locale agnostic collations (that do not have a language in their name) for a specific language and region. The default value is `en-US`.  This parameter is ignored if the chosen collation already implies a locale.  This parameter may be changed after initial Babelfish database creation time, but it won't affect the locale of existing collations. |
 
 The following collations can be used in `server_collation_name` or for column
-definitions.  In addition to the ones listed, you can use variants with
-different suffixes, like `ci_as` or `ci_ai`.
+definitions.  Note that only case insensitive collations are supported.
 
 | Collation Name        | Notes                                         |
 | --------------------- | --------------------------------------------- |
-| `bbf_unicode_general_cs_as` | Case sensitive collation for the UTF-8 encoding that is designed to work as well as possible in multi-language environments. |
-| `bbf_unicode_cp1250_cs_as` | Case sensitive collation for the [Windows-1250 single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1250.txt). |
-| `bbf_unicode_cp1251_cs_as` | Case sensitive collation for the [Windows-1251 single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1251.txt). |
-| `bbf_unicode_cp1_cs_as` | Case sensitive collation for the [Windows-1252 single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1252.txt). |
-| `bbf_unicode_cp1253_cs_as` | Case sensitive collation for the [Windows-1253 single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1253.txt). |
-| `bbf_unicode_cp1254_cs_as` | Case sensitive collation for the [Windows-1254 single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1254.txt). |
-| `bbf_unicode_cp1255_cs_as` | Case sensitive collation for the [Windows-1255 single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1255.txt). |
-| `bbf_unicode_cp1256_cs_as` | Case sensitive collation for the [Windows-1256 single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1256.txt). |
-| `bbf_unicode_cp1257_cs_as` | Case sensitive collation for the [Windows-1257 single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1257.txt). |
-| `bbf_unicode_cp1258_cs_as` | Case sensitive collation for the [Windows-1258 single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1258.txt). |
-| `bbf_unicode_cp874_cs_as` | Case sensitive collation for the [Windows-874 single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit874.txt). |
-| `sql_latin1_general_cp1250_cs_as` | The same as `bbf_unicode_cp1250_cs_as`. |
-| `sql_latin1_general_cp1251_cs_as` | The same as `bbf_unicode_cp1251_cs_as`. |
-| `sql_latin1_general_cp1_cs_as` | The same as `bbf_unicode_cp1_cs_as`. |
-| `sql_latin1_general_cp1253_cs_as` | The same as `bbf_unicode_cp1253_cs_as`. |
-| `sql_latin1_general_cp1254_cs_as` | The same as `bbf_unicode_cp1254_cs_as`. |
-| `sql_latin1_general_cp1255_cs_as` | The same as `bbf_unicode_cp1255_cs_as`. |
-| `sql_latin1_general_cp1256_cs_as` | The same as `bbf_unicode_cp1256_cs_as`. |
-| `sql_latin1_general_cp1257_cs_as` | The same as `bbf_unicode_cp1257_cs_as`. |
-| `sql_latin1_general_cp1258_cs_as` | The same as `bbf_unicode_cp1258_cs_as`. |
-| `sql_latin1_general_cp874_cs_as` | The same as `bbf_unicode_cp874_cs_as`. |
-| `latin1_general_cs_as` | The same as `sql_latin1_general_cp1_cs_as`. |
+| `bbf_unicode_general_ci_as` | Case insensitive collation for the UTF-8 encoding that is designed to work as well as possible in multi-language environments. |
+| `bbf_unicode_cp1250_ci_as` | Case insensitive collation for the [Windows-1250 single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1250.txt). |
+| `bbf_unicode_cp1251_ci_as` | Case insensitive collation for the [Windows-1251 single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1251.txt). |
+| `bbf_unicode_cp1_ci_as` | Case insensitive collation for the [Windows-1252 single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1252.txt). |
+| `bbf_unicode_cp1253_ci_as` | Case insensitive collation for the [Windows-1253 single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1253.txt). |
+| `bbf_unicode_cp1254_ci_as` | Case insensitive collation for the [Windows-1254 single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1254.txt). |
+| `bbf_unicode_cp1255_ci_as` | Case insensitive collation for the [Windows-1255 single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1255.txt). |
+| `bbf_unicode_cp1256_ci_as` | Case insensitive collation for the [Windows-1256 single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1256.txt). |
+| `bbf_unicode_cp1257_ci_as` | Case insensitive collation for the [Windows-1257 single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1257.txt). |
+| `bbf_unicode_cp1258_ci_as` | Case insensitive collation for the [Windows-1258 single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1258.txt). |
+| `bbf_unicode_cp874_ci_as` | Case insensitive collation for the [Windows-874 single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit874.txt). |
+| `sql_latin1_general_cp1250_ci_as` | The same as `bbf_unicode_cp1250_ci_as`. |
+| `sql_latin1_general_cp1251_ci_as` | The same as `bbf_unicode_cp1251_ci_as`. |
+| `sql_latin1_general_cp1_ci_as` | The same as `bbf_unicode_cp1_ci_as`. |
+| `sql_latin1_general_cp1253_ci_as` | The same as `bbf_unicode_cp1253_ci_as`. |
+| `sql_latin1_general_cp1254_ci_as` | The same as `bbf_unicode_cp1254_ci_as`. |
+| `sql_latin1_general_cp1255_ci_as` | The same as `bbf_unicode_cp1255_ci_as`. |
+| `sql_latin1_general_cp1256_ci_as` | The same as `bbf_unicode_cp1256_ci_as`. |
+| `sql_latin1_general_cp1257_ci_as` | The same as `bbf_unicode_cp1257_ci_as`. |
+| `sql_latin1_general_cp1258_ci_as` | The same as `bbf_unicode_cp1258_ci_as`. |
+| `sql_latin1_general_cp874_ci_as` | The same as `bbf_unicode_cp874_ci_as`. |
+| `latin1_general_ci_as` | The same as `sql_latin1_general_cp1_ci_as`. |
 | `latin1_general_bin2` | Binary collation for the [Windows-1252 single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1252.txt). |
 | `latin1_general_100_bin2` | The same as `latin1_general_bin2`. |
 | `latin1_general_140_bin2` | The same as `latin1_general_bin2`. |
 | `latin1_general_90_bin2` | The same as `latin1_general_bin2`. |
-| `arabic_cs_as` | Provides support for Arabic. |
-| `chinese_prc_cs_as`  | Provides support for Chinese (PRC).  |
-| `cyrillic_general_cs_as` | Provides support for Cyrillic. |
-| `estonian_cs_as` | Provides support for Estonian.  |
-| `finnish_swedish_cs_as` | Provides support for Finnish.  |
-| `french_cs_as` | Provides support for French. |
-| `greek_cs_as` | Provides support for Greek. |
-| `hebrew_cs_as` | Provides support for Hebrew. |
-| `korean_wansung_cs_as` | Provides support for Korean (with dictionary sort) |
-| `modern_spanish_cs_as` | Provides support for Modern Spanish. |
-| `mongolian_cs_as` | Provides support for Mongolian. |
-| `polish_cs_as` | Provides support for Polish. |
-| `thai_cs_as` | Provides support for Thai. |
-| `traditional_spanish_cs_as` | Provides support for Spanish (Traditional sort) |
-| `turkish_cs_as`  | Provides support for Turkish. |
-| `ukrainian_cs_as`   | Provides support for Ukranian.   |
-| `vietnamese_cs_as`  | Provides support for Vietnamese. |
+| `arabic_ci_as` | Provides support for Arabic. |
+| `chinese_prc_ci_as`  | Provides support for Chinese (PRC).  |
+| `cyrillic_general_ci_as` | Provides support for Cyrillic. |
+| `estonian_ci_as` | Provides support for Estonian.  |
+| `finnish_swedish_ci_as` | Provides support for Finnish.  |
+| `french_ci_as` | Provides support for French. |
+| `greek_ci_as` | Provides support for Greek. |
+| `hebrew_ci_as` | Provides support for Hebrew. |
+| `korean_wansung_ci_as` | Provides support for Korean (with dictionary sort) |
+| `modern_spanish_ci_as` | Provides support for Modern Spanish. |
+| `mongolian_ci_as` | Provides support for Mongolian. |
+| `polish_ci_as` | Provides support for Polish. |
+| `thai_ci_as` | Provides support for Thai. |
+| `traditional_spanish_ci_as` | Provides support for Spanish (Traditional sort) |
+| `turkish_ci_as`  | Provides support for Turkish. |
+| `ukrainian_ci_as`   | Provides support for Ukranian.   |
+| `vietnamese_ci_as`  | Provides support for Vietnamese. |
 
 You can use the following collations for column definitions, if you want to support more than one locale in a single database:
 
