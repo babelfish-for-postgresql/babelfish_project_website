@@ -132,6 +132,8 @@ You can use the following collations for column definitions, if you want to supp
 | `ukranian`  | `ukranian_cs_as`      | `ukranian_ci_as`, `ukranian_ci_ai` |
 | `vietnamese` | `vietnamese_cs_as` | `vietnamese_ci_as`, `vietnamese_ci_ai` |
 
+In addition to these language-specific collations, you can also use case-sensitive or accent-insensitive variations of the server collations in the previous list.
+
 ### Managing collations
 
 The ICU library provides collation version tracking to ensure that
