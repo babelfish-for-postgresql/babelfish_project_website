@@ -91,16 +91,14 @@ Therefore, the Babelfish development team provides specific data types which
 mimic Microsoft SQL Server behavior. Fortunately, there were only a handful of
 types which behave differently. Here is a complete list of these types:
 
-- `sys.BBF_BINARY`
 - `sys.BIT`
-- `sys.BPCHAR`
-- `sys.VARCHAR`
 - `sys.DATETIME`
 - `sys.DATETIME2`
 - `sys.DATETIMEOFFSET`
 - `sys.SMALLDATETIME`
 - `sys.SQL_VARIANT`
 - `sys.UNIQUEIDENTIFIER`
+- `sys.VARCHAR`
 
 See the [Microsoft documentation][types] for details on Microsoft SQL Server data types.
 
