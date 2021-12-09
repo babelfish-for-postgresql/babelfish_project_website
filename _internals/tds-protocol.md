@@ -85,8 +85,27 @@ Once we are over the <code>PRELOGIN</code> phase, we are ready for
 <code>LOGIN7</code> which defines the authentication rules for use 
 between client and server.
 
+### SSL/TLS support for TDS connections
 
-### Defining authentication rules.
+Babelfish uses native PostgreSQL support for using SSL connections to encrypt client/server communications. See PostgresSQL [documentation](https://www.postgresql.org/docs/13/ssl-tcp.html#SSL-SETUP) for details about configuring server-side SSL functionality.
+With SSL support compiled in, the PostgreSQL server can be started with SSL enabled by setting the parameter <code>ssl</code> to <code>on</code> in postgresql.conf. The server will listen for both normal and SSL connections on the same TCP port, and will negotiate with any connecting client on whether to use SSL. By default, a client can decide whether to use SSL connections or not. If <code>babelfishpg_tds.tds_ssl_encrypt</code> is set to <code>true</code>, end-to-end encryption is enforced for all connections. In that case, if a client requests for a non-encrypted connection, the connection is rejected.
+
+The table following shows how Babelfish behaves for each combination.
+
+| Client SSL setting   | Babelfish SSL setting | Connection allowed?                         | Value returned to client |
+|:---------------------|:----------------------|:--------------------------------------------|:-------------------------|
+| ENCRYPT_OFF          | tds_ssl_encrypt=false | Allowed, the login packet is encrypted      | ENCRYPT_OFF              |
+| ENCRYPT_OFF          | tds_ssl_encrypt=true  | Allowed, the entire connection is encrypted | ENCRYPT_REQ              |
+| ENCRYPT_ON           | tds_ssl_encrypt=false | Allowed, the entire connection is encrypted | ENCRYPT_ON               |
+| ENCRYPT_ON           | tds_ssl_encrypt=true  | Allowed, the entire connection is encrypted | ENCRYPT_ON               |
+| ENCRYPT_NOT_SUP      | tds_ssl_encrypt=false | Yes                                         | ENCRYPT_NOT_SUP          |
+| ENCRYPT_NOT_SUP      | tds_ssl_encrypt=true  | No, connection closed                       | ENCRYPT_REQ              |
+| ENCRYPT_REQ          | tds_ssl_encrypt=false | Allowed, the entire connection is encrypted | ENCRYPT_ON               |
+| ENCRYPT_REQ          | tds_ssl_encrypt=true  | Allowed, the entire connection is encrypted | ENCRYPT_ON               |
+| ENCRYPT_CLIENT_CERT  | tds_ssl_encrypt=false | No, connection closed                       | Unsupported              |
+| ENCRYPT_CLIENT_CERT  | tds_ssl_encrypt=true  | No, connection closed                       | Unsupported              |
+
+### Defining authentication rules
 
 <code>LOGIN7</code> is the TDS ways of defining authentication rules. 
 Client and server both have to know how to handle authentication rules, which are vital to security.
