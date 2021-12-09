@@ -88,10 +88,6 @@ definitions.  Note that only case insensitive collations are supported.
 | `sql_latin1_general_cp1258_ci_as` | The same as `bbf_unicode_cp1258_ci_as`. |
 | `sql_latin1_general_cp874_ci_as` | The same as `bbf_unicode_cp874_ci_as`. |
 | `latin1_general_ci_as` | The same as `sql_latin1_general_cp1_ci_as`. |
-| `latin1_general_bin2` | Binary collation for the [Windows-1252 single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1252.txt). |
-| `latin1_general_100_bin2` | The same as `latin1_general_bin2`. |
-| `latin1_general_140_bin2` | The same as `latin1_general_bin2`. |
-| `latin1_general_90_bin2` | The same as `latin1_general_bin2`. |
 | `arabic_ci_as` | Provides support for Arabic. |
 | `chinese_prc_ci_as`  | Provides support for Chinese (PRC).  |
 | `cyrillic_general_ci_as` | Provides support for Cyrillic. |
@@ -109,6 +105,15 @@ definitions.  Note that only case insensitive collations are supported.
 | `turkish_ci_as`  | Provides support for Turkish. |
 | `ukrainian_ci_as`   | Provides support for Ukranian.   |
 | `vietnamese_ci_as`  | Provides support for Vietnamese. |
+
+For column definitions, you can also use case insensitive or accent sensitive versions of the above collations.  The following binary collations are also supported for columns:
+
+| Collation Name            | Notes                              |
+| ------------------------- | ---------------------------------- |
+| `latin1_general_bin2`     | Binary collation for the [Windows-1252 single-byte character encoding](https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit1252.txt). |
+| `latin1_general_100_bin2` | The same as `latin1_general_bin2`. |
+| `latin1_general_140_bin2` | The same as `latin1_general_bin2`. |
+| `latin1_general_90_bin2`  | The same as `latin1_general_bin2`. |
 
 You can use the following collations for column definitions, if you want to support more than one locale in a single database:
 
@@ -131,8 +136,6 @@ You can use the following collations for column definitions, if you want to supp
 | `turkish`   | `turkish_cs_as`       | `turkish_ci_as`, `turkish_ci_ai`  |
 | `ukranian`  | `ukranian_cs_as`      | `ukranian_ci_as`, `ukranian_ci_ai` |
 | `vietnamese` | `vietnamese_cs_as` | `vietnamese_ci_as`, `vietnamese_ci_ai` |
-
-In addition to these language-specific collations, you can also use case-sensitive or accent-insensitive variations of the server collations in the previous list.
 
 ### Managing collations
 
