@@ -88,9 +88,10 @@ between client and server.
 ### SSL/TLS support for TDS connections
 
 Babelfish uses native PostgreSQL support for using SSL connections to encrypt client/server communications. See PostgreSQL [documentation](https://www.postgresql.org/docs/13/ssl-tcp.html#SSL-SETUP) for details about configuring server-side SSL functionality.
-With SSL support compiled in, the PostgreSQL server can be started with SSL enabled by setting the parameter <code>ssl</code> to <code>on</code> in postgresql.conf. The server will listen for both normal and SSL connections on the same TCP port, and will negotiate with any connecting client on whether to use SSL. By default, a client can decide whether to use SSL connections or not. If <code>babelfishpg_tds.tds_ssl_encrypt</code> is set to <code>true</code>, end-to-end encryption is enforced for all connections. In that case, if a client requests for a non-encrypted connection, the connection is rejected.
 
-The table following shows how Babelfish behaves for each combination.
+To use SSL encryption, [compile the PostgreSQL server with support for SSL,](https://www.postgresql.org/docs/13/install-procedure) and set the <code>ssl</code> parameter to <code>on</code> in the postgresql.conf file. The server will listen for SSL and non-SSL connections on the same TCP port, and will negotiate with any connecting client about using SSL. By default, a client can choose whether to require an SSL connection or not. The server will listen for both unencrypted and encrypted connections on the same TCP port, and negotiate the connection type with the connecting client.  If <code>babelfishpg_tds.tds_ssl_encrypt</code> is set to <code>true</code>, end-to-end encryption is enforced for all connections. In that case, if a client requests an unencrypted connection, the connection is rejected.
+
+The following table shows how Babelfish interprets SSL settings when a client connects:
 
 | Client SSL setting   | Babelfish SSL setting | Connection allowed?                         | Value returned to client |
 |:---------------------|:----------------------|:--------------------------------------------|:-------------------------|
@@ -108,7 +109,7 @@ The table following shows how Babelfish behaves for each combination.
 ### Defining authentication rules
 
 <code>LOGIN7</code> is the TDS ways of defining authentication rules. 
-Client and server both have to know how to handle authentication rules, which are vital to security.
+The client and server both have to know how to handle authentication rules, which are vital to security.
 Fortunately Microsoft has provided some detailed in-depth description of the
 [LOGIN7](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-tds/773a62b6-ee89-4c02-9e5e-344882630aac)
 message which can be found on their website.
