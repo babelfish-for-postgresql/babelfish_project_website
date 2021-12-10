@@ -87,7 +87,7 @@ between client and server.
 
 ### SSL/TLS support for TDS connections
 
-Babelfish uses native PostgreSQL support for using SSL connections to encrypt client/server communications. See PostgresSQL [documentation](https://www.postgresql.org/docs/13/ssl-tcp.html#SSL-SETUP) for details about configuring server-side SSL functionality.
+Babelfish uses native PostgreSQL support for using SSL connections to encrypt client/server communications. See PostgreSQL [documentation](https://www.postgresql.org/docs/13/ssl-tcp.html#SSL-SETUP) for details about configuring server-side SSL functionality.
 With SSL support compiled in, the PostgreSQL server can be started with SSL enabled by setting the parameter <code>ssl</code> to <code>on</code> in postgresql.conf. The server will listen for both normal and SSL connections on the same TCP port, and will negotiate with any connecting client on whether to use SSL. By default, a client can decide whether to use SSL connections or not. If <code>babelfishpg_tds.tds_ssl_encrypt</code> is set to <code>true</code>, end-to-end encryption is enforced for all connections. In that case, if a client requests for a non-encrypted connection, the connection is rejected.
 
 The table following shows how Babelfish behaves for each combination.
