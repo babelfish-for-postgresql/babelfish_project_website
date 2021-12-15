@@ -481,8 +481,12 @@ Set `TEXTSIZE`.
 
 ### `babelfishpg_tsql.use_antlr`
 
-Selects the new ANTLR parser for pl/tsql functions, procedures, trigger, and
-batches. The default value is `true`.
+This parameter is now obsolete, and will be removed in a future release.
+There is no way to switch parsers, both yacc and antlr parsers are required.
+
+For more information see [Issue #47](https://github.com/babelfish-for-postgresql/babelfish_extensions/issues/47#issuecomment-994107040).
+
+The default value is `true`.
 
 
 ### `babelfishpg_tsql.version`
