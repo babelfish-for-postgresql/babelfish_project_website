@@ -106,7 +106,7 @@ definitions.  Note that only case insensitive collations are supported.
 | `ukrainian_ci_as`   | Provides support for Ukranian.   |
 | `vietnamese_ci_as`  | Provides support for Vietnamese. |
 
-For column definitions, you can also use case insensitive or accent sensitive versions of the above collations.  The following binary collations are also supported for columns:
+For column definitions, you can also use case sensitive or accent insensitive versions of the above collations.  The following binary collations are also supported for columns:
 
 | Collation Name            | Notes                              |
 | ------------------------- | ---------------------------------- |
@@ -226,7 +226,7 @@ PostgreSQL supports exactly one version of each collation, whereas SQL
 Server can support multiple versions of the same collation, typically
 by modifying the collation name with a version suffix such as `_80` or `_100`.
 
-#### Character(SC) expansion
+#### Character expansion
 
 A character expansion treats a single character as equal to a
 sequence of characters at the primary level. SQL Server's default
