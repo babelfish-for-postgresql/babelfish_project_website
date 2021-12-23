@@ -5,13 +5,13 @@
 - [babelfishpg.org Website](#babelfishpgorg-website)
   - [Building the Website](#building-the-website)
     -[Testing](#testing)
-    - [Link checker](link-checker)
-  - [Writing style guidelines](writing-style-guidelines)
+    - [Link checker](#link-checker)
+  - [Writing style guidelines](#writing-style-guidelines)
   - [Submitting a Pull Request](#submitting-a-pull-request)
   - [Getting Help](#getting-help)
   - [Credits](#credits)   
     - [Adding to the Partners Page](#adding-to-the-partners-page)
-  - [Copyright](#Copyright)
+  - [Copyright](#copyright)
 
 
 
@@ -21,7 +21,7 @@ This repo contains the source for the [babelfishpg.org](https://babelfishpg.org/
 
 ## Building the website
 
-This site uses [Jekyll](https://jekyllrb.com/). You can build the site and make it available on a local server via `docker-compose up -d`, or by installing all the dependencies on your local environment as follows.
+This site uses [Jekyll](https://jekyllrb.com/). You can build the site and make it available on a local server with the command, `docker-compose up -d`, or by installing the dependencies on your local environment as follows:
 
 1. Install [Ruby](https://www.ruby-lang.org/en/) and [Bundler](https://bundler.io/), then run `bundle install`.
 2. Build and start Jekyll with `bundle exec jekyll serve`.
@@ -38,7 +38,7 @@ $ bundle install
 $ bundle exec jekyll serve -w
 ```
 
-To test the GitHub CI locally, you can use [act](https://github.com/nektos/act) by running `act` at the repository's root.
+To test the GitHub contents locally, you can use [act](https://github.com/nektos/act) by running `act` at the repository's root.
 
 #### Link checker
 
@@ -67,6 +67,13 @@ When submitting content for addition to the Babelfish guide, please consider the
 The documentation should be informal, but not chatty.  Our goal is to produce concise, technically accurate content that helps the user accomplish a task.  It should not include future plans, what we were/are thinking during feature planning, or our reasoning behind implementation decisions. Such information should be in the product roadmap.
 
 Write in active voice, with the assumption that the reader is the person that will perform actions: “You should specify the password associated with...” or instructional:  “Specify the password associated with...”.  Focus on the user’s task, and the steps required to accomplish it.  If all of the steps/information is not included on one page, provide supporting links.
+
+When referring to proprietary products, use the complete company name and the product name once at the start of the page; thereafter, use only the product name. 
+
+  * The term Microsoft SQL Server is the complete company name and product name.  For example: Babelfish extends your PostgreSQL database with the ability to accept database connections from Microsoft SQL Server clients.
+  * The term SQL Server refers to the database, the database content, and transactions/procedures/functions that involve more than SQL syntax.  For example: Port 1433 accepts SQL Server commands, with the limitations discussed later in this guide.
+  * Use T-SQL when referring to syntax or language.  For example: You should use correct T-SQL syntax when forming commands.
+  * Use TDS when referring to the protocol used by SQL Server.  For example: The server listens on port 1466 for client connections in TDS protocol.
 
 To make the documentation easier to read and understand:
 
@@ -97,17 +104,10 @@ The Babelfish project supports an environment of diversity and equity.  In the i
 
 Use contractions where appropriate:  we’re, isn’t, can’t, and so on.
 
-When referring to proprietary products, use the complete company name and the product name once at the start of the page; thereafter, use only the product name. 
-
-  * The term Microsoft SQL Server is the complete company name and product name.  For example: Babelfish extends your PostgreSQL database with the ability to accept database connections from Microsoft SQL Server clients.
-  * The term SQL Server refers to the database, the database content, and transactions/procedures/functions that involve more than SQL syntax.  For example: Port 1433 accepts SQL Server commands, with the limitations discussed later in this guide.
-  * Use T-SQL when referring to syntax or language.  For example: You should use correct T-SQL syntax when forming commands.
-  * Use TDS when referring to the protocol used by SQL Server.  For example: The server listens on port 1466 for client connections in TDS protocol.
-
 
 ## Submitting a pull request
 
-The project is open to contributions. You can submit a [pull request through Github](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) and contribute to Babelfish.
+The Babelfish project welcomes contributions. You can submit a [pull request through Github](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) to contribute to Babelfish.
 
 When submitting code or documentation, ensure that your code adheres to
 [community standards](https://www.postgresql.org/docs/current/source.html) and
@@ -116,12 +116,12 @@ the burden of maintenance, and keep the website readable.
 
 Before submitting a pull request, make sure that your code is properly tested; changes made to 
 the code should not compromise existing features. We strongly recommend running the tests
-before you send a pull request to development. If you submit a new feature, include 
+before you send a pull request to development. When you submit a new feature, include 
 test cases for the feature.  Patches that do not contain tests for new features will not be 
 accepted.
 
-We encourage you to properly document their code.  If you are having language difficulty, or 
-need help, we recommend reaching out to the Babelfish community.
+We encourage you to properly document your code.  If you are having language difficulty, or 
+need help, reach out to the Babelfish community.
 
 When documenting a new feature, it is a good idea to provide working examples.
 This is especially true for programming interfaces and new SQL functions. 
@@ -142,7 +142,7 @@ To get involved with the review process, please check out
 
 ## Getting help
 
-If you discover a potential security issue in this project we ask that you notify AWS/Amazon Security via our [vulnerability reporting page](https://aws.amazon.com/security/vulnerability-reporting/). Please do **not** create a public GitHub issue.
+If you discover a potential security issue in this project we ask that you notify AWS/Amazon Security at our [vulnerability reporting page](https://aws.amazon.com/security/vulnerability-reporting/). Please do **not** create a public GitHub issue.
 
 If you find a bug, or have a feature request, please don't hesitate to open an issue in this repository.  If you need help and are unsure where to open an issue, try [forums](https://discuss.babelfishpgcommunity.dev/).
 
@@ -150,7 +150,7 @@ If you find a bug, or have a feature request, please don't hesitate to open an i
 ## Credits
 
 If you contribute code, make sure that you are not violating 3rd party rights.
-Checking for IP violations beforehand is expected by the community. We want
+Checking for intellectual property violations beforehand is expected by the community. We want
 Babelfish and our users to be free of 3rd party claims. Keeping the code clean benefits 
 the community as well our users.
 
