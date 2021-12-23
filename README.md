@@ -17,7 +17,7 @@
 
 # Babelfishpg.org website
 
-This repo contains the source for the [babelfishpg.org](https://babelfishpg.org/) website.  The Babelfish project welcomes contributions to the site - review [CONTRIBUTING](#contributing) to learn more about how to contribute to the website.
+This repo contains the source for the [babelfishpg.org](https://babelfishpg.org/) website.  The Babelfish project welcomes contributions to the site - review [CONTRIBUTING](#contributing) to learn more.
 
 ## Building the website
 
@@ -64,16 +64,16 @@ They both accept the same values with the only difference being that the `JEKYLL
 
 When submitting content for addition to the Babelfish guide, please consider the following guidelines:
 
-The documentation should be informal, but not chatty.  Our goal is to produce concise, technically accurate content that helps the user accomplish a task.  It should not include future plans, what we were/are thinking during feature planning, or our reasoning behind implementation decisions. Such information should be in the product roadmap.
+The documentation should be informal, but not chatty.  Our goal is to produce concise, technically accurate content that helps the user accomplish a task.  It should not include future plans, what we were thinking during feature planning, or our reasoning behind implementation decisions. Such information should be in the product roadmap.
 
-Write in active voice, with the assumption that the reader is the person that will perform actions: “You should specify the password associated with...” or instructional:  “Specify the password associated with...”.  Focus on the user’s task, and the steps required to accomplish it.  If all of the steps/information is not included on one page, provide supporting links.
+Write in active voice, with the assumption that the reader is the person that will perform actions: “You should specify the password associated with...” or instructional:  “Specify the password associated with...”.  Focus on the user’s task, and the steps required to accomplish it.  If all of the steps or information is not included on one page, provide supporting links.
 
 When referring to proprietary products, use the complete company name and the product name once at the start of the page; thereafter, use only the product name. 
 
   * The term Microsoft SQL Server is the complete company name and product name.  For example: Babelfish extends your PostgreSQL database with the ability to accept database connections from Microsoft SQL Server clients.
   * The term SQL Server refers to the database, the database content, and transactions/procedures/functions that involve more than SQL syntax.  For example: Port 1433 accepts SQL Server commands, with the limitations discussed later in this guide.
   * Use T-SQL when referring to syntax or language.  For example: You should use correct T-SQL syntax when forming commands.
-  * Use TDS when referring to the protocol used by SQL Server.  For example: The server listens on port 1466 for client connections in TDS protocol.
+  * Use TDS when referring to the protocol used by SQL Server.  For example: The server listens on port 1433 for client connections in TDS protocol.
 
 To make the documentation easier to read and understand:
 
