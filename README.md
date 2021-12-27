@@ -107,7 +107,7 @@ Use contractions where appropriate:  we’re, isn’t, can’t, and so on.
 
 ## Submitting a pull request
 
-The Babelfish project welcomes contributions. You can submit a [pull request through Github](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) to contribute to Babelfish.
+The Babelfish project welcomes contributions. You can submit a [pull request through Github](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) to contribute to Babelfish. Note that commits to the Github repo must be signed off with your name and email; include the -s and -m options when submitting your patch. 
 
 When submitting code or documentation, ensure that your code adheres to
 [community standards](https://www.postgresql.org/docs/current/source.html) and
