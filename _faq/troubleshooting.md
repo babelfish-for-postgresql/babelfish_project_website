@@ -9,7 +9,7 @@ nav_order: 3
 This section explains some of the most common problems faced when working with Babelfish, and possible solutions.
 
 
-### Babelfish starts but I cannot run SQL Server code
+### Babelfish starts but I can't run SQL Server code
 
 There are a couple of reasons this can happen. The most common reason is that you have started Babelfish before adding `babelfish_tds` to the `shared_preload_libraries` parameter in the `postgresql.conf` file. If you don't update the parameter value before starting the PostgreSQL server, the library required to process SQL Server commands won't load, and Babelfish won't run.
 
