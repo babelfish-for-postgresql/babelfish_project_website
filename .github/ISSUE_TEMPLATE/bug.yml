@@ -3,36 +3,30 @@ description: File a bug report for Babelfish Website
 title: "[Bug]: "
 labels: ["bug", "triage"]
 assignees:
-  - amazon-auto
+  - 3manuek
+  - xaviersierra
+  - gopinathpai
+  - nasbyj
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report!
+        Thanks for taking the time to fill out this bug report.
   - type: input
     id: contact
     attributes:
       label: Contact Details
-      description: How can we get in touch with you if we need more info?
+      description: Please enter your mail address for contacting in the case of needing more information.
       placeholder: ex. email@example.com
     validations:
       required: false
   - type: textarea
     id: what-happened
     attributes:
-      label: What happened?
-      description: Also tell us, what did you expect to happen?
-      placeholder: Tell us what you see!
+      label: Describe the bug
+      description: Describe what was the expected behavior of the website. 
+      placeholder: Tell us what you see.
       value: "A bug happened!"
-    validations:
-      required: true
-  - type: dropdown
-    id: version
-    attributes:
-      label: Version
-      description: What version of our software are you running?
-      options:
-        - main (Default)
     validations:
       required: true
   - type: checkboxes

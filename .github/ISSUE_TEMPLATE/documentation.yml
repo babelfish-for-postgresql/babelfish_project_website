@@ -1,17 +1,17 @@
-name: Babelfish for PostgreSQL Website Feature Request Form
-description: Propose an enhancement for Babelfish for PostgreSQL Website
-title: "[Enhancement]: "
-labels: ["enhancement", "untriaged"]
+name: Babelfish for PostgreSQL Documentation
+description: Propose changes to Babelfish for PostgreSQL Documentation
+title: "[Documentation]: "
+labels: ["documentation", "untriaged"]
 assignees:
-  - 3manuek
   - gopinathpai
-  - xaviersierra
   - nasbyj
+  - rcv-aws
+  - susanmdouglas-aws
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this feature request.
+        Thanks for taking the time to fill out this documentation improvement.
   - type: input
     id: contact
     attributes:
@@ -21,10 +21,10 @@ body:
     validations:
       required: false
   - type: textarea
-    id: what-intends
+    id: documentation-scope
     attributes:
-      label: Describe what this feature intends to solve.
-      description: Be explanatory, as detailed as you can.
+      label: What needs to be changed, updated or improve in the Babelfish Documentation?
+      description: Be explanatory, as detailed as you can. 
       placeholder: Tell us what you have in mind!
       value: "This is my feature request!"
     validations:
@@ -36,6 +36,14 @@ body:
       description: Share with us if you have more details about the implementation.
     validations:
       required: false 
+  - type: dropdown
+    id: version
+    attributes:
+      label: Version
+      description: Select the version of the targeted documentation.
+      options:
+        - BABEL_1_X_DEV (Default)
+      required: true
   - type: textarea
     id: docs
     attributes:
