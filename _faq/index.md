@@ -23,7 +23,7 @@ Babelfish supports TDS protocol versions 7.1 and higher.
 
 ### Which Babelfish versions are available?
 
-Currently, Babelfish works with PostgreSQL 13 or higher. Support for older PostgreSQL versions is not planned at this time. 
+Babelfish version 1.0.0 works with PostgreSQL 13.4; version 1.1.0 works with PostgreSQL version 13.5. 
 
 ### How can I find out which version of Babelfish I am running?
 
