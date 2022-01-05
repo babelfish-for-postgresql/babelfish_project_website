@@ -97,7 +97,6 @@ The Babelfish project supports an environment of diversity and equity.  In the i
     * master → use primary, main, or leader
     * hang → use stop responding
     * slave → use secondary, replica, or standby
-    * black day → use blocked day
     * invalid → use not valid
     * segregate → use isolate or separate
     * it is recommended --> use we recommend
