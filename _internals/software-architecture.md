@@ -47,7 +47,7 @@ deployment mode in Babelfish.
 
 In `multi-db` mode, when you call the `USE` command to switch from one database to the other, you remain 
 connected to the same PostgreSQL database, but switch to a different schema. Understanding this relationship 
-will help you if you plan to query the same table using both protocols.
+may help you if you plan to query the same table using both protocols.
 
 To learn more about single and multi-database deployments, [see the documentation](/docs/installation/single-multiple),
 which deals with this topic in more detail.
