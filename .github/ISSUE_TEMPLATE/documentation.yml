@@ -1,5 +1,5 @@
 name: Babelfish for PostgreSQL Documentation
-description: Propose changes to Babelfish for PostgreSQL Documentation
+description: Propose changes to Babelfish for PostgreSQL documentation
 title: "[Documentation]: "
 labels: ["documentation", "untriaged"]
 assignees:
@@ -11,20 +11,20 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this documentation improvement.
+        Thank you for taking the time to fill out this documentation improvement request.
   - type: input
     id: contact
     attributes:
       label: Contact Details
-      description: Please enter your mail address for contacting in the case of needing more information.
+      description: Please provide an email address where we can contact you for more information.
       placeholder: ex. email@example.com
     validations:
       required: false
   - type: textarea
     id: documentation-scope
     attributes:
-      label: What needs to be changed, updated or improve in the Babelfish Documentation?
-      description: Be explanatory, as detailed as you can. 
+      label: What needs to be changed, updated, or improved in the Babelfish documentation?
+      description: Please provide as much detail as possible. 
       placeholder: Tell us what you have in mind!
       value: "This is my feature request!"
     validations:
@@ -32,15 +32,15 @@ body:
   - type: textarea
     id: brief-desc-implementation
     attributes:
-      label: If want to provide us a more details about how to implement.
-      description: Share with us if you have more details about the implementation.
+      label: If possible, provide details about how to best implement this change.
+      description: Share implementation details for this improvement.
     validations:
       required: false 
   - type: dropdown
     id: version
     attributes:
       label: Version
-      description: Select the version of the targeted documentation.
+      description: Select the Babelfish documentation version to which the change applies.
       options:
         - BABEL_1_X_DEV (Default)
       required: true
@@ -54,7 +54,7 @@ body:
     id: terms
     attributes:
       label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://aws.github.io/code-of-conduct-faq)
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://aws.github.io/code-of-conduct-faq).
       options:
-        - label: I agree to follow this project's Code of Conduct
+        - label: I agree to follow this project's Code of Conduct.
           required: true

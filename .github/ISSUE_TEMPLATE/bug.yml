@@ -11,12 +11,12 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report.
+        Thank you for taking the time to fill out this bug report.
   - type: input
     id: contact
     attributes:
       label: Contact Details
-      description: Please enter your mail address for contacting in the case of needing more information.
+      description: Please provide an email address where we can contact you for more information.
       placeholder: ex. email@example.com
     validations:
       required: false
@@ -24,7 +24,7 @@ body:
     id: what-happened
     attributes:
       label: Describe the bug
-      description: Describe what was the expected behavior of the website. 
+      description: Describe the expected behavior of the website. 
       placeholder: Tell us what you see.
       value: "A bug happened!"
     validations:
@@ -33,7 +33,7 @@ body:
     id: terms
     attributes:
       label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://aws.github.io/code-of-conduct-faq)
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://aws.github.io/code-of-conduct-faq).
       options:
-        - label: I agree to follow this project's Code of Conduct
+        - label: I agree to follow this project's Code of Conduct.
           required: true
