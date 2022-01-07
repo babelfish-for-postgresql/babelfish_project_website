@@ -9,17 +9,17 @@ Babelfish uses [hooks](/docs/internals/postgresql-hooks) to implement Microsoft 
 from a PostgreSQL server. This allows the PostgreSQL server to speak more than one language, making
 the setup flexible and easy to manage.
 
-By default, Babelfish listens for connections on two TCP ports, in two dialects:
+A PostgreSQL database that is running Babelfish listens for connections on two (configurable) TCP 
+ports, in two dialects:
 
-- SQL Server dialect, clients connect to port 1433.
-- PostgreSQL dialect, clients connect to port 5432.
-
+- SQL Server dialect (TDS).
+- PostgreSQL dialect.
+ 
+Once the TDS handler has accepted and processed a request coming in on the TDS port,
+the request is passed on to a PostgreSQL backend. The backend parses the request using a 
+custom parser, modified to understand SQL Server dialect.
 
 <img src="/assets/images/babel_architecture.png" title="System architecture" width="800"/>
-
-Once the TDS handler has accepted and processed a request coming in on port 1433,
-the request is passed on to a standard PostgreSQL backend. The backend parses the request using a 
-custom parser, modified to understand SQL Server dialect.
 
 There are no significant changes to the PostgreSQL optimizer or the PostgreSQL executor.
 
@@ -57,7 +57,7 @@ which deals with this topic in more detail.
 
 Babelfish uses extensions to make PostgreSQL compatible with SQL Server:
 
-- `babelfishpg_common`: Microsoft SQL Server data types
+- `babelfishpg_common`: SQL Server data types
 - `babelfishpg_money`: Fixed precision numeric type
 - `babelfishpg_tds`: TDS protocol extension
 - `babelfishpg_tsql`: T-SQL extension
@@ -68,7 +68,7 @@ Here is a more detailed description of these extensions:
 
 Data types are often really similar but not necessarily 100% identical.
 Therefore, the Babelfish development team provides specific data types which
-mimic Microsoft SQL Server behavior. You will find an up-to-date list of unsupported 
+mimic SQL Server behavior. You will find an up-to-date list of unsupported 
 data types and other functionality on the [Babelfish compatibility page](usage/limitations-of-babelfish/).
 
 #### `babelfishpg_money`: Money data type
