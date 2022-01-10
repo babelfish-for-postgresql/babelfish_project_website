@@ -2,7 +2,7 @@
 
 ## Documentation Index and folder structure
 
-The list of the documentation collection is configured in the `_config.yml` file, in the `just_the_docs` attribute. This is the original configuration:
+The website headings are configured in the `_config.yml` file, in the `just_the_docs` attribute. Each value provided in a name attribute will be an expandable heading in the left navigation panel:
 
 
 ```yaml
@@ -34,8 +34,7 @@ internals -> _internals/
 client -> _client/
 ```
 
-Each folder contains the documentation for each section, and they'll appear as subelements in the documentation sidebar. Each markdown file must contain the following header format:
-
+Each folder contains the documents that reside in that section; each document will appear as link in the navigation sidebar. Each markdown file must contain the following header format:
 
 ```markdown
 ---
@@ -45,7 +44,7 @@ nav_order: 2
 ---
 ```
 
-The header is self-explanatory, and you need to configure at least `title` and `nav_order` (which should be sequential for each section).
+The header is self-explanatory; you need to provide at least the `title` and `nav_order` (which should be sequential for each section).
 
 ## Adding images to posts and docs
 
@@ -57,7 +56,7 @@ Images should be placed in the `assets/images` folder. To use the image, you can
 
 ## Publishing posts
 
-Posts are different from documentation, as they reside in a different folder. The `_posts` folder contains the published posts in markdown format. The header of the posts should follow the below format:
+Posts are different from Babelfish documentation. You can access posts from the menu in the upper-right corner of the Babelfish website landing page. Content for the posts section of the website resides in the `_posts` folder in markdown format. The header information for each post should follow the below format:
 
 ```markdown
 ---
@@ -72,17 +71,15 @@ categories:
 ---
 ```
 
-> It is possible to commit a post and keep it hidden by using the `draft: true` attribute, which allows to work on a file without publishing it until draft is set to `false`.
+> To commit a post, and keep it hidden, use the `draft: true` attribute. This allows you to work on a file without publishing it. To publish the file, set to `draft: false`.
 
 ## Issue templates
 
 The issue templates are located in the `.github/ISSUE_TEMPLATE`, in yaml files.
-For more information about issue template, check [Github's documentation](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository).
+
+> For more information about issue templates, check [Github's documentation](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository).
 
 
 ## Changing site index
 
-The site index resides in the `index.markdown` file, which contains the index sections.
-
-In this file, resides the sidebar and button callouts. The format is a yaml structure, placed in the markdown header.
-
+The site index resides in the `index.markdown` file. The file defines the sidebar and button callouts and onscreen content. The format is a yaml structure, placed in the markdown header.
