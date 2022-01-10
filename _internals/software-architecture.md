@@ -91,7 +91,7 @@ Here is a more detailed description of these extensions:
 
 Data types are often really similar but not necessarily 100% identical.
 Therefore, the Babelfish development team provides specific data types which
-mimic Microsoft SQL Server behavior. Fortunately, there were only a handful of
+mimic Microsoft SQL Server behavior. Fortunately, there are only a handful of
 types which behave differently. Here is a complete list of these types:
 
 - `sys.BIT`
