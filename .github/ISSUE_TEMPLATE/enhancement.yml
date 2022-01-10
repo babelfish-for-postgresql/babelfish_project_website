@@ -12,18 +12,10 @@ body:
     attributes:
       value: |
         Thank you for taking the time to fill out this feature request.
-  - type: input
-    id: contact
-    attributes:
-      label: Contact Details
-      description: Please provide an email address where we can contact you for more information.
-      placeholder: ex. email@example.com
-    validations:
-      required: false
   - type: textarea
     id: what-intends
     attributes:
-      label: Describe the enhancement, and how the change will improve the website.
+      label: Describe how this change will improve the Babelfish website.
       description: Provide as much detailed information as you can about the website improvement.
       placeholder: Tell us what you have in mind!
       value: "This is my feature request!"
