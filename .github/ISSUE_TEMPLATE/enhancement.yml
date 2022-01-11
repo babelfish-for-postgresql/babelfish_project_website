@@ -2,11 +2,6 @@ name: Babelfish for PostgreSQL Website Feature Request Form
 description: Propose an enhancement for the Babelfish for PostgreSQL Website
 title: "[Enhancement]: "
 labels: ["enhancement", "untriaged"]
-assignees:
-  - 3manuek
-  - gopinathpai
-  - xaviersierra
-  - nasbyj
 body:
   - type: markdown
     attributes:
