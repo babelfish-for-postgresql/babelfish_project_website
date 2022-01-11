@@ -2,11 +2,6 @@ name: Babelfish for PostgreSQL Documentation
 description: Propose changes to Babelfish for PostgreSQL documentation
 title: "[Documentation]: "
 labels: ["documentation", "untriaged"]
-assignees:
-  - gopinathpai
-  - nasbyj
-  - rcv-aws
-  - susanmdouglas-aws
 body:
   - type: markdown
     attributes:

@@ -2,11 +2,6 @@ name: Babelfish for PostgreSQL Website Bug Report
 description: File a bug report for Babelfish Website
 title: "[Bug]: "
 labels: ["bug", "triage"]
-assignees:
-  - 3manuek
-  - xaviersierra
-  - gopinathpai
-  - nasbyj
 body:
   - type: markdown
     attributes:
