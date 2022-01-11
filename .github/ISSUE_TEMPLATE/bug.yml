@@ -13,7 +13,7 @@ body:
       label: Describe the bug
       description: Describe the expected behavior of the website. 
       placeholder: Tell us what you see.
-      value: "Describe the bug that you've encountered and website behavior."
+      value: "Describe the expected behavior of the website."
     validations:
       required: true
   - type: checkboxes
