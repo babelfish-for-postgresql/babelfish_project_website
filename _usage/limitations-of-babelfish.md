@@ -261,6 +261,7 @@ in the future.
 | Unquoted string values in stored procedure calls and default values | String value calls to stored procedures and default values must be enclosed in single-quotes. |
 | `SYNONYM` | Functionality related to this object type is not supported. |
 | `CREATE/ALTER/DROP, OPEN/CLOSE SYMMETRIC KEY` | Functionality related to this object type is not supported. |
+| `ALTER TABLE` limitation | Babelfish does not support adding or dropping more than a single column or constraint in an ALTER TABLE statement. |
 | `CREATE TABLE ... GRANT` clause | Functionality related to this syntax is not supported. |
 | `CREATE TABLE ... IDENTITY` clause | Functionality related to this syntax is not supported. |
 | `CREATE EXTERNAL TABLE` | Functionality related to this syntax is not supported. |
