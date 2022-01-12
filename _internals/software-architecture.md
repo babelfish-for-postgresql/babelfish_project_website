@@ -34,7 +34,7 @@ out our section about [limitations and compatibility issues](/docs/usage/limitat
 
 PostgreSQL supports the following logical structure of objects:
 
-- Instance: a running PostgreSQL server
+- Instance: a running PostgreSQL server (the PostgreSQL community documentation calls this a cluster)
 - Database: what a user connects to
 - Schema: a logical grouping of tables and other objects inside a database
 - Table: where the data is stored
