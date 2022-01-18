@@ -32,14 +32,20 @@ You can build the Babelfish website on your local system with either Docker or J
 
 - After [installing Docker](https://jekyllrb.com/docs/installation/), you can build the site in a container with the command, `docker-compose up -d`. 
 
-- After [installing Jekyll](https://jekyllrb.com/docs/installation/), you can build the site with the following command:
+- After [installing Bundler](https://bundler.io/) and [Jekyll](https://jekyllrb.com/docs/installation/), you can build the site with the following command:
 
 ```sh
 `bundle exec jekyll build` 
 ```
 
- The HTML output is generated in `/_site`. Visit the [Jekyll web site](https://jekyllrb.com/docs/configuration/options/) for a full list of build configuration options.
+ The HTML output is generated in the `/_site` folder; please note that while you can review individual pages or updates, the output may contain broken links. To build the Babelfish website, and deploy the build on your desktop in a browser, use the commands:
 
+ ```sh
+`bundle install`
+`bundle exec jekyll serve -w` 
+```
+
+Visit the [Jekyll web site](https://jekyllrb.com/docs/configuration/options/) for a full list of build configuration options.
 
 ### Link checker
 
@@ -97,7 +103,7 @@ Don't:
 -  Assume that the user has experience using PostgreSQL; many Babelfish users have SQL Server experience, but haven't used PostgreSQL.
 -  Use jargon or slang - whether marketing, developer, or internal terms
 -  Use colloquialisms or regionally understood expressions (that may or may not be known to other Babelfish users) 
--  Documentation shouldn't include future plans; that information should be in a product roadmap.
+-  Documentation shouldn't include future plans; that information belongs in a product roadmap.
 
 
 The Babelfish project supports an environment of diversity and equity.  In the interest of promoting inclusivity, 
@@ -147,7 +153,7 @@ If you discover a potential security issue in this project we ask that you notif
 
 ## Credits
 
-If you contribute code, make sure that you are not violating 3rd party rights; check for intellectual property conflicts before you submit a pull request that includes content from other projects. Keeping the code clean benefits the community and our users.
+If you contribute code, make sure that your code does not violate 3rd party rights; check for intellectual property conflicts before you submit a pull request that includes content from other projects. 
 
 This project has adopted the [Open Source Code of Conduct](CODE_OF_CONDUCT.md). For more information see the [Code of Conduct FAQ](https://aws.github.io/code-of-conduct-faq), or contact [opensource-codeofconduct@amazon.com](mailto:opensource-codeofconduct@amazon.com) with any additional questions or comments.
 
@@ -155,16 +161,13 @@ This website was forked from the BSD-licensed [djangoproject.com](https://github
 
 This project is licensed under the [BSD-3-Clause License](LICENSE).
 
-Babelfish for PostgreSQL is available as Open Source software and can be downloaded from Github for
-free under the terms of the
+Babelfish for PostgreSQL is available as open-source software and can be downloaded from Github for free under the terms of the
 [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0) and the
 [PostgreSQL license](https://www.postgresql.org/about/licence/).
 
 
-### Adding to the Partners Page
-
-If you are a partner, we welcome you to add your logo and link to our partners page. Please copy and edit the [sample file](_partners/_sample.md), and submit a pull request.
-
 ## Copyright
 
 Copyright Babelfish for PostgreSQL Contributors.
+
+Babelfish would not be possible without the hard work and dedication of the people who have contributed to PostgreSQL. Everyone involved in the development of PostgreSQL has our gratitude.
