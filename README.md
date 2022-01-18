@@ -32,17 +32,22 @@ You can build the Babelfish website on your local system with either Docker or J
 
 - After [installing Docker](https://jekyllrb.com/docs/installation/), you can build the site in a container with the command, `docker-compose up -d`. 
 
-- After [installing Bundler](https://bundler.io/) and [Jekyll](https://jekyllrb.com/docs/installation/), you can build the site with the following command:
+- After [installing Bundler](https://bundler.io/) and [Jekyll](https://jekyllrb.com/docs/installation/), invoke the following command to prepare the project files for the build:
+
+ ```sh
+bundle install
+```
+
+Then, you can build the HTML files with the following command:
 
 ```sh
-`bundle exec jekyll build` 
+bundle exec jekyll build 
 ```
 
  The HTML output is generated in the `/_site` folder; please note that while you can review individual pages or updates, the output may contain broken links. To build the Babelfish website, and deploy the build on your desktop in a browser, use the commands:
 
  ```sh
-`bundle install`
-`bundle exec jekyll serve -w` 
+bundle exec jekyll serve -w
 ```
 
 Visit the [Jekyll web site](https://jekyllrb.com/docs/configuration/options/) for a full list of build configuration options.
