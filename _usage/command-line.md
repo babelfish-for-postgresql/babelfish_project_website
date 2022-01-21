@@ -46,7 +46,11 @@ SSMS is one of the most commonly used clients to connect to Babelfish.
 
 In the following procedure, you connect to your Babelfish database by
 using SSMS. You can use the SSMS query editor to connect to a Babelfish database.
-Currently, you can not connect using the SSMS Object Explorer.
+
+
+>
+> _Currently, you **can not connect using the SSMS Object Explorer**._
+>
 
 #### Connecting with SSMS
 
