@@ -150,7 +150,7 @@ If you contribute code, make sure that your code does not violate 3rd party righ
 
 Babelfish would not be possible without the hard work and dedication of the people who have contributed to PostgreSQL. Everyone involved in the development of PostgreSQL has our gratitude.
 
-This website was forked from the BSD-licensed [djangoproject.com](https://github.com/django/djangoproject.com) and merged with the just-the-docs theme.
+This website was forked from the BSD-licensed [djangoproject.com](https://github.com/django/djangoproject.com) and merged with the [just-the-docs](https://github.com/pmarsceill/just-the-docs) theme.
 
 This project is licensed under the [BSD-3-Clause License](LICENSE).
 
