@@ -49,7 +49,7 @@ using SSMS. You can use the SSMS query editor to connect to a Babelfish database
 
 
 >
-> _Currently, you **can not connect using the SSMS Object Explorer**._
+> _You **can't currently connect using the SSMS Object Explorer**._
 >
 
 #### Connecting with SSMS
