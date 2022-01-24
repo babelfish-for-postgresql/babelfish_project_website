@@ -136,33 +136,21 @@ and examples where practical. This is especially true for user interfaces and ne
 ## Submitting a pull request
 
 The Babelfish project welcomes contributions of features and documentation. You can submit a [pull request 
-through Github](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) 
-to contribute to Babelfish. Note that commits to the Github repo must be signed off with your 
-name and email; include the -s and -m options when submitting your patch. 
+through Github](https://github.com/babelfish-for-postgresql/babelfish_extensions/pulls) to contribute to the Babelfish project. Note that commits to the Github repo must be signed off with your name and email; include the -s and -m options when submitting your patch. 
 
-When submitting code or documentation, ensure that your code adheres to
-[community standards](https://www.postgresql.org/docs/current/source.html) and
-documentation and comments conform to the [Writing style guidelines](#Writing-style-guidelines). 
+When submitting code or documentation, ensure that your code adheres to [community standards](https://www.postgresql.org/docs/current/source.html) and documentation and comments conform to the [Writing style guidelines](#Writing-style-guidelines). This project has adopted the Open Source Code of Conduct; for more information see the [Code of Conduct](https://aws.github.io/code-of-conduct.html).
 
-Before submitting a pull request, make sure that your change is properly tested; changes shouldn't 
-compromise existing features. We strongly recommend you test your patch
-before you send a pull request to development. When you submit a new feature, include 
-test cases and documentation for the feature.  Patches that don't include tests and documentation won't be 
-accepted.
+Before submitting a pull request, make sure that your change is properly tested; changes shouldn't compromise existing features. We strongly recommend you test your patch before you send a pull request to development. When you submit a new feature, include 
+test cases and documentation for the feature.  Patches that don't include tests and documentation won't be accepted.
 
-
-## Getting help
-
-If you discover a potential security issue in this project we ask that you notify AWS/Amazon Security at our [vulnerability reporting page](https://aws.amazon.com/security/vulnerability-reporting/). Please do **not** create a public GitHub issue.
+If you contribute code, make sure that your code does not violate 3rd party rights; check for intellectual property conflicts before you submit a pull request that includes content from other projects. 
 
 
 ## Credits
 
-If you contribute code, make sure that your code does not violate 3rd party rights; check for intellectual property conflicts before you submit a pull request that includes content from other projects. 
+Babelfish would not be possible without the hard work and dedication of the people who have contributed to PostgreSQL. Everyone involved in the development of PostgreSQL has our gratitude.
 
-This project has adopted the [Open Source Code of Conduct](CODE_OF_CONDUCT.md). For more information see the [Code of Conduct FAQ](https://aws.github.io/code-of-conduct-faq), or contact [opensource-codeofconduct@amazon.com](mailto:opensource-codeofconduct@amazon.com) with any additional questions or comments.
-
-This website was forked from the BSD-licensed [djangoproject.com](https://github.com/django/djangoproject.com) and merged with just-the-docs theme.
+This website was forked from the BSD-licensed [djangoproject.com](https://github.com/django/djangoproject.com) and merged with the just-the-docs theme.
 
 This project is licensed under the [BSD-3-Clause License](LICENSE).
 
@@ -170,9 +158,6 @@ Babelfish for PostgreSQL is available as open-source software and can be downloa
 [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0) and the
 [PostgreSQL license](https://www.postgresql.org/about/licence/).
 
-
-## Copyright
-
 Copyright Babelfish for PostgreSQL Contributors.
 
-Babelfish would not be possible without the hard work and dedication of the people who have contributed to PostgreSQL. Everyone involved in the development of PostgreSQL has our gratitude.
+
