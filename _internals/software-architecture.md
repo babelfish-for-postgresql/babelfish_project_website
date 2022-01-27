@@ -69,7 +69,7 @@ Here is a more detailed description of these extensions:
 Data types are often really similar but not necessarily 100% identical.
 Therefore, the Babelfish development team provides specific data types which
 mimic SQL Server behavior. You will find an up-to-date list of unsupported 
-data types and other functionality on the [Babelfish compatibility page](usage/limitations-of-babelfish/).
+data types and other functionality on the [Babelfish compatibility page](docs/usage/limitations-of-babelfish).
 
 #### `babelfishpg_money`: Money data type
 

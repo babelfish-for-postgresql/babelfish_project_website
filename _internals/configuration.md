@@ -105,7 +105,7 @@ Here are the TDS related settings:
 Let us discuss these parameters in more detail.
 
 Escape hatches are described in more detail in the
-[section on limitations](usage/limitations-of-babelfish#dealing-with-limitations).
+[section on limitations](/docs/usage/limitations-of-babelfish#babelfish-escape-hatches).
 
 ### `babelfishpg_tsql.allow_antlr_to_unsupported_grammar_for_testing`
 
