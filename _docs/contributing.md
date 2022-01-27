@@ -18,7 +18,7 @@ Github](https://docs.github.com/en/github/collaborating-with-pull-requests/propo
 
 When submitting code or documentation, ensure that your code adheres to
 [community standards](https://www.postgresql.org/docs/current/source.html) and your
-documentation and comments conform to the [Writing style guidelines](writing_style_guidelines.md). 
+documentation and comments conform to the [Writing style guidelines](https://github.com/babelfish-for-postgresql/babelfish_project_website#writing-style-guidelines). 
 This will ease the burden of maintenance, and keep the Babelfish code and website sustainable.
 
 Before submitting a pull request, make sure that your code is properly tested; changes made to 
