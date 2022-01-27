@@ -6,9 +6,9 @@ nav_order: 5
 
 ## PostgreSQL hooks
 
-Babelfish uses protocol hooks to implement the TDS protocol in the PostgreSQL server.  A hook interrupts the server behavior, and invokes the function that is defined by the hook.  Hooks allow Babelfish to modify the server's behavior without making changes to the community PostgreSQL core.
+Babelfish uses protocol hooks to implement the TDS protocol in the PostgreSQL server.  A hook is a function pointer that is by default set to NULL.  A hook interrupts the server behavior and invokes the function that is defined by the hook when the hook's pointer is changed to a non-NULL value.    Hooks allow Babelfish to modify the server's behavior without making changes to the community PostgreSQL core.
 
-Each hook contains function pointers that are by default set to NULL.  Babelfish invokes the function when the hook's pointer is changed to a non-NULL value.  In this section, you will learn about Babelfish hooks, and what they do.
+In this section, you will learn about Babelfish hooks, and what they do.
 
 ### Relation name lookup
 
@@ -312,7 +312,7 @@ typedef void (*check_or_set_default_typmod_hook_type)(TypeName * typeName,
 					bool is_cast);
 ```
 
-This hook is invoked when the server needs to control the default behavior of typmod.  Typmod are basically modifiers for data types (such as varchar(20)).
+This hook is invoked when the server needs to control the default behavior of typmod.  Typmods are basically modifiers for data types (such as the length specified in varchar(20)).
 
 
 ### Control the data type of identity columns
@@ -321,7 +321,7 @@ This hook is invoked when the server needs to control the default behavior of ty
 typedef void (*pltsql_identity_datatype_hook_type) (ParseState *pstate,
 ```
 
-This hook is invoked when the server needs to manage the data type of identity columns (relevant to T-SQL).
+This hook is invoked when the server needs to manage the data type of identity columns.
 
 
 ### Control column definitions
@@ -450,6 +450,6 @@ typedef bool (*plansource_revalidate_hook_type) (CachedPlanSource *plansource);
 
 This hook is invoked when the server needs to control plan storage and invalidation.
 
-Inside T-SQL (or even inside a normal connection) plans are often prepared and stored to speed up later execution. Often, the plans have to be invalidated and changed. For example, if a column is dropped plans that reference that column have to be removed because database objects no longer exist. The same can be true when configuration variables are modified.
+Inside T-SQL (or even inside a normal connection) plans are often prepared and stored to speed up later execution. Occasionally, the plans have to be invalidated and changed. For example, if a column is dropped, any plans that reference that column have to be removed because database objects in the plan no longer exist. The same can be true when configuration variables are modified.
 
 
