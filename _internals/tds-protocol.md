@@ -6,84 +6,40 @@ nav_order: 8
 
 ## The TDS wire protocol
 
-Babelfish exposes PostgreSQL as an Microsoft SQL Server. To achieve that, the community has
-implemented the TDS wire protocol which forms the backbone of the entire solution.
-In this chapter, we want to take a deeper look at the details of the protocol's
-inner workings, and understand how things happen.
+Babelfish implements SQL Server behavior over the TDS wire protocol on a PostgreSQL server.  Babelfish supports connection over the following networking types with supporting protocols: 
+
+- [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol)
+- VIA (Virtual Interface Architecture)
+- [Named pipes](https://en.wikipedia.org/wiki/Named_pipe)
+- Transport Layer Security [(TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) with Secure Socket Layer [(SSL)](https://datatracker.ietf.org/doc/html/rfc6101)
+- Session Multiplex Protocol [(SMUX)](https://www.w3.org/TR/WD-mux), implemented with Multiple Active Result Sets (MARS)
+
 
 ### Basic message flow
 
-Let's first dive into the most basic flow of messages.
-The following [image](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-tds/ms-tds_files/image001.png) shows the
-basic communication exchange on a high level.
-
-As a database protocol, TDS relies on network transmission order and expects a
-reliable connection which basically means ...
-
-- TCP
-- VIA (Virtual Interface Architecture)
-- Named pipes
-
-Optionally, TDS can also implement:
-
-- Transport Layer Security (TLS)/Secure Socket Layer (SSL)
-- Session Multiplex Protocol (SMUX), in case the Multiple Active Result Sets
-  (MARS) feature is required
-
-UDP and other less reliable methods are not supported.
-Before discussing these messages in a bit more detail, we can take a look at a
-more detailed [message
-flow](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-tds/ms-tds_files/image008.png)
-which has kindly been provided by Microsoft as part of their documentation. As
-you can see, the flow of a message is not really trivial. However, with a bit of 
-reading you can understand it. So let's get down to it and dive into the details.
+The message flow starts with the client reaching out to the server with a connection request; when the server responds, the client replies with an authentication request.  After successfully authenticating, further client requests and server responses are passed back and forth between the client and server. TDS relies on network transmission order between the client and server to maintain the handshake.  
 
 
 ### TDS Packet Header
 
-The first thing you should be aware of in this context is the structure of a TDS
-header. It contains the following elements:
+Each client request or server response is made up of one or more packets.  Each packet contains a TDS header with the following elements:
 
-- Type: What type of message are we sending?
+- Type: The type of message 
 - Status: State of the message
-- Length: Length of the message from the start of the packet. An unsigned short
-  header to the end of the token data is used (up to 65535).
+- Length: Length of the message from the start of the packet. This is an unsigned short header to the end of the token data (up to 65535).
 - SPID: Session ID of the current connection.
-- PacketID: For each packet sent, this is incremented. It is especially important
-  for messages spanning multiple packets. The value is sent as "modulo 255"
-  which means that 1 byte is needed.
+- PacketID: For each packet sent, PacketID is incremented. It is especially important for messages spanning multiple packets. The value is sent as "modulo 255", which means that 1 byte is needed.
 - Window: Currently unused. The value sent is 0x0.
 
 
-### TDS PRELOGIN communication
+### TDS PRELOGIN, the SSL handshake, and LOGIN7
 
-Before a connection has been established, the protocol requires pre-login
-communication to negotiate some of the most important connection attributes. We
-can see the initial package sent to be some "knock on the door, let me in" thing
-going on while the connection is established. This serves various purposes:
-First of all, vital info is exchanged, and secondly, the system can terminate the
-attempt if client and server do not understand each other in the first place. 
+Before a connection is established, the TDS protocol requires PRELOGIN communication to negotiate some important connection attributes. Vital info is exchanged, and the system can terminate the connection attempt if the client and server do not understand each other. 
 
-What does that mean in real life? Let's try it out using good old telnet:
+After successful PRELOGIN communication, the client can facilitate an SSL/TLS handshake. The client negotiates authentication and encryption based on the [SSL configuration](https://babelfishpg.org/docs/internals/tds-protocol/#ssltls-support-for-tds-connections) of your Babelfish server.
 
-```bash
-[user@host]$ telnet demo.babelfish.host.com 1433
-Trying 1.2.3.4 ...
-Connected to demo.babelfish.host.com
-Escape character is '^]'.
-321312321321
-Connection closed by foreign host.
-```
+Once past PRELOGIN, the client can use LOGIN7 to define the authentication rules that will be used between client and server.
 
-As you can see, we can communicate with the host but it terminates the
-connection due to a protocol violation.
-
-After a successful <code>PRELOGIN</code>, the client can attempt an additional 
-<code>PRELOGIN</code> to facilitate an SSL/TLS handshake to encypt the connection.
-
-Once we are over the <code>PRELOGIN</code> phase, we are ready for 
-<code>LOGIN7</code> which defines the authentication rules for use 
-between client and server.
 
 ### SSL/TLS support for TDS connections
 
@@ -106,10 +62,5 @@ The following table shows how Babelfish interprets SSL settings when a client co
 | ENCRYPT_CLIENT_CERT  | tds_ssl_encrypt=false | No, connection closed                       | Unsupported              |
 | ENCRYPT_CLIENT_CERT  | tds_ssl_encrypt=true  | No, connection closed                       | Unsupported              |
 
-### Defining authentication rules
 
-<code>LOGIN7</code> is the TDS ways of defining authentication rules. 
-The client and server both have to know how to handle authentication rules, which are vital to security.
-Fortunately Microsoft has provided some detailed in-depth description of the
-[LOGIN7](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-tds/773a62b6-ee89-4c02-9e5e-344882630aac)
-message which can be found on their website.
+
