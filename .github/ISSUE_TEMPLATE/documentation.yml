@@ -29,7 +29,7 @@ body:
       label: Version
       description: Select the Babelfish documentation version to which the change applies.
       options:
-        - BABEL_1_X_DEV (Default)
+        - BABEL_1_0_0 (Default)
       required: true
   - type: textarea
     id: docs
