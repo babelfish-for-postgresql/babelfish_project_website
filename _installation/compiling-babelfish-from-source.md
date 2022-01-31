@@ -136,7 +136,7 @@ make install    # Installs the PostgreSQL default extensions
 In order to build the extensions we would need to install some additional tools: 
 
 ##### Additional requied tools
-- [Antlr 4.9.2 Runtime](https://www.antlr.org/)
+- [Antlr 4.9.3 Runtime](https://www.antlr.org/)
 - [Open Java 8](https://openjdk.java.net/)
 - Unzip
 - [pkgconf](http://pkgconf.org/)
@@ -151,7 +151,7 @@ sudo apt install -y openjdk-8-jre unzip libutfcpp-dev cmake curl
 
 ##### Installing Antlr4 runtime
 
-> For Antlr4 4.9.2 Runtime, there are no available binaries for C++ in Ubuntu Focal, so it's necessary to compile it from source. Versions below 4.9 have not been fully tested yet. 
+> For Antlr4 4.9.3 Runtime, there are no available binaries for C++ in Ubuntu Focal, so it's necessary to compile it from source. Versions below 4.9 have not been fully tested yet. 
 
 To install the Antlr4 runtime, we need to have the Antlr4 .jar. Babelfish extensions source code includes 
 this .jar in the path `/contrib/babelfishpg_tsql/antlr/thirdparty/antlr`.
@@ -159,12 +159,12 @@ this .jar in the path `/contrib/babelfishpg_tsql/antlr/thirdparty/antlr`.
 Keeping this in mind, we can install Antlr4 runtime by running:
 
 ``` sh
-# Dowloads the compressed Antlr4 Runtime sources on /opt/antlr4-cpp-runtime-4.9.2-source.zip 
-sudo curl https://www.antlr.org/download/antlr4-cpp-runtime-4.9.2-source.zip \
-  --output /opt/antlr4-cpp-runtime-4.9.2-source.zip 
+# Dowloads the compressed Antlr4 Runtime sources on /opt/antlr4-cpp-runtime-4.9.3-source.zip 
+sudo curl https://www.antlr.org/download/antlr4-cpp-runtime-4.9.3-source.zip \
+  --output /opt/antlr4-cpp-runtime-4.9.3-source.zip 
 
 # Uncompress the source into /opt/antlr4
-sudo unzip -d /opt/antlr4 /opt/antlr4-cpp-runtime-4.9.2-source.zip
+sudo unzip -d /opt/antlr4 /opt/antlr4-cpp-runtime-4.9.3-source.zip
 
 sudo mkdir /opt/antlr4/build 
 cd /opt/antlr4/build
@@ -172,7 +172,7 @@ cd /opt/antlr4/build
 EXTENSIONS_SOURCE_CODE_PATH="<the patch in which you downloaded the Babelfish extensions source code>"
 
 # Generates the make files for the build
-sudo cmake .. -DANTLR_JAR_LOCATION="$EXTENSIONS_SOURCE_CODE_PATH/contrib/babelfishpg_tsql/antlr/thirdparty/antlr/antlr-4.9.2-complete.jar" \
+sudo cmake .. -DANTLR_JAR_LOCATION="$EXTENSIONS_SOURCE_CODE_PATH/contrib/babelfishpg_tsql/antlr/thirdparty/antlr/antlr-4.9.3-complete.jar" \
          -DCMAKE_INSTALL_PREFIX=/usr/local -DWITH_DEMO=True
 # Compiles and install
 sudo make
@@ -180,11 +180,11 @@ sudo make install
 ```
 
 Now that we have the antlr4 runtime installed, we need to copy the
-`libantlr4-runtime.so.4.9.2` library into the installed Babelfish for PostgreSQL
+`libantlr4-runtime.so.4.9.3` library into the installed Babelfish for PostgreSQL
 engine libs folder. We can do that by running the following command:
 
 ``` sh
-sudo cp /usr/local/lib/libantlr4-runtime.so.4.9.2 "$INSTALLATION_PATH/lib"
+sudo cp /usr/local/lib/libantlr4-runtime.so.4.9.3 "$INSTALLATION_PATH/lib"
 ```
 
 
