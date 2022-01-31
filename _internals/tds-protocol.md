@@ -12,7 +12,6 @@ Babelfish implements SQL Server behavior over the TDS wire protocol on a Postgre
 - VIA (Virtual Interface Architecture)
 - [Named pipes](https://en.wikipedia.org/wiki/Named_pipe)
 - Transport Layer Security [(TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) with Secure Socket Layer [(SSL)](https://datatracker.ietf.org/doc/html/rfc6101)
-- Session Multiplex Protocol [(SMUX)](https://www.w3.org/TR/WD-mux), implemented with Multiple Active Result Sets (MARS)
 
 
 ### Basic message flow
