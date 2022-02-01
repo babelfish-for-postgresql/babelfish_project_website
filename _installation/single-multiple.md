@@ -10,7 +10,7 @@ Babelfish offers two modes of operation:
 - `single-db`
 - `multi-db`
 
-When you create a Babelfish cluster, you choose between using a single T-SQL database or multiple T-SQL databases together. Your choice will affects how the names of T-SQL schemas inside the Babelfish database appear in PostgreSQL. For more information about selecting between `single-db` and `multi-db` mode, review [Choosing a migration mode](https://babelfishpg.org/docs/installation/single-multiple/#choosing-a-migration-mode).
+When you create a Babelfish cluster, you choose between using a single migrated T-SQL user database or multiple migrated T-SQL user databases together. Your choice will affects how the names of T-SQL schemas inside the Babelfish database appear in PostgreSQL. For more information about selecting between `single-db` and `multi-db` mode, review [Choosing a migration mode](https://babelfishpg.org/docs/installation/single-multiple/#choosing-a-migration-mode).
 
 If you specify `single-db`, you can create only a single T-SQL database in Babelfish, and T-SQL schemas will be created as regular PostgreSQL schemas in your Babelfish database.  If you specify `multi-db`, you can create
 multiple T-SQL databases (each with its own schemas), and a T-SQL schema will be created as a PostgreSQL schema (`<database name>_<schema_name>`) to avoid name conflicts.
@@ -51,7 +51,7 @@ Each migration mode has advantages and disadvantages. Choose your migration
 mode based on the number of user databases you have, and your migration plans.
 After you initialize Babelfish, you can't change the
 migration mode. When choosing a migration mode, consider the requirements of
-your user databases and clients.
+your user databases and client applications.
 
 When you initialize Babelfish, Babelfish creates the system databases
 `master`. and `tempdb`.  If you created or modified objects in the
@@ -65,7 +65,7 @@ Use single database migration mode in the following cases:
   migrated schema names (when seen from PostgreSQL) are identical to the
   original SQL Server schema names.
   If you plan to ultimately migrate your application to native
-  PostgreSQL, your SQL code will require fewer modifications.
+  PostgreSQL, your SQL code may require fewer modifications.
 
 - If your end goal is a complete migration to native PostgreSQL.  Before
   migrating, consolidate your schemas into a single schema (`dbo`) and then migrate
