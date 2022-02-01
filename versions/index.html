@@ -5,7 +5,7 @@ layout: fullwidth
   {% assign versions = site.versions | sort: 'date' | reverse %}
   {% for version in versions %}
     <li><a href="{{ version.url }}">
-      {% if version.product == 'odfe' %} Open Distro for Elasticsearch {% else %} OpenSearch {%endif%} {{ version.version }}</a>
+      {% if version.product == 'odfe' %} Open Distro for Elasticsearch {% else %} Babelfish {%endif%} {{ version.version }}</a>
     </li>
   {% endfor %}
 </ul>

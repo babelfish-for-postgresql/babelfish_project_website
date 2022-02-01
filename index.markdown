@@ -46,6 +46,11 @@ secondary:
   content: "Check out the [forums](https://discuss.babelfishpgcommunity.dev) to stay informed."
 
 sidebar:
+  - title: Releases
+    description: List of Babelfish releases.
+    links:
+      - title: Release 1.0.0
+        url: "/versions/babelfish-1-0-0.html"
   - title: Have a question?
     description: Do you have a question regarding Babelfish? Maybe you aren’t the first to ask it. Checkout our frequently asked questions (FAQ) to see if your question is already answered. If not, don’t hesitate to ask in the community forums.
     links:

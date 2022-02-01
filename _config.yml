@@ -92,7 +92,9 @@ collections:
   artifacts:
     output: true
   versions:
+    permalink: /docs/:collection/:path/
     output: true
+
 
 paginate: 5
 paginate_path: "/blog/page:num/"
@@ -116,9 +118,10 @@ just_the_docs:
     faq:
       name: FAQ and getting help
       nav_fold: true
-    releases:
+    versions:
       name: Releases
       nav_fold: true
+
 
 # Enable or disable the site search
 # Supports true (default) or false
