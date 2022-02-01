@@ -116,6 +116,9 @@ just_the_docs:
     faq:
       name: FAQ and getting help
       nav_fold: true
+    releases:
+      name: Releases
+      nav_fold: true
 
 # Enable or disable the site search
 # Supports true (default) or false
