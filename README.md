@@ -30,7 +30,7 @@ This repo contains the source for the [babelfishpg.org](https://babelfishpg.org/
 
 You can build the Babelfish website on your local system with either Docker or Jekyll: 
 
-- After [installing Docker](https://jekyllrb.com/docs/installation/), you can build the site in a container with the command, `docker-compose up -d`. 
+- After [installing Docker](https://docs.docker.com/engine/install/), you can build the site in a container with the command, `docker-compose up -d`. 
 
 - After [installing Bundler](https://bundler.io/) and [Jekyll](https://jekyllrb.com/docs/installation/), invoke the following command to prepare the project files for the build:
 
