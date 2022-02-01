@@ -10,7 +10,6 @@ Babelfish implements SQL Server behavior over the TDS wire protocol on a Postgre
 
 - [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol)
 - VIA (Virtual Interface Architecture)
-- [Named pipes](https://en.wikipedia.org/wiki/Named_pipe)
 - Transport Layer Security [(TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) with Secure Socket Layer [(SSL)](https://datatracker.ietf.org/doc/html/rfc6101)
 
 
@@ -19,7 +18,7 @@ Babelfish implements SQL Server behavior over the TDS wire protocol on a Postgre
 The message flow starts with the client reaching out to the server with a connection request; when the server responds, the client replies with an authentication request.  After successfully authenticating, further client requests and server responses are passed back and forth between the client and server. TDS relies on network transmission order between the client and server to maintain the handshake.  
 
 
-### TDS Packet Header
+### TDS client communications
 
 Each client request or server response is made up of one or more packets.  Each packet contains a TDS header with the following elements:
 
@@ -29,9 +28,6 @@ Each client request or server response is made up of one or more packets.  Each 
 - SPID: Session ID of the current connection.
 - PacketID: For each packet sent, PacketID is incremented. It is especially important for messages spanning multiple packets. The value is sent as "modulo 255", which means that 1 byte is needed.
 - Window: Currently unused. The value sent is 0x0.
-
-
-### TDS PRELOGIN, the SSL handshake, and LOGIN7
 
 Before a connection is established, the TDS protocol requires PRELOGIN communication to negotiate some important connection attributes. Vital info is exchanged, and the system can terminate the connection attempt if the client and server do not understand each other. 
 
