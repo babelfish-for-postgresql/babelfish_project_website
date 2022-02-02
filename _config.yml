@@ -84,6 +84,9 @@ collections:
   faq:
     permalink: /docs/:collection/:path/
     output: true
+  versions:
+    permalink: /versions/:path/
+    output: true
   docs:
     permalink: /:collection/:path/
     output: true
@@ -91,9 +94,7 @@ collections:
     output: true
   artifacts:
     output: true
-  versions:
-    permalink: /docs/:collection/:path/
-    output: true
+
 
 
 paginate: 5
