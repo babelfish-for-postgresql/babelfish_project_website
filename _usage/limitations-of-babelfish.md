@@ -6,14 +6,13 @@ nav_order: 5
 
 ## Differences between Babelfish and SQL Server
 
-In this chapter, you will learn about functional differences between PostgreSQL with Babelfish
+In this chapter, you will learn about functionality differences between PostgreSQL with Babelfish
 and SQL Server.
 
 ### Missing features
 
 The following table contains a list of SQL Server features that are currently
-not implemented in Babelfish.  Note that the list of limitations may change
-in the future.
+not implemented in Babelfish.  Note that the list of limitations may change.
 
 | Functionality or Syntax | Notes |
 | ----------------------- | ----- |

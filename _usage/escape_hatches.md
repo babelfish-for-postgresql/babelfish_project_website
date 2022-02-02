@@ -21,7 +21,7 @@ to the current session only.  Include the `server` keyword to apply the changes
 persistently on the cluster level as well.
 - If an escape hatch is set to `strict`, you may encounter error messages if your SQL code
 contains unsupported syntax.  To suppress these error messages, set all
-escape hatches to `ignore` by invoking the following command:
+escape hatches to `ignore` by invoking the following command on the TDS port:
 
 ```none
 sp_babelfish_configure '%', 'ignore', 'server'
