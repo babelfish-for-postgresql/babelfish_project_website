@@ -10,10 +10,9 @@ Babelfish offers two modes of operation:
 - `single-db`
 - `multi-db`
 
-When you create a Babelfish cluster, you choose between using a single migrated T-SQL user database or multiple migrated T-SQL user databases together. Your choice will affects how the names of T-SQL schemas inside the Babelfish database appear in PostgreSQL. For more information about selecting between `single-db` and `multi-db` mode, review [Choosing a migration mode](https://babelfishpg.org/docs/installation/single-multiple/#choosing-a-migration-mode).
+When you create a Babelfish cluster, you choose between using a single migrated T-SQL user database or multiple migrated T-SQL user databases together. Your choice will affect how the names of T-SQL schemas inside the Babelfish database appear in PostgreSQL. For more information about selecting between `single-db` and `multi-db` mode, review [Choosing a migration mode](https://babelfishpg.org/docs/installation/single-multiple/#choosing-a-migration-mode).
 
-If you specify `single-db`, you can create only a single T-SQL database in Babelfish, and T-SQL schemas will be created as regular PostgreSQL schemas in your Babelfish database.  If you specify `multi-db`, you can create
-multiple T-SQL databases (each with its own schemas), and a T-SQL schema will be created as a PostgreSQL schema (`<database name>_<schema_name>`) to avoid name conflicts.
+If you specify `single-db`, you can create only a single T-SQL database in Babelfish, and T-SQL schemas will be created as regular PostgreSQL schemas in your Babelfish database.  If you specify `multi-db`, you can create multiple T-SQL databases (each with its own schemas), and a T-SQL schema will be created as a PostgreSQL schema (`<database name>_<schema_name>`) to avoid name conflicts.
 
 The migration mode is stored in the `migration_mode` parameter. You can't change the value of this parameter after initializing Babelfish.  To change the migration mode, you'll need to create a new cluster. If you don't select a  `migration_mode`, Babelfish is initialized with the default value of `single-db`.
 
