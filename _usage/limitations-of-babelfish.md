@@ -45,7 +45,7 @@ in the future.
 | Column name: `$ROWGUID` | This column name is not supported. |
 | `COLUMNPROPERTY()` | This function is not supported. |
 | Column without alias in result sets  | SQL Server and Babelfish handle result set columns without aliases in different ways. SQL Server returns a blank column name, while Babelfish returns a generated column name. |
-| Column name case | Column names will be stored as lowercase in the PostgreSQL `pg_attribute` catalog, but are stored in whatever case was specified in the `CREATE TABLE` statement in an internal Babelfish catalog. The `SELECT *` operation currently returns column names in lower case rather than in the case specified on the CREATE TABLE statement. This will be fixed in a future version of Babelfish, but until then a workaround is to either specify the columns explicitly in the `SELECT` statement, or to use `SELECT *` from a view.|
+| Column name case | Column names will be stored as lowercase in the PostgreSQL `pg_attribute` catalog, but are stored in whatever case was specified in the `CREATE TABLE` statement in an internal Babelfish catalog. |
 | Virtual computed columns (non-persistent) | The columns will be created as persistent. |
 | Column attributes | `ROWGUIDCOL`, `SPARSE`, `FILESTREAM`, `MASKED` aren't supported. |
 | `CREATE/ALTER/DROP COLUMN ENCRYPTION KEY` | Functionality related to these commands is not supported. |
