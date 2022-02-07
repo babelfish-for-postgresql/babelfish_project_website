@@ -2,18 +2,13 @@
 
 ![Babelfish for PostgreSQL logo](assets/images/themed-logo.svg)
 
-- [babelfishpg.org Website](#babelfishpgorg-website)
-  - [Building the Website](#building-the-website)
-    -[Testing](#testing)
+- [babelfishpg.org Website](https://babelfishpg.org/)
+  - [Building the Website](#building-the-website-on-your-local-system)
     - [Link checker](#link-checker)
   - [Writing style guidelines](#writing-style-guidelines)
   - [Submitting a Pull Request](#submitting-a-pull-request)
-  - [Getting Help](#getting-help)
   - [Credits](#credits)   
-    - [Adding to the Partners Page](#adding-to-the-partners-page)
-  - [Copyright](#copyright)
-
-
+ 
 
 # Babelfishpg.org website
 
