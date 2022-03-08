@@ -12,23 +12,23 @@
 ---
 date: 2022-01-01
 
-title: Babelfish 0.1.0
+title: Babelfish 1.0.0
 product: Babelfish for PostgreSQL
-version: '0.1.0'
+version: '1.0.0'
 
 components:
   -
     role: engine
     artifact: babelfish
-    version: 0.1.0
+    version: 1.0.0
 sections:
   source:
-    explanation: "/releases/babelfish-0.1.0.md"
+    explanation: "/releases/babelfish-1.0.0.md"
 pretty:
   artifacts:
     babelfish: ''
   sections:
-    source: 'Babelfish 0.1.0'
+    source: 'Babelfish 1.0.0'
 ---
 Babelfish for PostgreSQL is open source software that uses the Apache License version 2 (ALv2) and PostgreSQL License. Project source is freely available on [GitHub](https://github.com/babelfish-for-postgresql). 
 ```
