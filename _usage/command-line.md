@@ -34,7 +34,8 @@ Where:
 - `-S` is the server name and TDS port of the DB instance.
 - `-U` is the login name of the user.
 - `-P` is the password associated with the user.
-- `-d` is the database to which you are connecting.
+- `-d` is the database to which you are connecting. This value is optional; if omitted, the client will 
+connect to the `master` database.
 
 After connecting, you can use familiar T-SQL syntax to create and manage database objects.
 
