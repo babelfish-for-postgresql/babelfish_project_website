@@ -6,7 +6,7 @@ nav_order: 2
 
 Babelfish Version: 1.1.0
 PostgreSQL Server Version: 13.5
-Minimum Compass Version: [1.0.0]](https://github.com/babelfish-for-postgresql/babelfish_compass/)
+Babelfish Compass [Downloads](https://github.com/babelfish-for-postgresql/babelfish_compass/releases)
 Date: March 15, 2022
 
 ## Overview
@@ -95,7 +95,6 @@ babelfish_db[124386]# \dx
 - Fix column datatypes of system catalog views (Rishabh Tanwar, Sharu Goel, Shalini Lohia)
     - `sys.default_constraints`
     - `sys.index_columns`
-    - `sys.configurations`
     - `sys.check_constraints`
     - `sys.computed_columns`
 - Fix the `sp_tablecollations_100` procedure trying to search for string `@object` (Kushaal Shroff)
@@ -107,7 +106,7 @@ babelfish_db[124386]# \dx
 
 ## Acknowledgements
 
-To see a list of the individuals that have contributed to the Babelfish project, [visit the project website] (https://babelfishpg.org/contributors/).
+To see a list of the individuals that have contributed to the Babelfish project, [visit the project website](https://babelfishpg.org/contributors/).
 
 Babelfish for PostgreSQL is open-source software that uses the Apache License version 2 (ALv2) and the PostgreSQL License. The source for the project is available on [GitHub](https://github.com/babelfish-for-postgresql). 
 
