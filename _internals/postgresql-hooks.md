@@ -6,18 +6,9 @@ nav_order: 5
 
 ## PostgreSQL hooks
 
-In this document, we have already mentioned protocol hooks more than once, since they
-form the backbone of the entire Babelfish product. 
+Babelfish uses protocol hooks to implement the TDS protocol in the PostgreSQL server.  A hook is a function pointer that is by default set to NULL.  A hook interrupts the server behavior and invokes the function that is defined by the hook when the hook's pointer is changed to a non-NULL value.    Hooks allow Babelfish to modify the server's behavior without making changes to the community PostgreSQL core.
 
-The problem is that in many cases, Babelfish must behave differently than
-standard PostgreSQL. To handle this inconsistency, hooks are the only way to change the
-behavior of PostgreSQL. However, it is not only about changes in behavior. In some
-areas, Microsoft SQL Server has more features than standard PostgreSQL. Hooks do a good job to
-fix many of those cases as well. That's why it's important to gain a decent
-general understanding of hooks, and to learn which ones have been added to the
-core of PostgreSQL so that things such as T-SQL can work in a satisfactory way.
-
-In this section, you will learn about the various hooks and what they are able to do:
+In this section, you will learn about Babelfish hooks, and what they do.
 
 ### Relation name lookup
 
@@ -25,9 +16,7 @@ In this section, you will learn about the various hooks and what they are able t
 typedef Oid (*relname_lookup_hook_type) (const char *relname, Oid relnamespace);
 ```
 
-This hook allows developers to replace the relation name lookup code with your
-own implementation. Microsoft SQL Server handles relation names in a slighly different way and
-we need this hook to overwrite this behavior.
+This hook is invoked when the server needs to replace the native PostgreSQL relation name lookup code. Babelfish uses this hook to override PostgreSQL behavior, implementing SQL Server-styled relation names.
 
 
 ### COLLATION lookup code
@@ -36,9 +25,7 @@ we need this hook to overwrite this behavior.
 typedef Oid (*CLUSTER_COLLATION_OID_hook_type)(void);
 ```
 
-We provide a function hook variable that lets loadable plugins get control when 
-<code>CLUSTER_COLLATION_OID</code> is called. Collations are a bit different in
-Microsoft SQL Server and thus more control over how they are handled is needed.
+This hook is invoked when the server needs to let loadable plugins take control when <code>CLUSTER_COLLATION_OID</code> is called. Babelfish uses the hook to control how the PostgreSQL server manages SQL Server collations.
 
 
 ### Preprocessing collation parameters
@@ -52,9 +39,7 @@ typedef void (*PreCreateCollation_hook_type) (char collprovider,
                                               const char *collversion);
 ```
 
-A hook may be registered to preprocess the parameters that will be used to 
-create the collation. Again, this is necessary to adjust to locale-related
-differences between PostgreSQL and Microsoft SQL Server.
+This hook is invoked when the server needs to preprocess the parameters that will be used to create a collation. Babelfish uses this hook to implement locale-related differences between PostgreSQL and SQL Server.
 
 
 ### Manage collation names
@@ -65,8 +50,7 @@ typedef const char * (*TranslateCollation_hook_type) (const char *collname,
 						      int32 encoding);
 ```
 
-If a collation does not exist you can use hook to do a second, customized
-lookup. We need this to handle Microsoft SQL Server-specific collations.
+This hook is invoked when the server needs to do a second, customized collation lookup when handling SQL Server-specific collations.
 
 
 ### Managing AS clauses
@@ -78,7 +62,7 @@ typedef bool (*check_lang_as_clause_hook_type)(const char *lang,
 					       char **probin_str_p);
 ```
 
-Allow extension languages to process the <code>AS</code>-clause themselves.
+This hook is invoked when the server needs to allow an extension language to process the <code>AS</code>-clause.
 
 
 ### Modify CREATE FUNCTION statements
@@ -89,9 +73,7 @@ typedef void (*write_stored_proc_probin_hook_type)(CreateFunctionStmt *stmt,
 						   char** probin_str_p);
 ```
 
-This hook allows us to influence the way procedural code is stored. In case of
-T-SQL some JSON magic is happening behind the scenes, which is hard to do without
-this hook.
+This hook is invoked when the server needs to influence the way procedural code is stored. T-SQL uses JSON behind the scenes when storing a procedure; this hook allows Babelfish to implement this behavior.
 
 
 ### Modify sequence values 
@@ -105,8 +87,7 @@ typedef void (*pltsql_sequence_datatype_hook_type) (ParseState *pstate,
 		DefElem **max_value, DefElem **min_value);
 ```
 
-Microsoft SQL Server has slightly different sequence handling. This hooks allows you to adjust
-sequence handling-related behavior in T-SQL.
+This hook is invoked when the server needs to make sequence handling behavior by the PostgreSQL server comparable to the SQL Server behavior.
 
 
 ### Handling cache resets 
@@ -115,8 +96,7 @@ sequence handling-related behavior in T-SQL.
 typedef void (*pltsql_resetcache_hook_type) ();
 ```
 
-This hooks allows you to reset the cache behavior. Especially <code>IDENTITY</code> 
-values are important to Babelfish in this context. 
+This hook is invoked when the server needs to reset the cache behavior. <code>IDENTITY</code> values are important to Babelfish in this context. 
 
 
 ### Managing attribute (column) options
@@ -125,9 +105,7 @@ values are important to Babelfish in this context.
 typedef bool (*check_extended_attoptions_hook_type) (Node *options);
 ```
 
-The problem is that different types of extensions and protocols will
-need different column options. This hook will allow developers to define a
-validation method for those options. 
+Different types of extensions and protocols require different column options. This hook is invoked when the server needs to  define a validation method for those options. 
 
 
 ### Procedure entry 
@@ -136,7 +114,7 @@ validation method for those options.
 typedef void (*non_tsql_proc_entry_hook_type) (int, int);
 ```
 
-Manage operations when a procedure is entered.
+This hook is invoked when the server needs to manage operations when a procedure is entered.
 
 
 ### Transforming planner qual nodes
@@ -146,9 +124,7 @@ typedef Node* (*planner_node_transformer_hook_type) (PlannerInfo *root,
 		Node *expr, int kind);
 ```
 
-This is a hook for plugins to transform qual nodes inside the planner. A qual is
-basically a "filter" (e.g. <code>foo = 10</code>) which is handled during query
-execution.
+This hook is invoked when the server needs to transform qual nodes inside the query planner. A qual is basically a "filter" (for example, <code>foo = 10</code>) used during query execution.
 
 
 ### Pre-parse and post-parse analyze hook
@@ -158,9 +134,7 @@ typedef void (*pre_parse_analyze_hook_type) (ParseState *pstate,
 					     RawStmt *parseTree);
 ```
 
-Two hooks are available here. The pre-parse hooks allow us to tap into the
-parser before the magic happens. The same can be done after parsing
-(<code>post_parse_analyze_hook</code>) to modify behavior.
+You can invoke this hook before or after parsing. Use (<code>pre_parse_analyze_hook</code>) before parsing to modify server behavior or (<code>post_parse_analyze_hook</code>) to modify server behavior after parsing.
 
 
 ### Hook into RETURNING qualifiers
@@ -171,7 +145,7 @@ typedef void (*pre_transform_returning_hook_type) (CmdType command,
 				ParseState *pstate);
 ```
 
-Hook to handle qualifiers in returning list for output clause.
+This hook is invoked when the server needs to handle qualifiers in the returning list of an output clause.
 
 
 ### UPDATE transformations
@@ -182,7 +156,7 @@ typedef Node* (*pre_output_clause_transformation_hook_type) (ParseState *pstate,
 				command);
 ```
 
-Hook to perform self-join transformation on <code>UpdateStmt</code> in output clause.
+This hook is invoked when the server needs to perform a self-join transformation on <code>UpdateStmt</code> in an output clause.
 
 
 ### Reading global variables on output
@@ -191,7 +165,7 @@ Hook to perform self-join transformation on <code>UpdateStmt</code> in output cl
 typedef bool (*get_output_clause_status_hook_type) (void);
 ```
 
-Hook to read a global variable with info on output clause.
+This hook is invoked when the server needs to read a global variable (with information) in an output clause.
 
 
 ### Hook into INSERT statements after transformation
@@ -201,7 +175,7 @@ typedef void (*post_transform_insert_row_hook_type) (List *icolumns,
 				List *exprList);
 ```
 
-Hook for plugins to get control after an insert row transform.
+This hook is invoked when the server needs to allow a plugin to take control after an insert row statement.
 
 
 ### Target list entry (TLE) comparison
@@ -211,9 +185,7 @@ typedef bool (*tle_name_comparison_hook_type)(const char *tlename,
 				const char *identifier);
 ```
 
-Handle the way target lists entries are processed. Target lists are basically a
-list of columns and expressions making up a table. An example of a target list
-is what one would put into a <code>SELECT</code> clause.
+This hook is invoked when the server needs to handle the way target list entries are processed. Target lists are a list of columns and expressions that make up a table. An example of a target list is the selection criteria you might provide with a <code>SELECT</code> statement.
 
 
 ### Manage path coercion
@@ -225,8 +197,7 @@ typedef CoercionPathType (*find_coercion_pathway_hook_type) (Oid sourceTypeId,
 					Oid *funcid);
 ```
 
-Hook interface to check TSQL has an implicit coercion path from 
-<code>sourceTypeId</code> to <code>targetTypeId</code>.
+This hook is invoked when the server needs to confirm that TSQL has an implicit coercion path from <code>sourceTypeId</code> to <code>targetTypeId</code>.
 
 
 ### Handle data type precedence
@@ -237,8 +208,7 @@ typedef bool (*determine_datatype_precedence_hook_type) (
 						Oid typeId2);
 ```
 
-A hook to control data type-precedence handling. In Babelfish the precedence is
-as follows:
+This hook is invoked when the server needs to control data type-precedence handling. In Babelfish the precedence is as follows:
 
 - <code>sys.sql_variant</code>
 - <code>sys.datetimeoffset</code>
@@ -282,7 +252,7 @@ as follows:
 typedef Node * (*lookup_param_hook_type)(ParseState *pstate, ColumnRef *cref);
 ```
 
-A hook to control the lookup process of parameter definitions.
+This hook is invoked when the server needs to control the lookup process of parameter definitions.
 
 
 ### Controlling function lookups
@@ -295,8 +265,7 @@ typedef FuncCandidateList (*func_select_candidate_hook_type) (
 					bool unknowns_resolved);
 ```
 
-A hook to manage different function lookup behavior (to deal with overloading,
-data types, etc.).
+This hook is invoked when the server needs to manage different function lookup behavior (for example, to deal with overloading or data types).
 
 
 ### Managing function arguments
@@ -310,8 +279,7 @@ typedef void (*make_fn_arguments_from_stored_proc_probin_hook_type)(
 					Oid funcid);
 ```
 
-Hook interface to process function arguments using <code>probin</code> (which is
-an internal field in pg_proc).
+This hook is invoked when the server needs to interface function arguments using <code>probin</code> (an internal field in pg_proc).
 
 
 ### Transforming the target list
@@ -323,8 +291,7 @@ typedef void (*pre_transform_target_entry_hook_type)(
 					ParseExprKind exprKind);
 ```
 
-A hook to transform the target list (= column list in a table. e.g. in a SELECT
-clause).
+This hook is invoked when the server needs to process a target list (for example, a column list in a table or SELECT statement).
 
 
 ### Resolve unknown entries in the target list
@@ -334,8 +301,7 @@ typedef void (*resolve_target_list_unknowns_hook_type)(ParseState *pstate,
 					List *targetlist);
 ```
 
-Handle unknown entries in the target list. Microsoft SQL Server and PostgreSQL are different in
-case columns have no assigned names.
+This hook is invoked when the server needs to handle unknown entries in the target list. SQL Server and PostgreSQL behaviors differ when columns have no assigned names.
 
 
 ### Managing default typmods
@@ -346,8 +312,7 @@ typedef void (*check_or_set_default_typmod_hook_type)(TypeName * typeName,
 					bool is_cast);
 ```
 
-Typmod are basically "parameters" for data types (e.g. varchar(20)). This hook
-allows you to control the default behavior.
+This hook is invoked when the server needs to control the default behavior of typmod.  Typmods are basically modifiers for data types (such as the length specified in varchar(20)).
 
 
 ### Control the data type of identity columns
@@ -356,7 +321,7 @@ allows you to control the default behavior.
 typedef void (*pltsql_identity_datatype_hook_type) (ParseState *pstate,
 ```
 
-Helps to manage the data type of identity columns. This is relevant to T-SQL.
+This hook is invoked when the server needs to manage the data type of identity columns.
 
 
 ### Control column definitions
@@ -369,7 +334,7 @@ typedef void (*post_transform_column_definition_hook_type) (
 					List **alist);
 ```
 
-Process column definitions after initial transformation.
+This hook is invoked when the server needs to process column definitions after the initial transformation.
 
 
 ### Hooks to extend the backend parser
@@ -378,7 +343,7 @@ Process column definitions after initial transformation.
 typedef List * (*raw_parser_hook_type) (const char *str);
 ```
 
-Hook into the raw parser and control its behavior.
+This hook is invoked when the server needs to control the behavior of the raw parser.
 
 
 ### Re-processing typmod expressions
@@ -387,8 +352,7 @@ Hook into the raw parser and control its behavior.
 typedef List * (*rewrite_typmod_expr_hook_type) (List *expr_list);
 ```
 
-Babelfish and PostgreSQL need different typemod handling behavior. This hook
-will define the rewrite behavior of this feature.
+This hook is invoked when the server needs to define the rewrite behavior of Babelfish typemods.
 
 
 ### Validate typmods for numeric types
@@ -399,10 +363,7 @@ typedef void (*validate_numeric_typmods_hook_type) (List **typmods,
 			void* yyscanner);
 ```
 
-<code>numeric</code> is slightly different in Babelfish than in standard 
-PostgreSQL. This has been outlined in the section about
-[extensions](/docs/internals/software-architecture/) already. This hooks will ensure that
-validating typmods for numeric types can be influenced accordingly. 
+This hook is invoked when the server needs to validate typmods for numeric types.
 
 
 ### Handling recursive CTEs
@@ -411,9 +372,8 @@ validating typmods for numeric types can be influenced accordingly.
 typedef bool (*check_recursive_cte_hook_type) (WithClause *with_clause);
 ```
 
-This hook is needed to adjust the behavior of the PostgreSQL parser and SQL
-grammar directly. It allows for <code>WITH</code> clauses to be named 
-<code>TIME</code> or <code>ORDINALITY</code>.
+This hook is invoked when the server needs to adjust the behavior of the PostgreSQL parser and SQL
+grammar directly. It allows <code>WITH</code> clauses to be named <code>TIME</code> or <code>ORDINALITY</code>.
 
 
 ### Handling different lengths of identifiers
@@ -422,9 +382,7 @@ grammar directly. It allows for <code>WITH</code> clauses to be named
 typedef bool (*truncate_identifier_hook_type)(char *ident, int len, bool warn);
 ```
 
-In Microsoft SQL Server, identifiers can be longer than in PostgreSQL (the <code>name</code>
-datatype is limited to 255 bytes). Therefore, logic is needed to truncate the
-name of an identifier. 
+This hook is invoked when the server needs to truncate the name of an identifier.  In SQL Server, identifiers can be longer than in PostgreSQL (for example, the <code>name</code>datatype is limited to 255 bytes).
 
 
 ### Calling code before a function is executed
@@ -433,9 +391,7 @@ name of an identifier.
 typedef void (*pre_function_call_hook_type) (const char *funcName);
 ```
 
-Before a function is called, this hook can be used to change the function name. In
-the case of Babelfish, some characters in the function name will be replaced with
-underscores.
+This hook is invoked when the server needs to change a function name before a function is called. In the case of Babelfish, some characters in the function name will be replaced with underscores.
 
 
 ### Launching protocol support
@@ -444,8 +400,7 @@ underscores.
 typedef void (*listen_init_hook_type)(void);
 ```
 
-This hook is by far one of the most important ones. It can be found in the postmaster
-and is in charge of launching actual protocol support.
+This hook is invoked when the server needs to launch protocol support.
 
 
 ### Control string truncation errors
@@ -454,8 +409,7 @@ and is in charge of launching actual protocol support.
 typedef bool (*suppress_string_truncation_error_hook_type)();
 ```
 
-In many parts of the code, the server has to truncate strings (especially inside
-varchar and so on). This hook allows us to control how errors are handled.
+This hook is invoked when the server needs to control how errors are handled.  In many parts of the Babelfish code, the server has to truncate strings. 
 
 
 ### Convert C-strings to names
@@ -464,8 +418,7 @@ varchar and so on). This hook allows us to control how errors are handled.
 typedef Name (*cstr_to_name_hook_type)(char *s, int len);
 ```
 
-This hook is especially important to handle the <code>name</code> data type
-which is restricted in length and therefore needs truncation rules.
+This hook is invoked when the server needs to handle the <code>name</code> data type.  The name data type is restricted in length and therefore needs truncation rules.
 
 
 ### Handling runtime variables
@@ -476,8 +429,7 @@ typedef void (*guc_push_old_value_hook_type) (
 				GucAction action);
 ```
 
-Sometimes, inside T-SQL GUC (= PostgreSQL runtime variables) need to be
-changed temporarily, which is made possible with this hook. 
+This hook is invoked when the server needs to make a temporary change to a GUC (a PostgreSQL runtime variable). 
 
 
 ### Checking configuration variables
@@ -486,9 +438,7 @@ changed temporarily, which is made possible with this hook.
 typedef	void(*validate_set_config_function_hook_type) (char *name, char *value);
 ```
 
-If variables are changed in Babelfish, those variables might not support the same
-values as in standard PostgreSQL. Therefore a function is needed to handle
-Babelfish-specific variables.
+This hook is invoked when the server needs to handle Babelfish-specific variables.  Variable changes in Babelfish may not support the same values as in community PostgreSQL.
 
 
 ### Controlling plan invalidation
@@ -498,13 +448,8 @@ typedef void (*plansource_complete_hook_type) (CachedPlanSource *plansource);
 typedef bool (*plansource_revalidate_hook_type) (CachedPlanSource *plansource);
 ```
 
-Inside T-SQL (or even inside a normal connection) plans are often prepared and
-stored to speed up later execution. Often, these plans have to be
-invalidated and changed. One example would be that a column is dropped which
-naturally means that some plans have to be removed because objects in the
-database simply do not exist anymore. However, the same can be true for changed
-config variables and the like.
+This hook is invoked when the server needs to control plan storage and invalidation.
 
-Those hooks allow you to control this behavior - especially when plans are
-invalidated due to changed variables.
+Inside T-SQL (or even inside a normal connection) plans are often prepared and stored to speed up later execution. Occasionally, the plans have to be invalidated and changed. For example, if a column is dropped, any plans that reference that column have to be removed because database objects in the plan no longer exist. The same can be true when configuration variables are modified.
+
 

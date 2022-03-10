@@ -8,7 +8,7 @@ permalink: /docs/
 
 # Babelfish for PostgreSQL documentation
 
-This site contains the technical documentation for [Babelfish for PostgreSQL](https://babelfishpg.org/), an [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) and [PostgreSQL](https://www.postgresql.org/about/licence/) open source project that adds a Microsoft SQL Server-compatible end-point to PostgreSQL. It will enable your PostgreSQL database to understand the SQL Server wire protocol and commonly used SQL Server commands. With Babelfish, PostgreSQL now understands T-SQL, Microsoft SQL Server's proprietary SQL dialect, and supports the same communications protocol, so your apps that were originally written for SQL Server can now work with PostgreSQL with fewer code changes and without changing database drivers.
+This site contains the technical documentation for [Babelfish for PostgreSQL](https://babelfishpg.org/), an [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) and [PostgreSQL](https://www.postgresql.org/about/licence/) open source project that adds a Microsoft SQL Server-compatible end-point to PostgreSQL. With the addition of Babelfish, PostgreSQL understands T-SQL, SQL Server's proprietary SQL dialect, and supports the TDS communication protocol, so applications originally written for SQL Server may work with PostgreSQL with fewer code changes and without changing database drivers.
 
 
 [Get started](/getstarted/){: .btn .btn-blue }
@@ -18,12 +18,12 @@ This site contains the technical documentation for [Babelfish for PostgreSQL](ht
 
 ## Why use Babelfish for PostgreSQL?
 
-Babelfish for PostgreSQL is well-suited to the following use cases:
+Babelfish for PostgreSQL may help in the following use cases:
 
-* Smooth transition of your Microsoft SQL Server compatible source code to an Open Source based database.
-* Transitioning legacy applications where the source code is not available
+* When transitionioning your SQL Server compatible source code to an Open Source based database.
+* When moving away from proprietary or legacy applications that don't make source code available.
 
-Babelfish for PostgreSQL intends to move forward on its integration into the PostgreSQL community.
+Babelfish for PostgreSQL functionality is distributed in five components:
 
 Component | Purpose
 :--- | :---
@@ -34,8 +34,7 @@ Component | Purpose
 [Babelfish Common](https://github.com/babelfish-for-postgresql/babelfish_extensions/tree/BABEL_1_0_0/contrib/babelfishpg_common) | Supports the various datatypes in Microsoft SQL Server.
 
 
-
-For specifics around the project, see the [FAQ](/docs/faq/).
+For information about the project components, see the [Software architecture page](https://babelfishpg.org/docs/internals/software-architecture/).
 
 
 ## Get involved
