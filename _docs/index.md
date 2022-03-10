@@ -27,11 +27,12 @@ Babelfish for PostgreSQL functionality is distributed in five components:
 
 Component | Purpose
 :--- | :---
-[Babelfish PostgreSQL](https://github.com/babelfish-for-postgresql/postgresql_modified_for_babelfish) | A customized PostgreSQL server that provides hooks used to implement Babelfish.
-[Babelfish TDS Extension](https://github.com/babelfish-for-postgresql/babelfish_extensions/tree/BABEL_1_X_DEV/contrib/babelfishpg_tds) | An extension that implements a secondary endpoint that speaks the TDS (SQL Server) network protocol.
-[Babelfish Language Extension](https://github.com/babelfish-for-postgresql/babelfish_extensions/tree/BABEL_1_X_DEV/contrib/babelfishpg_tsql) | An extension that provides a procedural language compatible with TSQL Uses ANTLR parser.
-[Babelfish Money Type](https://github.com/babelfish-for-postgresql/babelfish_extensions/tree/BABEL_1_X_DEV/contrib/babelfishpg_money) | An extension that supports the money type in SQL Server. This is a variation of the opensource fixeddecimal extension.
-[Babelfish Common](https://github.com/babelfish-for-postgresql/babelfish_extensions/tree/BABEL_1_X_DEV/contrib/babelfishpg_common) | An extension that supports the various datatypes used in SQL Server.
+[Babelfish Patch](https://github.com/babelfish-for-postgresql/postgresql_modified_for_babelfish) | Enables Babelfish hooks for PostgreSQL.
+[Babelfish TDS Extension](https://github.com/babelfish-for-postgresql/babelfish_extensions/tree/BABEL_1_0_0/contrib/babelfishpg_tds) | TDS - provides a secondary endpoint that speaks the TDS (SQL Server) network protocol.
+[Balbelfish Language Extension](https://github.com/babelfish-for-postgresql/babelfish_extensions/tree/BABEL_1_0_0/contrib/babelfishpg_tsql) | Provides a procedural language compatible with TSQL Uses ANTLR parser.
+[Babelfish Money Type](https://github.com/babelfish-for-postgresql/babelfish_extensions/tree/BABEL_1_0_0/contrib/babelfishpg_money) | Supports the money type in Microsoft SQL Server. This is a variation of the opensource fixeddecimal extension.
+[Babelfish Common](https://github.com/babelfish-for-postgresql/babelfish_extensions/tree/BABEL_1_0_0/contrib/babelfishpg_common) | Supports the various datatypes in Microsoft SQL Server.
+
 
 For information about the project components, see the [Software architecture page](https://babelfishpg.org/docs/internals/software-architecture/).
 
@@ -40,4 +41,4 @@ For information about the project components, see the [Software architecture pag
 
 [Babelfish](https://babelfishpg.org/) is supported by Amazon Web Services. All components are available under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.html) and the [PostgreSQL License](https://www.postgresql.org/about/licence/) on [GitHub](https://github.com/babelfish-for-postgresql).
 
-The project welcomes GitHub issues, bug fixes, features, plugins, and documentation patches. To get involved, see [Contributing to Babelfish](https://github.com/babelfish-for-postgresql/babelfish_extensions/blob/BABEL_1_X_DEV/CONTRIBUTING.md) on the Babelfish for PostgreSQL website.
+The project welcomes GitHub issues, bug fixes, features, plugins, documentation---anything at all. To get involved, see [Contributing](https://github.com/babelfish-for-postgresql/babelfish_extensions/blob/BABEL_1_0_0/CONTRIBUTING.md) on the Babelfish for PostgreSQL website.
