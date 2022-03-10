@@ -7,7 +7,7 @@ layout_class: sidebar-right
 body_class: homepage
 sectionid: homepage
 
-meta_description: Babelfish for PostgreSQL is an Apache-2.0 open source project that adds a Microsoft SQL Server-compatible end-point to PostgreSQL to enable your PostgreSQL database to understand the SQL Server wire protocol and commonly used SQL Server commands. With Babelfish, PostgreSQL now understands T-SQL, Microsoft SQL Server's proprietary SQL dialect, and supports the same communications protocol, so your apps that were originally written for SQL Server can now work with PostgreSQL with fewer code changes and without changing database drivers.
+meta_description: Babelfish for PostgreSQL is an Apache-2.0 open source project that adds a Microsoft SQL Server-compatible end-point to PostgreSQL to enable your PostgreSQL database to understand the SQL Server wire protocol and commonly used SQL Server commands. With Babelfish, PostgreSQL now understands T-SQL, SQL Server's proprietary SQL dialect, and supports the same communications protocol, so your apps that were originally written for SQL Server can now work with PostgreSQL with fewer code changes and without changing database drivers.
 
 download_ctas:
   - os
@@ -46,8 +46,13 @@ secondary:
   content: "Check out the [forums](https://discuss.babelfishpgcommunity.dev) to stay informed."
 
 sidebar:
+  - title: Releases
+    description: List of Babelfish releases.
+    links:
+      - title: Release 1.0.0
+        url: "/versions/babelfish-1-0-0.html"
   - title: Have a question?
-    description: Do you have a question regarding Babelfish? Maybe you aren’t the first to ask it. Checkout our frequently asked questions (FAQ) to see if your question is already answered. If not, don’t hesitate to ask in the community forums.
+    description: Do you have a question about Babelfish? You may not be the first person to ask it. Visit our Frequently Asked Questions (FAQ) to see if your question has been answered. If not, don’t hesitate to ask and we'll be glad to answer.
     links:
       - title: Check out the FAQ
         url:  /docs/faq/

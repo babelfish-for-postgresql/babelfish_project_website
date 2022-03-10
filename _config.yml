@@ -84,6 +84,9 @@ collections:
   faq:
     permalink: /docs/:collection/:path/
     output: true
+  versions:
+    permalink: /versions/:path/
+    output: true
   docs:
     permalink: /:collection/:path/
     output: true
@@ -91,8 +94,8 @@ collections:
     output: true
   artifacts:
     output: true
-  versions:
-    output: true
+
+
 
 paginate: 5
 paginate_path: "/blog/page:num/"
@@ -116,6 +119,10 @@ just_the_docs:
     faq:
       name: FAQ and getting help
       nav_fold: true
+    versions:
+      name: Releases
+      nav_fold: true
+
 
 # Enable or disable the site search
 # Supports true (default) or false

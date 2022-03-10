@@ -1,5 +1,5 @@
 {
-  "name": "opensearchwebsite",
+  "name": "babelfishwebsite",
   "private": true,
   "dependencies": {
     "bower": "^1.4.1"
