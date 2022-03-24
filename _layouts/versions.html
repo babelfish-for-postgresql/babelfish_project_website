@@ -201,12 +201,7 @@ this is the built-in error checking for the version definition having missing ar
   </div>
 {% endfor %}
 <hr />
-
-
-{%endcapture%}
-
-{% capture content_related %}
-<div role="complementary">
+<div class="version_details">
   {{ page.content }}
   <strong>Version:</strong> {{page.version}}<br />
   <strong>Release Date:</strong> {{ page.date | date: "%b %d, %Y" }}<br />  
@@ -220,7 +215,7 @@ this is the built-in error checking for the version definition having missing ar
   </ul>
 
 </div>
-{% endcapture %}
 
-{% include copy_banner.html %}
+{%endcapture%}
+
 {% include base_3col.html %}
