@@ -50,7 +50,7 @@ sidebar:
     description: List of Babelfish releases.
     links:
       - title: Release 1.0.0
-        url: "/versions/babelfish-1-0-0.html"
+        url: "/docs/versions/babelfish-1-0-0.html"
   - title: Have a question?
     description: Do you have a question about Babelfish? You may not be the first person to ask it. Visit our Frequently Asked Questions (FAQ) to see if your question has been answered. If not, don’t hesitate to ask and we'll be glad to answer.
     links:
