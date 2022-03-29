@@ -6,15 +6,17 @@ nav_order: 2
 
 # Compiling Babelfish from source
 
-This section will walk you through the steps required to create a working Babelfish installation on Linux. 
+This section will walk you through the steps required to create a working Babelfish installation on an Ubuntu 20.04 Linux host. Please note that the steps may vary on other operating systems, but the overall process is roughly the same. 
 
 
 ## Downloading the source code
 
-Before building Babelfish, you will need to download the source code.  Babelfish source code is separated into two repositories that contain:
+Before building Babelfish, you will need to download the source code.  Babelfish source code is stored in the following repositories: FIXME-are_these_still_the_same_repo_names_?
 
 - the [PostgreSQL database engine](https://github.com/babelfish-for-postgresql/postgresql_modified_for_babelfish) source code, with changes that provide the protocols, language parsers, and features required by Babelfish. 
 - the [extensions](https://github.com/babelfish-for-postgresql/babelfish_extensions) that support the T-SQL protocol, the T-SQL language, the TDS Protocol, and so on.
+
+FIXME - Do we need to ask the user to navigate into a specific directory location before invoking these commands so the build commands later in this page work?
 
 If you have installed git, you can clone the repos with the following commands:
 
@@ -23,244 +25,192 @@ git clone https://github.com/babelfish-for-postgresql/postgresql_modified_for_ba
 git clone https://github.com/babelfish-for-postgresql/babelfish_extensions.git
 ```
 
-## Preparing your system
+## Prerequisites
 
-Most of the packages required to compile Babelfish are part of a typical Linux distribution.  You may find that the packages on your distribution use a similar (but not identical) name.  You will also need a user with root privileges, so you can convey privileges with `sudo`.
+Many of the Babelfish prerequisites are part of a typical Linux distribution.  You may find that the packages on your distribution use a similar (but not identical) name.  To build Babelfish, you will need access to a user with root privileges, so you can convey privileges with `sudo`. 
 
-In addition, we recommend installing the following additional packages on top of the hard requirements listed above:
+FIXME - Do we need to create a user named 'runner'? If so:
 
-- [Flex 2.6.4](https://github.com/westes/flex)
-- [Libxml2](http://xmlsoft.org/) development libraries
-- [Open SSL](https://www.openssl.org/) development libraries
-- [Readline](https://tiswww.cwru.edu/php/chet/readline/rltop.html) development libraries
-- [Zlib](https://zlib.net/)
-- [OSSP uuid](http://www.ossp.org/pkg/lib/uuid/) development libraries
-- [pkg-config](https://linux.die.net/man/1/pkg-config)
-- [ICU](https://icu.unicode.org/) development libraries
-- [Bison 3.0.5 or higher](https://www.gnu.org/software/bison/)
-
-If you use Debian or Ubuntu, you can use the following commands to install the development libraries:
+You will also need a non-root user named (in our examples) 'runner':
 
 ``` sh
-sudo apt install -y build-essential flex libxml2-dev bison libreadline-dev zlib1g-dev
-sudo apt install -y uuid-dev pkg-config libossp-uuid-dev libssl-dev icu-devtools
+sudo adduser runner
 ```
 
-## Compiling the code 
-
-Before compiling the Babelfish for PostgreSQL source code, you will need to configure the
-build.  Run the `configure` script in the directory where you have downloaded the Babelfish for PostgreSQL source code:
+Add the key and location of the Microsoft apt repository to your local system:
 
 ``` sh
-./configure CFLAGS="-ggdb" \
-  --enable-debug \
-  --with-libxml \
-  --with-uuid=ossp \
-  --with-icu \
-  --with-extra-version=" Babelfish for PostgreSQL"
-``` 
-
-The above commands configure the installation path under `/usr/local/pgsql`; to change the installation directory, you can include the `prefix` flag.  For example, to change the path to `/usr/local/pgsql-13.4`, you can
-include the following options in the configure script:
-
- ``` sh
- ./configure CFLAGS="-ggdb" \
-  --prefix=/usr/local/pgsql-13.4 \
-  --enable-debug \
-  --with-libxml \
-  --with-uuid=ossp \
-  --with-icu \
-  --with-extra-version=" Babelfish for PostgreSQL"
- ```
-
-#### Building Babelfish for PostgreSQL engine
-
-After configuring the source tree, you need to configure the installation folder. 
-
-``` sh
-INSTALLATION_PATH=<the path you specified as prefix>
-mkdir "$INSTALLATION_PATH"
+curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - &&  \
+curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
 ```
 
-To avoid installation errors, assume ownership of the installation directory. You can can change the 
- ownership of the installation path with the following command:
+Then, install the prerequisite software:
 
 ``` sh
-sudo chown -R <your user>:<your group> "$INSTALLATION_PATH"
+sudo apt-get update && sudo apt install -y --no-install-recommends \
+  build-essential \
+  flex \
+  libxml2-dev \
+  libxml2-utils \
+  libxslt-dev \
+  libssl-dev \
+  libreadline-dev \
+  zlib1g-dev \
+  libldap2-dev \
+  libpam0g-dev \
+  gettext \
+  uuid \
+  uuid-dev \
+  cmake \
+  lld \
+  apt-utils \
+  libossp-uuid-dev \
+  gnulib \
+  bison \
+  xsltproc \
+  icu-devtools \
+  libicu66 \
+  libicu-dev \
+  gawk \
+  curl \
+  openjdk-8-jre \
+  openssl \
+  g++ \
+  libssl-dev \
+  python-dev \
+  libpq-dev \
+  pkg-config \
+  unzip \
+  libutfcpp-dev \
+  gnupg \
+  mssql-tools \
+  unixodbc-dev \
 ```
 
-For example, if your installation path is `/usr/local/pgsql-13.4` and your user name is `johndoe`, 
- the command should be as follows:
+Then, add the installation path to your $PATH environment variable:
 
-``` sh
-sudo chown -R johndoe:johndoe /usr/local/pgsql-13.4
+```sh
+export PATH=/opt/mssql-tools/bin:$PATH
 ```
 
-Then, you can build Babelfish with the following commands:
 
-``` sh
-make            # Compiles the Babefish for PostgreSQL engine
-cd contrib 
+## Copy the ANTLR files into place
 
-make            # Compiles the PostgreSQL default extensions
+The [Antlr 4.9.3 Runtime](https://www.antlr.org/) files are distributed with the Babelfish source code.  Use the following commands to copy the files into place:
+
+```sh
+cd contrib/babelfishpg_tsql/antlr/thirdparty/antlr/
+sudo cp antlr-${ANTLR4_VERSION}-complete.jar /usr/local/lib
+```
+
+
+## Compile ANTLR
+
+After copying the ANTLR .jar files into place, compile ANTLR: 
+
+```sh
 cd ..
-
-make install    # Installs the Babelfish for PostgreSQL engine
-cd contrib
-
-make install    # Installs the PostgreSQL default extensions
+  wget http://www.antlr.org/download/antlr4-cpp-runtime-${ANTLR4_VERSION}-source.zip
+  unzip -d antlr4 antlr4-cpp-runtime-${ANTLR4_VERSION}-source.zip 
+  cd antlr4
+  mkdir build && cd build 
+  cmake .. -D ANTLR_JAR_LOCATION=/usr/local/lib/antlr-${ANTLR4_VERSION}-complete.jar -DCMAKE_INSTALL_PREFIX=/usr/local -DWITH_DEMO=True
+  make -j 4
+  sudo make install
 ```
 
-#### Building Babelfish Extensions
 
-To build the Babelfish extensions, you will need to install some additional tools: 
+## Build PostgreSQL
 
-##### Additional required tools
-- [Antlr 4.9.3 Runtime](https://www.antlr.org/)
-- [Open Java 8](https://openjdk.java.net/)
-- Unzip
-- [pkgconf](http://pkgconf.org/)
-- libutfcpp development libraries
-- [CMake](https://cmake.org/)
+The version of PostgreSQL that is distributed with Babelfish includes hooks that allow Babelfish to implement behaviors.  Babelfish will not work with PostgreSQL distributions from other sources.  Use the following commands to configure the build environment, and build the Babelfish PostgreSQL distribution: 
 
-You can use apt to install most of these tools with the following command:
-
-``` sh
-sudo apt install -y openjdk-8-jre unzip libutfcpp-dev cmake curl
-```
-
-##### Installing Antlr4 runtime
-
-> For Antlr4 4.9.3 Runtime, there are no available binaries for C++ in Ubuntu Focal, so it's necessary to compile it from source. Versions below 4.9 have not been fully tested yet. 
-
-
-To install the Antlr4 runtime, you will use the Antlr4 .jar file. The Babelfish extensions source code includes 
-the .jar file in `/contrib/babelfishpg_tsql/antlr/thirdparty/antlr`.
-
-You can install Antlr4 runtime by running the following commands:
-
-``` sh
-# Dowloads the compressed Antlr4 Runtime sources on /opt/antlr4-cpp-runtime-4.9.3-source.zip 
-sudo curl https://www.antlr.org/download/antlr4-cpp-runtime-4.9.3-source.zip \
-  --output /opt/antlr4-cpp-runtime-4.9.3-source.zip 
-
-
-# Uncompress the source into /opt/antlr4
-sudo unzip -d /opt/antlr4 /opt/antlr4-cpp-runtime-4.9.3-source.zip
-
-sudo mkdir /opt/antlr4/build 
-cd /opt/antlr4/build
-
-EXTENSIONS_SOURCE_CODE_PATH="<the patch in which you downloaded the Babelfish extensions source code>"
-
-# Generates the make files for the build
-sudo cmake .. -DANTLR_JAR_LOCATION="$EXTENSIONS_SOURCE_CODE_PATH/contrib/babelfishpg_tsql/antlr/thirdparty/antlr/antlr-4.9.3-complete.jar" \
-         -DCMAKE_INSTALL_PREFIX=/usr/local -DWITH_DEMO=True
-# Compile and install
-sudo make
+```sh
+./configure CFLAGS="-ggdb" \
+  --prefix=$HOME/postgres/ \
+  --enable-debug \
+  --with-ldap \
+  --with-libxml \
+  --with-pam \
+  --with-uuid=ossp \
+  --enable-nls \
+  --with-libxslt \
+  --with-icu \
+  --with-extra-version=" Babelfish for PostgreSQL"
+          
+make clean && make DESTDIR=~/postgres/ -j 4 2>error.txt
+          
 sudo make install
 ```
 
-Now that we have the antlr4 runtime installed, we need to copy the
-`libantlr4-runtime.so.4.9.3` library into the installed Babelfish for PostgreSQL
-engine libs folder. We can do that by running the following command:
 
+## Compile the ANTLR parser generator 
 
-``` sh
-sudo cp /usr/local/lib/libantlr4-runtime.so.4.9.3 "$INSTALLATION_PATH/lib"
-```
-
-
-# Build and install the extensions
-
-After installing the tools used to build the Babelfish extension, you will need to configure some environment variables: 
-
-- `PG_CONFIG`: should point to the location of the pg_config file in the
-  Babelfish for PostgreSQL engine installation; for our example: `$INSTALLATION_PATH/bin/pg_config`.
-
-- `PG_SRC`: should point to the location of the Babelfish for PostgreSQL engine
-  source folder.
-
-- `cmake`: should contain the path of the cmake binary.
-
-For example, if you have installed the Babelfish for PostgreSQL engine in
-`/usr/local/pgsql-13.4/`, you have downloaded the Babelfish for PostgreSQL engine
-source code in `~/postgresql_modified_for_babelfish`, and cmake is installed in
-`/usr/local/bin/cmake`, you could use the following commands to set the environment variables:
+Use the following commands to compile the ANTLR parser generator and copy the runtime to the PostgreSQL library location:
 
 ``` sh
-export PG_CONFIG=/usr/local/pgsql-13.4/bin/pg_config
-export PG_SRC=$HOME/postgresql_modified_for_babelfish
-export cmake=/usr/local/bin/cmake
-```
+export ANTLR4_JAVA_BIN=/usr/bin/java
+export ANTLR4_RUNTIME_LIBRARIES=/usr/include/antlr4-runtime
+export ANTLR_EXECUTABLE=/usr/local/lib/antlr-${ANTLR4_VERSION}-complete.jar
+export ANTLR_RUNTIME=../antlr4
+export PG_SRC=/home/runner/work/postgresql_modified_for_babelfish/postgresql_modified_for_babelfish/
+export PG_CONFIG=~/postgres/bin/pg_config
 
-Now you are ready to build the extensions. Go to the contrib folder in the Babelfish extension source code, and build the extensions one at a time. The following commands demonstrate building the extensions:
+cmake=$(which cmake)
+          
+sudo cp /usr/local/lib/libantlr4-runtime.so.${ANTLR4_VERSION} ~/postgres/lib
+           
+cd ${PG_SRC}/contrib/babelfishpg_tsql/antlr 
+cmake -Wno-dev .
+``` 
 
-``` sh
-# Install babelfishpg_money extension
-cd contrib/babelfishpg_money
-make
-make install
 
-# Install babelfishpg_common extension
-cd ../babelfishpg_common
-make 
-make install
+## Compile the Babelfish extensions
 
-# Install babelfishpg_tds extension
-cd ../babelfishpg_tds
-make 
-make install
-
-# Installs the babelfishpg_tsql extension
-cd ../babelfishpg_tsql
-make 
-make install
-```
-
-After all of the extensions have been compiled you can start PostgreSQL.
-
-## Additional installation steps
-
-Before starting Babelfish you will need to create a `data` directory, change ownership of the directory, and set configuration variables.  
-
-First, create the data directory; in this example the directory name is `/usr/local/pgsql/data`:
+Use the following commands to compile the ANTLR parser generator and copy the runtime to the PostgreSQL library location:
 
 ``` sh
-sudo mkdir -p /usr/local/pgsql/data
-```
+export ANTLR4_JAVA_BIN=/usr/bin/java
+export ANTLR4_RUNTIME_LIBRARIES=/usr/include/antlr4-runtime
+export ANTLR_EXECUTABLE=/usr/local/lib/antlr-${ANTLR4_VERSION}-complete.jar
+export ANTLR_RUNTIME=../antlr4
+export PG_SRC=/home/runner/work/postgresql_modified_for_babelfish/postgresql_modified_for_babelfish/
+export PG_CONFIG=~/postgres/bin/pg_config
 
-PostgreSQL won't start if the PostgreSQL owner has root access.  Create a user/owner named `postgres` that does not have root access:
+cmake=$(which cmake)
+          
+cd $PG_SRC/contrib/ && make && sudo make install 
+``` 
 
-``` sh
-sudo adduser postgres
-```
 
-Change the ownership of the Babelfish binaries and the `data` directory to the new user (`postgres`).
+## Install the Babelfish extensions
 
-``` sh
-sudo chown -R postgres:postgres $INSTALLATION_PATH
-sudo chown -R postgres:postgres /usr/local/pgsql/data
-```
+Use the following commands to initialize the database and install the Babelfish extensions:
 
-Then, use `sudo` and the `postgres` user to initialize the database directory:
-
-``` sh
-sudo su postgres
-$INSTALLATION_PATH/bin/initdb -D /usr/local/pgsql/data
-```
-
-After initializing the `data` directory, modify the `postgresql.conf` file by uncommenting the following properties and setting values:
-
-``` conf
-listen_addresses = '*'
-shared_preload_libraries = 'babelfishpg_tds'
-```
-
-Then,  you can start Babelfish with the command:
+FIXME - Does this create a single-mode cluster?  If so, we should probably offer an alternative that creates a multi-mode cluster?
 
 ``` sh
-$INSTALLATION_PATH/bin/pg_ctl -D /usr/local/pgsql/data start
+cd ~
+sudo chown -R runner: ~/postgres
+~/postgres/bin/initdb -D ~/postgres/data/ -E "UTF8"
+~/postgres/bin/pg_ctl -D ~/postgres/data/ -l logfile start
+cd postgres/data
+sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" postgresql.conf
+sudo sed -i "s/#shared_preload_libraries = ''/shared_preload_libraries = 'babelfishpg_tds'/g" postgresql.conf
+ipaddress=$(ifconfig eth0 | grep 'inet ' | cut -d: -f2 | awk '{ print $2}')
+sudo echo "host    all             all             $ipaddress/32            trust" >> pg_hba.conf
+~/postgres/bin/pg_ctl -D ~/postgres/data/ -l logfile restart
+sudo ~/postgres/bin/psql -d postgres -U runner -c "CREATE USER jdbc_user WITH SUPERUSER CREATEDB CREATEROLE PASSWORD '12345678' INHERIT;"
+sudo ~/postgres/bin/psql -d postgres -U runner -c "DROP DATABASE IF EXISTS jdbc_testdb;"
+sudo ~/postgres/bin/psql -d postgres -U runner -c "CREATE DATABASE jdbc_testdb OWNER jdbc_user;"
+sudo ~/postgres/bin/psql -d jdbc_testdb -U runner -c "set allow_system_table_mods = on;"
+sudo ~/postgres/bin/psql -d jdbc_testdb -U runner -c "CREATE EXTENSION IF NOT EXISTS "babelfishpg_tds" CASCADE;"
+sudo ~/postgres/bin/psql -d jdbc_testdb -U runner -c "GRANT ALL ON SCHEMA sys to jdbc_user;"
+sudo ~/postgres/bin/psql -d jdbc_testdb -U runner -c "ALTER USER jdbc_user CREATEDB;"
+sudo ~/postgres/bin/psql -d jdbc_testdb -U runner -c "ALTER SYSTEM SET babelfishpg_tsql.database_name = 'jdbc_testdb';"
+sudo ~/postgres/bin/psql -d jdbc_testdb -U runner -c "ALTER SYSTEM SET babelfishpg_tds.set_db_session_property = true;"
+sudo ~/postgres/bin/psql -d jdbc_testdb -U runner -c "SELECT pg_reload_conf();"
+sudo ~/postgres/bin/psql -d jdbc_testdb -U runner -c "CALL sys.initialize_babelfish('jdbc_user');"
+sqlcmd -S localhost -U jdbc_user -P 12345678 -Q "SELECT @@version GO"
 ```
 
-Before using Babelfish, you will need to [choose a migration mode and create a Babelfish cluster](/docs/installation/single-multiple). 
+
