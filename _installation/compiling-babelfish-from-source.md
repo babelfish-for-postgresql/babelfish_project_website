@@ -6,35 +6,33 @@ nav_order: 2
 
 # Compiling Babelfish from distribution tarballs
 
-This section will walk you through the steps required to create a working Babelfish installation on an Ubuntu 20.04 Linux host. Please note that the steps may vary on other operating systems, but the overall process is roughly the same.
+This document will walk you through the steps required to create a working Babelfish installation on an Ubuntu 20.04 Linux host. Please note that the steps may vary on other operating systems, but the overall process is roughly the same.
 
-The current installation steps are for the release tarballs at [FIXME!], which combines the following repositories, and with some minor
-changes to enhace the compilation process:
+The installation steps that follow are for the release tarballs, which use content from the following repositories:
 
 - the [PostgreSQL database engine](https://github.com/babelfish-for-postgresql/postgresql_modified_for_babelfish) source code, with changes that provide the protocols, language parsers, and features required by Babelfish. 
 - the [extensions](https://github.com/babelfish-for-postgresql/babelfish_extensions) that support the T-SQL protocol, the T-SQL language, the TDS Protocol, and so on.
 
 ## Compiling Babelfish for Development
 
-For building Babelfish for development, you'll need to clone the following repositories: 
+To build Babelfish for development, you'll need to clone the following repositories: 
 
 - [PostgreSQL for Babelfish 13.5](https://github.com/babelfish-for-postgresql/postgresql_modified_for_babelfish/tree/BABEL_1_1_0__PG_13_5)
 - [Babelfish 1.1.0 Extensions](https://github.com/babelfish-for-postgresql/babelfish_extensions/tree/BABEL_1_1_0)
 
-The compilation and installation instructions are at in the extensions' [contrib/README.md](https://github.com/babelfish-for-postgresql/babelfish_extensions/blob/BABEL_1_1_0/contrib/README.md).
+The compilation and installation instructions are in the [contrib/README.md](https://github.com/babelfish-for-postgresql/babelfish_extensions/blob/BABEL_1_1_0/contrib/README.md) file of the extensions repository.
 
-> Note for [Babelfish 1.0.0](https://github.com/babelfish-for-postgresql/babelfish_extensions/releases/tag/BABEL_1_0_0): keep in mind that it uses ANTLR 4.9.2,
-> but tarballs use 4.9.3. 
+> Note that [Babelfish version 1.0.0](https://github.com/babelfish-for-postgresql/babelfish_extensions/releases/tag/BABEL_1_0_0) requires ANTLR 4.9.2, while the 1.1.0 tarballs use ANTLR version 4.9.3. 
 
 ## Prerequisites
 
 ### Hardware and Specs
 
-The current installation instructions were tested using `t4g.large`, `t4.large`, and `c6g.xlarge` as hardware specs.
+The current installation instructions were tested using `t4g.large`, `t4.large`, and `c6g.xlarge` instances as hosts.
 
-Also, it has been used [ami-0fb653ca2d3203ac1 for amd64](https://us-east-2.console.aws.amazon.com/ec2/v2/home?region=us-east-2#Images:visibility=public-images;imageId=ami-0fb653ca2d3203ac1), and [ami-02af65b2d1ebdfafc for arm64](https://us-east-2.console.aws.amazon.com/ec2/v2/home?region=us-east-2#Images:visibility=public-images;imageId=ami-02af65b2d1ebdfafc).
+This installation has also been tested on [ami-0fb653ca2d3203ac1 for amd64](https://us-east-2.console.aws.amazon.com/ec2/v2/home?region=us-east-2#Images:visibility=public-images;imageId=ami-0fb653ca2d3203ac1), and [ami-02af65b2d1ebdfafc for arm64](https://us-east-2.console.aws.amazon.com/ec2/v2/home?region=us-east-2#Images:visibility=public-images;imageId=ami-02af65b2d1ebdfafc).
 
-For compiling Babelfish, you should have at least 4GB of available memory.
+To compile Babelfish, you should have at least 4GB of available memory.
 
 ### Required Software
 
@@ -54,21 +52,21 @@ sudo apt-get update && sudo apt install -y --no-install-recommends \
   gnupg unixodbc-dev
 ```
 
+Many of the Babelfish prerequisites are part of a typical Linux distribution.  You may find that the packages on your distribution use a similar (but not identical) name.  
+
+To build Babelfish, you will need access to a user with root privileges, so you can convey privileges with `sudo`. You'll also need a non-root user to initialize the database; PostgreSQL does not allow a root user to own the `data` directory or start the server.
+
+
 ### Download the distribution tarballs
 
-Many of the Babelfish prerequisites are part of a typical Linux distribution.  You may find that the packages on your distribution use a similar (but not identical) name.  To build Babelfish, you will need access to a user with root privileges, so you can convey privileges with `sudo`. 
-
-You'll also need a non-root user for the compilation and installation process. In this example, the 'postgres' user will be used:
-
-FIXME! We need the links of the tarball tags
+The following command downloads and unzips the Babelfish tarball:
 
 ```sh
 curl -L https://github.com/ongres/postgresql_modified_for_babelfish/archive/refs/tags/BABEL_1_1_0__PG_13_5__RC3.zip -o BABEL_1_1_0__PG_13_5__RC3.zip
 unzip BABEL_1_1_0__PG_13_5__RC3.zip
 ``` 
 
-Once the tarball is unzipped, it will create a folder named `postgresql_modified_for_babelfish-<tag-name>/`. We'll export
-this directory into the `PG_SRC` variable.
+Unzipping the tarball creates a folder named `postgresql_modified_for_babelfish-<tag-name>/`. To simplify the installation, export this directory into the `PG_SRC` variable:
 
 ```sh
 export PG_SRC=$HOME/postgresql_modified_for_babelfish-BABEL_1_1_0__PG_13_5__RC3
@@ -76,10 +74,10 @@ export PG_SRC=$HOME/postgresql_modified_for_babelfish-BABEL_1_1_0__PG_13_5__RC3
 
 ### Compile ANTLR 4
 
-Unfortunately, there are [no prebuilt C++ binaries for 4.9.3 runtime version](https://www.antlr.org/download.html) for Linux. It 
-is necessary to compile and install accordingly.
+Unfortunately, there are [no prebuilt C++ binaries for the Antlr 4.9.3 runtime version](https://www.antlr.org/download.html) for Linux. It 
+is necessary to compile and install ANTLR accordingly.
 
-Define the following variables in your environment:
+First, define the following variables in your environment:
 
 ```sh
 export ANTLR4_VERSION=4.9.3
@@ -109,7 +107,7 @@ sudo make install
 
 ## Build modified PostgreSQL for Babelfish
 
-The version of PostgreSQL that is distributed with Babelfish includes hooks that allow Babelfish to implement behaviors.  Babelfish will not work with PostgreSQL distributions from other sources.  Use the following commands to configure the build environment, and build the Babelfish PostgreSQL distribution: 
+The version of PostgreSQL that is distributed with Babelfish includes hooks that allow Babelfish to implement behaviors.  Babelfish will not work with PostgreSQL distributions from other sources.  Use the following commands to configure the build environment and build the Babelfish PostgreSQL distribution: 
 
 ```sh
 cd ${PG_SRC}
@@ -131,13 +129,13 @@ make clean && make DESTDIR=/opt/babelfish/1.1/ -j 4 2>error.txt
 sudo make install
 ```
 
-Export `PG_CONFIG` variable:
+Export the `PG_CONFIG` variable:
 
 ```sh
 export PG_CONFIG=/opt/babelfish/1.1/bin/pg_config
 ```
 
-> NOTICE: this step is going to be deprecated in future versions.
+This step will be deprecated in future versions.
 
 ### Compile the ANTLR parser generator 
 
@@ -152,21 +150,19 @@ cd ${PG_SRC}/contrib/babelfishpg_tsql/antlr
 cmake -Wno-dev .
 ``` 
 
-> NOTICE: this step is going to be deprecated in future versions.
+This step will be deprecated in future versions.
 
-### Compile the built-in contrib and Babelfish extensions
+### Compile the contrib modules and build Babelfish
 
-Now, it is time to compile and install the contrib. This is going to install all the built-in extensions and the 
-Babelfish required ones:
+Now, it is time to compile the contrib modules and build Babelfish. Use the command:
 
 ```sh
 cd $PG_SRC/contrib/ && make -j 2 && sudo make install 
 ```
 
-## Setting up the Postgres modified instance
+## Setting up the PostgreSQL modified instance
 
-The process of creating a new cluster directory, and start up is very similar to a Postgres community setup.
-Use the following commands to initialize the database and install the Babelfish extensions:
+The steps required to create a new cluster and start the service are very similar to the steps required by a community PostgreSQL installation:
 
 ```sh
 sudo mkdir -p /var/lib/babelfish/1.1
@@ -177,30 +173,29 @@ sudo chown -R postgres: /opt/babelfish/
 sudo chown -R postgres: /var/lib/babelfish/
 ```
 
-Switch to the `postgres` user and start the cluster:
+Switch to the `postgres` user (a non-superuser) and start the cluster:
 
 ```sh
 sudo su - postgres
 ```
 
-If you're willing to do a local setup and test, you can create your data directory, and pass the authentication
-methods as below for simplifying local network tests (`--auth-host=trust` should not be used for data-sensitive instances):
+If you would like to create a local cluster for testing purposes, you can configure trust authentication when initializing the database to simplify authentication. The `--auth-host=trust` flag will create the cluster using trust authentication, and should not be included if you are creating an instance that will contain sensitive information:
 
 ```sh
 /opt/babelfish/1.1/bin/initdb -D /var/lib/babelfish/1.1/data/ -E "UTF8" --auth=trust --auth-host=trust --auth-local=trust
 ```
 
-For a more granular access method setup, it is possible to do as following:
+Including your system IP address in the `pg_hba.conf` definition makes trust authentication slightly more secure.  To specify an IP address, replace `ip_address` with the IP address of your Babelfish host:
 
 ```sh
 /opt/babelfish/1.1/bin/initdb -D /var/lib/babelfish/1.1/data/ -E "UTF8"
 ipaddress=$(ifconfig eth0 | grep 'inet ' | cut -d: -f2 | awk '{ print $2}')
-echo "host    all             all             $ipaddress/32            trust" >> /var/lib/babelfish/1.1/data/pg_hba.conf
+echo "host    all             all             $ip_address/32            trust" >> /var/lib/babelfish/1.1/data/pg_hba.conf
 ```
 
-### Configuring Postgres for Babelfish
+### Configuring PostgreSQL for Babelfish
 
-The below configuration is the minimal required for starting the service:
+The `postgresql.conf` configuration changes shown below are required before starting the service:
 
 ```sh
 cat << EOF >> /var/lib/babelfish/1.1/data/postgresql.conf
@@ -217,9 +212,9 @@ EOF
 
 ```
 
-> For the extensions' variable references, go to [Configuring Babelfish](https://babelfishpg.org/docs/internals/configuration/)
+> For more information about Babelfish variables, see [Configuring Babelfish](https://babelfishpg.org/docs/internals/configuration/)
 
-Start the instance by:
+Then, start the instance with the following command:
 
 ```sh
 /opt/babelfish/1.1/bin/pg_ctl -D /var/lib/babelfish/1.1/data/ -l logfile start
@@ -227,7 +222,7 @@ Start the instance by:
 
 ### Enabling extensions in the target database
 
-Create the database on top of which the extensions will be installed:
+Create a user (babelfish_user) and the database (babelfish_db) into which the extensions will be installed:
 
 ```sh
 /opt/babelfish/1.1/bin/psql -d postgres -U postgres -c "CREATE USER babelfish_user WITH SUPERUSER CREATEDB CREATEROLE PASSWORD '12345678' INHERIT;"
@@ -235,7 +230,7 @@ Create the database on top of which the extensions will be installed:
 /opt/babelfish/1.1/bin/psql -d postgres -U postgres -c "CREATE DATABASE babelfish_db OWNER babelfish_user;"
 ```
 
-Connect to the target database, configure, and install the extensions:
+Connect to the babelfish_db database, and configure and install the extensions:
 
 ```sh
 /opt/babelfish/1.1/bin/psql -d babelfish_db -U postgres -c "CREATE EXTENSION IF NOT EXISTS "babelfishpg_tds" CASCADE;"
@@ -247,16 +242,16 @@ Connect to the target database, configure, and install the extensions:
 ```
 
 
-By default, the `migration_mode` is `single-db`. You can change this behavior by issuing:
+By default, the `migration_mode` is `single-db`. To deploy in `multi-db` mode, you need to modify the Babelfish configuration file before initializing the database:
 
 ```sh
 /opt/babelfish/1.1/bin/psql -d babelfish_db -U postgres -c "ALTER DATABASE babelfish_db SET babelfishpg_tsql.migration_mode = 'multi-db';"
 ```
 
-> For more information about the `migration_mode`, read the [Accessing Data in Postgres](https://babelfishpg.org/docs/usage/migration/#accessing-the-data-in-postgresql) section.
+> For more information about the `migration_mode`, see [Single vs. multiple instances](https://babelfishpg.org/docs/installation/single-multiple/) and [Choosing a migration mode](https://babelfishpg.org/docs/installation/single-multiple/#choosing-a-migration-mode).
 
 
-Finally, we initialize the database by calling _sys.initialize_babelfish_:
+Finally, initialize the database by calling _sys.initialize_babelfish_:
 
 ```sh
 /opt/babelfish/1.1/bin/psql -d babelfish_db -U postgres -c "CALL sys.initialize_babelfish('babelfish_user');"
@@ -264,15 +259,15 @@ Finally, we initialize the database by calling _sys.initialize_babelfish_:
 
 ## Connecting to the Babelfish Database through TDS port
 
-For testing, we're going to use freetds command-line client, as it is present both in _x86_ and _arm64_ platforms:
+For testing, we're going to use FreeTDS command-line client, available for both _x86_ and _arm64_ platforms:
 
-- Installing the packages.
+- Install the packages:
 
 ```sh
 sudo apt install -y freetds-bin freetds-common
 ```
 
-- Connecting with `tsql`.
+- Connect with `tsql`:
 
 ```sh
 $ tsql -H localhost -U babelfish_user -p 1433  -P 12345678 -D master
@@ -291,10 +286,10 @@ PostgreSQL 13.5 Babelfish for PostgreSQL on x86_64-pc-linux-gnu
 (1 row affected)
 ```
 
-- As a similtar e.g., the below command will access to the database through `sqlcmd` client:
+- If you're a sqlcmd user, the following command will access the database with a `sqlcmd` client:
 
 ```sh
 sqlcmd -S localhost -U babelfish_user -P 12345678 
 ```
 
-> `mssql-tools` does not have _arm64_ packages.
+> Note that `mssql-tools` does not support _arm64_ packages.
