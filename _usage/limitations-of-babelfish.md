@@ -46,7 +46,7 @@ in the future.
 | Column name: `$ROWGUID` | This column name is not supported. |
 | `COLUMNPROPERTY()` | This function is supported only for CharMaxLen and AllowsNull. |
 | Column without alias in result sets  | SQL Server and Babelfish handle result set columns without aliases in different ways. SQL Server returns a blank column name, while Babelfish returns a generated column name. |
-| Column name case | Column names will be stored as lowercase in the PostgreSQL `pg_attribute` catalog, but are stored in whatever case was specified in the `CREATE TABLE` statement in an internal Babelfish catalog. The `SELECT *` operation currently returns column names in lower case rather than in the case specified on the CREATE TABLE statement. This will be fixed in a future version of Babelfish, but until then a workaround is to either specify the columns explicitly in the `SELECT` statement, or to use `SELECT *` from a view.|
+| Column name case | Column names will be stored as lowercase in the PostgreSQL `pg_attribute` catalog, but are stored in the case specified in the `CREATE TABLE` statement in an internal Babelfish catalog. |
 | Virtual computed columns (non-persistent) | The columns will be created as persistent. |
 | Column attributes | `ROWGUIDCOL`, `SPARSE`, `FILESTREAM`, `MASKED` aren't supported. |
 | `CREATE/ALTER/DROP COLUMN ENCRYPTION KEY` | Functionality related to these commands is not supported. |
@@ -260,6 +260,7 @@ in the future.
 | Unquoted string values in stored procedure calls and default values | String value calls to stored procedures and default values must be enclosed in single-quotes. |
 | `SYNONYM` | Functionality related to this object type is not supported. |
 | `CREATE/ALTER/DROP, OPEN/CLOSE SYMMETRIC KEY` | Functionality related to this object type is not supported. |
+| `ALTER TABLE` limitation | Babelfish does not support adding or dropping more than a single column or constraint in an ALTER TABLE statement. |
 | `CREATE TABLE ... GRANT` clause | Functionality related to this syntax is not supported. |
 | `CREATE TABLE ... IDENTITY` clause | Functionality related to this syntax is not supported. |
 | `CREATE EXTERNAL TABLE` | Functionality related to this syntax is not supported. |
@@ -313,4 +314,3 @@ However, there are other differences besides the variations in features.
 For example, backup and recovery work differently in SQL Server and PostgreSQL,
 and you will have to use the PostgreSQL tools to backup Babelfish.
 It is important to understand such differences as well.
-

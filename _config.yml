@@ -5,7 +5,7 @@ baseurl: ""
 url: "https://babelfishpg.org"
 
 permalink: /:path/
-email: 
+email:
 twitter_username:
 github_username:
 
@@ -59,7 +59,7 @@ defaults:
       type: versions
     values:
       layout: versions
-      permalink: versions/:categories/:slug.html
+      permalink: docs/versions/:categories/:slug.html
   - scope:
       type: artifacts
     values:
@@ -84,14 +84,15 @@ collections:
   faq:
     permalink: /docs/:collection/:path/
     output: true
+  versions:
+    permalink: /versions/:path/
+    output: true
   docs:
     permalink: /:collection/:path/
     output: true
   events:
     output: true
   artifacts:
-    output: true
-  versions:
     output: true
 
 paginate: 5
@@ -103,7 +104,7 @@ just_the_docs:
     docs:
     installation:
       name: Installing Babelfish
-      nav_fold: true      
+      nav_fold: true
     usage:
       name: Using Babelfish
       nav_fold: true
@@ -115,6 +116,9 @@ just_the_docs:
       nav_fold: true
     faq:
       name: FAQ and getting help
+      nav_fold: true
+    versions:
+      name: Releases
       nav_fold: true
 
 # Enable or disable the site search
