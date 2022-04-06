@@ -1,0 +1,47 @@
+name: Babelfish for PostgreSQL Documentation
+description: Propose changes to Babelfish for PostgreSQL documentation
+title: "[Documentation]: "
+labels: ["documentation", "untriaged"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this documentation improvement request.
+  - type: textarea
+    id: documentation-scope
+    attributes:
+      label: What needs to be changed, updated, or improved in the Babelfish documentation?
+      description: Please provide as much detail as possible. 
+      placeholder: Tell us what you have in mind!
+      value: "This is my feature request!"
+    validations:
+      required: true
+  - type: textarea
+    id: brief-desc-implementation
+    attributes:
+      label: Provide more details about how to best implement this change.
+      description: Share implementation details for this improvement.
+    validations:
+      required: false 
+  - type: dropdown
+    id: version
+    attributes:
+      label: Version
+      description: Select the Babelfish documentation version to which the change applies.
+      options:
+        - BABEL_1_0_0 (Default)
+      required: true
+  - type: textarea
+    id: docs
+    attributes:
+      label: Relevant documentation
+      description: Please attach relevant documentation.
+      render: shell
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://aws.github.io/code-of-conduct-faq).
+      options:
+        - label: I agree to follow this project's Code of Conduct.
+          required: true
