@@ -1,13 +1,8 @@
----
-layout: default
-title: Release Notes 1.1.0
-nav_order: 2
----
 
-Babelfish Version: 1.1.0
-PostgreSQL Server Version: 13.5
-Babelfish Compass [Downloads](https://github.com/babelfish-for-postgresql/babelfish_compass/releases)
-Date: March 15, 2022
+- Babelfish Version: 1.1.0
+- PostgreSQL Server Version: 13.5
+- Babelfish Compass [Downloads](https://github.com/babelfish-for-postgresql/babelfish_compass/releases)
+- Date: March 15, 2022
 
 ## Overview
 
