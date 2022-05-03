@@ -309,4 +309,7 @@ not implemented or partially implemented in Babelfish.  This list is subject to 
 | `CREATE/ALTER/DROP SELECTIVE XML INDEX` clause | | This syntax is not supported. |
 | `CREATE/ALTER/DROP XML SCHEMA COLLECTION` | | This syntax is not supported. |
 
-Please note that this may not be a complete list of the functional differences between SQL Server and Babelfish. If you find syntax variations that should be included in the documentation, please [file an issue to let us know about it](https://github.com/babelfish-for-postgresql/babelfish_project_website/issues).
+Please note that this may not be a complete list of the functional differences 
+between SQL Server and Babelfish. If you find syntax variations that should be 
+included in the documentation, please [file an issue to let us know about it](https://github.com/babelfish-for-postgresql/babelfish_project_website/issues).
+
