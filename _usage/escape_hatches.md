@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Differences between Babelfish and SQL Server 
+title: Managing Babelfish escape hatches
 nav_order: 6
 ---
 
