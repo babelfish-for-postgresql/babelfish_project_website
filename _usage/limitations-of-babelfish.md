@@ -6,7 +6,7 @@ nav_order: 5
 
 ## Differences between Babelfish and SQL Server
 
-In this chapter, you will learn about functionality differences between PostgreSQL with Babelfish
+In this chapter, you will learn about functional differences between PostgreSQL with Babelfish
 and SQL Server.
 
 ### Missing features
@@ -313,4 +313,3 @@ However, there are other differences besides the variations in features.
 For example, backup and recovery work differently in SQL Server and PostgreSQL,
 and you will have to use the PostgreSQL tools to backup Babelfish.
 It is important to understand such differences as well.
-
