@@ -1,23 +1,23 @@
 ---
 layout: default
-title: Babelfish compatibility
+title: Differences between Babelfish and SQL Server 
 nav_order: 5
 ---
 
-## T-SQL limitations
+## Differences between Babelfish and SQL Server
 
-In this chapter, you will learn about functional differences between Babelfish
-and Microsoft SQL Server.
+In this chapter, you will learn about functional differences between PostgreSQL with Babelfish
+and SQL Server.
 
 ### Missing features
 
 The following table contains a list of SQL Server features that are currently
-not implemented in Babelfish.  Note that the list of limitations may change
-in the future.
+not implemented in Babelfish.  Note that the list of limitations may change.
 
 | Functionality or Syntax | Notes |
 | ----------------------- | ----- |
 | `ADD SIGNATURE` | Functionality related to this command is not supported. |
+| `Built-in Functions` | Built-in functions are partially supported; Babelfish supports `SQUARE()`, `CONCAT_WS()`, `DATEFROMPARTS()`, `DATETIMEFROMPARTS()`, `ORIGINAL_LOGIN()`, `SESSION_USER()`, `CHOOSE()`, `CURSOR_STATUS()`; `TRIGGER_NESTLEVEL()` is supported but only without arguments; `SCHEMA_NAME()` is now fully supported. |
 | `CREATE AGGREGATE` | Functionality related to this command is not supported. |
 | Aggregate functions | `APPROX_COUNT_DISTINCT`, `CHECKSUM_AGG`, `GROUPING_ID`, `ROWCOUNT_BIG`, `STDEV`, `STDEVP`, `VAR`, and `VARP` are not supported. |
 | `ALTER` statement | You can't use an `ALTER` statement to modify the following objects: `AGGREGATE`, `APPLICATION ROLE`, `ASSEMBLY`, `ASYMMETRIC KEY`, `AUTHORIZATION`, `AVAILABILITY GROUP`, `BROKER PRIORITY`, `COLUMN ENCRYPTION KEY`, `CONTRACT`, `BACKUP CERTIFICATE`, `CREDENTIAL`, `TABLE ... IDENTITY`, `USER`, `CRYPTOGRAPHIC PROVIDER`, `DATABASE ENCRYPTION KEY`, `DATABASE AUDIT SPECIFICATION`, `DEFAULT`, `ENDPOINT`, `EXTERNAL FILE FORMAT`, `EVENT NOTIFICATION`, `EVENT SESSION`, `FULLTEXT CATALOG`, `FULLTEXT INDEX`, `FULLTEXT STOPLIST`, `INDEX`, `SPATIAL INDEX`, `XML INDEX`, `COLUMNSTORE INDEX`, `EXTERNAL LANGUAGE`, `EXTERNAL LIBRARY`, `LOGIN`, `MASTER KEY`, `MESSAGE TYPE`, `EXTERNAL LANGUAGE`, `EXTERNAL LIBRARY`, `LOGIN`, `PARTITION FUNCTION`, `PARTITION SCHEME`, `QUEUE`, `REMOTE SERVICE BINDING`, `RESOURCE POOL`, `EXTERNAL RESOURCE POOL`, `RESOURCE GOVERNOR`, `ROLE`, `ROUTE`, `RULE`, `SCHEMA`, `SEARCH PROPERTY LIST`, `SECURITY POLICY`, `SEARCH PROPERTY LIST`, `SERVER AUDIT`, `SERVER AUDIT SPECIFICATION`, `SERVER ROLE`, `SERVICE`, `SERVICE MASTER KEY`, `SYMMETRIC KEY`, `TABLE ... GRANT IDENTITY` clauses, `EXTERNAL TABLE`, `TRIGGER` (schema qualified), `TYPE`, `USER`, `WORKLOAD GROUP`, `WORKLOAD CLASSIFIER`, `SELECTIVE XML INDEX`, `XML SCHEMA COLLECTION` |
@@ -43,7 +43,7 @@ in the future.
 | Column name: `IDENTITYCOL` | This column name is not supported. |
 | Column name: `$IDENTITY` | This column name is not supported. |
 | Column name: `$ROWGUID` | This column name is not supported. |
-| `COLUMNPROPERTY()` | This function is not supported. |
+| `COLUMNPROPERTY()` | This function is supported only for CharMaxLen and AllowsNull. |
 | Column without alias in result sets  | SQL Server and Babelfish handle result set columns without aliases in different ways. SQL Server returns a blank column name, while Babelfish returns a generated column name. |
 | Column name case | Column names will be stored as lowercase in the PostgreSQL `pg_attribute` catalog, but are stored in the case specified in the `CREATE TABLE` statement in an internal Babelfish catalog. |
 | Virtual computed columns (non-persistent) | The columns will be created as persistent. |
@@ -94,7 +94,7 @@ in the future.
 | `DROP` statements that drop multiple objects | This functionality is not supported. |
 | `DROP IF EXISTS` | This syntax is not supported for `USER` and `SCHEMA` objects. It is supported for the following objects: `TABLE`, `VIEW`, `PROCEDURE`, `FUNCTION, DATABASE`. |
 | Data encryption | Data encryption is not supported. |
-| Encryption | Built in functions and statements do not support encryption. |
+| Encryption | Built-in functions and statements do not support encryption. |
 | `ENCRYPT_CLIENT_CERT` connections | Client certificate connections are not supported. |
 | `CREATE/ALTER/DROP ENDPOINT` | This syntax is not supported. |
 | `EXECUTE AS` clause | This syntax is not supported. |
@@ -113,7 +113,7 @@ in the future.
 | `CREATE/ALTER/DROP FULLTEXT INDEX`| Functionality related to this syntax is not supported. |
 | `CREATE/ALTER/DROP FULLTEXT STOPLIST` | Functionality related to this syntax is not supported. |
 | Full-text Search | Search with a gist index is not supported. |
-| Full-text Search | Full-text search built-in functions and statements are not supported. |
+| Full-text Search | Full-text search of built-in functions and statements are not supported. |
 | `ALTER FUNCTION` | This syntax is not supported. |
 | Function declarations with \> 100 parameters | Function declarations that contain more than  100 parameters are not supported. |
 | Function calls that calls DEFAULT | `DEFAULT` is not a supported parameter value for a function call. |
@@ -133,10 +133,9 @@ in the future.
 | Hints | Hints are not supported for joins, queries, or tables and will be ignored. |
 | `INFORMATION_SCHEMA` catalog | Information schema views are not supported. |
 | Identifiers exceeding 63 characters | PostgreSQL supports a maximum of 63 characters for identifiers. Babelfish converts identifiers longer than 63 characters to a name that uses a hash of the original name. Use the original name with T-SQL, but the converted name if accessing the database on the PostgreSQL listener port (5432). |
-| Identifiers with leading dot characters | Identifiers that start with a `.` are not supported. |
 | Identifiers (variables/parameters) with multiple leading `@` characters | Identifiers that start with more than one leading `@` are not supported. |
 | Identifiers: table or column names that contain `@` or `[]` characters | Table or column names that contain an `@` sign or square brackets are not supported. |
-| Identifiers with multiple `@` characters | Babelfish does not support system-defined `@@variables` other than: `@@VERSION`, `@@SPID`, `@@ROWCOUNT`, `@@TRANCOUNT`, `@@IDENTITY`, `@@ERROR`, `@@FETCH_STATUS`, `@@MAX_PRECISION`, `@@SERVERNAME`, `@@DATEFIRST` |
+| Identifiers with multiple `@` characters | Babelfish does not support system-defined `@@variables` other than: `@@VERSION`, `@@SPID`, `@@ROWCOUNT`, `@@TRANCOUNT`, `@@IDENTITY`, `@@ERROR`, `@@FETCH_STATUS`, `@@MAX_PRECISION`, `@@SERVERNAME`, `@@DATEFIRST`, `@@PROCID`, `@@MAX_CONNECTIONS`, `@@LOCK_TIMEOUT`, `@@NESTLEVEL`, `@@CURSOR_ROWS`, `@@MICROSOFTVERSION` |
 | `IDENTITY` columns support | `IDENTITY` columns are supported for data types `tinyint`, `smallint`, `int`, `bigint`, `numeric`, and `decimal`. SQL Server supports precision up to 38 for data types `numeric` and `decimal` in `IDENTITY` columns. PostgreSQL supports precision up to 19 for data types `numeric` and `decimal` in `IDENTITY` columns. |
 | Indexes with `IGNORE_DUP_KEY` | Syntax that creates an index that includes `IGNORE_DUP_KEY` will create an index as if this property was omitted. |
 | Indexes with more than 32 columns | An index may not include more than 32 columns; `INCLUDE`d index columns count towards the limit in PostgreSQL, but not in SQL Server. |
@@ -161,9 +160,8 @@ in the future.
 | `CREATE/ALTER/DROP OPEN/CLOSE, BACKUP/RESTORE MASTER KEY`, | Functionality related to this syntax is not supported. |
 | Materialized Views | Materialized views are not supported. |
 | `CREATE/ALTER/DROP MESSAGE TYPE`| This syntax is not supported. |
-| `NEWSEQUENTIALID()` function | Implemented as NEWID(); sequential behavior is not supported. |
+| `NEWSEQUENTIALID()` function | Implemented as NEWID(); sequential behavior is not guaranteed. |
 | `MERGE` | This syntax is not supported. |
-| `NEWSEQUENTIALID()` function | When calling `NEWSEQUENTIALID()`, PostgreSQL cannot guarantee a higher GUID value, so it will generate a new GUID value instead, just like `NEWID()` does. |
 | `NEXT VALUE FOR` sequence clause | This syntax is not supported. |
 | `NOT FOR REPLICATION clause` | This syntax is accepted and ignored. |
 | `SET NUMERIC_ROUNDABORT ON` | This setting is not supported. |
@@ -257,7 +255,7 @@ in the future.
 | `SHUTDOWN` statement | This syntax is not supported. |
 | `SP_CONFIGURE` | This syntax is not supported. |
 | SQL keyword `SPARSE` | The keyword SPARSE (related to SQL Server-specific aspects of data storage) is accepted and ignored. |
-| System-provided stored procedures are partially supported | `SP_HELPDB`, `SP_GETAPPLOCK`, `SP_RELEASEAPPLOCK` are supported. All other stored procedures are not supported. |
+| System-provided stored procedures are partially supported | `SP_HELPDB`, `SP_GETAPPLOCK`, `SP_RELEASEAPPLOCK`, `SP_COLUMNS`, `SP_COLUMNS_100`, `SP_COLUMNS_MANAGED`, `SP_CURSOR_LIST`, `SP_DATATYPE_INFO`, `SP_DATATYPE_INFO_100`, `SP_DESCRIBE_CURSOR`, `SP_DESCRIBE_FIRST_RESULT_SET`, `SP_DESCRIBE_UNDECLARED_PARAMETERS`, `SP_OLEDB_RO_USRNAME`, `SP_PREPARE`, `SP_TABLECOLLATIONS_100`, `SP_TABLES`, `SP_UNPREPARE`, `SP_STATISTICS`, `SP_STATISTICS_100`, `SP_UPDATESTATS`, `SP_PKEYS`, `SP_DATABASES`, `SP_CURSOR`, `SP_CURSOROPEN`, `SP_CURSORPREPARE`, `SP_CURSOREXECUTE`, `SP_CURSORPREPEXEC`, `SP_CURSORUNPREPARE`, `SP_CURSORFETCH`, `SP_CURSOROPTION`, `SP_CURSORCLOSE` are supported. All other stored procedures are not supported. |
 | Unquoted string values in stored procedure calls and default values | String value calls to stored procedures and default values must be enclosed in single-quotes. |
 | `SYNONYM` | Functionality related to this object type is not supported. |
 | `CREATE/ALTER/DROP, OPEN/CLOSE SYMMETRIC KEY` | Functionality related to this object type is not supported. |
@@ -282,7 +280,6 @@ in the future.
 | `LOGON` trigger | `LOGON` triggers are not supported. |
 | Triggers, externally defined | Externally defined triggers including SQL Common Language Runtime (CLR) are not supported. |
 | `INSTEAD_OF` Triggers | `INSTEAD_OF` triggers are not supported. |
-| Trigger for multiple DML actions | Triggers that reference multiple DML actions cannot reference transition tables. |
 | `CREATE/ALTER/DROP TYPE` | This syntax is not supported. |
 | `SELECT ... FOR XML AUTO` | This syntax is not supported. |
 | `SELECT ... FOR XML EXPLICIT` | This syntax is not supported. |
@@ -316,59 +313,3 @@ However, there are other differences besides the variations in features.
 For example, backup and recovery work differently in SQL Server and PostgreSQL,
 and you will have to use the PostgreSQL tools to backup Babelfish.
 It is important to understand such differences as well.
-
-## Babelfish escape hatches
-
-To better deal with statements that might fail, Babelfish allows you to define
-*escape hatches*. An escape hatch is a flag that can be adjusted by the user and
-specifies the behavior of Babelfish when it encounters an unsupported feature or
-syntax.
-
-You can use the `sp_babelfish_configure` stored procedure to display or change
-the settings of each escape hatch.  Use it to specify if an escape hatch should
-be set to `ignore` or `strict`.
-
-If an escape hatch is set to `ignore`, Babelfish will suppress the error that
-the corresponding syntax would otherwise cause.  By default, the change applies
-to the current session only.  Include the `server` keyword to apply the changes
-persistently on the cluster level as well.
-
-When you create a new Babelfish cluster, various escape hatches are initialized
-to `strict`, meaning that you may encounter error messages if your SQL code
-contains unsupported syntax.  To suppress all these error messages, set all
-escape hatches to `ignore` with
-
-```none
-sp_babelfish_configure '%', 'ignore', 'server'
-```
-
-The following escape hatches exist:
-
-| Escape hatch | Description | Default |
-| ------------ | ----------- | ------- |
-| `babelfishpg_tsql.escape_hatch_constraint_name_for_default` | Controls Babelfish behavior related to default constraint names. | strict |
-| `babelfishpg_tsql.escape_hatch_database_misc_options` | Controls Babelfish behavior related to the following options on `CREATE` or `ALTER DATABASE`: `CONTAINMENT`, `DB_CHAINING`, `TRUSTWORTHY`, `PERSISTENT_LOG_BUFFER`. | ignore |
-| `babelfishpg_tsql.escape_hatch_for_replication` | Controls Babelfish behavior related to the `[NOT] FOR REPLICATION` clause when creating or altering a table. | strict |
-| `babelfishpg_tsql.escape_hatch_fulltext` | Controls Babelfish behavior related to `FULLTEXT` features, such as `DEFAULT_FULLTEXT_LANGUAG` in `CREATE/ALTER DATABASE`, `CREATE FULLTEXT INDEX`, or `sp_fulltext_database`. | strict |
-| `babelfishpg_tsql.escape_hatch_index_clustering` | Controls Babelfish behavior related to the `CLUSTERED` or `NONCLUSTERED` keywords for indexes and `PRIMARY KEY` or `UNIQUE` constraints. When `CLUSTERED` is ignored, the index or constraint is still created as if `NONCLUSTERED` was specified. | ignore |
-| `babelfishpg_tsql.escape_hatch_index_columnstore` | Controls Babelfish behavior related to the `COLUMNSTORE` clause. If you specify ignore, Babelfish creates a regular B-tree index. | strict |
-| `babelfishpg_tsql.escape_hatch_join_hints` | Controls the behavior of keywords in a `JOIN` operator: `LOOP`, `HASH`, `MERGE`, `REMOTE`, `REDUCE`, `REDISTRIBUTE`, `REPLICATE`. | ignore |
-| `babelfishpg_tsql.escape_hatch_language_non_english` | Controls Babelfish behavior related to languages other than English for onscreen messages. Babelfish currently supports only `us_english` for on-screen messages. `SET LANGUAGE` might use a variable containing the language name, so the actual language being set can only be detected at run time. | strict |
-| `babelfishpg_tsql.escape_hatch_login_hashed_password` | `HASHED` password is not supported for `CREATE LOGIN` and `ALTER LOGIN`. | strict |
-| `babelfishpg_tsql.escape_hatch_login_misc_options` | This deals with various other unsupported options for `CREATE LOGIN` and `ALTER LOGIN` | strict |
-| `babelfishpg_tsql.escape_hatch_login_old_password` | The `OLD_PASSWORD` option of `ALTER LOGIN` is not supported. | strict |
-| `babelfishpg_tsql.escape_hatch_login_password_must_change` | The `MUST_CHANGE` password option is not supported for `CREATE LOGIN` and `ALTER LOGIN`. | strict |
-| `babelfishpg_tsql.escape_hatch_login_password_unlock` | The `UNLOCK` password option is not supported for `CREATE LOGIN` and `ALTER LOGIN`. | strict |
-| `babelfishpg_tsql.escape_hatch_nocheck_add_constraint` | Controls Babelfish behavior related to the `WITH CHECK` or `NOCHECK` clause for constraints. | strict |
-| `babelfishpg_tsql.escape_hatch_nocheck_existing_constraint` | Controls Babelfish behavior related to `FOREIGN KEY` or `CHECK` constraints. | strict |
-| `babelfishpg_tsql.escape_hatch_query_hints` | Controls Babelfish behavior related to query hints. When this option is set to ignore, the server ignores hints that use the `OPTION (...)` clause to specify query processing aspects. Examples include `SELECT FROM ... OPTION(MERGE JOIN HASH, MAXRECURSION 10))`. | ignore |
-| `babelfishpg_tsql.escape_hatch_rowguidcol_column` | Controls Babelfish behavior related to the `ROWGUIDCOL` clause when creating or altering a table. | strict |
-| `babelfishpg_tsql.escape_hatch_schemabinding_function` | Controls Babelfish behavior related to the `WITH SCHEMABINDING` clause. By default, the `WITH SCHEMABINDING` clause is ignored when specified with the `CREATE` or `ALTER FUNCTION` command. | ignore |
-| `babelfishpg_tsql.escape_hatch_schemabinding_procedure` | Controls Babelfish behavior related to the `WITH SCHEMABINDING` clause. By default, the `WITH SCHEMABINDING` clause is ignored when specified with the `CREATE` or `ALTER PROCEDURE` command. | ignore |
-| `babelfishpg_tsql.escape_hatch_schemabinding_trigger` | Controls Babelfish behavior related to the `WITH SCHEMABINDING` clause. By default, the `WITH SCHEMABINDING` clause is ignored when specified with the `CREATE` or `ALTER TRIGGER` command. | ignore |
-| `babelfishpg_tsql.escape_hatch_schemabinding_view` | Controls Babelfish behavior related to the `WITH SCHEMABINDING` clause. By default, the `WITH SCHEMABINDING` clause is ignored when specified with the `CREATE` or `ALTER VIEW` command. | ignore |
-| `babelfishpg_tsql.escape_hatch_session_settings` | Controls Babelfish behavior toward unsupported session-level `SET` statements. | ignore |
-| `babelfishpg_tsql.escape_hatch_storage_on_partition` | Controls Babelfish behavior related to the `ON partition_scheme` column clause when defining partitioning. Babelfish currently doesn't implement partitioning. | strict |
-| `babelfishpg_tsql.escape_hatch_storage_options` | Escape hatch on any storage option used in `CREATE`/`ALTER` for `DATABASE`, `TABLE` and `INDEX`.  This includes the clauses `(LOG) ON`, `TEXTIMAGE_ON`, `FILESTREAM_ON` that define storage locations (partitions, filegroups) for tables, indexes, and constraints, and also for a database. This escape hatch setting applies to all of these clauses (including `ON PRIMARY` and `ON DEFAULT`). The exception is when a partition is specified for a table or index with `ON partition_scheme (column)`. | ignore |
-| `babelfishpg_tsql.escape_hatch_table_hints` | Controls the behavior of table hints specified using the `WITH (...)` clause. | ignore |
-| `babelfishpg_tsql.escape_hatch_unique_constraint` | Controls Babelfish behavior when creating a unique index or constraint on a nullable column. | strict |
