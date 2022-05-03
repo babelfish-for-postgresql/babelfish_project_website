@@ -181,6 +181,30 @@ section lists some of the known limitations and behavior variations of
 Babelfish collations.
 
 
+### Using CHARINDEX() with a non-deterministic collation
+
+`CHARINDEX()` cannot currently be used when the applicable collation is non-deterministic. Babelfish (by default) uses a non-deterministic case-insensitive collation, so you may encounter a run-time error saying "nondeterministic collations are not supported for substring searches". Until this is resolved, this issue can be worked around in two ways:
+
+- You can explicitly convert the expression to a case-sensitive collation and case-fold both arguments by applying LOWER() or UPPER(). For example: 
+    `SELECT CHARINDEX('x', a) from t1` becomes: `SELECT CHARINDEX(LOWER('x'), LOWER(a collate sql_latin1_general_cp1_cs_as)) from t1`
+- Create a SQL function named `f_charindex()`, and replace `CHARINDEX()` calls with calls to this function:
+
+```sql
+create function f_charindex(@s1 varchar(max), @s2 varchar(max)) returns int
+as
+begin
+declare @i int = 1
+while len(@s2) >= len(@s1)
+begin
+   if lower(@s1) = lower(substring(@s2,1,len(@s1))) return @i
+   set @i += 1
+   set @s2 = substring(@s2,2,999999999)
+end
+return 0
+end
+go
+```
+
 #### Unicode sorting rules
 
 In SQL Server, &ldquo;SQL&rdquo; collations (those that start with the
