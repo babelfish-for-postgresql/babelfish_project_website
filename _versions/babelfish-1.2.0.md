@@ -2,7 +2,7 @@
 date: 2022-4-5
 
 title: Babelfish 1.2.0
-nav_order: 3
+nav_order: 1
 
 product: Babelfish for PostgreSQL
 version: '1.2.0'
@@ -22,7 +22,7 @@ pretty:
     source: 'Babelfish 1.2.0'
 ---
 
-Babelfish Version: 1.2.0
+Babelfish Version: 1.2.0 [Downloads](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases)
 PostgreSQL Server Version: 13.6
 Babelfish Compass [Downloads](https://github.com/babelfish-for-postgresql/babelfish_compass/releases)
 Date: April 5, 2022

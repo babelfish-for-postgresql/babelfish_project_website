@@ -1,5 +1,4 @@
-
-- Babelfish Version: 1.1.0
+- Babelfish Version: 1.1.0 [Downloads](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases)
 - PostgreSQL Server Version: 13.5
 - Babelfish Compass [Downloads](https://github.com/babelfish-for-postgresql/babelfish_compass/releases)
 - Date: March 15, 2022
