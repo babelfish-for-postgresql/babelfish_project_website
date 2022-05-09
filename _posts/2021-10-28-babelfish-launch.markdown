@@ -14,7 +14,7 @@ its extensibility. Today there are 329 open-source extensions registered in the
 functionality that includes handling geospacial data, computational
 biology, statistics, job scheduling, graph databases and more.
 
-Today, we are excited to announce the release of the open source Babelfish for PostgreSQL (Babelfish): a capability
+Today, we are excited to announce the release of the open source Babelfish for PostgreSQL (Babelfish): a utility
 that lets PostgreSQL understand queries from applications written for Microsoft SQL Server.
 Babelfish is a set of extensions that provide both T-SQL capabilities and a Tabular Data Stream (TDS)
 listener port as enhancements to PostgreSQL. It supports the SQL Server dialect, T-SQL, and notable
@@ -28,8 +28,8 @@ At re:Invent 2020, we [announced](https://aws.amazon.com/blogs/opensource/want-m
 
 A key component of this release is the Babelfish Compass tool ([GitHub repo](https://github.com/babelfish-for-postgresql/babelfish_compass)). It is an assessment tool
 that analyzes SQL/DDL code for Microsoft SQL Server, determines the level of support for Babelfish,
-and generates a report. The purpose of such a report is to inform a go/no-go decision about whether
-it makes sense to consider starting a migration project from SQL Server to PostgreSQL using
+and generates a report. The report is intended to help you make a go/no-go decision about whether
+it makes sense to start a migration project from SQL Server to PostgreSQL using
 Babelfish. The Compass assessment report lists all the SQL features found in the SQL/DDL code, and
 notes whether or not these are supported by the latest version of Babelfish.
 
@@ -37,33 +37,21 @@ notes whether or not these are supported by the latest version of Babelfish.
 
 Babelfish helps eliminate expensive licensing fees by making it easier to migrate SQL Server applications to PostgreSQL. With Babelfish, applications that were originally built for SQL Server can work directly with PostgreSQL with fewer code changes and without changing database drivers. This works on three levels:
 
- - <b>SQL</b>. While SQL is an ANSI standard, relational databases are well-known for implementing the specifications with varying degrees of support and with specific language extensions. Hence, queries that work in SQL Server may not work directly in PostgreSQL. To solve this, Babelfish has its own parser that creates the appropriate query nodes, such that the SQL Server dialect can be executed by PostgreSQL natively. Babelfish also provides specific data types, functions and operators for SQL Server that are not present in PostgreSQL or do not work the same way across SQL Server and PostgreSQL.
+ - <b>SQL</b>. While SQL is an ANSI standard, relational databases are well-known for implementing the specifications with varying degrees of support and with specific language extensions. Hence, queries that work in SQL Server may not work directly in PostgreSQL. To solve this, Babelfish has its own parser that creates the appropriate query nodes, so the SQL Server dialect can be executed by PostgreSQL natively. Babelfish also provides specific data types, functions and operators for SQL Server that are not present in PostgreSQL or do not work the same way across SQL Server and PostgreSQL.
 
- - <b>T-SQL</b>. T-SQL is SQL Server’s language, which includes an extension of the SQL standard. In particular, T-SQL includes constructs used for stored procedures, such as variables, exceptions, control flow, and more. Babelfish adds support for these constructs into PostgreSQL. Babelfish also supports T-SQL semantics. For example, there are cases where an error would create a rollback in traditional PostgreSQL but not in SQL Server. When working through the TDS port, Babelfish makes PostgreSQL follow the SQL Server behaviors, ensuring correctness. 
+ - <b>T-SQL</b>. T-SQL is SQL Server’s language, which includes an extension of the SQL standard. In particular, T-SQL includes constructs used for stored procedures, such as variables, exceptions, control flow, and more. Babelfish adds support for these constructs into PostgreSQL. Babelfish also supports T-SQL semantics. For example, there are cases where an error would create a rollback in traditional PostgreSQL but not in SQL Server. When used through the TDS port, Babelfish makes PostgreSQL follow the SQL Server behaviors, ensuring correctness.
 
-- <b>TDS (SQL Server’s wire protocol)</b>. Babelfish also adds support for SQL Server’s wire protocol, TDS, which by default runs on port 1433. This means Babelfish uses the same network protocol, port, and connectivity drivers. This is natively implemented via a protocol hook, so it’s not a translation layer.    
+- <b>TDS (SQL Server’s wire protocol)</b>. Babelfish also adds support for SQL Server’s wire protocol, TDS, which by default runs on port 1433. This means Babelfish uses the same network protocol, port, and connectivity drivers. This is natively implemented via a protocol hook, so it’s not a translation layer.   
 
-With no requirement to replace the database drivers, and significantly reduced effort to update SQL language code, applications that are moving from SQL Server to PostgreSQL using Babelfish will be up and running much more quickly than if they needed to be ported completely to native PostgreSQL drivers and PL/pgSQL. Because Babelfish is open source, the community can extend the functionality if gaps in migration are identified, enhancing extensibility of PostgreSQL, targeting more use cases
-
-### The Structure of Babelfish
-
-Babelfish is composed of two main components:
-  - A patch against PostgreSQL. This patch will be submitted to the community for inclusion in a future version of PostgreSQL (available on GitHub [here](https://github.com/babelfish-for-postgresql/postgresql_modified_for_babelfish)).
-  - The Babelfish extensions (available on GitHub [here](https://github.com/babelfish-for-postgresql/babelfish_extensions/)):
-    - [babelfishpg_tsql](https://github.com/babelfish-for-postgresql/babelfish_extensions/tree/BABEL_1_X_DEV/contrib/babelfishpg_tsql): supports the T-SQL language
-    - [babelfishpg_tds](https://github.com/babelfish-for-postgresql/babelfish_extensions/tree/BABEL_1_X_DEV/contrib/babelfishpg_tds): supports the TDS wire protocol
-    - [babelfishpg_common](https://github.com/babelfish-for-postgresql/babelfish_extensions/tree/BABEL_1_X_DEV/contrib/babelfishpg_common): supports new datatypes found in T-SQL
-    - [babelfishpg_money](https://github.com/babelfish-for-postgresql/babelfish_extensions/tree/BABEL_1_X_DEV/contrib/babelfishpg_money): supports the money type in SQL Server. This is a modification of the already open-source [fixeddecimal extension](https://github.com/2ndQuadrant/fixeddecimal). 
+With no requirement to replace the database drivers, and significantly reduced effort to update SQL language code, applications that are moving from SQL Server to PostgreSQL using Babelfish will be up and running much more quickly than if they needed to be ported completely to native PostgreSQL drivers and PL/pgSQL. Because Babelfish is open source, the community can extend the functionality if gaps in migration are identified, enhancing extensibility of PostgreSQL and targeting more use cases.
 
 ### How to get started
-The Babelfish documentation contains detailed instructions on how to compile and install Babelfish. This can be found on the Babelfish [website](https://www.babelfishpg.org/). 
+The Babelfish documentation contains detailed instructions on how to compile and install Babelfish. You can find the documentation on the Babelfish [website](https://www.babelfishpg.org/). 
 
-
-Once Babelfish starts running as part of PostgreSQL, the database server will listen for PostgreSQL native traffic on port 5432, by default, and listen for TDS traffic on port 1433, by default. You can then connect to the TDS port using sqlcmd.
+Once Babelfish starts running as part of PostgreSQL, the database server will listen for PostgreSQL native traffic on port 5432 (by default), and listen for TDS traffic on port 1433 (by default).
 
 ### This is only the beginning
 
-Babelfish for PostgreSQL accelerates the migration of SQL Server applications to PostgreSQL by enhancing PostgreSQL such that it can understand both the TDS wire protocol and T-SQL language constructs of SQL Server. These extensions will continue to evolve as support for additional capabilities of T-SQL are added in the future, with contributions from both AWS and the open source community.  
-We hope you enjoy Babelfish, and we’re excited to welcome you to this new era of database freedom!
+Babelfish for PostgreSQL accelerates the migration of SQL Server applications to PostgreSQL by enhancing PostgreSQL so it can understand both the TDS wire protocol and T-SQL language constructs of SQL Server. These extensions will continue to evolve as support for additional capabilities of T-SQL are added in the future. We hope you enjoy Babelfish, and we’re excited to welcome you to this new era of database freedom!
  
 
