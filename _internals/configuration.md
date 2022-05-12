@@ -195,6 +195,13 @@ This parameter specifies the database session property used for TDS connections.
 occur if the `database_name` is not set.
 
 
+### `babelfishpg_tsql.sql_dialect`
+
+This parameter sets the dialect for SQL commands. Valid options are `postgres`, `tsql` and
+`pg`.  This parameter is set by Babelfish; you should not change it during
+a database session.
+
+
 ### `babelfishpg_tds.tds_debug_log_level`
 
 This parameter specifies the debug level for TDS. Accepted values are 0, 1, 2, 3; a setting of 0 will turn off logging. The default is 1.
@@ -278,82 +285,17 @@ This parameter controls UNIX socket permissions. The default is 0700.
 
 You may come across these parameters in the source code, but you shouldn't change them:
 
-### `babelfishpg_tsql.allow_antlr_to_unsupported_grammar_for_testing`
+- `babelfishpg_tsql.allow_antlr_to_unsupported_grammar_for_testing`
+- `babelfishpg_tsql.ansi_null_dflt_off`
+- `babelfishpg_tsql.ansi_null_dflt_on`
+- `babelfishpg_tsql.ansi_padding`
+- `babelfishpg_tsql.ansi_warnings`
+- `babelfishpg_tsql.arithabort`
+- `babelfishpg_tsql.arithignore`
+- `babelfishpg_tsql.cursor_close_on_commit`
+- `babelfishpg_tsql.disable_internal_savepoint`
+- `babelfishpg_tsql.enable_ownership_structure`
+- `babelfishpg_tsql.numeric_roundabort`
 
-This parameter is used for internal testing, making `antlr` allow unsupported grammar.
-The default value is `false`.
-
-### `babelfishpg_tsql.ansi_null_dflt_off`
-
-This parameter modifies the behavior of the session to override the default nullability of new
-columns when the ANSI `NULL` default option for the database is on.
-
-The setting `ON` is not allowed for option `ANSI_NULL_DFLT_OFF`.
-Please use `babelfishpg_tsql.escape_hatch_session_settings` to ignore this
-parameter.
-
-### `babelfishpg_tsql.ansi_null_dflt_on`
-
-This parameter modifies the behavior of the session to override default nullability of new columns
-when the ANSI `NULL` default option for the database is `false`.
-Setting to `OFF` is not allowed for the option `ANSI_NULL_DFLT_ON`. Please use
-`babelfishpg_tsql.escape_hatch_session_settings` to ignore resulting errors.
-
-
-### `babelfishpg_tsql.ansi_padding`
-
-Setting to `OFF` is not allowed for this option. Please use
-`babelfishpg_tsql.escape_hatch_session_settings` to ignore errors.
-
-
-### `babelfishpg_tsql.ansi_warnings`
-
-Setting to `OFF` is not allowed for this option. Please use
-`babelfishpg_tsql.escape_hatch_session_settings` to ignore errors.
-
-
-### `babelfishpg_tsql.arithabort`
-
-Setting to `OFF` is not allowed for this option. Please use
-`babelfishpg_tsql.escape_hatch_session_settings` to ignore errors.
-
-
-### `babelfishpg_tsql.arithignore`
-
-The setting `ON` is not allowed for this option. Please use
-`babelfishpg_tsql.escape_hatch_session_settings` to ignore errors.
-
-
-### `babelfishpg_tsql.cursor_close_on_commit`
-
-The setting `ON` is not allowed for this option. Please use
-`babelfishpg_tsql.escape_hatch_session_settings` to ignore errors.
-
-
-### `babelfishpg_tsql.disable_internal_savepoint`
-
-This parameter disables internal savepoints. The default value is `false`.
-This setting is for Babelfish development only and should not be used by end
-users.
-
-
-### `babelfishpg_tsql.enable_ownership_structure`
-
-This parameter enables Babelfish ownership structure.  This flag is for Babelfish development
-and should not be used by end users.
-
-
-### `babelfishpg_tsql.numeric_roundabort`
-
-This parameter ends a query when an overflow or division-by-zero error occurs
-during query execution.
-The setting `ON` is not allowed for this option.
-
-
-### `babelfishpg_tsql.sql_dialect`
-
-This parameter sets the dialect for SQL commands. Valid options are `postgres`, `tsql` and
-`pg`.  This parameter is set by Babelfish; you should not change it during
-a database session.
 
 
