@@ -81,7 +81,7 @@ layout: table_wrappers
                         <a href="#" class="nav-list-expander"><svg viewBox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a>
                         {%- endif -%}
                         <div class="nav-category">{{ collection_value.name }}</div>
-                        {% include nav.html pages=collection key=collection_key %}
+                        {% include nav.html pages=collection key=collection_key order=collection_value.order %}
                       </li>
                     </ul>
                   {% else %}
