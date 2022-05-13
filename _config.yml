@@ -120,6 +120,7 @@ just_the_docs:
     versions:
       name: Releases
       nav_fold: true
+      order: desc
 
 # Enable or disable the site search
 # Supports true (default) or false

@@ -57,6 +57,13 @@
 
   {%- assign pages_list = sorted_number_ordered_pages | concat: sorted_string_ordered_pages -%}
 
+  {%- comment -%}
+    Use descending ordering when explicitly requested
+  {%- endcomment -%}
+  {%- if include.order == "desc" -%}
+    {%- assign pages_list = pages_list | reverse -%}
+  {%- endif -%}
+
   {%- for node in pages_list -%}
     {%- if node.parent == nil -%}
 
