@@ -53,16 +53,6 @@ This parameter disables transactions in triggers. The default value is `false`.
 TSQL triggers terminate if there is no transaction active at the end.
 
 
-### `babelfishpg_tsql.dump_antlr_query_graph`
-
-This parameter instructs the server to dump the query graph parsed by ANTLR parser to local disk. The path used is
-`/tmp/antlr.dot`.
-
-
-### `babelfishpg_tsql.enable_antlr_detailed_log`
-
-This parameter enables detailed ANTLR parser logging.
-
 
 ### `babelfishpg_tsql.fmtonly`
 
@@ -158,11 +148,6 @@ This parameter instructs Babelfish to trace the execution time of iterative exec
 This parameter sets the `TEXTSIZE`.
 
 
-### `babelfishpg_tsql.use_antlr`
-
-This parameter is now obsolete; there is no way to switch parsers, both yacc and antlr parsers are required.
-
-
 ### `babelfishpg_tsql.version`
 
 This parameter sets the output of the `@@VERSION` function.
@@ -193,13 +178,6 @@ This parameter specifies the port to use for the TDS protocol (not standard Post
 This parameter specifies the database session property used for TDS connections. This means that
 `babelfishpg_tsql.database_name` is set during the login process. An error will
 occur if the `database_name` is not set.
-
-
-### `babelfishpg_tsql.sql_dialect`
-
-This parameter sets the dialect for SQL commands. Valid options are `postgres`, `tsql` and
-`pg`.  This parameter is set by Babelfish; you should not change it during
-a database session.
 
 
 ### `babelfishpg_tds.tds_debug_log_level`
@@ -294,8 +272,17 @@ You may come across these parameters in the source code, but you shouldn't chang
 - `babelfishpg_tsql.arithignore`
 - `babelfishpg_tsql.cursor_close_on_commit`
 - `babelfishpg_tsql.disable_internal_savepoint`
-- `babelfishpg_tsql.enable_ownership_structure`
 - `babelfishpg_tsql.numeric_roundabort`
+
+The following parameter is for specific development use only. Any use of `babelfishpg_tsql.sql_dialect` is not supported as errors, malfunctions or functional incorrect behavior could result:
+
+- `babelfishpg_tsql.sql_dialect`
+
+These parameters are scheduled for removal from the source code, and should not be modified:
+
+- `babelfishpg_tsql.dump_antlr_query_graph`
+- `babelfishpg_tsql.enable_antlr_detailed_log`
+
 
 
 
