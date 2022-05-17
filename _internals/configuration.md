@@ -53,7 +53,6 @@ This parameter disables transactions in triggers. The default value is `false`.
 TSQL triggers terminate if there is no transaction active at the end.
 
 
-
 ### `babelfishpg_tsql.fmtonly`
 
 This parameter controls SQL Server compatibility related to the `FMTONLY` option.
@@ -65,11 +64,6 @@ This parameter enables implicit transactions.
 If no transaction is running, the server will start an implicit transaction
 for qualified commands when the `implicit_transactions` parameter is set to
 on.
-
-
-### `babelfishpg_tsql.language`
-
-This parameter controls the T-SQL compatibility language option.
 
 
 ### `babelfishpg_tsql.migration_mode`
