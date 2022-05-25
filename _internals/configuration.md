@@ -266,6 +266,7 @@ You may come across these parameters in the source code, but you shouldn't chang
 - `babelfishpg_tsql.arithignore`
 - `babelfishpg_tsql.cursor_close_on_commit`
 - `babelfishpg_tsql.disable_internal_savepoint`
+- `babelfishpg_tsql.language`
 - `babelfishpg_tsql.numeric_roundabort`
 
 The following parameter is for specific development use only. Any use of `babelfishpg_tsql.sql_dialect` is not supported as errors, malfunctions or functional incorrect behavior could result:
