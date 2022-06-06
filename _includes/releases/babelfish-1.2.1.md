@@ -2,14 +2,20 @@
 - PostgreSQL Server Version: 13.7
 - Download source distributions:
   - [BABEL_1_2_1__PG_13_7.zip](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/download/BABEL_1_2_1__PG_13_7/BABEL_1_2_1__PG_13_7.zip)
-  - [BABEL_1_2_2__PG_13_6.tar.gz](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/download/BABEL_1_2_1__PG_13_7/BABEL_1_2_1__PG_13_7.tar.gz)
+  - [BABEL_1_2_1__PG_13_7.tar.gz](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/download/BABEL_1_2_1__PG_13_7/BABEL_1_2_1__PG_13_7.tar.gz)
 - Babelfish Compass
   - [Download](https://github.com/babelfish-for-postgresql/babelfish_compass/releases)
-- Date: April 5, 2022
+- Date: June 5, 2022
 
 ## Overview
 
-Babelfish 1.2.1 is a minor release that allows you to upgrade to PostgreSQL version 13.7. PostgreSQL v. 13.7 [contains the updated functionality documented in the community release notes](https://www.postgresql.org/docs/release/13.7/).
+Babelfish 1.2.1 contains the following fixes that improve the user experience.  1.2.1 fixes include:
+- An issue that caused Babelfish to become unavailable after working with temporary tables.
+- An issue that prevented transferring data to a table with identity columns using the SQL Server Management Studio import and export wizard.
+
+Babelfish 1.2.1 also contains the changes to PostgreSQL v. 13.7 [documented in the community release notes](https://www.postgresql.org/docs/release/13.7/).
+
+
 
 ## Upgrading to the new version
 
@@ -44,11 +50,6 @@ babelfish_db[124386]# \dx
  babelfishpg_tsql   | 1.2.1   | public     | Transact SQL Compatibility
                                  ....
 ```
-
-
-## Bug Fixes
-
-
 
 
 ## Acknowledgements
