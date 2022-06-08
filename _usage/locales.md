@@ -183,6 +183,8 @@ Babelfish collations.
 
 ### Using CHARINDEX() with a non-deterministic collation
 
+Note: the following limitation applies only to Babelfish version 1.x.x.  This issue has been resolved in version 2.1.0.
+
 `CHARINDEX()` cannot currently be used when the applicable collation is non-deterministic. Babelfish (by default) uses a non-deterministic case-insensitive collation, so you may encounter a run-time error saying "nondeterministic collations are not supported for substring searches". Until this is resolved, this issue can be worked around in two ways:
 
 - You can explicitly convert the expression to a case-sensitive collation and case-fold both arguments by applying LOWER() or UPPER(). For example: 
