@@ -96,6 +96,7 @@ definitions.  Note that only case insensitive collations are supported.
 | `french_ci_as` | Provides support for French. |
 | `greek_ci_as` | Provides support for Greek. |
 | `hebrew_ci_as` | Provides support for Hebrew. |
+| `japanese_ci_as` | Provides support for Japanese. |
 | `korean_wansung_ci_as` | Provides support for Korean (with dictionary sort) |
 | `modern_spanish_ci_as` | Provides support for Modern Spanish. |
 | `mongolian_ci_as` | Provides support for Mongolian. |
@@ -127,6 +128,7 @@ You can use the following collations for column definitions, if you want to supp
 | `french`    | `french_cs_as`        | `french_ci_as`, `french_ci_ai`    |
 | `greek`     | `greek_cs_as`    | `greek_ci_as`, `greek_ci_ai`   |
 | `hebrew`   | `hebrew_cs_as`    | `hebrew_ci_as`, `hebrew_ci_ai` |
+| `japanese` | `japanese_cs_as`  |  `japanese_ci_as`,  `japanese_ci_ai` |
 | `korean_wamsung`    | `korean_wamsung_cs_as`  | `korean_wamsung_ci_as`, `korean_wamsung_ci_ai` |
 | `modern_spanish`  | `modern_spanish_cs_as` | `modern_spanish_cs_as`, `modern_spanish_ci_ai` |
 | `mongolian` | `mongolian_cs_as`     | `mongolian_ci_as`, `mongolian_ci_ai` |
