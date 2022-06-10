@@ -65,6 +65,8 @@ CREATE ROLE (AUTHORIZATION clause not supported), DROP ROLE, ALTER ROLE
 
 - Support for the following collations: Japanese_CS_AS, Japanese_CI_AI, Japanese_CI_AS
 
+- Babelfish now supports CHARINDEX() substring searches on systems using nondeterministic collations.
+
 - Babelfish now maps the error code for @@ERROR=213.
 
 - Query plan output is generated following SET BABELFISH_SHOWPLAN_ALL ON (and OFF) and SET BABELFISH_STATISTICS PROFILE ON (OFF). This will generate PostgreSQL-style query plan information for T-SQL queries in Babelfish. Note that these SET statements are identical to existing T-SQL statements, but with the added BABELFISH_ prefix.
