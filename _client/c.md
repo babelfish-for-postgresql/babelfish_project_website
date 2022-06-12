@@ -42,7 +42,7 @@ The first thing we want to achieve is to connect to the database and check the
 connection. The following listing contains a small C program to make that
 happen:
 
-```C
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
