@@ -6,13 +6,13 @@ nav_order: 8
 
 ## Reviewing a Query Plan
 
-Babelfish version 2.1.0 includes support for functions and parameters that allow you to review estimated and actual (executed) query plans. This allows you to use the TDS port to identify and refine slow-performing queries. The functions can display an query plan for:
+Babelfish version 2.1.0 includes support for SET statements that allow you to review estimated and actual (executed) query plans. This allows you to use the TDS port to identify and refine slow-performing queries. The functions can display an query plan for:
 
 - `SELECT`, `INSERT`, `UPDATE`, and `DELETE` statements
 - Nested procedures, multiple statements in a batch
 - Variable declarations (for example, `DECLARE @t TABLE (a int, b int);`)
 
-The functions *do not* support query plan retrieval from functions, control flows, and cursors.
+The SET statements *do not* support query plan retrieval from functions, control flows, and cursors.
 
 You can use a SET statement on the TDS port to turn on/off the following functions: 
 
@@ -20,7 +20,7 @@ You can use a SET statement on the TDS port to turn on/off the following functio
     
 - SET BABELFISH_SHOWPLAN_ALL {ON|OFF} to display estimated execution plans for a statement without performing the command. The command implements the behavior of the [PostgreSQL EXPLAIN statement](https://www.postgresql.org/docs/current/using-explain.html#USING-EXPLAIN-BASICS).
 
-For example, the following command sequence turns on query planning, returns the query plan for the SELECT statement without executing the command, and then turns off query planning:
+The following example turns on query planning, displays the query plan for the SELECT statement without executing the command, and then turns off query planning:
 
 ```
 SET BABELFISH_SHOWPLAN_ALL ON
@@ -42,7 +42,7 @@ SET BABELFISH_SHOWPLAN_ALL OFF
 GO
 ```
 
-If you use the BABELFISH_STATISTICS PROFILE function, Babelfish will display the query plan that provides the best performance as it invokes the SELECT statement.  For example, the following command sequence returns an estimated cost to execute the SELECT statement and then turns off query planning:
+ç For example, the following command sequence returns an estimated cost to execute the SELECT statement and then turns off query planning:
 
 ```
 SET BABELFISH_STATISTICS PROFILE ON
@@ -71,7 +71,7 @@ SET BABELFISH_STATISTICS PROFILE OFF
 
 **Query Plan display options**
 
-You can use parameter settings that are supported by the PostgreSQL [EXPLAIN and EXPLAIN ANALYZE statements](https://www.postgresql.org/docs/current/sql-explain.html) to control the type of information that is displayed with your query plan.  To query Babelfish for a list of parameters and their current values, use the following command:
+You can use settings that are similar to the PostgreSQL [EXPLAIN and EXPLAIN ANALYZE statement settings](https://www.postgresql.org/docs/current/sql-explain.html) to control the type of information that is displayed with your query plan.  To query Babelfish for a list of settings and their current values, use the following command:
 
 ```
 SELECT name,
@@ -100,14 +100,14 @@ WHERE name LIKE '%babelfishpg_tsql.explain%';
 You can use the PostgreSQL [set_config()](https://www.postgresql.org/docs/14/functions-admin.html#FUNCTIONS-ADMIN-SET) function to set a parameter value on the command line. Specify the following arguments:
 
 ```
-SELECT set_config(‘babelfish_tsql.parameter_name’, ‘value’, is_local); 
+SELECT set_config(‘setting_name’, ‘value’, is_local); 
 ```
 
 Where:
 
-`babelfish_tsql.parameter_name` is the name of the parameter you want to set.
+`setting_name` is the name of the parameter you want to set.
 `value` is the parameter value.
-`is_local` : specify `true` if you wish the parameter should revert to its original setting when the transaction completes; set to `false` to make the setting persistent to the end of the session.
+`is_local` : specify `true` if you would like the parameter to revert to the original setting when the transaction completes; set to `false` to make the setting persistent to the end of the session.
 
 For example, the following command sets `babelfishpg_tsql.explain_verbose` parameter to `on`; the setting reverts to the original value when the session ends:
 
