@@ -20,52 +20,67 @@ You can use a SET statement on the TDS port to turn on/off the following functio
     
 - SET BABELFISH_SHOWPLAN_ALL {ON|OFF} to display estimated execution plans for a statement without performing the command. The command implements the behavior of the [PostgreSQL EXPLAIN statement](https://www.postgresql.org/docs/current/using-explain.html#USING-EXPLAIN-BASICS).
 
+Please note that you should not enable both SET statements at the same time.
+
 The following example turns on query planning, displays the query plan for the SELECT statement without executing the command, and then turns off query planning:
 
 ```
 SET BABELFISH_SHOWPLAN_ALL ON
 GO
-SELECT b.bid, b.bbalance, t.tid, t.tbalance FROM pgbench_branches b, pgbench_tellers t WHERE b.bid=t.bid ORDER BY b.bid;
+
+SELECT CategoryID, CategoryName FROM dbo.categories ORDER BY 1 DESC
 GO
-                                     QUERY PLAN                                      
--------------------------------------------------------------------------------------
- Sort  (cost=37.96..39.21 rows=500 width=16)
-   Sort Key: b.bid
-   ->  Hash Join  (cost=3.12..15.55 rows=500 width=16)
-         Hash Cond: (t.bid = b.bid)
-         ->  Seq Scan on pgbench_tellers t  (cost=0.00..11.00 rows=500 width=12)
-         ->  Hash  (cost=2.50..2.50 rows=50 width=8)
-               ->  Seq Scan on pgbench_branches b  (cost=0.00..2.50 rows=50 width=8)
-(7 rows)
+
+CategoryID  CategoryName
+----------- ---------------
+8           Seafood
+7           Produce
+6           Meat/Poultry
+5           Grains/Cereals
+4           Dairy Products
+3           Confections
+2           Condiments
+1           Beverages
+(8 rows affected)
+QUERY PLAN
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Query Text: select CategoryID, CategoryName from dbo.categories order by 1 desc
+Sort  (cost=45.59..47.17 rows=630 width=36) (actual rows=8 loops=1)
+  Sort Key: categoryid DESC NULLS LAST
+  Sort Method: quicksort  Memory: 25kB
+  ->  Seq Scan on categories  (cost=0.00..16.30 rows=630 width=36) (actual rows=8 loops=1)
+Completion time: 2022-06-13T10:18:53.3661572-07:00
 
 SET BABELFISH_SHOWPLAN_ALL OFF
 GO
 ```
 
-ç For example, the following command sequence returns an estimated cost to execute the SELECT statement and then turns off query planning:
+For example, the following command sequence returns an estimated cost to execute the SELECT statement and then turns off query planning:
 
 ```
 SET BABELFISH_STATISTICS PROFILE ON
 GO
-SELECT b.bid, b.bbalance, t.tid, t.tbalance FROM pgbench_branches b, pgbench_tellers t WHERE b.bid=t.bid ORDER BY b.bid;
+
+SELECT CategoryID, CategoryName FROM dbo.categories ORDER BY 1 DESC
 GO
 
-                                                           QUERY PLAN                                                           
---------------------------------------------------------------------------------------------------------------------------------
- Sort  (cost=37.96..39.21 rows=500 width=16) (actual time=13.295..13.345 rows=500 loops=1)
-   Sort Key: b.bid
-   Sort Method: quicksort  Memory: 48kB
-   ->  Hash Join  (cost=3.12..15.55 rows=500 width=16) (actual time=4.035..13.111 rows=500 loops=1)
-         Hash Cond: (t.bid = b.bid)
-         ->  Seq Scan on pgbench_tellers t  (cost=0.00..11.00 rows=500 width=12) (actual time=2.263..11.175 rows=500 loops=1)
-         ->  Hash  (cost=2.50..2.50 rows=50 width=8) (actual time=1.733..1.734 rows=50 loops=1)
-               Buckets: 1024  Batches: 1  Memory Usage: 10kB
-               ->  Seq Scan on pgbench_branches b  (cost=0.00..2.50 rows=50 width=8) (actual time=0.012..1.712 rows=50 loops=1)
- Planning Time: 0.218 ms
- Execution Time: 13.452 ms
-(11 rows)
+QUERY PLAN
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Query Text: select CategoryID, CategoryName from dbo.categories order by 1 desc
+Sort  (cost=45.59..47.17 rows=630 width=36)
+  Sort Key: categoryid DESC NULLS LAST
+  ->  Seq Scan on categories  (cost=0.00..16.30 rows=630 width=36)
+Completion time: 2022-06-13T10:20:13.1794503-07:00
+1:20
+select CategoryID, CategoryName from dbo.categories order by 1 desc
+1:21
+SELECT        dbo.Orders.OrderID, dbo.Orders.CustomerID, dbo.Orders.EmployeeID, dbo.Orders.OrderDate, dbo.Employees.LastName, dbo.Employees.FirstName, dbo.Employees.Title
+FROM            dbo.Orders LEFT OUTER JOIN
+                         dbo.Employees ON dbo.Orders.EmployeeID = dbo.Employees.EmployeeID
+order by dbo.Orders.EmployeeID, dbo.Orders.CustomerID, dbo.Orders.OrderID
 
 SET BABELFISH_STATISTICS PROFILE OFF
+GO
 ```
 
 
@@ -123,34 +138,43 @@ SELECT pg_reload_conf();
 
 **Example**
 
-The following example shows a verbose version of the query plan used to 
+The following example shows a verbose version of the query plan used to execute the statement:
 
 ```
-select set_config('babelfishpg_tsql.explain_verbose', 'on', false);
-GO
-set BABELFISH_SHOWPLAN_ALL on;
-GO
-SELECT b.bid, b.bbalance, t.tid, t.tbalance FROM pgbench_branches b, pgbench_tellers t WHERE b.bid=t.bid ORDER BY b.bid;
+SELECT set_config('babelfishpg_tsql.explain_verbose', 'on', false);
 GO
 
-                                         QUERY PLAN                                         
---------------------------------------------------------------------------------------------
- Sort  (cost=37.96..39.21 rows=500 width=16)
-   Output: b.bid, b.bbalance, t.tid, t.tbalance
-   Sort Key: b.bid
-   ->  Hash Join  (cost=3.12..15.55 rows=500 width=16)
-         Output: b.bid, b.bbalance, t.tid, t.tbalance
-         Inner Unique: true
-         Hash Cond: (t.bid = b.bid)
-         ->  Seq Scan on public.pgbench_tellers t  (cost=0.00..11.00 rows=500 width=12)
-               Output: t.tid, t.tbalance, t.bid
-         ->  Hash  (cost=2.50..2.50 rows=50 width=8)
-               Output: b.bid, b.bbalance
-               ->  Seq Scan on public.pgbench_branches b  (cost=0.00..2.50 rows=50 width=8)
-                     Output: b.bid, b.bbalance
-(13 rows)
-
-set BABELFISH_SHOWPLAN_ALL off;
+SET BABELFISH_SHOWPLAN_ALL ON;
 GO
-select set_config('babelfishpg_tsql.explain_verbose', 'off', false);
+
+SELECT dbo.Orders.OrderID, dbo.Orders.CustomerID, dbo.Orders.EmployeeID, dbo.Orders.OrderDate, dbo.Employees.LastName, dbo.Employees.FirstName, dbo.Employees.Title
+FROM dbo.Orders LEFT OUTER JOIN dbo.Employees ON dbo.Orders.EmployeeID = dbo.Employees.EmployeeID
+ORDER BY dbo.Orders.EmployeeID, dbo.Orders.CustomerID, dbo.Orders.OrderID
+GO
+
+QUERY PLAN
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Query Text: SELECT dbo.Orders.OrderID, dbo.Orders.CustomerID, dbo.Orders.EmployeeID, dbo.Orders.OrderDate, dbo.Employees.LastName, dbo.Employees.FirstName, dbo.Employees.Title
+FROM dbo.Orders LEFT OUTER JOIN dbo.Employees ON dbo.Orders.EmployeeID = dbo.Employees.EmployeeID
+ORDER BY dbo.Orders.EmployeeID, dbo.Orders.CustomerID, dbo.Orders.OrderID
+
+Sort  (cost=80.38..82.45 rows=830 width=118)
+  Output: orders.orderid, orders.customerid, orders.employeeid, orders.orderdate, employees.lastname, employees.firstname, employees.title
+  Sort Key: orders.employeeid NULLS FIRST, orders.customerid NULLS FIRST, orders.orderid NULLS FIRST
+  ->  Hash Left Join  (cost=13.60..40.13 rows=830 width=118)
+        Output: orders.orderid, orders.customerid, orders.employeeid, orders.orderdate, employees.lastname, employees.firstname, employees.title
+        Inner Unique: true
+        Hash Cond: (orders.employeeid = employees.employeeid)
+        ->  Seq Scan on northwind_dbo.orders  (cost=0.00..24.30 rows=830 width=22)
+              Output: orders.orderid, orders.customerid, orders.employeeid, orders.orderdate
+        ->  Hash  (cost=11.60..11.60 rows=160 width=100)
+              Output: employees.lastname, employees.firstname, employees.title, employees.employeeid
+              ->  Seq Scan on northwind_dbo.employees  (cost=0.00..11.60 rows=160 width=100)
+                    Output: employees.lastname, employees.firstname, employees.title, employees.employeeid
+Completion time: 2022-06-13T10:22:02.0657336-07:00
+
+SET BABELFISH_SHOWPLAN_ALL off;
+GO
+
+SELECT set_config('babelfishpg_tsql.explain_verbose', 'off', false);
 GO
