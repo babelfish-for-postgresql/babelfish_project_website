@@ -22,10 +22,10 @@ You can use a SET statement on the TDS port to turn on/off the following functio
 
 Please note that you should not enable both SET statements at the same time.
 
-The following example turns on query planning, displays the query plan for the SELECT statement without executing the command, and then turns off query planning:
+The following example turns on query planning, displays the query results and profile, and then turns off query planning:
 
 ```
-SET BABELFISH_SHOWPLAN_ALL ON
+SET BABELFISH_STATISTICS PROFILE ON
 GO
 
 SELECT CategoryID, CategoryName FROM dbo.categories ORDER BY 1 DESC
@@ -51,14 +51,14 @@ Sort  (cost=45.59..47.17 rows=630 width=36) (actual rows=8 loops=1)
   ->  Seq Scan on categories  (cost=0.00..16.30 rows=630 width=36) (actual rows=8 loops=1)
 Completion time: 2022-06-13T10:18:53.3661572-07:00
 
-SET BABELFISH_SHOWPLAN_ALL OFF
+SET BABELFISH_STATISTICS PROFILE OFF
 GO
 ```
 
 For example, the following command sequence returns an estimated cost to execute the SELECT statement and then turns off query planning:
 
 ```
-SET BABELFISH_STATISTICS PROFILE ON
+SET BABELFISH_SHOWPLAN_ALL ON
 GO
 
 SELECT CategoryID, CategoryName FROM dbo.categories ORDER BY 1 DESC
@@ -79,7 +79,7 @@ FROM            dbo.Orders LEFT OUTER JOIN
                          dbo.Employees ON dbo.Orders.EmployeeID = dbo.Employees.EmployeeID
 order by dbo.Orders.EmployeeID, dbo.Orders.CustomerID, dbo.Orders.OrderID
 
-SET BABELFISH_STATISTICS PROFILE OFF
+SET BABELFISH_SHOWPLAN_ALL OFF
 GO
 ```
 
@@ -120,8 +120,8 @@ SELECT set_config(‘setting_name’, ‘value’, is_local);
 
 Where:
 
-`setting_name` is the name of the parameter you want to set.
-`value` is the parameter value.
+`'setting_name'` is the name of the parameter you want to set.
+`'value'` is the parameter value.
 `is_local` : specify `true` if you would like the parameter to revert to the original setting when the transaction completes; set to `false` to make the setting persistent to the end of the session.
 
 For example, the following command sets `babelfishpg_tsql.explain_verbose` parameter to `on`; the setting reverts to the original value when the session ends:
