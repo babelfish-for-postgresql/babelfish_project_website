@@ -20,7 +20,7 @@ The above items and other new features of Babelfish 2.1.0 are listed in the sect
 
 **If you’re running Babelfish in a managed environment, please check your vendor’s instructions for upgrading.**
 
-FIXME - CONFIRM THIS Babelfish 2.1.0 is compatible with the latest major version (Babelfish 1.3.0); a dump/restore is not required to upgrade to the newer version. To upgrade:
+Babelfish 2.1.0 is compatible with the latest major version (Babelfish 1.3.0); a dump/restore is not required to upgrade to the newer version. To upgrade:
 
 1. Install the new binaries; for details, see [Compiling Babelfish From Source] (https://babelfishpg.org/docs/installation/compiling-babelfish-from-source/).
 
