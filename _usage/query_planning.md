@@ -22,7 +22,7 @@ You can use a SET statement on the TDS port to turn on/off the following functio
 
 Please note that you should not enable both SET statements at the same time.
 
-The following example turns on query planning, displays the query results and profile, and then turns off query planning:
+In the following example, SET BABELFISH_STATISTICS PROFILE ON instructs the server to display the query results and plan for the SELECT statement that follows. SET BABELFISH_STATISTICS PROFILE OFF then stops the server from displaying the results and plans from any subsequent queries:
 
 ```
 SET BABELFISH_STATISTICS PROFILE ON
@@ -55,7 +55,7 @@ SET BABELFISH_STATISTICS PROFILE OFF
 GO
 ```
 
-For example, the following command sequence returns an estimated cost to execute the SELECT statement and then turns off query planning:
+In the following example, SET BABELFISH_SHOWPLAN_ALL ON instructs the server to display the query plan for the SELECT statement that follows. SET BABELFISH_SHOWPLAN_ALL OFF then stops the server from displaying the plan for any subsequent queries:
 
 ```
 SET BABELFISH_SHOWPLAN_ALL ON
@@ -122,9 +122,9 @@ Where:
 
 `'setting_name'` is the name of the parameter you want to set.
 `'value'` is the parameter value.
-`is_local` : specify `true` if you would like the parameter to revert to the original setting when the transaction completes; set to `false` to make the setting persistent to the end of the session.
+`is_local` : specify `true` if you would like the parameter to revert to the original setting when the current transaction ends; set to `false` to make the setting revert when the session ends.
 
-For example, the following command sets `babelfishpg_tsql.explain_verbose` parameter to `on`; the setting reverts to the original value when the session ends:
+For example, the following command sets `babelfishpg_tsql.explain_verbose` to `on`; the setting reverts to `off` when the session ends:
 
 ```
 SELECT set_config('babelfishpg_tsql.explain_verbose', 'on', false);
