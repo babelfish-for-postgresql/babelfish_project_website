@@ -137,7 +137,7 @@ else:
 
 Then, the example iterates through the table and display the contents:
 
-```
+```python
 t_cursor.execute("SELECT * FROM contacts")
 
 for row in t_cursor.fetchall():
@@ -149,7 +149,7 @@ transact_connection.close()
 
 The example then removes two rows from the table:
 
-```
+```python
 # Remove inserted values
 cursor.execute("DELETE FROM contacts WHERE last_name = 'Bret' OR last_name = 'Edwards'")
 cursor.commit()
@@ -160,7 +160,7 @@ print(f"\nDeleted Rows: {cursor.rowcount}\n")
 
  Then, the example closes the connection and alerts the user:
 
-```
+```python
 # Close connection
 cursor.close()
 connection.close()
@@ -213,8 +213,8 @@ import psycopg2
 
 server = 'host.example.com'
 port = 1433
-database = 'postgres'  
-username = 'postgres'
+database = 'master'  
+username = 'babelfish_user'
 password = '1safepassword'
 
 pg_database = "babelfish_db"
@@ -249,7 +249,7 @@ Then, the example drops and recreates a simple table (named `contacts`) and a pr
                     )
                 """)
                 cursor.execute("""
-                    CREATE PROCEDURE contact_info
+                    CREATE PROCEDURE find_contact
                         @last_name VARCHAR(100)
                     AS BEGIN
                         SELECT * FROM contacts WHERE last_name like '%'+@last_name+'%'
@@ -304,4 +304,12 @@ The example then queries the table, first with the `psycopg2` library, and then 
 
 The `with` clause allows the example to clean cursors and connections once the block is complete for a cleaner execution.
 
+Finally, add the init call to `main()` function:
 
+
+```python
+if __name__ == "__main__":
+    main()
+```
+
+You can download this example from [here](/assets/examples/tds.py).
