@@ -20,7 +20,6 @@ You can use a SET statement on the TDS port to turn on/off the following functio
     
 - SET BABELFISH_SHOWPLAN_ALL {ON|OFF} to display estimated execution plans for a statement without performing the command. The command implements the behavior of the [PostgreSQL EXPLAIN statement](https://www.postgresql.org/docs/current/using-explain.html#USING-EXPLAIN-BASICS).
 
-Please note that you should not enable both SET statements at the same time.
 
 In the following example, SET BABELFISH_STATISTICS PROFILE ON instructs the server to display the query results and plan for the SELECT statement that follows. SET BABELFISH_STATISTICS PROFILE OFF then stops the server from displaying the results and plans from any subsequent queries:
 
