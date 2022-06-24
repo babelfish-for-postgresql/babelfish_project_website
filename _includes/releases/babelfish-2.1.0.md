@@ -14,42 +14,7 @@ Babelfish 2.1.0 contains enhancements and fixes that improve the user experience
 - Support for Japanese collations.
 - Improved client support.
 
-The above items and other new features of Babelfish 2.1.0 are listed in the sections below.
-
-## Upgrading to the new version
-
-**If you’re running Babelfish in a managed environment, please check your vendor’s instructions for upgrading.**
-
-Babelfish 2.1.0 is compatible with the latest major version (Babelfish 1.3.0); a dump/restore is not required to upgrade to the newer version. To upgrade:
-
-1. Install the new binaries; for details, see [Compiling Babelfish From Source] (https://babelfishpg.org/docs/installation/compiling-babelfish-from-source/).
-
-2. Start the new server.
-
-3. Update the modified extensions. 
-
-To update the extensions that have changed since the last release, connect to the PostgreSQL endpoint of the Babelfish database and execute the following statements from a single session in this order:
-
-```bash
-ALTER EXTENSION "babelfishpg_common" UPDATE;
-ALTER EXTENSION "babelfishpg_tsql" UPDATE;
-```
-
-Please note that the extension owner must invoke ALTER EXTENSION. For this release, the `babelfish_tds` and `babelfish_money` extensions don’t include any SQL-level changes and need not be updated.
-
-After the extensions are updated, you can check the extension version from the PostgreSQL port:
-
-```bash
-babelfish_db[124386]# \dx
-                                List of installed extensions
-        Name        | Version |   Schema   |                   Description
---------------------+---------+------------+-------------------------------------------------
- babelfishpg_common | 2.1.0   | public     | Transact SQL Datatype Support
-                                 ....
- babelfishpg_tsql   | 2.1.0   | public     | Transact SQL Compatibility
-                                 ....
-```
-
+Babelfish does not support an upgrade path to version 2.1.0 from Babelfish 1.x.x.
 
 ## Changes
 
