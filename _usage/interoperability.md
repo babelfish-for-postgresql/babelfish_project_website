@@ -28,11 +28,11 @@ The interoperability considerations apply whenever the execution context is not 
 
 In both cases, this effectively means the SQL dialect is temporarily (and transparently) switched in the session while accessing/executing the objects created in a different SQL dialect (this does not apply to accessing a table).
 
-When one of the above cases occurs in a Babelfish-based application, one or more of the following interoperability aspects may need to be considered. It is the responsibility of the Babelfish user to determine whether an application with such a mixed-SQL dialect scenario works as expected. Also, the user should anticipate potential issues when upgrading to future versions of Babelfish; such issues may need to be resolved by the user themselves, as AWS may not be able to support such mixed-SQL dialect cases.
+When one of the above cases occurs in a Babelfish-based application, one or more of the following interoperability aspects may need to be considered. It is the responsibility of the Babelfish user to determine whether an application with such a mixed-SQL dialect scenario works as expected. Also, the user should anticipate potential issues when upgrading to future versions of Babelfish; such issues may need to be resolved by the user themselves.
 
 - **Schema names**
-     Babelfish emulates the SQL Server multi-DB structure by flattening the various SQL Server databases into schemas inside the single `babelfish_db` PostgreSQL database. For example, this means that a T-SQL table created as `mydb.dbo.mytable` and a procedure created as `yourdb.dbo.yourproc` must be referenced from PostgreSQL as table `mydb_dbo.mytable` and procedure `yourdb_dbo.yourproc`, respectively [see Using Babelfish with a single database or multiple databases](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/babelfish.html).
-     In addition, SQL Server uses different rules than PostgreSQL for resolving an object name without a qualifying schema name. 
+     Babelfish emulates the SQL Server multi-DB structure by flattening the various SQL Server databases into schemas inside the PostgreSQL database (by default, `babelfish_db`). For example, this means that a T-SQL table created as `mydb.dbo.mytable` and a procedure created as `yourdb.dbo.yourproc` must be referenced from PostgreSQL as table `mydb_dbo.mytable` and procedure `yourdb_dbo.yourproc`, respectively [see Using Babelfish with a single database or multiple databases](https://babelfishpg.org/docs/installation/single-multiple/).
+     In addition, SQL Server uses different rules than PostgreSQL for resolving an object name without a schema name. 
 
      These differences must be taken into account when operating a PostgreSQL connecting in the Babelfish database.
     
@@ -40,7 +40,7 @@ When one of the above cases occurs in a Babelfish-based application, one or more
 
      PostgreSQL has a maximum identifier length of 63 characters, while SQL Server supports up to 128. In addition, PostgreSQL has stricter uniqueness requirements for index names. Babelfish handles these restrictions by internally appending or replacing part of such identifiers with a 32-character string representing a hash of the identifier. While this is transparent from T-SQL, the identifier-with-hash is the object name when seen from PostgreSQL. 
 
-     For example, an index named `ix1` on table `t1` will internally be named `ix1t1a5111d2a1767bc43a700e9f2162be019` by Babelfish. Specifically, Babelfish concatenates the index name with the table name along the string generated using MD5 for the lowercase index name.
+     For example, an index named `ix1` on table `t1` will internally be named `ix1t1a5111d2a1767bc43a700e9f2162be019` by Babelfish. Here, Babelfish concatenates the index name with the table name along the string generated using MD5 for the lowercase index name.
     
 - **Permissions**
     
@@ -67,7 +67,7 @@ When one of the above cases occurs in a Babelfish-based application, one or more
     
 - **Future Babelfish upgrades**
 
-     The most likely reason why Babelfish users might want to implement part of the migrated T-SQL application in PostgreSQL, is to work around a particular piece of T-SQL functionality that is not currently supported by Babelfish, so the user then tries to implement that part in PostgreSQL. There is a risk that, if Babelfish starts to support those features in a future release, the application would not be compatible with that future release. This could mean that the upgraded future instance may not work correctly, or causing the upgrade to fail.
+     The most likely reason why Babelfish users might want to implement part of the migrated T-SQL application in PostgreSQL, is to work around a particular piece of T-SQL functionality that is not currently supported by Babelfish, so the user then tries to implement that part in PostgreSQL. There is a risk that, if Babelfish starts to support those features in a future release, the application would not be compatible with that future release. This could mean that the upgraded future instance may not work correctly, or cause the upgrade to fail.
 
 
 ## Interoperability scenarios
@@ -102,7 +102,7 @@ It may be possible to migrate an application that performs full-text search to B
  
 **PostGIS extension**
 
-To migrate an application featuring geospatial T-SQL features, it could be an option to consider the PostGIS extension. However, this might require more extensive refactoring as well as devising a mechanism to pass data between T-SQL and the PostGIS extension. Future compatibility considerations apply.‘
+To migrate an application featuring geospatial T-SQL features, it could be an option to consider the PostGIS extension. However, this might require more extensive refactoring as well as devising a mechanism to pass data between T-SQL and the PostGIS extension. Future compatibility considerations apply.
 
 **XML processing**
 
