@@ -15,7 +15,7 @@ Babelfish for PostgreSQL provides two endpoints through which the Babelfish data
  
 Terminology note: in this document, *TDS* and *T-SQL*, and *PostgreSQL* and *PostgreSQL SQL* are used as synonyms for the type of SQL dialect as well as the corresponding connection to the database.
 
-In the context of this document, the Babelfish database is a PostgreSQL database created for the purpose of emulating the SQL Server multi-DB environment in the T-SQL dialect, e.g. with a `master` and `tempdb` database and one or more user databases. In Aurora PostgreSQL, this database is always named `babelfish_db`. A TDS connection will always be placed inside this Babelfish database, even though that is not visible through T-SQL. There can only be a single Babelfish database per PostgreSQL instance.
+In the context of this document, the Babelfish database is a PostgreSQL database created for the purpose of emulating the SQL Server multi-DB environment in the T-SQL dialect, e.g. with a `master` and `tempdb` database and one or more user databases. By default, this database is named `babelfish_db`. A TDS connection will always be placed inside this Babelfish database, even though that is not visible through T-SQL. There can only be a single Babelfish database per PostgreSQL instance.
 
 Since the Babelfish database is ultimately a PostgreSQL database, it is technically possible to access it from the PostgreSQL port and run PostgreSQL SQL statements against it. However, users should tread carefully when accessing the Babelfish database through PostgreSQL, as there are various complexities to be considered. 
 
