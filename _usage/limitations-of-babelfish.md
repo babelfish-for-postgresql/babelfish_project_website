@@ -72,7 +72,7 @@ not implemented or partially implemented in Babelfish.  This list is subject to 
 | Cursors (updatable) | | | Functionality related to this object type is not supported. |
 | Cursors (global) | | | `GLOBAL` cursors are not supported. |
 | Cursor (fetch behaviors) | | | The following cursor behaviors are not supported: `FETCH PRIOR`, `FIRST`, `LAST`, `ABSOLUTE`, `RELATIVE` |
-| Cursor-typed (variables and parameters) | | | Cursor-typed variables and parameters are not supported. |
+| Cursor-typed (variables and parameters) | | | Cursor-typed parameters are supported when the parameter is used as an input parameter, but not when used as an output parameter (an error is raised). |
 | `CROSS APPLY` | | | Lateral joins are not supported. |
 | `CREATE/ALTER/DROP CRYPTOGRAPHIC PROVIDER` | | | This syntax is not supported. |
 | Cursor Options | | | `SCROLL`, `KEYSET`, `DYNAMIC`, `FAST_FORWARD`, `SCROLL_LOCKS`, `OPTIMISTIC`, `TYPE_WARNING`, `FOR UPDATE` are not supported. |
