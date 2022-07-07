@@ -16,12 +16,12 @@ The SET statements *do not* support query plan retrieval from functions, control
 
 You can use a SET statement on the TDS port to turn on/off the following functions: 
 
-- SET BABELFISH_STATISTICS PROFILE {ON|OFF} to display the query plan used to execute a statement. The command implements the behavior of the [PostgreSQL EXPLAIN ANALYZE statement] (https://www.postgresql.org/docs/current/using-explain.html#USING-EXPLAIN-ANALYZE).
+- `SET BABELFISH_STATISTICS PROFILE {ON|OFF}` to display the query plan used to execute a statement. The command implements the behavior of the [PostgreSQL EXPLAIN ANALYZE statement](https://www.postgresql.org/docs/current/using-explain.html#USING-EXPLAIN-ANALYZE).
     
-- SET BABELFISH_SHOWPLAN_ALL {ON|OFF} to display estimated execution plans for a statement without performing the command. The command implements the behavior of the [PostgreSQL EXPLAIN statement](https://www.postgresql.org/docs/current/using-explain.html#USING-EXPLAIN-BASICS).
+- `SET BABELFISH_SHOWPLAN_ALL {ON|OFF}` to display estimated execution plans for a statement without performing the command. The command implements the behavior of the [PostgreSQL EXPLAIN statement](https://www.postgresql.org/docs/current/using-explain.html#USING-EXPLAIN-BASICS).
 
 
-In the following example, SET BABELFISH_STATISTICS PROFILE ON instructs the server to display the query results and plan for the SELECT statement that follows. SET BABELFISH_STATISTICS PROFILE OFF then stops the server from displaying the results and plans from any subsequent queries:
+In the following example, `SET BABELFISH_STATISTICS PROFILE ON` instructs the server to display the query results and plan for the SELECT statement that follows. `SET BABELFISH_STATISTICS PROFILE OFF` then stops the server from displaying the results and plans from any subsequent queries:
 
 ```sql
 SET BABELFISH_STATISTICS PROFILE ON
@@ -54,7 +54,7 @@ SET BABELFISH_STATISTICS PROFILE OFF
 GO
 ```
 
-In the following example, SET BABELFISH_SHOWPLAN_ALL ON instructs the server to display the query plan for the SELECT statement that follows. SET BABELFISH_SHOWPLAN_ALL OFF then stops the server from displaying the plan for any subsequent queries:
+In the following example, `SET BABELFISH_SHOWPLAN_ALL ON` instructs the server to display the query plan for the `SELECT` statement that follows. `SET BABELFISH_SHOWPLAN_ALL OFF` then stops the server from displaying the plan for any subsequent queries:
 
 ```sql
 SET BABELFISH_SHOWPLAN_ALL ON

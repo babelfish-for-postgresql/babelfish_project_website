@@ -23,7 +23,7 @@ Babelfish 1.2.1 also contains the changes to PostgreSQL v. 13.7 [documented in t
 
 Babelfish 1.2.1 is compatible with the latest major version (Babelfish 1.2.0); a dump/restore is not required to upgrade to the newer version. To upgrade:
 
-1. Install the new binaries; for details, see [Compiling Babelfish From Source] (https://babelfishpg.org/docs/installation/compiling-babelfish-from-source/).
+1. Install the new binaries; for details, see [Compiling Babelfish From Source](https://babelfishpg.org/docs/installation/compiling-babelfish-from-source/).
 
 2. Start the new server.
 
