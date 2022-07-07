@@ -23,7 +23,7 @@ You can use a SET statement on the TDS port to turn on/off the following functio
 
 In the following example, SET BABELFISH_STATISTICS PROFILE ON instructs the server to display the query results and plan for the SELECT statement that follows. SET BABELFISH_STATISTICS PROFILE OFF then stops the server from displaying the results and plans from any subsequent queries:
 
-```
+```sql
 SET BABELFISH_STATISTICS PROFILE ON
 GO
 
@@ -56,7 +56,7 @@ GO
 
 In the following example, SET BABELFISH_SHOWPLAN_ALL ON instructs the server to display the query plan for the SELECT statement that follows. SET BABELFISH_SHOWPLAN_ALL OFF then stops the server from displaying the plan for any subsequent queries:
 
-```
+```sql
 SET BABELFISH_SHOWPLAN_ALL ON
 GO
 
@@ -87,7 +87,7 @@ GO
 
 You can use settings that are similar to the PostgreSQL [EXPLAIN and EXPLAIN ANALYZE statement settings](https://www.postgresql.org/docs/current/sql-explain.html) to control the type of information that is displayed with your query plan.  To query Babelfish for a list of settings and their current values, use the following command:
 
-```
+```sql
 SELECT name,
        setting,
        short_desc,
@@ -113,7 +113,7 @@ WHERE name LIKE '%babelfishpg_tsql.explain%';
 
 You can use the PostgreSQL [set_config()](https://www.postgresql.org/docs/14/functions-admin.html#FUNCTIONS-ADMIN-SET) function to set a parameter value on the command line. Specify the following arguments:
 
-```
+```sql
 SELECT set_config(‘setting_name’, ‘value’, is_local); 
 ```
 
@@ -125,13 +125,13 @@ Where:
 
 For example, the following command sets `babelfishpg_tsql.explain_verbose` to `on`; the setting reverts to `off` when the session ends:
 
-```
+```sql
 SELECT set_config('babelfishpg_tsql.explain_verbose', 'on', false);
 ```
 
 You can also set the parameters in the `postgresql.conf` file.  After setting the parameters in the configuration file, use the following command to reload the configuration parameters:
 
-```
+```sql
 SELECT pg_reload_conf();
 ```
 
@@ -139,7 +139,7 @@ SELECT pg_reload_conf();
 
 The following example shows a verbose version of the query plan used to execute the statement:
 
-```
+```sql
 SELECT set_config('babelfishpg_tsql.explain_verbose', 'on', false);
 GO
 
@@ -177,3 +177,4 @@ GO
 
 SELECT set_config('babelfishpg_tsql.explain_verbose', 'off', false);
 GO
+```
