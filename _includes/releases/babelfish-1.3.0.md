@@ -1,8 +1,8 @@
 - Babelfish Version: 1.3.0
 - PostgreSQL Server Version: 13.7
 - Download source distributions:
-  - [BABEL_1_3_0__PG_13_6.zip](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/download/BABEL_1_3_0__PG_13_6/BABEL_1_3_0__PG_13_7.zip)
-  - [BABEL_1_2_0__PG_13_6.tar.gz](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/download/BABEL_1_3_0__PG_13_6/BABEL_1_3_0__PG_13_7.tar.gz)
+  - [BABEL_1_3_0__PG_13_7.zip](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/download/BABEL_1_3_0__PG_13_7/BABEL_1_3_0__PG_13_7.zip)
+  - [BABEL_1_3_0__PG_13_7.tar.gz](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/download/BABEL_1_3_0__PG_13_7/BABEL_1_3_0__PG_13_7.tar.gz)
 - Babelfish Compass
   - [Download](https://github.com/babelfish-for-postgresql/babelfish_compass/releases)
 - Date: June 9, 2022
