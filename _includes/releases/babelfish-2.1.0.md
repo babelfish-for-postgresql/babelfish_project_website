@@ -20,6 +20,8 @@ Babelfish does not support an upgrade path to version 2.1.0 from Babelfish 1.x.x
 
 This version of Babelfish adds support for the following features:
 
+- Backported the fix from the PostgreSQL 14.4 release that [reverts changes to CONCURRENTLY](https://github.com/postgres/postgres/commit/e28bb885196916b0a3d898ae4f2be0e38108d81b) that speed up Xmin advance to prevent Index Corruption with the CREATE INDEX CONCURRENTLY / REINDEX CONCURRENTLY commands.
+
 - Support for functions: `IS_MEMBER()`, `IS_ROLEMEMBER()`, `HAS_PERMS_BY_NAME()`.
 
 - Support for the following catalogs: 
