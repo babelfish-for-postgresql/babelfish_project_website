@@ -17,9 +17,9 @@ Terminology note: in this document, *TDS* and *T-SQL*, and *PostgreSQL* and *Pos
 
 In the context of this document, the Babelfish database is a PostgreSQL database created for the purpose of emulating the SQL Server multi-DB environment in the T-SQL dialect, e.g. with a `master` and `tempdb` database and one or more user databases. By default, this database is named `babelfish_db`. A TDS connection will always be placed inside this Babelfish database, even though that is not visible through T-SQL. There can only be a single Babelfish database per PostgreSQL instance.
 
-Since the Babelfish database is ultimately a PostgreSQL database, it is technically possible to access it from the PostgreSQL port and run PostgreSQL SQL statements against it. However, users should tread carefully when accessing the Babelfish database through PostgreSQL, as there are various complexities to be considered. 
+Since the Babelfish database is ultimately a PostgreSQL database, it is technically possible to access it from the PostgreSQL port and run PostgreSQL SQL statements against it. You should be cautious when accessing the Babelfish database through PostgreSQL, as there are complexities to be considered. 
 
-From a Babelfish perspective, it is simplest to avoid accessing the Babelfish database from PostgreSQL altogether. However, there may be valid reasons for wanting to use PostgreSQL functionality anyway. For example, when a particular aspect of T-SQL is not supported by Babelfish, it might be possible to implement that aspect natively in PostgreSQL so as to allow migrating the application to Babelfish PostgreSQL. However, this comes with certain implications and risks, as described below.
+A simple approach is to avoid accessing the Babelfish database from PostgreSQL altogether. There are valid reasons for wanting to use PostgreSQL functionality. For example, when a particular aspect of T-SQL is not supported by Babelfish, it might be possible to implement that aspect natively in PostgreSQL to allow migrating the application to Babelfish PostgreSQL.
 
 The interoperability considerations apply whenever the execution context is not pure TDS/T-SQL, i.e. when PostgreSQL SQL statements are executed in a Babelfish context. This is the case when:
 
@@ -82,8 +82,6 @@ Interoperability aspects: schema names; identifiers; permissions.
 - When the PostgreSQL connection also modifies the Babelfish-created tables or performs DDL to modify such objects, then also transactional semantics aspects will apply.
 
 - A more complex scenario is when a PostgreSQL connection executes a T-SQL procedure (either directly or via a PostgreSQL procedure), or modifies a Babelfish-created table which has a Babelfish-created trigger. The resulting semantics should be carefully validated by the Babelfish user. 
-
-- DMS Migration. Customer uses the PostgreSQL endpoint versus the Babelfish endpoint for high performance migration. It’s not clear how data type differences like `DATETIME2(7)` would map.
 
 
 ## Interoperability Examples
