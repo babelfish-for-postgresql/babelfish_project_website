@@ -5,7 +5,7 @@
   - [BABEL_2_1_0__PG_14_3.tar.gz](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/download/BABEL_2_1_0__PG_14_3/BABEL_2_1_0__PG_14_3.tar.gz)
 - Babelfish Compass
   - [Download](https://github.com/babelfish-for-postgresql/babelfish_compass/releases)
-- Date: June 9, 2022
+- Date: July 7, 2022
 
 ## Overview
 
@@ -19,8 +19,6 @@ Babelfish does not support an upgrade path to version 2.1.0 from Babelfish 1.x.x
 ## Changes
 
 This version of Babelfish adds support for the following features:
-
-- Backported the fix from the PostgreSQL 14.4 release that [reverts changes to CONCURRENTLY](https://github.com/postgres/postgres/commit/e28bb885196916b0a3d898ae4f2be0e38108d81b) that speed up Xmin advance to prevent Index Corruption with the CREATE INDEX CONCURRENTLY / REINDEX CONCURRENTLY commands.
 
 - Support for functions: `IS_MEMBER()`, `IS_ROLEMEMBER()`, `HAS_PERMS_BY_NAME()`.
 
@@ -36,7 +34,6 @@ This version of Babelfish adds support for the following features:
 
 |sp_sproc_columns|sp_sproc_columns_100||
 |sp_helprole|sp_helprolemember|
-
 
 - Cross-DB references outside the current database, with a 3-part object name, for SELECT,SELECT..INTO, INSERT, UPDATE, DELETE
 CREATE ROLE (AUTHORIZATION clause not supported), DROP ROLE, ALTER ROLE.
