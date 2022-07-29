@@ -1,20 +1,22 @@
 - Babelfish Version: 2.1.0
 - PostgreSQL Server Version: 14.3
 - Download source distributions:
-  - [BABEL_2_1_0__PG_14_3.zip](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/download/BABEL_2_1_0__PG_14_3/BABEL_2_1_0__PG_14_3.zip)
-  - [BABEL_2_1_0__PG_14_3.tar.gz](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/download/BABEL_2_1_0__PG_14_3/BABEL_2_1_0__PG_14_3.tar.gz)
+  - [BABEL_2_1_0__PG_14_3.zip](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/download/BABEL_2_1_0a__PG_14_3/BABEL_2_1_0a__PG_14_3.zip)
+  - [BABEL_2_1_0__PG_14_3.tar.gz](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/download/BABEL_2_1_0a__PG_14_3/BABEL_2_1_0a__PG_14_3.tar.gz)
 - Babelfish Compass
   - [Download](https://github.com/babelfish-for-postgresql/babelfish_compass/releases)
 - Date: July 7, 2022
 
 ## Overview
 
-Babelfish 2.1.0 contains enhancements and fixes that improve the user experience, including:
+The Babelfish 2.1.0 release is replaced by the Babelfish 2.1.0a release.  The features noted below are in the Babelfish 2.1.0a release.
+
+Babelfish 2.1.0a contains enhancements and fixes that improve the user experience, including:
 - Support for new functions, catalogs, and system stored procedures.
 - Support for Japanese collations.
 - Improved client support.
 
-Babelfish does not support an upgrade path to version 2.1.0 from Babelfish 1.x.x.
+Babelfish does not support an upgrade path to version 2.1.0a from Babelfish 1.x.x.
 
 ## Changes
 
