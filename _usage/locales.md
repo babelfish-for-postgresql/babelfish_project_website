@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Locales and language support
+title: Collations and language support
 nav_order: 4
 ---
 
-## Locales and language support
+## Collations and language support
 
 A collation specifies the sort order and presentation format of data.
 Babelfish maps SQL Server collations to comparable collations

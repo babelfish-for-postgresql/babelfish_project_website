@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Using Babelfish to migrate to PostgreSQL
-nav_order: 3
+nav_order: 2
 ---
 
 ## Migrating to Babelfish

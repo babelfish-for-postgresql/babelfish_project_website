@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Differences between Babelfish and SQL Server 
-nav_order: 5
+nav_order: 3
 ---
 
 ## Differences between Babelfish and SQL Server
