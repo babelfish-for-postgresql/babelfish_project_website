@@ -100,9 +100,6 @@ paginate_path: "/blog/page:num/"
 
 just_the_docs:
   # Define the menu choices displayed at the website. 
-  # The folder name in which the source for that subsection resides (followed by :) is the first argument.
-  # name, followed by the text that will appear in the navigation panel and : is the second argument.
-  # The nav_fold argument determines if the menu section can be collapsed.
   collections:
     docs:
     installation:
