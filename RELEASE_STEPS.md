@@ -1,12 +1,20 @@
 # Release Notes publishing checklist
 
-- Add the release note text inside `_includes/releases` folder as a markdown file, without headers.
-  As the contents of these files are raw, they can be checked out from external sources (once the docs have 
-  been moved to the extensions repository).
+Add a new file with the release note content to the `_includes/releases` folder, with the following release-specific header content:
 
-- Add the version details in `_versions`, with the following content and updating the corresponding
-  version number and the correct filename in the `explanation` attribute (without the `_includes` parent
-  directory):
+```markdown
+- Babelfish Version: 2.1.0
+- PostgreSQL Server Version: 14.3
+- Download source distributions:
+  - [BABEL_2_1_0__PG_14_3.zip](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/download/BABEL_2_1_0__PG_14_3/BABEL_2_1_0__PG_14_3.zip)
+  - [BABEL_2_1_0__PG_14_3.tar.gz](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/download/BABEL_2_1_0__PG_14_3/BABEL_2_1_0__PG_14_3.tar.gz)
+- Babelfish Compass
+  - [Download](https://github.com/babelfish-for-postgresql/babelfish_compass/releases)
+- Date: July 7, 2022
+```
+Followed by the content of the release notes.
+
+Add a new file to the `_versions` folder with the following release-specific information:
 
 ```markdown
 ---
@@ -33,22 +41,40 @@ pretty:
 Babelfish for PostgreSQL is open source software that uses the Apache License version 2 (ALv2) and PostgreSQL License. Project source is freely available on [GitHub](https://github.com/babelfish-for-postgresql). 
 ```
 
-The text below the header of this content will be rendered in the right sidebar of the release note page.
+The text below the header of this file will be rendered at the end of the release notes in the documentation.
 
+The files mentioned above will make the releases available in `<url>/versions` permalink and in the documentation sidebar. The versions route is not accessible from the UI, only by linking. eg: babelfish.org/versions
 
-> The above bullets will make the releases available in `<url>/versions` permalink and in the documentation
-sidebar. The versions route is not accessible from the UI, only by linking. eg: babelfish.org/versions
+Add a new file to `_artifacts/babelfish` that contains the following version-specific information:
 
-- Add the release link in the `index.markdown`, to appear in the front page. Be aware of the page name, it will
-have the `<artifact>-<version with dots replaced by hyphen>.html` convention:
+```markdown
+---
+role: engine
+artifact_id: babelfish
+version: 2.1.0
+platform: source
+architecture: x64
+slug: babelfish-2.1.0-source-x64
+category: babelfish
+---
+```
+
+Add the release link in the `index.markdown` file to appear in the front page:
 
 ```markdown
 sidebar:
   - title: Releases
     description: List of Babelfish releases.
     links:
+      - title: Release 2.1.0
+        url: "/docs/versions/babelfish-2-1-0.html"
+      - title: Release 1.2.1
+        url: "/docs/versions/babelfish-1-2-1.html"
+      - title: Release 1.2.0
+        url: "/docs/versions/babelfish-1-2-0.html"
+      - title: Release 1.1.0
+        url: "/docs/versions/babelfish-1-1-0.html"
       - title: Release 1.0.0
-        url: "/versions/babelfish-1-0-0.html"
-  ...
+        url: "/docs/versions/babelfish-1-0-0.html"
   - title: Have a question?
 ```
