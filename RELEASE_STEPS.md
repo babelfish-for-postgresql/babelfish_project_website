@@ -1,4 +1,6 @@
-# Release Notes publishing checklist
+# Releasing a new version of Babelfish
+
+## Adding release notes and version information
 
 Add a new file with the release note content to the `_includes/releases` folder, with the following release-specific header content:
 
@@ -78,3 +80,23 @@ sidebar:
         url: "/docs/versions/babelfish-1-0-0.html"
   - title: Have a question?
 ```
+
+## Publishing a blog post for the release
+
+Posts are accessed from the menu in the upper-right corner of the Babelfish website landing page. Content for the posts section of the website resides in the `_posts` folder in markdown format. The header information for each post should follow the below format:
+
+```markdown
+---
+layout: post
+author: The Babelfish Project Team
+authors: 
+    - The Babelfish Project Team
+comments: true
+title: "Announcing Open Source Babelfish for PostgreSQL: An Accelerator for SQL Server Migration"
+categories:
+- releases
+---
+```
+
+
+

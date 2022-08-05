@@ -12,7 +12,7 @@ just_the_docs:
     docs:
     installation:
       name: Installing Babelfish
-      nav_fold: true      
+      nav_fold: true
     usage:
       name: Using Babelfish
       nav_fold: true
@@ -25,16 +25,19 @@ just_the_docs:
     faq:
       name: FAQ and getting help
       nav_fold: true
+    versions:
+      name: Releases
+      nav_fold: true
+      order: desc
 ```
 
-Each one of the `collections` attributes points to the homonimous folder name, prefixed with an underscore:
+Each one of the `collections` attributes points to the folder in which the content resides, prefixed with an underscore.  For example:
 
-```
-internals -> _internals/
-client -> _client/
-```
 
-Each folder contains the documents that reside in that section; each document will appear as link in the navigation sidebar. Each markdown file must contain the following header format:
+- internals content is in `_internals/`
+- client content is in `_client/`
+
+Each document will appear as link in the navigation sidebar. Each markdown file must contain the following header format:
 
 ```markdown
 ---
@@ -44,34 +47,15 @@ nav_order: 2
 ---
 ```
 
-The header is self-explanatory; you need to provide at least the `title` and `nav_order` (which should be sequential for each section).
+The header is self-explanatory; you need to provide at least the `title` and `nav_order` (which is sequential for each section).
 
 ## Adding images to posts and docs
 
-Images should be placed in the `assets/images` folder. To use the image, you can add the following block to the markdown file:
+Store image files in the `assets/images` folder. To use an image, you can add the following block to the markdown file:
 
 ```html
 <img src="bg.png" data-src="img1.jpg" />
 ```
-
-## Publishing posts
-
-Posts are different from Babelfish documentation. You can access posts from the menu in the upper-right corner of the Babelfish website landing page. Content for the posts section of the website resides in the `_posts` folder in markdown format. The header information for each post should follow the below format:
-
-```markdown
----
-layout: post
-author: The Babelfish Project Team
-authors: 
-    - The Babelfish Project Team
-comments: true
-title: "Announcing Open Source Babelfish for PostgreSQL: An Accelerator for SQL Server Migration"
-categories:
-- releases
----
-```
-
-> To commit a post, and keep it hidden, use the `draft: true` attribute. This allows you to work on a file without publishing it. To publish the file, set to `draft: false`.
 
 ## Issue templates
 
@@ -80,6 +64,6 @@ The issue templates are located in the `.github/ISSUE_TEMPLATE`, in yaml files.
 > For more information about issue templates, check [Github's documentation](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository).
 
 
-## Changing site index
+## Changing the site index
 
 The site index resides in the `index.markdown` file. The file defines the sidebar and button callouts and onscreen content. The format is a yaml structure, placed in the markdown header.
