@@ -108,9 +108,6 @@ just_the_docs:
     usage:
       name: Using Babelfish
       nav_fold: true
-    workaround:
-      name: Workarounds
-      nav_fold: true
     client:
       name: Client programming
       nav_fold: true
