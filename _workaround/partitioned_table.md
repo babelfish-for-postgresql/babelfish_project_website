@@ -80,9 +80,10 @@ SELECT * FROM dbo.partitiontest
 - pgAdmin (on the PostgreSQL port) will display all the data.
 - SSMS (on the Babelfish port) will display the data and you should see the tables in the object browser.
 
-*Analyzing the result set*
+### Analyzing the result set
     
 First, query the database using SSMS on the TDS port: 
+
 ```sql
 SET BABELFISH_SHOWPLAN_ALL ON
 
@@ -94,7 +95,9 @@ Bitmap Heap Scan on partitiontest_y2022m02 partitiontest  (cost=4.22..14.76 rows
   ->  Bitmap Index Scan on partitiontest_y2022m02_logdate_idx  (cost=0.00..4.22 rows=9 width=0)
         Index Cond: (logdate = '2022-02-21'::date)
 ```              
+
 Then, using pgAdmin on the PostgreSQL port: 
+
 ```sql
 EXPLAIN ANALYZE
 SELECT * FROM dbo.partitiontest WHERE logdate = '2022-02-21'
@@ -107,6 +110,7 @@ SELECT * FROM dbo.partitiontest WHERE logdate = '2022-02-21'
 "Planning Time: 0.124 ms"
 "Execution Time: 0.043 ms"
 ```
+
 ### Inheritance Partitioning Example
 
 First, create the database objects that will be used in our example:
@@ -256,10 +260,11 @@ ALTER TABLE dbo.customers  OWNER to dbo;
 ```
 Use SSMS to query dbo.onConflictTestFromSSM():
 
+```sql
 SELECT * FROM dbo.onConflictTestFromSSM()
 EXEC dbo.onConflictTestFromSSM
 
 SELECT * FROM dbo.customers
-
+```
 
 For more information about using Babelfish from the TDS port and the PostgreSQL port, visit the Babelfish website at https://babelfishpg.org/docs/usage/interoperability/.
