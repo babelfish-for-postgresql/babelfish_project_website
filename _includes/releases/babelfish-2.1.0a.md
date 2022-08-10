@@ -1,15 +1,13 @@
-- Babelfish Version: 2.1.0
+- Babelfish Version: 2.1.0a
 - PostgreSQL Server Version: 14.3
 - Download source distributions:
-  - [BABEL_2_1_0__PG_14_3.zip](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/download/BABEL_2_1_0a__PG_14_3/BABEL_2_1_0a__PG_14_3.zip)
-  - [BABEL_2_1_0__PG_14_3.tar.gz](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/download/BABEL_2_1_0a__PG_14_3/BABEL_2_1_0a__PG_14_3.tar.gz)
+  - [BABEL_2_1_0a__PG_14_3.zip](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/download/BABEL_2_1_0a__PG_14_3/BABEL_2_1_0a__PG_14_3.zip)
+  - [BABEL_2_1_0a__PG_14_3.tar.gz](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/download/BABEL_2_1_0a__PG_14_3/BABEL_2_1_0a__PG_14_3.tar.gz)
 - Babelfish Compass
   - [Download](https://github.com/babelfish-for-postgresql/babelfish_compass/releases)
-- Date: July 7, 2022
+- Date: July 28, 2022
 
 ## Overview
-
-The Babelfish 2.1.0 release is replaced by the Babelfish 2.1.0a release.  The features noted below are in the Babelfish 2.1.0a release.
 
 Babelfish 2.1.0a contains enhancements and fixes that improve the user experience, including:
 - Support for new functions, catalogs, and system stored procedures.
@@ -21,6 +19,8 @@ Babelfish does not support an upgrade path to version 2.1.0a from Babelfish 1.x.
 ## Changes
 
 This version of Babelfish adds support for the following features:
+
+- Backported the fix from the PostgreSQL 14.4 release that [reverts changes to CONCURRENTLY](https://github.com/postgres/postgres/commit/e28bb885196916b0a3d898ae4f2be0e38108d81b) that speed up Xmin advance to prevent index corruption with the `CREATE INDEX CONCURRENTLY` / `REINDEX CONCURRENTLY` commands.
 
 - Support for functions: `IS_MEMBER()`, `IS_ROLEMEMBER()`, `HAS_PERMS_BY_NAME()`.
 
@@ -34,7 +34,7 @@ This version of Babelfish adds support for the following features:
 
 - Support for the system stored procedures: 
 
-|sp_sproc_columns|sp_sproc_columns_100||
+|sp_sproc_columns|sp_sproc_columns_100|
 |sp_helprole|sp_helprolemember|
 
 - Cross-DB references outside the current database, with a 3-part object name, for SELECT,SELECT..INTO, INSERT, UPDATE, DELETE
