@@ -83,7 +83,13 @@ sidebar:
 
 ## Publishing a blog post for the release
 
-Posts are accessed from the menu in the upper-right corner of the Babelfish website landing page. Content for the posts section of the website resides in the `_posts` folder in markdown format. The header information for each post should follow the below format:
+Posts are accessed from the menu in the upper-right corner of the Babelfish website landing page. Content for the posts section of the website resides in the `_posts` folder in markdown format.
+
+The filename should be `DATE-title.md`, whether title should not repeat if the posts are in the same _month_. This is due that the "What's new?" rendering groups posts by month. 
+One suggestion is to use the Babelfish version like `2022-04-02-release-notes-2-1-1.md`. The filename is not reflected in the content of the release notes rendered in the website.
+
+
+The header information for each post should follow the below format:
 
 ```markdown
 ---
