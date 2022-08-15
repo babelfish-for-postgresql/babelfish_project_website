@@ -6,18 +6,15 @@ nav_order: 7
 
 ## Babelfish security
 
-Security is an important topic which has to be addressed in a professional
-manner. Therefore we want to give an overview of how security is handled and
-what can be done to make the database more robust and resistant against attack.
-To cover the topic, we need to address the following issues:
+Babelfish provides a safe environment by: 
 
-- Network security and authentication
-- User management and roles
+- supporting encryption with configurable client SSL connections.  
+- securing Babelfish objects with predefined roles.
 
-Let's discuss each of those topics in more detail.
+The following sections discuss each of those topics in more detail.
 
 
-### Handling SSL
+### Handling SSL for client connections
 
 When a client connects to port 1433, Babelfish compares the SSL setting sent
 during the client handshake to the Babelfish SSL parameter setting
@@ -54,17 +51,10 @@ Babelfish creates a number of PostgreSQL roles:
 - `tempdb_dbo`
 - `tempdb_guest`
 
-Moreover, there will be a <code>*dbname*&lowbar;db&lowbar;owner</code>
-and a <code>*dbname*&lowbar;dbo</code> for every database you create in
-Babelfish.
+Babelfish also creates a <code>*dbname*&lowbar;db&lowbar;owner</code> and a <code>*dbname*&lowbar;dbo</code> for each database you create in Babelfish.
 
-These roles implement the SQL Server ownership structure.
-They are created and maintained by Babelfish and should not be used by
-the application or the end user.
+These roles implement the SQL Server object ownership structure; they are maintained by the database, and should not be used for client connections.
 
-You can use `CREATE LOGIN` to create a new Babelfish login, which
-automatically is a user in all databases.  Babelfish logins
-are implemented as PostgreSQL login roles of the same name.
-
-Note that Babelfish [does not support](/docs/usage/limitations-of-babelfish)
-the statements `CREATE USER` and `CREATE ROLE`.
+You can use `CREATE LOGIN` to create a new Babelfish login with access to all databases.  Babelfish logins
+are implemented as PostgreSQL login roles of the same name.  Note that Babelfish [provides limited support](/docs/usage/limitations-of-babelfish)
+for the `CREATE USER` and `CREATE ROLE` statements.
