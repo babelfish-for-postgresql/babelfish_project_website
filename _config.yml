@@ -78,6 +78,9 @@ collections:
   client:
     permalink: /docs/:collection/:path/
     output: true
+  limitations:
+    permalink: /docs/:collection/:path/
+    output: true
   workaround:
     permalink: /docs/:collection/:path/
     output: true
@@ -110,6 +113,9 @@ just_the_docs:
       nav_fold: true
     usage:
       name: Using Babelfish
+      nav_fold: true
+    limitations:
+      name: Limitations
       nav_fold: true
     workaround:
       name: Migration workarounds
