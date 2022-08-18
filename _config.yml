@@ -115,7 +115,7 @@ just_the_docs:
       name: Using Babelfish
       nav_fold: true
     limitations:
-      name: Limitations
+      name: Unsupported Functionality
       nav_fold: true
     workaround:
       name: Migration workarounds
