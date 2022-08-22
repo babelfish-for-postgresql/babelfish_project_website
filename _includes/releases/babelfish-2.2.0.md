@@ -28,7 +28,7 @@ This version of Babelfish adds support for the following features:
 - Collation updates: support for multi-byte client encodings other than `UTF-16` for `VARCHAR(n)`
 - Support for the `@@LANGUAGE` variable with constant value `us_english` 
 - Support for join hints and query hints.
-- Old-style function calls with `::` preceding the function name, are now supported.
+- Support for old-style function calls with `::` preceding the function name.
 - `SET NO_BROWSETABLE {ON|OFF}` is now subject to the `escape_hatch_session_settings` escape hatch, so no error will be raised when set to `ignored`.
 - `SET PARSEONLY {ON|OFF}` is now supported. Previously this would raise an error unless the `escape_hatch_session_settings` escape hatch was set to `ignored`.
 - For the `bcp` utility, the `-E` flag (for identity columns) and the `-b` flag (for batching inserts) are now supported.
@@ -36,13 +36,13 @@ This version of Babelfish adds support for the following features:
 - For `OBJECTPROPERTY()` and `OBJECTPROPERTYEX()`, the following properties are now supported: `ExecIsAnsiNullsOn`, `ExecIsQuotedIdentOn`, `IsDefault`, `IsDefaultCnst`, `IsDeterministic`, `IsIndexed`, `IsInlineFunction`, `IsMSShipped`, `IsPrimaryKey`, `IsProcedure`, `IsRule`, `IsScalarFunction`, `IsSchemaBound`, `IsTable`, `IsTableFunction`, `IsTrigger`, `IsUserTable`, `IsView`, `OwnerId`, `TableFulltextPopulateStatus`, `TableHasVarDecimalStorageFormat`
 - `OBJECTPROPERTYEX()` supports the following property: `BaseType`
 - `INDEXPROPERTY()` supports the following properties: `IndexFillFactor`, `IndexID`, `IsClustered`, `IsDisabled`, `IsHypothetical`, `IsPadIndex`, `IsPageLockDisallowed`, `IsRowLockDisallowed`, `IsUnique`
-- New system stored procedures supported: `sp_helpsrvrolemember`
-- New system functions supported: `msdb.dbo.fn_syspolicy_is_automation_enabled()`
-- New catalogs supported: `assembly_types`, `numbered_procedures`, `triggers`, `spatial_index_tessellations`, `plan_guides`, `synonyms`, `events`, `trigger_events`, `fulltext_indexes`, `dm_hadr_cluster`, `xml_indexes`, `change_tracking_tables`, `key_constraints`, `database_filestream_options`, `filetable_system_defined_objects`, `hash_indexes`, `filegroups`, `master_files`, `assembly_modules`, `change_tracking_databases`, `database_recovery_status`, `fulltext_catalogs`, `fulltext_stoplists`, `fulltext_indexes`, `fulltext_index_columns`, `fulltext_languages`, `selective_xml_index_paths`, `spatial_indexes`, `filetables`, `registered_search_property_lists`, `syspolicy_configuration`, `syspolicy_system_health_state`
-- New `INFORMATION_SCHEMA` catalogs supported: `COLUMN_DOMAIN_USAGE`, `CONSTRAINT_COLUMN_USAGE`, `CHECK_CONSTRAINTS`, `ROUTINES`, `VIEWS`
+- Support for new system stored procedures: `sp_helpsrvrolemember`
+- Support for new system functions: `msdb.dbo.fn_syspolicy_is_automation_enabled()`
+- Support for new catalogs: `assembly_types`, `numbered_procedures`, `triggers`, `spatial_index_tessellations`, `plan_guides`, `synonyms`, `events`, `trigger_events`, `fulltext_indexes`, `dm_hadr_cluster`, `xml_indexes`, `change_tracking_tables`, `key_constraints`, `database_filestream_options`, `filetable_system_defined_objects`, `hash_indexes`, `filegroups`, `master_files`, `assembly_modules`, `change_tracking_databases`, `database_recovery_status`, `fulltext_catalogs`, `fulltext_stoplists`, `fulltext_indexes`, `fulltext_index_columns`, `fulltext_languages`, `selective_xml_index_paths`, `spatial_indexes`, `filetables`, `registered_search_property_lists`, `syspolicy_configuration`, `syspolicy_system_health_state`
+- Support for new `INFORMATION_SCHEMA` catalogs: `COLUMN_DOMAIN_USAGE`, `CONSTRAINT_COLUMN_USAGE`, `CHECK_CONSTRAINTS`, `ROUTINES`, `VIEWS`
 - Function `fn_mapped_system_error_list()` lists the PG error code mapped to `@@ERROR codes`, as well as the corresponding error message text. This function also exists in previous releases but did not include mapping details.
 - `@@ERROR` code `911` is now mapped from PG
-- Prior to 2.2.0, `SET SHOWPLAN_ALL` and `SET STATISTICS PROFILE` are silently ignored. Instead, users can use `SET BABELFISH_SHOWPLAN_ALL` and `SET BABELFISH_STATISTICS PROFILE` to generate query plan related information. In 2.2.0, the `babelfish_pgtsql.escape_hatch_showplan_all` escape hatch is introduced: when set to `ignore`, `SET SHOWPLAN_ALL` and `SET STATISTICS PROFILE` will behave as `SET BABELFISH_SHOWPLAN_ALL` and `SET BABELFISH_STATISTICS PROFILE`; when set to `strict`, `SET SHOWPLAN_ALL` and `SET STATISTICS PROFILE` will be silently ignored. Note that the query plan information displayed is PostgreSQL-style, rather than SQL Server-style.
+- Support for the `babelfish_pgtsql.escape_hatch_showplan_all` escape hatch. When set to `ignore`, the `SET SHOWPLAN_ALL` and `SET STATISTICS PROFILE` will behave like `SET BABELFISH_SHOWPLAN_ALL` and `SET BABELFISH_STATISTICS PROFILE`; when set to `strict`, `SET SHOWPLAN_ALL` and `SET STATISTICS PROFILE` are silently ignored. Note that the query plan information displayed is PostgreSQL-style, rather than SQL Server-style. 
  
 ## Fixes
 
