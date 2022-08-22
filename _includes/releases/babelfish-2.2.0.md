@@ -42,7 +42,7 @@ This version of Babelfish adds support for the following features:
 - Support for new `INFORMATION_SCHEMA` catalogs: `COLUMN_DOMAIN_USAGE`, `CONSTRAINT_COLUMN_USAGE`, `CHECK_CONSTRAINTS`, `ROUTINES`, `VIEWS`
 - Function `fn_mapped_system_error_list()` lists the PG error code mapped to `@@ERROR codes`, as well as the corresponding error message text. This function also exists in previous releases but did not include mapping details.
 - `@@ERROR` code `911` is now mapped from PG
-- Support for the `babelfish_pgtsql.escape_hatch_showplan_all` escape hatch. When set to `ignore`, the `SET SHOWPLAN_ALL` and `SET STATISTICS PROFILE` will behave like `SET BABELFISH_SHOWPLAN_ALL` and `SET BABELFISH_STATISTICS PROFILE`; when set to `strict`, `SET SHOWPLAN_ALL` and `SET STATISTICS PROFILE` are silently ignored. Note that the query plan information displayed is PostgreSQL-style, rather than SQL Server-style. 
+- Support for the `babelfishpg_tsql.escape_hatch_showplan_all` escape hatch. When set to `ignore`, the `SET SHOWPLAN_ALL` and `SET STATISTICS PROFILE` will behave like `SET BABELFISH_SHOWPLAN_ALL` and `SET BABELFISH_STATISTICS PROFILE`; when set to `strict`, `SET SHOWPLAN_ALL` and `SET STATISTICS PROFILE` are silently ignored. Note that the query plan information displayed is PostgreSQL-style, rather than SQL Server-style. For more information, see [Reviewing a Query Plan](https://babelfishpg.org/docs/usage/query_planning/).
  
 ## Fixes
 
