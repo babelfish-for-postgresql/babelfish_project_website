@@ -1,22 +1,22 @@
-- Babelfish Version: 1.3.1
-- PostgreSQL Server Version: 13.7
+- Babelfish Version: 1.2.2
+- PostgreSQL Server Version: 13.6
 - Download source distributions:
-  - [BABEL_1_3_1__PG_13_7.zip](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/download/BABEL_1_3_1__PG_13_7/BABEL_1_3_1__PG_13_7.zip)
-  - [BABEL_1_3_1__PG_13_7.tar.gz](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/download/BABEL_1_3_1__PG_13_7/BABEL_1_3_1__PG_13_7.tar.gz)
+  - [BABEL_1_2_2__PG_13_6.zip](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/download/BABEL_1_2_2__PG_13_6/BABEL_1_2_2__PG_13_6.zip)
+  - [BABEL_1_2_2__PG_13_6.tar.gz](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/download/BABEL_1_2_2__PG_13_6/BABEL_1_2_2__PG_13_6.tar.gz)
 - Babelfish Compass
   - [Download](https://github.com/babelfish-for-postgresql/babelfish_compass/releases)
 - Date: August 22, 2022
 
 ## Overview
 
-Babelfish 1.3.1 contains bug fixes that improve the user experience.
+Babelfish 1.2.2 contains bug fixes that improve the user experience.
 
 
 ## Upgrading to the new version
 
 **If you’re running Babelfish in a managed environment, please check your vendor’s instructions for upgrading.**
 
-Babelfish 1.3.1 is compatible with the latest major version of Babelfish; a dump/restore is not required to upgrade to the newer version. To upgrade:
+Babelfish 1.2.2 is compatible with versions 1.x.x and 1.2.x of Babelfish; a dump/restore is not required to upgrade to the newer version. To upgrade:
 
 1. Install the new binaries; for details, see [Compiling Babelfish From Source] (https://babelfishpg.org/docs/installation/compiling-babelfish-from-source/).
 
