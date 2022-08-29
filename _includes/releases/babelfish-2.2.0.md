@@ -26,7 +26,6 @@ This version of Babelfish adds support for the following features:
 - Support for `CAST()` of numeric expressions to `DATETIME`.
 - Collation updates: support for multi-byte client encodings other than `UTF-16` for `VARCHAR(n)`.
 - Support for the `@@LANGUAGE` variable with constant value `us_english`.
-- Support for join hints and query hints.
 - Support for old-style function calls with `::` preceding the function name.
 - `SET NO_BROWSETABLE {ON|OFF}` is now subject to the `escape_hatch_session_settings` escape hatch, so no error will be raised when set to `ignored`.
 - `SET PARSEONLY {ON|OFF}` is now supported. Previously this would raise an error unless the `escape_hatch_session_settings` escape hatch was set to `ignored`.
