@@ -8,9 +8,6 @@ nav_order: 5
 
 Babelfish provides limited support for SQL Server views. The following lists detail the functionality implemented for each version of Babelfish (and subsequent releases).
 
-
-### System Catalog Views
-
 The following System Catalog Views are supported for versions 2.1.0 and higher: 
 
 - `sys.syslanguages`
