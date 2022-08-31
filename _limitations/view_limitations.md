@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Unsupported Views
+title: System Catalog Views
 nav_order: 5
 ---
 

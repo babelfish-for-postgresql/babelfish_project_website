@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Unsupported Stored Procedures 
+title: Stored Procedures 
 nav_order: 6
 ---
 

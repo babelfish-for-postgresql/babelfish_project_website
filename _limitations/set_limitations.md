@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Unsupported SET Statements 
+title: SET Statements 
 nav_order: 2
 ---
 

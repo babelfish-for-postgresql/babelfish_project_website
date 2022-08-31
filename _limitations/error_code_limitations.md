@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Supported Error Code Mappings 
+title: Error Code Mappings 
 nav_order: 9
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Unsupported Built-in Functions 
+title: Built-in Functions 
 nav_order: 3
 ---
 
