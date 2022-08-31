@@ -4,7 +4,7 @@ title: System Catalog Views
 nav_order: 5
 ---
 
-## Unsupported Views
+## Supported Views
 
 Babelfish provides limited support for SQL Server views. The following lists detail the functionality implemented for each version of Babelfish (and subsequent releases).
 
