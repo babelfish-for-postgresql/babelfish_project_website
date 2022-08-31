@@ -10,22 +10,22 @@ Babelfish provides limited support for system-implemented built-in functions. Th
 
 The following built-in functions are supported for versions 2.1.0 and higher: 
 
-- IS_MEMBER()
-- IS_ROLEMEMBER()
-- HAS_PERMS_BY_NAME() 
+- `IS_MEMBER()`
+- `IS_ROLEMEMBER()`
+- `HAS_PERMS_BY_NAME()` 
 
 The following built-in functions are supported for versions 1.2.0 and higher: 
 
-- COLUMNS_UPDATED()
-- UPDATE()
-- FULLTEXTSERVICEPROPERTY()
-- ISJSON()
-- JSON_QUERY()
-- JSON_VALUE()
-- HAS_DBACCESS()
-- SUSER_SID()
-- SUSER_SNAME()
-- IS_SRVROLEMEMBER()
+- `COLUMNS_UPDATED()`
+- `UPDATE()`
+- `FULLTEXTSERVICEPROPERTY()`
+- `ISJSON()`
+- `JSON_QUERY()`
+- `JSON_VALUE()`
+- `HAS_DBACCESS()`
+- `SUSER_SID()`
+- `SUSER_SNAME()`
+- `IS_SRVROLEMEMBER()`
 
 The following built-in functions are supported for versions 1.1.0 and higher:
 
