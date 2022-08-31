@@ -443,4 +443,4 @@ Babelfish provides limited support for SQL Server stored procedures.  In the fol
 - `sp_xp_cmdshell_proxy_account`
 - `sp_xtp_%`
 - `sp_sqljdbc_%`
-- `xp_%
+- `xp_%`
