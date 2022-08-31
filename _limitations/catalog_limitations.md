@@ -1,30 +1,79 @@
 ---
 layout: default
-title: System Catalogs 
+title: System Catalog Views 
 nav_order: 9
 ---
 
-## Supported System Catalogs
+## Supported System Catalog Views
 
-Babelfish provides limited support for system catalogs:
+Babelfish provides limited support for System Catalog Views:
 
-The following built-in functions are supported for versions 2.1.0 and higher: 
+The following System Catalog Views are supported for versions 2.1.0 and higher: 
 
-- `syslanguages`- `database_files`- `sql_modules`- `system_sql_modules`- `all_sql_modules`- `xml_schema_collections`- `dm_hadr_database_replica_states`- `data_spaces`- `database_mirroring`- `indexes`- `all_views`- `database_role_members` 
+- `sys.syslanguages`
+- `sys.indexes`
+- `sys.all_views`
+- `sys.database_files`
+- `sys.sql_modules`
+- `sys.system_sql_modules`
+- `sys.all_sql_modules`
+- `sys.xml_schema_collections`
+- `sys.dm_hadr_database_replica_states`
+- `sys.data_spaces`
+- `sys.database_mirroring`
+- `sys.database_role_members` 
 
-The following built-in functions are supported for versions 1.2.0 and higher: 
+The following System Catalog Views are supported for versions 1.2.0 and higher:
 
-- `dm_os_host_info`- `dm_exec_sessions`- `dm_exec_connections`- `endpoints`- `table_types`- `database_principals`- `sysconfigures`- `syscurconfigs`- `configurations`- `sysprocesses`
+- `sys.dm_os_host_info`
+- `sys.dm_exec_sessions`
+- `sys.dm_exec_connections`
+- `sys.endpoints`
+- `sys.table_types`
+- `sys.database_principals`
+- `sys.sysprocesses`
+- `sys.sysconfigures` - a single, read-only configuration setting is currently provided.
+- `sys.syscurconfigs` - a single, read-only configuration setting is currently provided.
+- `sys.configurations` - a single, read-only configuration setting is currently provided.
 
-The following built-in functions are supported for versions 1.1.0 and higher:
+The following System Catalog Views are supported for versions 1.1.0 and higher:
 
-- `sysindexes`- `syscolumns`- `system_objects`- `identity_columns`- `types`- `check_constraints`- `computed_columns`- `default_constraints`- `index_columns`- `sql_modules`
+- `sysindexes`
+- `syscolumns`
+- `system_objects`
+- `identity_columns`
+- `types`
+- `check_constraints`
+- `computed_columns`
+- `default_constraints`
+- `index_columns`
+- `sql_modules`
 
 
-The following system catalogs are supported for versions 1.0.0 and higher:
+The following System Catalog Views are supported for versions 1.0.0 and higher:
 
 - `databases`
-- `sysdatabases`- `server_principals`- `objects`- `sysobjects`- `all_objects`- `schemas`- `tables`- `indexes`- `views`- `all_views`- `procedures`- `extended_properties`- `columns`- `all_columns`- `syscharsets`- `assemblies`- `assembly_types`- `sysforeignkeys`- `foreign_key_columns`- `foreign_keys`- `key_constraints`
+- `sysdatabases`
+- `server_principals`
+- `objects`
+- `sysobjects`
+- `all_objects`
+- `schemas`
+- `tables`
+- `indexes`
+- `views`
+- `all_views`
+- `procedures`
+- `extended_properties`
+- `columns`
+- `all_columns`
+- `syscharsets`
+- `assemblies`
+- `assembly_types`
+- `sysforeignkeys`
+- `foreign_key_columns`
+- `foreign_keys`
+- `key_constraints`
 
 
 
