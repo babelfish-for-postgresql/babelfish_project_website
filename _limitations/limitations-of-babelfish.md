@@ -12,8 +12,8 @@ and SQL Server.
 The following table contains a list of SQL Server features that are currently
 not implemented or partially implemented in Babelfish.  This list is subject to change.
 
-| Functionality or Syntax | Notes                 | Workaround            |
-| ----------------------- | --------------------- | --------------------- |
+| Functionality or Syntax | Notes                 | 
+| ----------------------- | --------------------- |
 | `ADD SIGNATURE` | Functionality related to this command is not supported. |
 | `CREATE AGGREGATE` | Functionality related to this command is not supported. |
 | Aggregate functions | `APPROX_COUNT_DISTINCT`, `CHECKSUM_AGG`, `GROUPING_ID`, `ROWCOUNT_BIG`, `STDEV`, `STDEVP`, `VAR`, and `VARP` are not supported. |
