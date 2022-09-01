@@ -1,7 +1,7 @@
 ---
 layout: default
 title: SET Statements 
-nav_order: 2
+nav_order: 14
 ---
 
 ## Unsupported SET statements
