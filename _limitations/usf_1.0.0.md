@@ -1,6 +1,6 @@
 ---
 layout: default
-title: -- Version 1.0.0
+title: -- Version 1.0.0 (Detailed)
 nav_order: 2
 ---
 
