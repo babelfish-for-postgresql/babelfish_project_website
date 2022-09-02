@@ -1,7 +1,7 @@
 ---
 layout: default
-title: -- Version 1.2.0
-nav_order: 4
+title: Unsupported	Features, Version 1.2.0
+nav_order: 1
 ---
 
 ## Babelfish Version 1.2.0
@@ -20,72 +20,72 @@ nav_order: 4
 | ALTER ROLE | Unsupported |
 | ALTER SCHEMA | No support |
 | ALTER SERVER CONFIGURATION | No support |
-| ALTER SERVER ROLE | `SYSADMIN` |
-| ALTER TABLE | `DROP CONSTRAINT`, `DROP COLUMN`, `ADD COLUMN/CONSTRAINT`, `ADD COLUMN`, `ALTER COLUMN`, `ENABLE TRIGGER`, `DISABLE TRIGGER` |
+| ALTER SERVER ROLE | Unsupported: `SYSADMIN` |
+| ALTER TABLE | Unsupported: `DROP CONSTRAINT`, `DROP COLUMN`, `ADD COLUMN/CONSTRAINT`, `ADD COLUMN`, `ALTER COLUMN`, `ENABLE TRIGGER`, `DISABLE TRIGGER` |
 | ALTER TRIGGER | No support |
 | ALTER VIEW | No support |
-| Aggregate functions | `SUM`, `AVG`, `MAX`, `MIN`, `COUNT`, `COUNT_BIG`, `CUME_DIST`, `DENSE_RANK`, `DENSE_RANK`, `DISTINCT`, `FIRST_VALUE`, `GROUPING`, `LAG`, `LAST_VALUE`, `LEAD`, `NTILE`, `PERCENTILE_CONT`, `PERCENTILE_DISC`, `PERCENT_RANK`, `RANK`, `ROW_NUMBER`, `STRING_AGG` |
+| Aggregate functions | Unsupported: `SUM`, `AVG`, `MAX`, `MIN`, `COUNT`, `COUNT_BIG`, `CUME_DIST`, `DENSE_RANK`, `DENSE_RANK`, `DISTINCT`, `FIRST_VALUE`, `GROUPING`, `LAG`, `LAST_VALUE`, `LEAD`, `NTILE`, `PERCENTILE_CONT`, `PERCENTILE_DISC`, `PERCENT_RANK`, `RANK`, `ROW_NUMBER`, `STRING_AGG` |
 | BULK INSERT | No support |
 | CHECKPOINT | Unsupported |
 | CHECKSUM | No support |
 | CLOSE KEY | No support |
 | CLUSTERED index | No support |
 | COLLATIONPROPERTY | Unsupported |
-| COLUMNPROPERTY | `arg3=CharMaxLen`, `AllowsNull` |
+| COLUMNPROPERTY | Unsupported: `arg3=CharMaxLen`, `AllowsNull` |
 | CONNECTIONPROPERTY | Supported: `arg1=net_transport`, `protocol_type`, `auth_scheme`, `local_tcp_port`, `arg1=physical_net_transport`, `client_net_address` |
-| CREATE DATABASE options | `COLLATE`, `CONTAINMENT=NONE` |
+| CREATE DATABASE options | Unsupported: `COLLATE`, `CONTAINMENT=NONE` |
 | CREATE ROLE | Unsupported |
 | CREATE SERVER ROLE | No support |
 | CURSOR parameters | No support |
 | CURSOR variables | Unsupported |
-| Case-sensitive collation | `COLUMN`, `EXPRESSION` |
+| Case-sensitive collation | Unsupported: `COLUMN`, `EXPRESSION` |
 | Column attribute | No support |
 | Compound operator containing whitespace | No support |
 | Cross-database reference | Unsupported |
-| Cursor options | `FORWARD_ONLY`, `STATIC`, `LOCAL`, `READ_ONLY`, `INSENSITIVE` |
-| DATABASEPROPERTYEX | `arg2=Collation`, `Edition`, `IsAutoClose`, `IsAutoCreateStatistics`, `IsInStandBy`, `IsTornPageDetectionEnabled`, `Status`, `Updateability`, `Version` |
-| DATEADD | `arg1=D`, `DAY`, `DAYOFYEAR`, `DD`, `DY`, `HH`, `HOUR`, `M`, `MCS`, `MINUTE`, `MM`, `MONTH`, `N`, `NS`, `Q`, `QQ`, `QUARTER`, `S`, `SECOND`, `SS`, `W`, `WEEK`, `WEEKDAY`, `WK`, `WW`, `Y`, `YEAR`, `YY`, `YYYY` |
-| DATEDIFF | `arg1=D`, `DAY`, `DAYOFYEAR`, `DD`, `DY`, `HH`, `HOUR`, `M`, `MCS`, `MICROSECOND`, `MILLISECOND`, `MINUTE`, `MM`, `MONTH`, `MS`, `N`, `NANOSECOND`, `NS`, `Q`, `QQ`, `QUARTER`, `S`, `SECOND`, `SS`, `WEEK`, `WK`, `WW`, `Y`, `YEAR`, `YY`, `YYYY` |
-| DATENAME | `arg1=D`, `DAY`, `DAYOFYEAR`, `DD`, `DW`, `DY`, `HH`, `HOUR`, `ISO_WEEK`, `ISOWK`, `ISOWW`, `M`, `MCS`, `MICROSECOND`, `MILLISECOND`, `MINUTE`, `MM`, `MONTH`, `MS`, `N`, `NANOSECOND`, `NS`, `Q`, `QQ`, `QUARTER`, `S`, `SECOND`, `SS`, `TZ`, `TZOFFSET`, `WEEK`, `WEEKDAY`, `WK`, `WW`, `YEAR`, `YY`, `YYYY` |
-| DATEPART | `arg1=D`, `DAY`, `DAYOFYEAR`, `DD`, `DW`, `DY`, `HH`, `HOUR`, `ISO_WEEK`, `ISOWK`, `ISOWW`, `M`, `MCS`, `MICROSECOND`, `MILLISECOND`, `MINUTE`, `MM`, `MONTH`, `MS`, `N`, `NANOSECOND`, `NS`, `Q`, `QQ`, `QUARTER`, `S`, `SECOND`, `SS`, `TZ`, `TZOFFSET`, `WEEK`, `WEEKDAY`, `WK`, `WW`, `YEAR`, `YY`, `YYYY` |
+| Cursor options | Unsupported: `FORWARD_ONLY`, `STATIC`, `LOCAL`, `READ_ONLY`, `INSENSITIVE` |
+| DATABASEPROPERTYEX | Unsupported: `arg2=Collation`, `Edition`, `IsAutoClose`, `IsAutoCreateStatistics`, `IsInStandBy`, `IsTornPageDetectionEnabled`, `Status`, `Updateability`, `Version` |
+| DATEADD | Unsupported: `arg1=D`, `DAY`, `DAYOFYEAR`, `DD`, `DY`, `HH`, `HOUR`, `M`, `MCS`, `MINUTE`, `MM`, `MONTH`, `N`, `NS`, `Q`, `QQ`, `QUARTER`, `S`, `SECOND`, `SS`, `W`, `WEEK`, `WEEKDAY`, `WK`, `WW`, `Y`, `YEAR`, `YY`, `YYYY` |
+| DATEDIFF | Unsupported: `arg1=D`, `DAY`, `DAYOFYEAR`, `DD`, `DY`, `HH`, `HOUR`, `M`, `MCS`, `MICROSECOND`, `MILLISECOND`, `MINUTE`, `MM`, `MONTH`, `MS`, `N`, `NANOSECOND`, `NS`, `Q`, `QQ`, `QUARTER`, `S`, `SECOND`, `SS`, `WEEK`, `WK`, `WW`, `Y`, `YEAR`, `YY`, `YYYY` |
+| DATENAME | Unsupported: `arg1=D`, `DAY`, `DAYOFYEAR`, `DD`, `DW`, `DY`, `HH`, `HOUR`, `ISO_WEEK`, `ISOWK`, `ISOWW`, `M`, `MCS`, `MICROSECOND`, `MILLISECOND`, `MINUTE`, `MM`, `MONTH`, `MS`, `N`, `NANOSECOND`, `NS`, `Q`, `QQ`, `QUARTER`, `S`, `SECOND`, `SS`, `TZ`, `TZOFFSET`, `WEEK`, `WEEKDAY`, `WK`, `WW`, `YEAR`, `YY`, `YYYY` |
+| DATEPART | Unsupported: `arg1=D`, `DAY`, `DAYOFYEAR`, `DD`, `DW`, `DY`, `HH`, `HOUR`, `ISO_WEEK`, `ISOWK`, `ISOWW`, `M`, `MCS`, `MICROSECOND`, `MILLISECOND`, `MINUTE`, `MM`, `MONTH`, `MS`, `N`, `NANOSECOND`, `NS`, `Q`, `QQ`, `QUARTER`, `S`, `SECOND`, `SS`, `TZ`, `TZOFFSET`, `WEEK`, `WEEKDAY`, `WK`, `WW`, `YEAR`, `YY`, `YYYY` |
 | DB role options | Unsupported |
 | DB roles | No support |
 | DBA statements | No support |
 | DBCC statements | No support |
-| DELETE | `TOP`, `CTE`, `OUTPUT` |
+| DELETE | Unsupported: `TOP`, `CTE`, `OUTPUT` |
 | DENY | No support |
 | DESC constraint | No support |
 | DISABLE TRIGGER | No support |
 | DML Table Source | No support |
 | DROP IF EXISTS | Supported: `TABLE`, `VIEW`, `PROCEDURE`, `FUNCTION`, `DATABASE`, `INDEX`, `SCHEMA`, `DATABASE`, `USER` |
-| DROP INDEX | `INDEX ON TABLE` |
-| DROP multiple objects | `TABLE`, `VIEW`, `PROCEDURE`, `FUNCTION` |
+| DROP INDEX | Unsupported: `INDEX ON TABLE` |
+| DROP multiple objects | Unsupported: `TABLE`, `VIEW`, `PROCEDURE`, `FUNCTION` |
 | Datatypes | No support |
 | Delimited database name | No support |
-| Double-quoted string | `STRING` |
+| Double-quoted string | Unsupported: `STRING` |
 | ENABLE TRIGGER | No support |
 | EXECUTE AS | No support |
 | EXECUTE SQL function | No support |
-| Execute procedure options | `RESULT SETS`, `RESULT SETS NONE`, `RESULT SETS UNDEFINED` |
+| Execute procedure options | Unsupported: `RESULT SETS`, `RESULT SETS NONE`, `RESULT SETS UNDEFINED` |
 | Execute string options | No support |
-| FETCH cursor | `NEXT` |
+| FETCH cursor | Unsupported: `NEXT` |
 | FK constraint referencing DB name | No support |
 | FOR REPLICATION | No support |
 | Features in computed columns | No support |
-| Function options | `RETURNS NULL ON NULL INPUT`, `CALLED ON NULL INPUT`, `WITHOUT SCHEMABINDING` |
+| Function options | Unsupported: `RETURNS NULL ON NULL INPUT`, `CALLED ON NULL INPUT`, `WITHOUT SCHEMABINDING` |
 | GLOBAL cursor | No support |
 | GOTO | Unsupported |
 | GRANT | Supported: `ALL PRIVILEGES ON OBJECT`, `SELECT ON OBJECT`, `INSERT ON OBJECT`, `UPDATE ON OBJECT`, `DELETE ON OBJECT`, `REFERENCES ON OBJECT`, `EXECUTE ON OBJECT` |
 | GROUP BY ALL | Unsupported |
 | GROUP BY ROLLUP/CUBE (old syntax) | No support |
 | Global Temporary Tables | No support |
-| HASHBYTES | `arg1=MD5`, `SHA1`, `SHA2_256`, `SHA2_512` |
+| HASHBYTES | Unsupported: `arg1=MD5`, `SHA1`, `SHA2_256`, `SHA2_512` |
 | HIERARCHYID features | No support |
 | IGNORE_DUP_KEY index | No support |
-| INDEXKEY_PROPERTY | `arg4=NO_SUPPORTED_ARGUMENTS_RIGHT_NOW` |
+| INDEXKEY_PROPERTY | Unsupported: `arg4=NO_SUPPORTED_ARGUMENTS_RIGHT_NOW` |
 | INDEXPROPERTY | Unsupported |
 | INFORMATION_SCHEMA | Supported: `TABLES`, `COLUMNS`, `DOMAINS`, `TABLE_CONSTRAINTS` |
-| INSERT | `VALUES`, `SELECT`, `EXECUTE PROCEDURE`, `CTE`, `OUTPUT` |
+| INSERT | Unsupported: `VALUES`, `SELECT`, `EXECUTE PROCEDURE`, `CTE`, `OUTPUT` |
 | INSERT BULK | No support |
 | Index attribute | No support |
 | Index options | No support |
@@ -95,19 +95,19 @@ nav_order: 4
 | JSON features | No support |
 | Join hint | No support |
 | LIKE '[...]' | No support |
-| LOGINPROPERTY | `arg2=NO_SUPPORTED_ARGUMENTS_RIGHT_NOW` |
+| LOGINPROPERTY | Unsupported: `arg2=NO_SUPPORTED_ARGUMENTS_RIGHT_NOW` |
 | Lateral join | Unsupported |
 | Leading dots in identifier | Unsupported |
 | Line continuation character | No support |
-| Login options | `PASSWORD`, `DEFAULT_DATABASE`, `DEFAULT_LANGUAGE`, `ENABLE`, `DISABLE` |
+| Login options | Unsupported: `PASSWORD`, `DEFAULT_DATABASE`, `DEFAULT_LANGUAGE`, `ENABLE`, `DISABLE` |
 | MERGE | No support |
 | MONEY literal | Unsupported |
 | Materialized view | No support |
-| Maximum columns per index | `32` |
-| Maximum identifier length | `63` |
-| Maximum parameters per function | `100` |
-| Maximum parameters per procedure | `100` |
-| Maximum precision IDENTITY column | `18` |
+| Maximum columns per index | Unsupported: `32` |
+| Maximum identifier length | Unsupported: `63` |
+| Maximum parameters per function | Unsupported: `100` |
+| Maximum parameters per procedure | Unsupported: `100` |
+| Maximum precision IDENTITY column | Unsupported: `18` |
 | Miscellaneous objects | Supported: `SEQUENCE`, `LOGIN`, `USER` |
 | NEXT VALUE FOR | No support |
 | NONCLUSTERED HASH index | No support |
@@ -125,7 +125,7 @@ nav_order: 4
 | OPEN KEY | No support |
 | Parameter value DEFAULT | No support |
 | Partitioning | No support |
-| Procedure options | `WITHOUT SCHEMABINDING` |
+| Procedure options | Unsupported: `WITHOUT SCHEMABINDING` |
 | Procedure versioning (declaration) | No support |
 | Procedure versioning (execution) | No support |
 | Query hint | No support |
@@ -135,9 +135,9 @@ nav_order: 4
 | Remote object reference | No support |
 | SCHEMA options | Supported: `AUTHORIZATION` |
 | SCHEMA_ID with N arguments | Supported: `1`, `0` |
-| SCHEMA_NAME with N arguments | `1`, `0` |
+| SCHEMA_NAME with N arguments | Unsupported: `1`, `0` |
 | SECURITY DEFINER transaction mgmt | No support |
-| SELECT TOP PERCENT | `100` |
+| SELECT TOP PERCENT | Unsupported: `100` |
 | SELECT TOP WITH TIES | No support |
 | SELECT TOP in Table-Valued Function | No support |
 | SELECT TOP without ORDER BY | No support |
@@ -147,44 +147,44 @@ nav_order: 4
 | SERVERPROPERTY | Supported: `arg1=Collation`, `CollationID`, `Edition`, `IsSingleUser`, `ServerName`, `Babelfish`, `arg1=EditionID`, `EngineEdition`, `LicenseType`, `ProductVersion`, `ProductMajorVersion`, `ProductMinorVersion`, `IsIntegratedSecurityOnly`, `IsLocalDB`, `IsAdvancedAnalyticsInstalled`, `IsBigDataCluster`, `IsPolyBaseInstalled`, `IsFullTextInstalled`, `IsXTPSupported` |
 | SESSIONPROPERTY | Unsupported |
 | SET ANSI_NULLS | Unsupported |
-| SET ANSI_NULL_DFLT_OFF | `OFF` |
-| SET ANSI_NULL_DFLT_ON | `ON` |
-| SET ANSI_PADDING | `ON` |
-| SET ANSI_WARNINGS | `ON` |
-| SET ARITHABORT | `ON` |
-| SET ARITHIGNORE | `OFF` |
+| SET ANSI_NULL_DFLT_OFF | Unsupported: `OFF` |
+| SET ANSI_NULL_DFLT_ON | Unsupported: `ON` |
+| SET ANSI_PADDING | Unsupported: `ON` |
+| SET ANSI_WARNINGS | Unsupported: `ON` |
+| SET ARITHABORT | Unsupported: `ON` |
+| SET ARITHIGNORE | Unsupported: `OFF` |
 | SET CONCAT_NULL_YIELDS_NULL | Unsupported |
 | SET CONTEXT_INFO | No support |
-| SET CURSOR_CLOSE_ON_COMMIT | `OFF` |
+| SET CURSOR_CLOSE_ON_COMMIT | Unsupported: `OFF` |
 | SET DATEFIRST | Unsupported |
 | SET DATEFORMAT | No support |
 | SET DEADLOCK_PRIORITY | No support |
 | SET FMTONLY | No support |
 | SET IDENTITY_INSERT | Unsupported |
 | SET IMPLICIT_TRANSACTIONS | Unsupported |
-| SET LANGUAGE | `english`, `us_english` |
+| SET LANGUAGE | Unsupported: `english`, `us_english` |
 | SET LOCK_TIMEOUT | Fully supported |
 | SET NOCOUNT | Unsupported |
-| SET NOEXEC | `OFF` |
+| SET NOEXEC | Unsupported: `OFF` |
 | SET NO_BROWSETABLE | No support |
-| SET NUMERIC_ROUNDABORT | `OFF` |
+| SET NUMERIC_ROUNDABORT | Unsupported: `OFF` |
 | SET OFFSETS | No support |
 | SET PARSEONLY | Unsupported |
 | SET QUERY_GOVERNOR_COST_LIMIT | Unsupported |
 | SET QUOTED_IDENTIFIER | Unsupported |
 | SET QUOTED_IDENTIFIER in batch | No support |
-| SET ROWCOUNT | `0` |
+| SET ROWCOUNT | Unsupported: `0` |
 | SET SHOWPLAN_ALL | Unsupported |
 | SET STATISTICS | Unsupported |
 | SET TEXTSIZE | No support |
-| SET TRANSACTION ISOLATION LEVEL | `READ COMMITTED`, `READ UNCOMMITTED`, `SNAPSHOT` |
+| SET TRANSACTION ISOLATION LEVEL | Unsupported: `READ COMMITTED`, `READ UNCOMMITTED`, `SNAPSHOT` |
 | SET XACT_ABORT | Unsupported |
 | SET, multiple options combined | Unsupported |
 | SETUSER | No support |
 | SQL graph | No support |
-| SQL_VARIANT_PROPERTY | `arg2=*` |
+| SQL_VARIANT_PROPERTY | Unsupported: `arg2=*` |
 | STRING_AGG() WITHIN GROUP | Supported: `arg1=SINGLE ARGUMENT`, `arg1=STAR`, `MULTIPLE ARGUMENTS` |
-| Server role options | `ADD MEMBER`, `DROP MEMBER` |
+| Server role options | Unsupported: `ADD MEMBER`, `DROP MEMBER` |
 | Service Broker | No support |
 | Special characters in identifier | No support |
 | Special characters in parameter | No support |
@@ -193,20 +193,20 @@ nav_order: 4
 | System Functions | Supported: `fn_helpcollations`, `fn_listextendedproperty`, `sp_statistics`, `sp_statistics_100`, `sp_updatestats`, `sp_pkeys`, `sp_databases`, `sp_cursor`, `sp_cursoropen`, `sp_cursorprepare`, `sp_cursorexecute`, `sp_cursorprepexec`, `sp_cursorunprepare`, `sp_cursorfetch`, `sp_cursoroption`, `sp_cursorclose`, `sp_table_privileges`, `sp_column_privileges`, `sp_special_columns`, `sp_fkeys`, `sp_pkeys`, `sp_stored_procedures`, `xp_qv`, `sp_describe_undeclared_parameters`, `sp_helpuser` |
 | T-SQL Outer Join operator | No support |
 | TIMESTAMP column without column name | Supported: `XML`, `CURSOR`, `*` |
-| TRIGGER_NESTLEVEL with N arguments | `0` |
+| TRIGGER_NESTLEVEL with N arguments | Unsupported: `0` |
 | TRUNCATE TABLE | Unsupported |
-| TYPEPROPERTY | `arg2=NO_SUPPORTED_ARGUMENTS_RIGHT_NOW` |
+| TYPEPROPERTY | Unsupported: `arg2=NO_SUPPORTED_ARGUMENTS_RIGHT_NOW` |
 | Table hint | No support |
 | Table value constructor | No support |
 | Table variables | Unsupported |
 | Temporal table | No support |
 | Temporary procedures | No support |
 | Traceflags | No support |
-| Transactions | `TRANSACTION NAME IN VARIABLE` |
+| Transactions | Unsupported: `TRANSACTION NAME IN VARIABLE` |
 | Transition table reference for multi-DML trigger | Unsupported |
 | Trigger created with schema name | Unsupported |
-| Trigger options | `WITHOUT SCHEMABINDING` |
-| UPDATE | `TOP`, `CTE`, `OUTPUT` |
+| Trigger options | Unsupported: `WITHOUT SCHEMABINDING` |
+| UPDATE | Unsupported: `TOP`, `CTE`, `OUTPUT` |
 | UPDATE STATISTICS | No support |
 | UPDATETEXT | No support |
 | Unquoted string | No support |
@@ -214,8 +214,8 @@ nav_order: 4
 | Variable aggregates across rows | No support |
 | Variable assignment dependency | No support |
 | Variable procedure name | No support |
-| View options | `SCHEMABINDING` |
+| View options | Unsupported: `SCHEMABINDING` |
 | WAITFOR | No support |
 | WRITETEXT | No support |
-| XML features | `SELECT FOR XML PATH`, `SELECT FOR XML RAW` |
+| XML features | Unsupported: `SELECT FOR XML PATH`, `SELECT FOR XML RAW` |
 | expression AT TIME ZONE | No support |

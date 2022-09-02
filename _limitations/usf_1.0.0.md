@@ -1,7 +1,7 @@
 ---
 layout: default
-title: -- Version 1.0.0
-nav_order: 2
+title: Unsupported	Features, Version 1.0.0
+nav_order: 1
 ---
 
 ## Babelfish Version 1.0.0
