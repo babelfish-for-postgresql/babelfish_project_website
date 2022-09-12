@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Unsupported	Features, Version 1.1.0
+title: - Version 1.1.0
 nav_order: 1
 ---
 
