@@ -23,8 +23,6 @@ Babelfish for PostgreSQL may help in the following use cases:
 * When transitioning your SQL Server compatible source code to an open-source based database.
 * When moving away from proprietary or legacy applications that don't make source code available.
 
-Please note that HIPAA eligibility is not yet available with the Babelfish feature.
-
 Babelfish for PostgreSQL functionality is distributed in five components:
 
 Component | Purpose
