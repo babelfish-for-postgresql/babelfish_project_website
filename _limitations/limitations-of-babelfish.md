@@ -10,7 +10,7 @@ In this chapter, you will learn about functional differences between PostgreSQL 
 and SQL Server.
 
 The following table contains a list of SQL Server features that are currently
-not implemented or partially implemented in Babelfish.  This list is subject to change.
+not implemented or partially implemented in all Babelfish versions. This list is subject to change.
 
 | Functionality or Syntax | Notes                 | 
 | ----------------------- | --------------------- |
