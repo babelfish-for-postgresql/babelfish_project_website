@@ -8,6 +8,4 @@ nav_order: 1
 
 This page is under construction. To review a comprehensive list of unsupported statements and features for all Babelfish versions, [visit this page](https://babelfishpg.org/docs/limitations/limitations-of-babelfish/).
 
-```html
-<img src="construction.png"/>
-```
+<img src="construction.png" data-src="construction.png"/>
