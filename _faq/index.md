@@ -74,6 +74,8 @@ The following clients are officially supported:
 
 Other tools (such as FreeTDS) are known to work, but are not officially supported.
 
+Please note: The open source [jTDS driver](https://github.com/milesibastos/jTDS/) that is designed as an alternative to the Microsoft JDBC driver is not supported.
+
 ## Can Babelfish be used as an extension for PostgreSQL?
 
 Right now, to make Babelfish work, PostgreSQL needs [hooks](/docs/internals/postgresql-hooks) which are
