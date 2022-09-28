@@ -267,4 +267,4 @@ EXEC dbo.onConflictTestFromSSM
 SELECT * FROM dbo.customers
 ```
 
-For more information about using Babelfish from the TDS port and the PostgreSQL port, visit the Babelfish website at https://babelfishpg.org/docs/usage/interoperability/.
+For more information about using Babelfish from the TDS port and the PostgreSQL port, [visit the Babelfish website at](https://babelfishpg.org/docs/usage/interoperability/).
