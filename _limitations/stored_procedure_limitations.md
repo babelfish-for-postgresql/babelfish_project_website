@@ -42,6 +42,7 @@ The following System-provided Stored Procedures are supported for versions 1.0.0
 - `sp_describe_CURSOR`
 - `sp_DESCRIBE_FIRST_RESULT_SET`
 - `sp_DESCRIBE_UNDECLARED_PARAMETERS`
+- `sp_executesql`
 - `sp_oledb_ro_usrname`
 - `sp_prepare`
 - `sp_tablecollations_100`
@@ -164,7 +165,6 @@ Babelfish provides limited support for SQL Server stored procedures.  In the fol
 - `sp_execute`
 - `sp_execute_external_script`
 - `sp_execute_remote`
-- `sp_executesql`
 - `sp_expired_subscription_cleanup`
 - `sp_externalmailqueuelistener`
 - `sp_fido_%`
