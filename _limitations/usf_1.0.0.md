@@ -79,6 +79,7 @@ nav_order: 1
 | HASHBYTES | Supported : `arg1=MD5`, `SHA1`, `SHA2_256`, `SHA2_512` |
 | HIERARCHYID features | Unsupported |
 | IGNORE_DUP_KEY index | Unsupported |
+| INDEXKEY_PROPERTY | Supported : `arg4=NO_SUPPORTED_ARGUMENTS_RIGHT_NOW` |
 | INDEXPROPERTY | Unsupported |
 | INFORMATION_SCHEMA | Unsupported |
 | INSERT | Unsupported : `DEFAULT VALUES`, `EXECUTE SP_EXECUTESQL`, `EXECUTE(EXPRESSION)`, `EXECUTE(STRING)`, `OPENQUERY`, `OPENROWSET`, `OUTPUT OUTPUT`, `TOP` |
@@ -91,6 +92,7 @@ nav_order: 1
 | JSON features | Unsupported |
 | Join hint | Unsupported |
 | LIKE '[...]' | Unsupported |
+| LOGINPROPERTY | Supported : `arg2=NO_SUPPORTED_ARGUMENTS_RIGHT_NOW` |
 | Lateral join | Unsupported |
 | Leading dots in identifier | Unsupported |
 | Line continuation character | Unsupported |
@@ -179,6 +181,7 @@ nav_order: 1
 | T-SQL Outer Join operator | Unsupported |
 | TIMESTAMP column without column name | Unsupported |
 | TRIGGER_NESTLEVEL with N arguments | Unsupported |
+| TYPEPROPERTY | Supported : `arg2=NO_SUPPORTED_ARGUMENTS_RIGHT_NOW` |
 | Table hint | Unsupported |
 | Table value constructor | Unsupported |
 | Temporal table | Unsupported |

@@ -79,6 +79,7 @@ nav_order: 1
 | HASHBYTES | Supported : `arg1=MD5`, `SHA1`, `SHA2_256`, `SHA2_512` |
 | HIERARCHYID features | Unsupported |
 | IGNORE_DUP_KEY index | Unsupported |
+| INDEXKEY_PROPERTY | Supported : `arg4=NO_SUPPORTED_ARGUMENTS_RIGHT_NOW` |
 | INDEXPROPERTY | Unsupported |
 | INFORMATION_SCHEMA | Unsupported : `CHECK_CONSTRAINTS`, `COLUMN_DOMAIN_USAGE`, `COLUMN_PRIVILEGES`, `CONSTRAINT_COLUMN_USAGE`, `CONSTRAINT_TABLE_USAGE`, `DOMAIN_CONSTRAINTS`, `KEY_COLUMN_USAGE`, `PARAMETERS`, `REFERENTIAL_CONSTRAINTS`, `ROUTINES`, `ROUTINE_COLUMNS`, `SCHEMATA`, `TABLE_PRIVILEGES`, `VIEWS`, `VIEW_COLUMN_USAGE`, `VIEW_TABLE_USAGE` |
 | INSERT | Unsupported : `DEFAULT VALUES`, `EXECUTE SP_EXECUTESQL`, `EXECUTE(EXPRESSION)`, `EXECUTE(STRING)`, `OPENQUERY`, `OPENROWSET`, `OUTPUT OUTPUT`, `TOP` |
@@ -91,6 +92,7 @@ nav_order: 1
 | JSON features | Unsupported |
 | Join hint | Unsupported |
 | LIKE '[...]' | Unsupported |
+| LOGINPROPERTY | Supported : `arg2=NO_SUPPORTED_ARGUMENTS_RIGHT_NOW` |
 | Lateral join | Unsupported |
 | Line continuation character | Unsupported |
 | Login options | Unsupported : `ADD CREDENTIAL`, `CHECK_EXPIRATION`, `CHECK_POLICY`, `CREDENTIAL`, `DROP CREDENTIAL`, `FROM ASYMMETRIC KEY`, `FROM CERTIFICATE`, `FROM WINDOWS`, `MUST_CHANGE`, `NAME`, `NO CREDENTIAL`, `OLD_PASSWORD`, `PASSWORD HASHED`, `SID`, `UNLOCK` |
@@ -175,6 +177,7 @@ nav_order: 1
 | Syntax Issues | Unsupported |
 | T-SQL Outer Join operator | Unsupported |
 | TRIGGER_NESTLEVEL with N arguments | Supported : `0` |
+| TYPEPROPERTY | Supported : `arg2=NO_SUPPORTED_ARGUMENTS_RIGHT_NOW` |
 | Table hint | Unsupported |
 | Table value constructor | Unsupported |
 | Temporal table | Unsupported |
