@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Version 1.2.0
+title: Version 1.2.1
 nav_order: 1
 ---
 
-## Babelfish Version 1.2.0
+## Babelfish Version 1.2.1
 
 | Feature | Options | Notes | More Info | 
 | ------- | ------- | ------- | ------- | 

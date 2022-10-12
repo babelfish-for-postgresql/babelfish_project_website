@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Version 1.2.0
+title: Version 2.1.1
 nav_order: 1
 ---
 
-## Babelfish Version 1.2.0
+## Babelfish Version 2.1.1
 
 | Feature | Options | Notes | More Info | 
 | ------- | ------- | ------- | ------- | 
@@ -17,7 +17,7 @@ nav_order: 1
 | ALTER FUNCTION | Unsupported | |  | 
 | ALTER INDEX | Unsupported | |  | 
 | ALTER PROCEDURE | Unsupported | |  | 
-| ALTER ROLE | Unsupported | |  | 
+ |  | 
 | ALTER SCHEMA | Unsupported | |  | 
 | ALTER SERVER CONFIGURATION | Unsupported | |  | 
 | ALTER SERVER ROLE | Unsupported : `BULKADMIN`, `DBCREATOR`, `DISKADMIN`, `PROCESSADMIN`, `SECURITYADMIN`, `SERVERADMIN`, `SETUPADMIN` | |  | 
@@ -34,21 +34,21 @@ nav_order: 1
 | COLUMNPROPERTY | Supported : `arg3=CharMaxLen`, `AllowsNull` | |  | 
 | CONNECTIONPROPERTY | Supported : `arg1=net_transport`, `protocol_type`, `auth_scheme`, `local_tcp_port`, `arg1=physical_net_transport`, `client_net_address` | |  | 
 | CREATE DATABASE options | Unsupported : `ALLOW_SNAPSHOT_ISOLATION`, `ANSI_NULLS`, `ANSI_NULL_DEFAULT`, `ANSI_PADDING`, `ANSI_WARNINGS`, `ARITHABORT`, `AUTO_CLOSE`, `AUTO_SHRINK`, `AUTO_UPDATE_STATISTICS`, `AUTO_UPDATE_STATISTICS_ASYNC`, `CATALOG_COLLATION`, `COMPATIBILITY_LEVEL`, `CONCAT_NULL_YIELDS_NULL`, `CONTAINMENT=PARTIAL`, `CURSOR_CLOSE_ON_COMMIT`, `CURSOR_DEFAULT`, `DATE_CORRELATION_OPTIMIZATION`, `DB_CHAINING`, `DELAYED_DURABILITY`, `DISABLE_BROKER`, `FILESTREAM`, `HONOR_BROKER_PRIORITY`, `MULTI_USER`, `NUMERIC_ROUNDABORT`, `PAGE_VERIFY`, `PARAMETERIZATION`, `QUERY_STORE`, `QUOTED_IDENTIFIER`, `READ_COMMITTED_SNAPSHOT`, `RECOVERY`, `RECURSIVE_TRIGGERS`, `TARGET_RECOVERY_TIME`, `TRUSTWORTHY` | |  | 
-| CREATE ROLE | Unsupported | |  | 
+ |  | 
 | CREATE SERVER ROLE | Unsupported | |  | 
 | CURSOR parameters | Unsupported | |  | 
  |  | 
 | Case-sensitive collation | Unsupported : `CATALOG_COLLATION`, `DATABASE`, `SERVER` | |  | 
 | Column attribute | Unsupported | |  | 
 | Compound operator containing whitespace | Unsupported | |  | 
-| Cross-database reference | Unsupported | |  | 
+| Cross-database reference | Unsupported : `ALTER TABLE`, `CREATE INDEX`, `CREATE TABLE`, `DROP INDEX`, `EXECUTE`, `MERGE`, `TRUNCATE TABLE`, `UPDATE STATISTICS` | |  | 
 | Cursor options | Unsupported : `DYNAMIC`, `FAST_FORWARD`, `FOR UPDATE`, `KEYSET`, `OPTIMISTIC`, `SCROLL`, `SCROLL_LOCKS`, `TYPE_WARNING` | |  | 
 | DATABASEPROPERTYEX | Supported : `arg2=Collation`, `Edition`, `IsAutoClose`, `IsAutoCreateStatistics`, `IsInStandBy`, `IsTornPageDetectionEnabled`, `Status`, `Updateability`, `Version` | |  | 
 | DATEADD | Supported : `arg1=D`, `DAY`, `DAYOFYEAR`, `DD`, `DY`, `HH`, `HOUR`, `M`, `MCS`, `MINUTE`, `MM`, `MONTH`, `N`, `NS`, `Q`, `QQ`, `QUARTER`, `S`, `SECOND`, `SS`, `WEEK`, `WEEKDAY`, `WK`, `WW`, `Y`, `YEAR`, `YY`, `YYYY` | |  | 
 | DATEDIFF | Supported : `arg1=D`, `DAY`, `DAYOFYEAR`, `DD`, `DY`, `HH`, `HOUR`, `M`, `MCS`, `MICROSECOND`, `MILLISECOND`, `MINUTE`, `MM`, `MONTH`, `MS`, `N`, `NANOSECOND`, `NS`, `Q`, `QQ`, `QUARTER`, `S`, `SECOND`, `SS`, `WEEK`, `WK`, `WW`, `Y`, `YEAR`, `YY`, `YYYY` | |  | 
 | DATENAME | Supported : `arg1=D`, `DAY`, `DAYOFYEAR`, `DD`, `DW`, `DY`, `HH`, `HOUR`, `ISO_WEEK`, `ISOWK`, `ISOWW`, `M`, `MCS`, `MICROSECOND`, `MILLISECOND`, `MINUTE`, `MM`, `MONTH`, `MS`, `N`, `NANOSECOND`, `NS`, `Q`, `QQ`, `QUARTER`, `S`, `SECOND`, `SS`, `TZ`, `TZOFFSET`, `WEEK`, `WEEKDAY`, `WK`, `WW`, `YEAR`, `YY`, `YYYY` | |  | 
 | DATEPART | Supported : `arg1=D`, `DAY`, `DAYOFYEAR`, `DD`, `DW`, `DY`, `HH`, `HOUR`, `ISO_WEEK`, `ISOWK`, `ISOWW`, `M`, `MCS`, `MICROSECOND`, `MILLISECOND`, `MINUTE`, `MM`, `MONTH`, `MS`, `N`, `NANOSECOND`, `NS`, `Q`, `QQ`, `QUARTER`, `S`, `SECOND`, `SS`, `TZ`, `TZOFFSET`, `WEEK`, `WEEKDAY`, `WK`, `WW`, `YEAR`, `YY`, `YYYY` | |  | 
-| DB role options | Unsupported | |  | 
+| DB role options | Unsupported : `AUTHORIZATION` | |  | 
 | DB roles | Unsupported | |  | 
 | DBA statements | Unsupported | |  | 
 | DBCC statements | Unsupported | |  | 
@@ -57,7 +57,7 @@ nav_order: 1
 | DESC constraint | Unsupported | |  | 
 | DISABLE TRIGGER | Unsupported | |  | 
 | DML Table Source | Unsupported | |  | 
-| DROP IF EXISTS | Unsupported : `ROLE` | |  | 
+| DROP IF EXISTS | Supported : `DATABASE`, `FUNCTION`, `INDEX`, `PROCEDURE`, `ROLE`, `SCHEMA`, `TABLE`, `USER`, `VIEW` | |  | 
 | DROP INDEX | Unsupported : `INDEX ON SCHEMA.TABLE`, `SCHEMA.TABLE.INDEX`, `TABLE.INDEX` | |  | 
 | DROP multiple objects | Unsupported : `DATABASE`, `INDEX`, `TRIGGER` | |  | 
 | Datatypes | Unsupported : `CHARACTER VARYING`, `GEOGRAPHY`, `GEOMETRY`, `HIERARCHYID`, `NATIONAL CHARACTER`, `NATIONAL CHARACTER VARYING`, `NCHARACTER`, `NCHARACTER VARYING`, `XML COLUMN_SET FOR ALL_SPARSE_COLUMNS`, `XML(xmlschema)` | |  | 
@@ -77,7 +77,7 @@ nav_order: 1
 | GLOBAL cursor | Unsupported | |  | 
  |  | 
 | GRANT | Supported : `ALL PRIVILEGES ON OBJECT`, `SELECT ON OBJECT`, `INSERT ON OBJECT`, `UPDATE ON OBJECT`, `DELETE ON OBJECT`, `REFERENCES ON OBJECT`, `EXECUTE ON OBJECT` | |  | 
-| GROUP BY ALL | Unsupported | |  | 
+ |  | 
 | GROUP BY ROLLUP/CUBE (old syntax) | Unsupported | |  | 
 | Geospatial features | Unsupported | |  | 
 | Global Temporary Tables | Unsupported | |  | 
@@ -87,7 +87,7 @@ nav_order: 1
 | INDEXKEY_PROPERTY | Supported : `arg4=NO_SUPPORTED_ARGUMENTS_RIGHT_NOW` | |  | 
 | INDEXPROPERTY | Unsupported | |  | 
 | INFORMATION_SCHEMA | Unsupported : `CHECK_CONSTRAINTS`, `COLUMN_DOMAIN_USAGE`, `COLUMN_PRIVILEGES`, `CONSTRAINT_COLUMN_USAGE`, `CONSTRAINT_TABLE_USAGE`, `DOMAIN_CONSTRAINTS`, `KEY_COLUMN_USAGE`, `PARAMETERS`, `REFERENTIAL_CONSTRAINTS`, `ROUTINES`, `ROUTINE_COLUMNS`, `SCHEMATA`, `TABLE_PRIVILEGES`, `VIEWS`, `VIEW_COLUMN_USAGE`, `VIEW_TABLE_USAGE` | |  | 
-| INSERT | Unsupported : `DEFAULT VALUES`, `EXECUTE SP_EXECUTESQL`, `EXECUTE(EXPRESSION)`, `EXECUTE(STRING)`, `OPENQUERY`, `OPENROWSET`, `OUTPUT OUTPUT`, `TOP` | |  | 
+| INSERT | Unsupported : `DEFAULT VALUES`, `EXECUTE SP_EXECUTESQL`, `EXECUTE(EXPRESSION)`, `OPENQUERY`, `OPENROWSET`, `OUTPUT OUTPUT`, `TOP` | |  | 
 | INSERT BULK | Unsupported | |  | 
 | Index attribute | Unsupported | |  | 
 | Index options | Unsupported | |  | 
@@ -110,7 +110,7 @@ nav_order: 1
 | Maximum parameters per function | Supported : `100` | |  | 
 | Maximum parameters per procedure | Supported : `100` | |  | 
 | Maximum precision IDENTITY column | Supported : `18` | |  | 
-| Miscellaneous objects | Unsupported : `AGGREGATE`, `APPLICATION ROLE`, `ASSEMBLY`, `ASYMMETRIC KEY`, `AVAILABILITY GROUP`, `CERTIFICATE`, `COLUMN ENCRYPTION KEY`, `COLUMN MASTER KEY`, `CONTRACT`, `CREDENTIAL`, `CRYPTOGRAPHIC PROVIDER`, `DEFAULT`, `DIAGNOSTIC SESSION`, `EXTERNAL DATA SOURCE`, `EXTERNAL LIBRARY`, `EXTERNAL RESOURCE POOL`, `FULLTEXT CATALOG`, `FULLTEXT INDEX`, `FULLTEXT STOPLIST`, `MASTER KEY`, `MESSAGE TYPE`, `QUEUE`, `QUEUE`, `REMOTE SERVICE BINDING`, `RESOURCE GOVERNOR`, `ROLE`, `ROUTE`, `RULE`, `SERVER AUDIT`, `SERVER AUDIT SPECIFICATION`, `SERVER ROLE`, `SERVICE`, `SERVICE MASTER KEY`, `SYMMETRIC KEY`, `SYNONYM`, `WORKLOAD CLASSIFIER`, `WORKLOAD GROUP` | |  | 
+| Miscellaneous objects | Unsupported : `AGGREGATE`, `APPLICATION ROLE`, `ASSEMBLY`, `ASYMMETRIC KEY`, `AVAILABILITY GROUP`, `CERTIFICATE`, `COLUMN ENCRYPTION KEY`, `COLUMN MASTER KEY`, `CONTRACT`, `CREDENTIAL`, `CRYPTOGRAPHIC PROVIDER`, `DEFAULT`, `DIAGNOSTIC SESSION`, `EXTERNAL DATA SOURCE`, `EXTERNAL LIBRARY`, `EXTERNAL RESOURCE POOL`, `FULLTEXT CATALOG`, `FULLTEXT INDEX`, `FULLTEXT STOPLIST`, `MASTER KEY`, `MESSAGE TYPE`, `QUEUE`, `QUEUE`, `REMOTE SERVICE BINDING`, `RESOURCE GOVERNOR`, `ROUTE`, `RULE`, `SERVER AUDIT`, `SERVER AUDIT SPECIFICATION`, `SERVER ROLE`, `SERVICE`, `SERVICE MASTER KEY`, `SYMMETRIC KEY`, `SYNONYM`, `WORKLOAD CLASSIFIER`, `WORKLOAD GROUP` | |  | 
 | NEXT VALUE FOR | Unsupported | |  | 
 | NONCLUSTERED HASH index | Unsupported | |  | 
 | NOT FOR REPLICATION | Unsupported | |  | 
