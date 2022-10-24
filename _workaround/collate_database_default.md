@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Migrating partitioned tables to Babelfish
+title: COLLATE DATABASE_DEFAULT
 nav_order: 1
 ---
 
@@ -19,12 +19,12 @@ DROP TABLE IF EXISTS t1
 CREATE TABLE t1( col1 NVARCHAR(24) NOT NULL )
 ```
 
-Removing the COLLATE DATABASE_DEFAULT clause as shown above is generally considered preferable, because that way you don't have to hardcode any collation names in your source code. If you do want to specify the exact collation name instead, you can retrieve the collation for the database you're using with the following command:
+Removing the COLLATE DATABASE_DEFAULT clause as shown above is generally considered preferable, because you don't have to hardcode any collation names in your source code. If you do want to specify the exact collation name instead, you can retrieve the collation for the database you're using with the following command:
 
 ```sql
-SELECT CAST(DATABASEPROPERTYEX('my_database', 'Collation') AS varchar(64)) AS TheCollation
+SELECT CAST(DATABASEPROPERTYEX('my_database', 'Collation') AS varchar(64)) AS CollationId
 
-TheCollation                                                    
+CollationId                                                   
 ----------------------------------------------------------------
 sql_latin1_general_cp1_ci_as                                    
 ```
