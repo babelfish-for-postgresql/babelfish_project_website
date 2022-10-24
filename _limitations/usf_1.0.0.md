@@ -30,7 +30,7 @@ nav_order: 1
 | CHECKSUM | Supported : `arg1=SINGLE ARGUMENT` | |
 | CLOSE KEY | Unsupported | |
 | CLUSTERED index | Unsupported | |
-| COLLATE | Unsupported |[COLLATE DATABASE_DEFAULT workaround](https://babelfishpg.org/docs/workaround/collate_database_default.md/) |
+| COLLATE | Unsupported |[COLLATE DATABASE_DEFAULT workaround](https://babelfishpg.org/docs/workaround/collate_database_default/) |
 | COLUMNPROPERTY | Unsupported | |
 | CONNECTIONPROPERTY | Supported : `arg1=net_transport`, `protocol_type`, `auth_scheme`, `local_tcp_port` | |
 | CREATE DATABASE options | Unsupported : `ALLOW_SNAPSHOT_ISOLATION`, `ANSI_NULLS`, `ANSI_NULL_DEFAULT`, `ANSI_PADDING`, `ANSI_WARNINGS`, `ARITHABORT`, `AUTO_CLOSE`, `AUTO_SHRINK`, `AUTO_UPDATE_STATISTICS`, `AUTO_UPDATE_STATISTICS_ASYNC`, `CATALOG_COLLATION`, `COMPATIBILITY_LEVEL`, `CONCAT_NULL_YIELDS_NULL`, `CONTAINMENT=PARTIAL`, `CURSOR_CLOSE_ON_COMMIT`, `CURSOR_DEFAULT`, `DATE_CORRELATION_OPTIMIZATION`, `DB_CHAINING`, `DELAYED_DURABILITY`, `DISABLE_BROKER`, `FILESTREAM`, `HONOR_BROKER_PRIORITY`, `MULTI_USER`, `NUMERIC_ROUNDABORT`, `PAGE_VERIFY`, `PARAMETERIZATION`, `QUERY_STORE`, `QUOTED_IDENTIFIER`, `READ_COMMITTED_SNAPSHOT`, `RECOVERY`, `RECURSIVE_TRIGGERS`, `TARGET_RECOVERY_TIME`, `TRUSTWORTHY` | |
@@ -162,7 +162,7 @@ nav_order: 1
 | SET PARSEONLY | Unsupported | |
 | SET QUERY_GOVERNOR_COST_LIMIT | Unsupported | |
 | SET QUOTED_IDENTIFIER in batch | Unsupported | |
-| SET ROWCOUNT | Unsupported : `NONZERO`, `VARIABLE` |[SET ROWCOUNT workaround](https://babelfishpg.org/docs/workaround/set_rowcount.md/) |
+| SET ROWCOUNT | Unsupported : `NONZERO`, `VARIABLE` |[SET ROWCOUNT workaround](https://babelfishpg.org/docs/workaround/set_rowcount/) |
 | SET SHOWPLAN_ALL | Unsupported | |
 | SET SHOWPLAN_TEXT | Unsupported | |
 | SET SHOWPLAN_XML | Unsupported | |
