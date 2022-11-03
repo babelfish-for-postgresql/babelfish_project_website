@@ -30,7 +30,7 @@ Babelfish 1.3.2 is compatible with the latest major version of Babelfish; a dump
 
 To update the extensions that have changed since the last release, connect to the PostgreSQL endpoint of the Babelfish database and execute the following statements from a single session in this order:
 
-```bash
+```sql
 ALTER EXTENSION "babelfishpg_common" UPDATE;
 ALTER EXTENSION "babelfishpg_tsql" UPDATE;
 ```
@@ -39,7 +39,7 @@ Please note that the extension owner must invoke ALTER EXTENSION. For this relea
 
 After the extensions are updated, you can check the extension version from the PostgreSQL port:
 
-```bash
+```sql
 babelfish_db[124386]# \dx
                                 List of installed extensions
         Name        | Version |   Schema   |                   Description
@@ -50,6 +50,15 @@ babelfish_db[124386]# \dx
                                  ....
 ```
 
+Use the following command to check the version of Babelfish that you have installed:
+
+```sql
+babelfish_db[124386]# SELECT sys.serverProperty('BabelfishVersion') AS BabelfishVersion;
+ babelfishversion 
+------------------
+ 1.3.2
+(1 row)
+```
 
 ## Acknowledgements
 
