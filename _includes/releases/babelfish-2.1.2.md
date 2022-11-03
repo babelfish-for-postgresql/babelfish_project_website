@@ -16,7 +16,15 @@ Babelfish 2.1.2 contains the functionality and features of versions 2.1.0 and 2.
 - a fix for error handling in SSL/TLS handshake for some client drivers.
 
 
-Babelfish does not support an upgrade path to version 2.1.2 from Babelfish 1.x.x.
+Babelfish does not support an upgrade path to version 2.1.2 from Babelfish 1.x.x. Use the following command to check the version of Babelfish that you have installed:
+
+```sql
+babelfish_db[124386]# SELECT sys.serverProperty('BabelfishVersion') AS BabelfishVersion;
+ babelfishversion 
+------------------
+ 2.1.2
+(1 row)
+```
 
 ## Acknowledgements
 
