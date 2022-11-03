@@ -40,12 +40,21 @@ babelfish_db[124386]# \dx
                                 List of installed extensions
         Name        | Version |   Schema   |                   Description
 --------------------+---------+------------+-------------------------------------------------
- babelfishpg_common | 1.2.3   | public     | Transact SQL Datatype Support
+ babelfishpg_common | 1.2.1   | public     | Transact SQL Datatype Support
                                  ....
- babelfishpg_tsql   | 1.2.3   | public     | Transact SQL Compatibility
+ babelfishpg_tsql   | 1.2.1   | public     | Transact SQL Compatibility
                                  ....
 ```
 
+Use the following command to check the version of Babelfish that you have installed:
+
+```sql
+babelfish_db[124386]# SELECT sys.serverProperty('BabelfishVersion') AS BabelfishVersion;
+ babelfishversion 
+------------------
+ 2.1.2
+(1 row)
+```
 
 ## Acknowledgements
 
