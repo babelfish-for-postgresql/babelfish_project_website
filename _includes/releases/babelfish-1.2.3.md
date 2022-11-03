@@ -52,7 +52,7 @@ Use the following command to check the version of Babelfish that you have instal
 babelfish_db[124386]# SELECT sys.serverProperty('BabelfishVersion') AS BabelfishVersion;
  babelfishversion 
 ------------------
- 2.1.2
+ 1.2.3
 (1 row)
 ```
 
