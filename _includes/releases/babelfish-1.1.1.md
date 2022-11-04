@@ -10,12 +10,7 @@
 
 ## Overview
 
-Babelfish 1.1.1 contains all of the features and limitations of version 1.1.0:
-
-* Enhancements and fixes that improve the user experience, listed below.
-* Additional built-in functions, including `ORIGINAL_LOGIN()`, `SQUARE()` and more.  
-* Additional system views, including `sys.columns`, `sys.sysindexes`, and more.
-* Additional system stored procedures, including `sp_columns`, `sp_statistics`, and more.
+This version of Babelfish (1.1.1) contains all of the features and limitations of Babelfish version 1.1.0, as well as a security enhancement that fixes critical issues in Babelfish due to incorrect handling of user input for some application features.
 
 The above items and other new features are explained in more detail in the sections below.
 
