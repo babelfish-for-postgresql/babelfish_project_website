@@ -9,7 +9,7 @@
 
 ## Overview
 
-Babelfish 1.3.2 contains the features and limitations of 1.3.0, as well as the following updates:
+Babelfish 1.3.2 contains the features and limitations of 1.3.1, as well as the following updates:
 
 - a fix for a critical issue in Babelfish due to incorrect handling of user input for some application features.
 - a fix for error handling in sp_prepare calls which can cause a server crash when a large number of parameters are sent by the application. Babelfish currently supports a maximum of 100 parameters for a procedure or function.
