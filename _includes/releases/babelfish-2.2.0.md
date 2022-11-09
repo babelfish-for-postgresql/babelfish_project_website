@@ -24,7 +24,6 @@ This version of Babelfish adds support for the following features:
 - Support for `CROSS APPLY` and `OUTER APPLY` (lateral join).
 - New built-in function support: `SYSTEM_USER`, `HOST_NAME()`; The `SID_BINARY()` function is supported but will always return `NULL` in Babelfish.
 - Support for `CAST()` of numeric expressions to `DATETIME`.
-- Collation updates: support for multi-byte client encodings other than `UTF-16` for `VARCHAR(n)`.
 - Support for the `@@LANGUAGE` variable with constant value `us_english`.
 - Support for old-style function calls with `::` preceding the function name.
 - `SET NO_BROWSETABLE {ON|OFF}` is now subject to the `escape_hatch_session_settings` escape hatch, so no error will be raised when set to `ignored`.
