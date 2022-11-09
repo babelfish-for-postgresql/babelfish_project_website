@@ -67,7 +67,6 @@ The following System-provided Stored Procedures are supported for versions 1.0.0
 - `sp_statistics`
 - `sp_statistics_100`
 - `sp_updatestats`
-- `sp_pkeys`
 - `sp_databases`
 - `sp_cursor`
 - `sp_cursoropen`
