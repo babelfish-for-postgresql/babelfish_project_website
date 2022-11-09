@@ -22,11 +22,27 @@ The following System-provided Stored Procedures are supported for versions 1.2.0
 - `sp_column_privileges`
 - `sp_special_columns`
 - `sp_fkeys` 
-- `sp_pkeys`
 - `sp_stored_procedures`
 - `xp_qv`
 - `sp_describe_undeclared_parameters`
 - `sp_helpuser`
+
+The following System-provided Stored Procedures are supported for versions 1.1.0 and higher: 
+
+- `sp_statistics`
+- `sp_statistics_100`
+- `sp_updatestats`
+- `sp_pkeys`
+- `sp_databases`
+- `sp_cursor`
+- `sp_cursoropen`
+- `sp_cursorprepare`
+- `sp_cursorexecute`
+- `sp_cursorprepexec`
+- `sp_cursorunprepare`
+- `sp_cursorfetch`
+- `sp_cursoroption`
+- `sp_cursorclose`
 
 The following System-provided Stored Procedures are supported for versions 1.0.0 and higher: 
 
@@ -262,7 +278,6 @@ Babelfish provides limited support for SQL Server stored procedures.  In the fol
 - `sp_orbitmap`
 - `sp_password`
 - `sp_peerconflictdetection_tableaug`
-- `sp_pkeys`
 - `sp_polybase_%`
 - `sp_post_msx_operation`
 - `sp_postagentinfo`
