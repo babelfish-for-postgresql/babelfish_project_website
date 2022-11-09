@@ -20,4 +20,4 @@ babelfish_db[124386]# SELECT sys.serverProperty('BabelfishVersion') AS Babelfish
 (1 row)
 ```
 
-Babelfish for PostgreSQL is open-source software that uses the Apache License version 2 (ALv2) and the PostgreSQL License. The source for the project is available on [GitHub](https://github.com/babelfish-for-postgresql). 
+Babelfish for PostgreSQL is open-source software that uses the Apache License version 2 (ALv2) and the PostgreSQL License. The source for the project is available on [GitHub](https://github.com/babelfish-for-postgresql).  
