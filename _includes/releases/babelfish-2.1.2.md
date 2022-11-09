@@ -11,7 +11,7 @@
 
 Babelfish 2.1.2 contains the functionality and features of versions 2.1.0 and 2.1.1, as well as:
 
-- a fix for critical issues in Babelfish due to incorrect handling of user input for some application features.
+- a fix for [critical issues in Babelfish](https://github.com/babelfish-for-postgresql/babelfish_extensions/security/advisories/GHSA-m399-rrc8-j6fj) due to incorrect handling of user input for some application features.
 - a fix for error handling in sp_prepare calls which can cause a server crash when a large number of parameters are sent by the application. Babelfish currently supports a maximum of 100 parameters for a procedure or function.
 - a fix for error handling in SSL/TLS handshake for some client drivers.
 

@@ -9,7 +9,7 @@
 
 ## Overview
 
-Babelfish version 1.2.3 contains all of the features and limitations included in version 1.2.2, as well as a fix for a critical issue in Babelfish due to incorrect handling of user input for some application features. 
+Babelfish version 1.2.3 contains all of the features and limitations included in version 1.2.2, as well as a fix for a [critical issue in Babelfish](https://github.com/babelfish-for-postgresql/babelfish_extensions/security/advisories/GHSA-m399-rrc8-j6fj) due to incorrect handling of user input for some application features. 
 
 
 ## Upgrading to the new version

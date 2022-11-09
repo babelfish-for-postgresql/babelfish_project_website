@@ -10,7 +10,7 @@
 
 ## Overview
 
-This version of Babelfish (1.1.1) contains all of the features and limitations of Babelfish version 1.1.0, as well as a security enhancement that fixes critical issues in Babelfish due to incorrect handling of user input for some application features.
+This version of Babelfish (1.1.1) contains all of the features and limitations of Babelfish version 1.1.0, as well as a security enhancement that fixes [critical issues in Babelfish](https://github.com/babelfish-for-postgresql/babelfish_extensions/security/advisories/GHSA-m399-rrc8-j6fj) due to incorrect handling of user input for some application features.
 
 The above items and other new features are explained in more detail in the sections below.
 
