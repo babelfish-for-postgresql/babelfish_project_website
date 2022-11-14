@@ -5,11 +5,25 @@
   - [BABEL_1_4_0__PG_13_8.tar.gz](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/download/BABEL_1_4_0__PG_13_8/BABEL_1_4_0__PG_13_8.tar.gz)
 - Babelfish Compass
   - [Download](https://github.com/babelfish-for-postgresql/babelfish_compass/releases)
-- Date: August 29, 2022
+- Date: November 14, 2022
 
 ## Overview
 
-Babelfish 1.4.0 contains bug fixes that improve the user experience.
+Babelfish 1.4.0 contains fixes and features that improve the user experience.
+
+### Security enhancements
+
+- Fixed critical issues in Babelfish due to incorrect handling of user input for some application features. This is tracked in https://github.com/babelfish-for-postgresql/babelfish_extensions/security/advisories/GHSA-m399-rrc8-j6fj.
+
+### High priority stability enhancements
+
+- Fixed error handling in `sp_prepare` calls which can cause a server crash when a large number of parameters are sent by the application. Babelfish currently supports a maximum of 100 parameters for a procedure or function.
+
+- Fixed error handling in SSL/TLS handshake for some client drivers.
+
+### Additional improvements
+
+- Fixed the `babelfishpg_tds` extension to correctly allocate the shared memory size used by the extension.
 
 
 ## Upgrading to the new version
