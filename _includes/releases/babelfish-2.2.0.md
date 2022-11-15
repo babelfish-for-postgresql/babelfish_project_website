@@ -26,7 +26,7 @@ Babelfish 2.2.0 contains enhancements and fixes that improve the user experience
 
 This version of Babelfish adds support for the following new features:
 
-- Support for data migration using the BCP client and the bcp utility now supports `-E` flag (for identity columns) and `-b` flag (for batching inserts).
+- Support for data migration using the BCP client and the bcp utility now supports `-E` flag (for identity columns), `-k` flag (an empty column will keep a `NULL` value during an operation), and `-b` flag (for batching inserts).
 - Support for cross-database stored procedure execution.
 - Support for `CROSS APPLY` and `OUTER APPLY` (lateral join).
 - Support for the `SYSTEM_USER`, and `HOST_NAME` built-in functions. The `HOST_NAME` is visible in the `sys.sysprocesses` T-SQL view; the `SID_BINARY` function is supported but always returns `NULL` in Babelfish.
