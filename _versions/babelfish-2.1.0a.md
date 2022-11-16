@@ -2,7 +2,7 @@
 date: 2022-7-28
 
 title: Babelfish 2.1.0a
-nav_order: 7
+nav_order: 8
 
 product: Babelfish for PostgreSQL
 version: '2.1.0a'
