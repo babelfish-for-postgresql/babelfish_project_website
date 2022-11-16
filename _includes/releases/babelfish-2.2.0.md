@@ -74,7 +74,6 @@ This version of Babelfish adds support for the following new features:
 - Fixed the `@@DBTS` function so that value of `@@DBTS` correctly returns the current transaction id after each DML statement even when used within a transaction.
 - Improved performance for queries that refer to the functions `SCOPE_IDENTITY` and `@@IDENTITY`.
 - Support added for collations `Japanese_CS_AS`, `Japanese_CI_AI` and `Japanese_CI_AS` for `fn_helpcollations`.
-- `@@SERVERNAME` and `SERVERPROPERTY('ServerName')` now return the name of the Babelfish instance as specified by the user when the instance is created. This value is also returned by the newly supported properties `SERVERPROPERTY('MachineName')` and `SERVERPROPERTY('InstanceName')`.
 - Function `fn_mapped_system_error_list` lists the PG error code mapped to `@@ERROR` codes, as well as the corresponding error message text. This function also exists in previous Babelfish releases but did not include mapping details.
 - Fixed `DATEADD` function to now support `milliseconds(ms)` time units.
 - `SET NO_BROWSETABLE {ON|OFF}` is now subject to escape hatch `escape_hatch_session_settings`, so no error is raised when set to `ignored`.
