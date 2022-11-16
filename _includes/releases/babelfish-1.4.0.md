@@ -54,9 +54,9 @@ babelfish_db[124386]# \dx
                                 List of installed extensions
         Name        | Version |   Schema   |                   Description
 --------------------+---------+------------+-------------------------------------------------
- babelfishpg_common | 1.4.0   | public     | Transact SQL Datatype Support
+ babelfishpg_common | 1.2.1   | public     | Transact SQL Datatype Support
                                  ....
- babelfishpg_tsql   | 1.4.0   | public     | Transact SQL Compatibility
+ babelfishpg_tsql   | 1.2.1   | public     | Transact SQL Compatibility
                                  ....
 ```
 
