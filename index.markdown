@@ -49,10 +49,14 @@ sidebar:
   - title: Releases
     description: List of Babelfish releases.
     links:
+      - title: Release 2.2.0
+        url: "/docs/versions/babelfish-2-2-0.html"
       - title: Release 2.1.0a
         url: "/docs/versions/babelfish-2-1-0a.html"
       - title: Release 2.1.0
         url: "/docs/versions/babelfish-2-1-0.html"
+      - title: Release 1.4.0
+        url: "/docs/versions/babelfish-1-4-0.html"
       - title: Release 1.2.1
         url: "/docs/versions/babelfish-1-2-1.html"
       - title: Release 1.2.0

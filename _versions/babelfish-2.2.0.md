@@ -1,8 +1,8 @@
 ---
-date: 2022-11-15
+date: 2022-11-17
 
 title: Babelfish 2.2.0
-nav_order: 9
+nav_order: 220
 
 product: Babelfish for PostgreSQL
 version: '2.2.0'
