@@ -38,9 +38,9 @@ Once past PRELOGIN, the client can use LOGIN7 to define the authentication rules
 
 ### SSL/TLS support for TDS connections
 
-Babelfish uses native PostgreSQL support for using SSL connections to encrypt client/server communications. See PostgreSQL [documentation](https://www.postgresql.org/docs/13/ssl-tcp.html#SSL-SETUP) for details about configuring server-side SSL functionality.
+Babelfish uses native PostgreSQL support for using SSL connections to encrypt client/server communications. See the PostgreSQL [documentation](https://www.postgresql.org/docs/13/ssl-tcp.html#SSL-SETUP) for details about configuring server-side SSL functionality.
 
-To use SSL encryption, [compile the PostgreSQL server with support for SSL,](https://www.postgresql.org/docs/13/install-procedure) and set the <code>ssl</code> parameter to <code>on</code> in the postgresql.conf file. The server will listen for SSL and non-SSL connections on the same TCP port, and will negotiate with any connecting client about using SSL. By default, a client can choose whether to require an SSL connection or not. The server will listen for both unencrypted and encrypted connections on the same TCP port, and negotiate the connection type with the connecting client.  If <code>babelfishpg_tds.tds_ssl_encrypt</code> is set to <code>true</code>, end-to-end encryption is enforced for all connections. In that case, if a client requests an unencrypted connection, the connection is rejected.
+To use SSL encryption, compile the PostgreSQL server with support for SSL, and set the <code>ssl</code> parameter to <code>on</code> in the postgresql.conf file. The server will listen for SSL and non-SSL connections on the same TCP port, and will negotiate with any connecting client about using SSL. By default, a client can choose whether to require an SSL connection or not. The server will listen for both unencrypted and encrypted connections on the same TCP port, and negotiate the connection type with the connecting client.  If <code>babelfishpg_tds.tds_ssl_encrypt</code> is set to <code>true</code>, end-to-end encryption is enforced for all connections. In that case, if a client requests an unencrypted connection, the connection is rejected.
 
 The following table shows how Babelfish interprets SSL settings when a client connects:
 

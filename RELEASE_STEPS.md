@@ -1,5 +1,7 @@
 # Releasing a new version of Babelfish
 
+**NOTE THAT DATES MAY NOT BE IN THE FUTURE OR THE BUILD WON'T WORK!!!!**
+
 ## Adding release notes and version information
 
 Add a new file with the release note content to the `_includes/releases` folder, with the following release-specific header content:

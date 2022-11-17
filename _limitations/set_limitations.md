@@ -1,20 +1,10 @@
 ---
 layout: default
-title: Unsupported SET Statements 
-nav_order: 2
+title: SET Statements 
+nav_order: 14
 ---
 
 ## Unsupported SET statements
-
-The following SET statements are available for use with Babelfish versions 1.2.0 and higher:
-
-- `SET FMTONLY` - `SET FMTONLY ON/OFF` applies only to `SELECT *` queries, and is ignored for all other queries.
-- `SET LOCK_TIMEOUT`
-
-The following SET statement limitations apply:
-
-- `SET LANGUAGE` - This syntax is not supported with any value other than `english` or `us_english`. 
-
 
 The following SET statements are not implemented by Babelfish: 
 
@@ -45,4 +35,13 @@ The following SET statements are not implemented by Babelfish:
 - `SET TRANSACTION ISOLATION LEVEL SERIALIZABLE`
 - `SET OFFSETS`
 - `SETUSER`
+
+The following SET statement limitations apply:
+
+- `SET LANGUAGE` - This syntax is not supported with any value other than `english` or `us_english`. 
+
+The following SET statements are available for use with Babelfish versions 1.2.0 and higher:
+
+- `SET FMTONLY` - `SET FMTONLY ON/OFF` applies only to `SELECT *` queries, and is ignored for all other queries.
+- `SET LOCK_TIMEOUT`
 
