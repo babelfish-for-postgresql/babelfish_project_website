@@ -65,14 +65,14 @@ not implemented or partially implemented in all Babelfish versions. This list is
 | `CREATE statement` | You can't use a `CREATE` statement to create the following object types: `AGGREGATE`, `APPLICATION ROLE`, `ASSEMBLY`, `ASYMMETRIC KEY`, `AUTHORIZATION`, `AVAILABILITY GROUP`, `BROKER`, `PRIORITY`, `COLUMN ENCRYPTION KEY`, `CONTRACT`, `BACKUP CERTIFICATE`, `CREDENTIAL`, `TABLE ...`, `IDENTITY`, `USER`, `CRYPTOGRAPHIC PROVIDER`, `DATABASE ENCRYPTION KEY`, `DATABASE AUDIT`, `SPECIFICATION`, `DEFAULT`, `ENDPOINT`, `EXTERNAL`, `FILE FORMAT`, `EVENT NOTIFICATION`, `EVENT`, `SESSION`, `FULLTEXT CATALOG`, `FULLTEXT INDEX`, `FULLTEXT STOPLIST`, `INDEX`, `SPATIAL INDEX`, `XML`, `INDEX`, `COLUMNSTORE INDEX`, `EXTERNAL LANGUAGE`, `EXTERNAL LIBRARY`, `LOGIN`, `MASTER KEY`, `MESSAGE`, `TYPE`, `EXTERNAL LANGUAGE`, `EXTERNAL LIBRARY`, `LOGIN`, `PARTITION FUNCTION`, `PARTITION SCHEME`, `QUEUE`, `REMOTE SERVICE BINDING`, `RESOURCE POOL`, `EXTERNAL RESOURCE POOL`, `RESOURCE GOVERNOR`, `ROLE`, `ROUTE`, `RULE`, `SCHEMA`, `SEARCH PROPERTY`, `LIST`, `SECURITY POLICY`, `SEARCH PROPERTY LIST`, `SERVER AUDIT`, `SERVER AUDIT SPECIFICATION`, `SERVER ROLE`, `SERVICE`, `SERVICE MASTER KEY`, `SYMMETRIC KEY`, `TABLE ... GRANT/IDENTITY` clauses, `EXTERNAL TABLE`, `TRIGGER` (schema qualified), `TYPE`, `USER`, `WORKLOAD GROUP`, `WORKLOAD CLASSIFIER`, `SELECTIVE XML INDEX`, `XML`, `SCHEMA COLLECTION` |
 | `CREATE DATABASE` keywords and clauses | Options except `COLLATE` and `CONTAINMENT=NONE` are not supported. |
 | CREDENTIAL | Functionality related to this object type is not supported. |
-| Cross-database object reference | Version 2.1.0 adds support for cross-database references outside the current database with a 3-part object name, for `SELECT`, `SELECT..INTO`, `INSERT`, `UPDATE`, `DELETE`. Three-part object names are only supported if they refer to the current database. |
+| Cross-database object reference | Version 2.2.0 adds support for cross-database procedure execution. Version 2.1.0 (and later) adds support for cross-database references outside the current database with a 3-part object name, for `SELECT`, `SELECT..INTO`, `INSERT`, `UPDATE`, `DELETE`. Three-part object names are only supported if they refer to the current database. |
 | Remote object references | Four-part object names are not supported. |
 | `CRYPTOGRAPHIC PROVIDER` | Functionality related to this object type is not supported. |
 | Cursors (updatable) | Functionality related to this object type is not supported. |
 | Cursors (global) | `GLOBAL` cursors are not supported. |
 | Cursor (fetch behaviors) | The following cursor behaviors are not supported: `FETCH PRIOR`, `FIRST`, `LAST`, `ABSOLUTE`, `RELATIVE` |
 | Cursor-typed (variables and parameters) | Cursor-typed parameters are supported when the parameter is used as an input parameter, but not when used as an output parameter (an error is raised). |
-| `CROSS APPLY` | Lateral joins are not supported. |
+| `CROSS APPLY` | Version 2.2.0 adds support for lateral joins; they are not supported in prior versions. |
 | `CREATE/ALTER/DROP CRYPTOGRAPHIC PROVIDER` | This syntax is not supported. |
 | Cursor Options | `SCROLL`, `KEYSET`, `DYNAMIC`, `FAST_FORWARD`, `SCROLL_LOCKS`, `OPTIMISTIC`, `TYPE_WARNING`, `FOR UPDATE` are not supported. |
 | DBCC commands | DBCC commands are not supported. |
@@ -114,7 +114,7 @@ not implemented or partially implemented in all Babelfish versions. This list is
 | `ALTER FUNCTION` | This syntax is not supported. |
 | Function declarations with \> 100 parameters | Function declarations that contain more than  100 parameters are not supported. |
 | Function calls that calls DEFAULT | `DEFAULT` is not a supported parameter value for a function call. |
-| Function calls that include :: | Function calls that include :: are not supported. |
+| Function calls that include :: | Version 2.2.0 provides support for old-style function calls that include :: ; prior versions do not support :: preceding the function name. |
 | Functions, externally defined | External functions, including SQL Common Language Runtime (CLR) are not supported. |
 | `GEOMETRY` | Datatype and all associated functionality is not supported. |
 | `GEOGRAPHY` | Datatype and all associated functionality is not supported. |
@@ -128,11 +128,11 @@ not implemented or partially implemented in all Babelfish versions. This list is
 | `HASHBYTES()` function | The only supported algorithms are: MD5, SHA1, and SHA256 |
 | `HIERARCHYID` | The datatype and methods are not supported. |
 | Hints | Hints are not supported for joins, queries, or tables and will be ignored. |
-| `INFORMATION_SCHEMA` catalog | Version 1.2.0 supports the following information schema views: `TABLES`, `COLUMNS`, `DOMAINS`, `TABLE_CONSTRAINTS` |
+| `INFORMATION_SCHEMA` catalog | Version 2.2.0 and higher supports: `COLUMN_DOMAIN_USAGE`, `CONSTRAINT_COLUMN_USAGE`, `CHECK_CONSTRAINTS`, `ROUTINES`, `VIEWS`. Version 1.2.0 and higher supports the following information schema views: `TABLES`, `COLUMNS`, `DOMAINS`, `TABLE_CONSTRAINTS` |
 | Identifiers exceeding 63 characters | PostgreSQL supports a maximum of 63 characters for identifiers. Babelfish converts identifiers longer than 63 characters to a name that uses a hash of the original name. Use the original name with T-SQL, but the converted name if accessing the database on the PostgreSQL listener port (5432). |
 | Identifiers (variables/parameters) with multiple leading `@` characters | Identifiers that start with more than one leading `@` are not supported. |
 | Identifiers: table or column names that contain `@` or `[]` characters | Table or column names that contain an `@` sign or square brackets are not supported. |
-| Identifiers with multiple `@` characters | In version 2.1.0, the PostgreSQL error code for `@@ERROR=213` is now mapped by Babelfish. Version 1.2.0 supports @@DBTS, @@LOCK_TIMEOUT, @@SERVICENAME. Version 1.0.0 does not support system-defined `@@variables` other than: `@@VERSION`, `@@SPID`, `@@ROWCOUNT`, `@@TRANCOUNT`, `@@IDENTITY`, `@@ERROR`, `@@FETCH_STATUS`, `@@MAX_PRECISION`, `@@SERVERNAME`, `@@DATEFIRST`, `@@PROCID`, `@@MAX_CONNECTIONS`, `@@LOCK_TIMEOUT`, `@@NESTLEVEL`, `@@CURSOR_ROWS`, `@@MICROSOFTVERSION` |
+| Identifiers with multiple `@` characters | In version 2.2.0, the PostgreSQL error code for `@@ERROR=911` is now mapped by Babelfish. In version 2.1.0, the PostgreSQL error code for `@@ERROR=213` is now mapped by Babelfish. Version 1.2.0 supports `@@DBTS`, `@@LOCK_TIMEOUT`, `@@SERVICENAME`. Version 1.0.0 does not support system-defined `@@variables` other than: `@@VERSION`, `@@SPID`, `@@ROWCOUNT`, `@@TRANCOUNT`, `@@IDENTITY`, `@@ERROR`, `@@FETCH_STATUS`, `@@MAX_PRECISION`, `@@SERVERNAME`, `@@DATEFIRST`, `@@PROCID`, `@@MAX_CONNECTIONS`, `@@LOCK_TIMEOUT`, `@@NESTLEVEL`, `@@CURSOR_ROWS`, `@@MICROSOFTVERSION` |
 | `IDENTITY` columns support | `IDENTITY` columns are supported for data types `tinyint`, `smallint`, `int`, `bigint`, `numeric`, and `decimal`. SQL Server supports precision up to 38 for data types `numeric` and `decimal` in `IDENTITY` columns. PostgreSQL supports precision up to 19 for data types `numeric` and `decimal` in `IDENTITY` columns. |
 | Indexes with `IGNORE_DUP_KEY` | Syntax that creates an index that includes `IGNORE_DUP_KEY` will create an index as if this property was omitted. |
 | Indexes with more than 32 columns | An index may not include more than 32 columns; `INCLUDE`d index columns count towards the limit in PostgreSQL, but not in SQL Server. |
@@ -144,6 +144,7 @@ not implemented or partially implemented in all Babelfish versions. This list is
 | `CREATE/ALTER/DROP SPATIAL INDEX` | This syntax is not supported. |
 | `CREATE/ALTER/DROP XML INDEX` | This syntax is not supported. |
 | Index clauses | The following clauses are ignored: `FILLFACTOR`, `ALLOW_PAGE_LOCKS`, `ALLOW_ROW_LOCKS`, `PAD_INDEX`, `STATISTICS_NORECOMPUTE`, `OPTIMIZE_FOR_SEQUENTIAL_KEY`, `SORT_IN_TEMPDB`, `DROP_EXISTING`, `ONLINE`, `COMPRESSION_DELAY`, `MAXDOP`, `DATA_COMPRESSION` |
+| `INDEXPROPERTY()` | Version 2.2.0 supports the following properties: `IndexFillFactor`, `IndexID`, `IsClustered`, `IsDisabled`, `IsHypothetical`, `IsPadIndex`, `IsPageLockDisallowed`, `IsRowLockDisallowed`, `IsUnique`|
 | `INSERT ... TOP` | This syntax is not supported. |
 | `INSERT ... DEFAULT VALUES` | This syntax is not supported. |
 | JSON | Datatypes, Built-in Functions, and statements are unsupported. |
@@ -162,10 +163,10 @@ not implemented or partially implemented in all Babelfish versions. This list is
 | `NEXT VALUE FOR` sequence clause | This syntax is not supported. |
 | `NOT FOR REPLICATION clause` | This syntax is accepted and ignored. |
 | `SET NUMERIC_ROUNDABORT ON` | This setting is not supported. |
-| `OBJECTPROPERTY()` | This function is not supported. |
-| `OBJECTPROPERTYEX()` | This function is not supported. |
+| `OBJECTPROPERTY()` | Version 2.2.0 supports `ExecIsAnsiNullsOn`, `ExecIsQuotedIdentOn`, `IsDefault`, `IsDefaultCnst`, `IsDeterministic`, `IsIndexed`, `IsInlineFunction`, `IsMSShipped`, `IsPrimaryKey`, `IsProcedure`, `IsRule`, `IsScalarFunction`, `IsSchemaBound`, `IsTable`, `IsTableFunction`, `IsTrigger`, `IsUserTable`, `IsView`, `OwnerId`, `TableFulltextPopulateStatus`, `TableHasVarDecimalStorageFormat`; prior to version 2.2.0, this function is not supported. |
+| `OBJECTPROPERTYEX()`| Version 2.2.0 supports `ExecIsAnsiNullsOn`, `ExecIsQuotedIdentOn`, `IsDefault`, `IsDefaultCnst`, `IsDeterministic`, `IsIndexed`, `IsInlineFunction`, `IsMSShipped`, `IsPrimaryKey`, `IsProcedure`, `IsRule`, `IsScalarFunction`, `IsSchemaBound`, `IsTable`, `IsTableFunction`, `IsTrigger`, `IsUserTable`, `IsView`, `OwnerId`, `TableFulltextPopulateStatus`, `TableHasVarDecimalStorageFormat`, `BaseType`; prior to version 2.2.0, this function is not supported. |
 | ODBC escape functions | ODBC escape functions are not supported. |
-| `OUTER APPLY` | Lateral joins are not supported. |
+| `OUTER APPLY` | Version 2.2.0 adds support for lateral joins; they are not supported in earlier versions. |
 | Procedure or function parameter limit | PostgreSQL supports a maximum of 100 parameters for a procedure or function. |
 | Partitioning | Table and index partitioning is not supported. |
 | `CREATE/ALTER/DROP PARTITION FUNCTION` | This syntax is not supported. |
