@@ -31,7 +31,7 @@ long_description: "Babelfish for PostgreSQL is an open source project available 
 callouts_head: "Principles for development"
 callouts_class: list-features
 callouts_id: principles
-callouts_leader: "When the contributors are successful, Babelfish for PostgreSQL will be:"
+callouts_leader: "When we (the contributors) are successful, Babelfish for PostgreSQL will be:"
 
 version_feature:
   latest_label: "Current Version:"
@@ -49,36 +49,16 @@ sidebar:
   - title: Releases
     description: List of Babelfish releases.
     links:
-      - title: Release 2.1.2
-        url: "/docs/versions/babelfish-2-1-2.html"
-      - title: Release 2.1.1
-        url: "/docs/versions/babelfish-2-1-1.html"
       - title: Release 2.1.0a
         url: "/docs/versions/babelfish-2-1-0a.html"
       - title: Release 2.1.0
         url: "/docs/versions/babelfish-2-1-0.html"
-      - title: Release 1.4.0
-        url: "/docs/versions/babelfish-1-4-0.html"
-      - title: Release 1.3.2
-        url: "/docs/versions/babelfish-1-3-2.html"
-      - title: Release 1.3.1
-        url: "/docs/versions/babelfish-1-3-1.html"
-      - title: Release 1.3.0
-        url: "/docs/versions/babelfish-1-3-0.html"
       - title: Release 1.2.1
         url: "/docs/versions/babelfish-1-2-1.html"
-      - title: Release 1.2.2
-        url: "/docs/versions/babelfish-1-2-2.html"
-      - title: Release 1.2.3
-        url: "/docs/versions/babelfish-1-2-3.html"
       - title: Release 1.2.0
         url: "/docs/versions/babelfish-1-2-0.html"
-      - title: Release 1.1.1
-        url: "/docs/versions/babelfish-1-1-1.html"
       - title: Release 1.1.0
         url: "/docs/versions/babelfish-1-1-0.html"
-      - title: Release 1.0.1
-        url: "/docs/versions/babelfish-1-0-1.html"
       - title: Release 1.0.0
         url: "/docs/versions/babelfish-1-0-0.html"
   - title: Have a question?
