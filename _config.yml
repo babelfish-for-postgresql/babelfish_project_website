@@ -78,6 +78,9 @@ collections:
   client:
     permalink: /docs/:collection/:path/
     output: true
+  limitations:
+    permalink: /docs/:collection/:path/
+    output: true
   workaround:
     permalink: /docs/:collection/:path/
     output: true
@@ -110,6 +113,9 @@ just_the_docs:
       nav_fold: true
     usage:
       name: Using Babelfish
+      nav_fold: true
+    limitations:
+      name: Unsupported Functionality
       nav_fold: true
     workaround:
       name: Migration workarounds
@@ -155,10 +161,6 @@ search:
   # Enable or disable the search button that appears in the bottom right corner of every page
   # Supports true or false (default)
   button: false
-
-# Google Analytics Tracking (optional)
-# e.g, UA-1234567-89
-ga_tracking: G-N5LPQD8JX3
 
 # Disable the just-the-docs theme anchor links in favor of our custom ones
 # See _includes/head_custom.html

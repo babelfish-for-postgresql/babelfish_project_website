@@ -23,7 +23,7 @@ Babelfish supports TDS protocol versions 7.1 and higher.
 
 ### Which Babelfish versions are available?
 
-Babelfish version 1.0.0 works with PostgreSQL 13.4; version 1.1.0 works with PostgreSQL version 13.5. 
+You can find a complete list of available versions at the [Github download site](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases). 
 
 ### How can I find out which version of Babelfish I am running?
 
@@ -59,11 +59,11 @@ serverproperty
 
 ## Can I use a database with the TDS protocol and the PostgreSQL protocol at the same time?
 
-Yes. A database can support PostgreSQL syntax and SQL Server (TDS protocol) syntax at the same time. 
+Yes. A database can support PostgreSQL syntax and SQL Server (TDS protocol) syntax at the same time, but [objects created in one syntax may not be accessible to the other syntax](https://babelfishpg.org/docs/usage/interoperability/).  
 
 ### Which TDS clients are known to work with Babelfish?
 
-The following clients are officially supported:
+The following clients are known to work with Babelfish:
 
 - OLEDB Provider/MSOLEDBSQL
 - OLEDB Driver/SQLOLEDB (deprecated)
@@ -73,6 +73,8 @@ The following clients are officially supported:
 - Java Database Connectivity (JDBC)
 
 Other tools (such as FreeTDS) are known to work, but are not officially supported.
+
+Please note: The open source [jTDS driver](https://github.com/milesibastos/jTDS/) that is designed as an alternative to the Microsoft JDBC driver is not supported.
 
 ## Can Babelfish be used as an extension for PostgreSQL?
 

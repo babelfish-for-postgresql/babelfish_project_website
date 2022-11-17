@@ -49,13 +49,27 @@ nav_order: 2
 
 The header is self-explanatory; you need to provide at least the `title` and `nav_order` (which is sequential for each section).
 
-## Adding images to posts and docs
+## Adding images to content in the documentation (markdown files)
 
-Store image files in the `assets/images` folder. To use an image, you can add the following block to the markdown file:
+Store the image in a directory with the same name as the page on which it will be displayed:
+
+babelfish_project_website/content_directory/image_file_name.png
+
+Then, and add the following tag to the content:
+
+![under construction](img src=construction.png)
+
+*Note* If you have problems with your image not displaying, check the developer content displayed by the browser (on Chrome, that's under `View`, `Javascript console`) to debug your issues.
+
+## Adding images to posts
+
+Store image files in the `assets/images` folder. To use an image, you can add the following block to :
 
 ```html
 <img src="bg.png" data-src="img1.jpg" />
 ```
+
+*Note* If you have problems with your image not displaying, check the developer content displayed by the browser (on Chrome, that's under `View`, `Javascript console`) to debug your issues.
 
 ## Issue templates
 

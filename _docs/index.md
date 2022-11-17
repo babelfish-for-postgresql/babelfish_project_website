@@ -42,3 +42,10 @@ For information about the project components, see the [Software architecture pag
 The project welcomes your contributions and feedback on issues, bug fixes, features, plugins, and documentation. To get involved, visit [the Babelfish for PostgreSQL website](https://babelfishpg.org/docs/contributing/).
 
 All components are available under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.html) and the [PostgreSQL License](https://www.postgresql.org/about/licence/) on [GitHub](https://github.com/babelfish-for-postgresql). Our thanks go out to the PostgreSQL team and the [Babelfish project contributors](https://babelfishpg.org/contributors/).
+
+
+
+<!---
+This should be 
+commented out
+-->
