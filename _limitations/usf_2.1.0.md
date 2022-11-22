@@ -15,7 +15,7 @@ nav_order: 1
 | ALTER DATABASE | Unsupported | |
 | ALTER DATABASE options | Unsupported | |
 | ALTER FUNCTION | Unsupported | |
-| ALTER INDEX | Unsupported | |
+| ALTER INDEX | Unsupported |[Index rebuilding workaround](https://babelfishpg.org/docs/workaround/rebuilding_table_indexes/) |
 | ALTER PROCEDURE | Unsupported | |
 | ALTER SCHEMA | Unsupported | |
 | ALTER SERVER CONFIGURATION | Unsupported | |
@@ -39,9 +39,9 @@ nav_order: 1
 | Column attribute | Unsupported | |
 | Compound operator containing whitespace | Unsupported | |
 | Cross-database reference | Unsupported : `ALTER TABLE`, `CREATE INDEX`, `CREATE TABLE`, `DROP INDEX`, `EXECUTE`, `MERGE`, `TRUNCATE TABLE`, `UPDATE STATISTICS` | |
-| Cursor options | Unsupported : `DYNAMIC`, `FAST_FORWARD`, `FOR UPDATE`, `KEYSET`, `OPTIMISTIC`, `SCROLL`, `SCROLL_LOCKS`, `TYPE_WARNING` | |
+| Cursor options | Unsupported : `DYNAMIC`, `FAST_FORWARD`, `FOR UPDATE`, `KEYSET`, `OPTIMISTIC`, `SCROLL`, `SCROLL_LOCKS`, `TYPE_WARNING` |[Dynamically defined cursor workaround](https://babelfishpg.org/docs/workaround/dynamically_defined_cursor/) |
 | DATABASEPROPERTYEX | Supported : `arg2=Collation`, `Edition`, `IsAutoClose`, `IsAutoCreateStatistics`, `IsInStandBy`, `IsTornPageDetectionEnabled`, `Status`, `Updateability`, `Version` | |
-| DATEADD | Supported : `arg1=D`, `DAY`, `DAYOFYEAR`, `DD`, `DY`, `HH`, `HOUR`, `M`, `MCS`, `MINUTE`, `MM`, `MONTH`, `N`, `NS`, `Q`, `QQ`, `QUARTER`, `S`, `SECOND`, `SS`, `WEEK`, `WEEKDAY`, `WK`, `WW`, `Y`, `YEAR`, `YY`, `YYYY` | |
+| DATEADD | Supported : `arg1=D`, `DAY`, `DAYOFYEAR`, `DD`, `DY`, `HH`, `HOUR`, `M`, `MCS`, `MICROSECOND`, `MINUTE`, `MM`, `MONTH`, `N`, `NS`, `Q`, `QQ`, `QUARTER`, `S`, `SECOND`, `SS`, `WEEK`, `WEEKDAY`, `WK`, `WW`, `Y`, `YEAR`, `YY`, `YYYY` | |
 | DATEDIFF | Supported : `arg1=D`, `DAY`, `DAYOFYEAR`, `DD`, `DY`, `HH`, `HOUR`, `M`, `MCS`, `MICROSECOND`, `MILLISECOND`, `MINUTE`, `MM`, `MONTH`, `MS`, `N`, `NANOSECOND`, `NS`, `Q`, `QQ`, `QUARTER`, `S`, `SECOND`, `SS`, `WEEK`, `WK`, `WW`, `Y`, `YEAR`, `YY`, `YYYY` | |
 | DATENAME | Supported : `arg1=D`, `DAY`, `DAYOFYEAR`, `DD`, `DW`, `DY`, `HH`, `HOUR`, `ISO_WEEK`, `ISOWK`, `ISOWW`, `M`, `MCS`, `MICROSECOND`, `MILLISECOND`, `MINUTE`, `MM`, `MONTH`, `MS`, `N`, `NANOSECOND`, `NS`, `Q`, `QQ`, `QUARTER`, `S`, `SECOND`, `SS`, `TZ`, `TZOFFSET`, `WEEK`, `WEEKDAY`, `WK`, `WW`, `YEAR`, `YY`, `YYYY` | |
 | DATEPART | Supported : `arg1=D`, `DAY`, `DAYOFYEAR`, `DD`, `DW`, `DY`, `HH`, `HOUR`, `ISO_WEEK`, `ISOWK`, `ISOWW`, `M`, `MCS`, `MICROSECOND`, `MILLISECOND`, `MINUTE`, `MM`, `MONTH`, `MS`, `N`, `NANOSECOND`, `NS`, `Q`, `QQ`, `QUARTER`, `S`, `SECOND`, `SS`, `TZ`, `TZOFFSET`, `WEEK`, `WEEKDAY`, `WK`, `WW`, `YEAR`, `YY`, `YYYY` | |
@@ -114,8 +114,8 @@ nav_order: 1
 | ODBC literal | Unsupported | |
 | ODBC scalar function | Unsupported | |
 | OPEN KEY | Unsupported | |
-| Parameter value DEFAULT | Unsupported | |
-| Partitioning | Unsupported |[Partitioning workaround](https://babelfishpg.org/docs/workaround/partitioned_table/) - Babelfish code supports PostgreSQL-style partitioning on the PostgreSQL port, but use of PostgreSQL-styled partitioned tables from the TDS port is not recommended. |
+| Parameter value DEFAULT | Unsupported |[DEFAULT parameter value workaround](https://babelfishpg.org/docs/workaround/default_param_values/) |
+| Partitioning | Unsupported |[Partitioning Workaround](https://babelfishpg.org/docs/workaround/partitioned_table/) - Babelfish code supports PostgreSQL-style partitioning on the PostgreSQL port, but use of PostgreSQL-styled partitioned tables from the TDS port is not recommended. |
 | Procedure options | Unsupported : `ATOMIC NATIVELY COMPILED`, `ENCRYPTION`, `EXECUTE AS CALLER`, `EXECUTE AS OWNER`, `EXECUTE AS SELF`, `EXECUTE AS USER`, `EXTERNAL`, `RECOMPILE`, `SCHEMABINDING` | |
 | Procedure versioning (declaration) | Unsupported | |
 | Procedure versioning (execution) | Unsupported | |
@@ -166,6 +166,7 @@ nav_order: 1
 | SQL graph | Unsupported | |
 | SQL_VARIANT_PROPERTY | Supported : `arg2=*` | |
 | STRING_AGG() WITHIN GROUP | Unsupported | |
+| Scalar UDF in table DDL | Unsupported : ` ALTER TABLE DEFAULT` | |
 | Server role options | Unsupported : `AUTHORIZATION`, `NAME` | |
 | Service Broker | Unsupported | |
 | Special characters in identifier | Unsupported | |

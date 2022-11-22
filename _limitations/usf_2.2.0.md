@@ -8,13 +8,14 @@ nav_order: 1
 
 | Feature | Options | Notes | 
 | ------- | ------- | ------- | 
-| @@variable | Unsupported : `@@CONNECTIONS`, `@@CPU_BUSY`, `@@IDLE`, `@@IO_BUSY`, `@@LANGID`, `@@PACKET_ERRORS`, `@@PACK_RECEIVED`, `@@PACK_SENT`, `@@REMSERVER`, `@@TEXTSIZE`, `@@TIMETICKS`, `@@TOTAL_ERRORS`, `@@TOTAL_READ`, `@@TOTAL_WRITE` | |
+| ::function call (old syntax) | Unsupported | |
+| @@variable | Unsupported : `@@CONNECTIONS`, `@@CPU_BUSY`, `@@IDLE`, `@@IO_BUSY`, `@@LANGID`, `@@LANGUAGE`, `@@PACKET_ERRORS`, `@@PACK_RECEIVED`, `@@PACK_SENT`, `@@REMSERVER`, `@@TEXTSIZE`, `@@TIMETICKS`, `@@TOTAL_ERRORS`, `@@TOTAL_READ`, `@@TOTAL_WRITE` | |
 | ADD SIGNATURE | Unsupported | |
 | ALTER AUTHORIZATION | Unsupported | |
 | ALTER DATABASE | Unsupported | |
 | ALTER DATABASE options | Unsupported | |
 | ALTER FUNCTION | Unsupported | |
-| ALTER INDEX | Unsupported | |
+| ALTER INDEX | Unsupported |[Index rebuilding workaround](https://babelfishpg.org/docs/workaround/rebuilding_table_indexes/) |
 | ALTER PROCEDURE | Unsupported | |
 | ALTER SCHEMA | Unsupported | |
 | ALTER SERVER CONFIGURATION | Unsupported | |
@@ -28,6 +29,7 @@ nav_order: 1
 | CHECKSUM | Supported : `arg1=SINGLE ARGUMENT`, `arg1=STAR`, `MULTIPLE ARGUMENTS` | |
 | CLOSE KEY | Unsupported | |
 | CLUSTERED index | Unsupported | |
+| COLLATE | Unsupported |[COLLATE DATABASE_DEFAULT workaround](https://babelfishpg.org/docs/workaround/collate_database_default/) |
 | COLUMNPROPERTY | Supported : `arg3=CharMaxLen`, `AllowsNull` | |
 | CONNECTIONPROPERTY | Supported : `arg1=net_transport`, `protocol_type`, `auth_scheme`, `local_tcp_port`, `arg1=physical_net_transport`, `client_net_address` | |
 | CREATE DATABASE options | Unsupported : `ALLOW_SNAPSHOT_ISOLATION`, `ANSI_NULLS`, `ANSI_NULL_DEFAULT`, `ANSI_PADDING`, `ANSI_WARNINGS`, `ARITHABORT`, `AUTO_CLOSE`, `AUTO_SHRINK`, `AUTO_UPDATE_STATISTICS`, `AUTO_UPDATE_STATISTICS_ASYNC`, `CATALOG_COLLATION`, `COMPATIBILITY_LEVEL`, `CONCAT_NULL_YIELDS_NULL`, `CONTAINMENT=PARTIAL`, `CURSOR_CLOSE_ON_COMMIT`, `CURSOR_DEFAULT`, `DATE_CORRELATION_OPTIMIZATION`, `DB_CHAINING`, `DELAYED_DURABILITY`, `DISABLE_BROKER`, `FILESTREAM`, `HONOR_BROKER_PRIORITY`, `MULTI_USER`, `NUMERIC_ROUNDABORT`, `PAGE_VERIFY`, `PARAMETERIZATION`, `QUERY_STORE`, `QUOTED_IDENTIFIER`, `READ_COMMITTED_SNAPSHOT`, `RECOVERY`, `RECURSIVE_TRIGGERS`, `TARGET_RECOVERY_TIME`, `TRUSTWORTHY` | |
@@ -36,13 +38,13 @@ nav_order: 1
 | Case-sensitive collation | Unsupported : `CATALOG_COLLATION`, `DATABASE`, `SERVER` | |
 | Column attribute | Unsupported | |
 | Compound operator containing whitespace | Unsupported | |
-| Cross-database reference | Unsupported : `ALTER TABLE`, `CREATE INDEX`, `CREATE TABLE`, `DROP INDEX`, `MERGE`, `TRUNCATE TABLE`, `UPDATE STATISTICS` | |
-| Cursor options | Unsupported : `DYNAMIC`, `FAST_FORWARD`, `FOR UPDATE`, `KEYSET`, `OPTIMISTIC`, `SCROLL`, `SCROLL_LOCKS`, `TYPE_WARNING` | |
+| Cross-database reference | Unsupported : `ALTER TABLE`, `CREATE INDEX`, `CREATE TABLE`, `DROP INDEX`, `EXECUTE`, `MERGE`, `TRUNCATE TABLE`, `UPDATE STATISTICS` | |
+| Cursor options | Unsupported : `DYNAMIC`, `FAST_FORWARD`, `FOR UPDATE`, `KEYSET`, `OPTIMISTIC`, `SCROLL`, `SCROLL_LOCKS`, `TYPE_WARNING` |[Dynamically defined cursor workaround](https://babelfishpg.org/docs/workaround/dynamically_defined_cursor/) |
 | DATABASEPROPERTYEX | Supported : `arg2=Collation`, `Edition`, `IsAutoClose`, `IsAutoCreateStatistics`, `IsInStandBy`, `IsTornPageDetectionEnabled`, `Status`, `Updateability`, `Version` | |
-| DATEADD | Supported : `arg1=D`, `DAY`, `DAYOFYEAR`, `DD`, `DY`, `HH`, `HOUR`, `M`, `MCS`, `MINUTE`, `MM`, `MONTH`, `N`, `NS`, `Q`, `QQ`, `QUARTER`, `S`, `SECOND`, `SS`, `WEEK`, `WEEKDAY`, `WK`, `WW`, `Y`, `YEAR`, `YY`, `YYYY`, `arg1=MILLISECOND`, `MS`, `W` | |
-| DATEDIFF | Supported : `arg1=D`, `DAY`, `DAYOFYEAR`, `DD`, `DY`, `HH`, `HOUR`, `M`, `MCS`, `MICROSECOND`, `MILLISECOND`, `MINUTE`, `MM`, `MONTH`, `MS`, `N`, `NANOSECOND`, `NS`, `Q`, `QQ`, `QUARTER`, `S`, `SECOND`, `SS`, `WEEK`, `WK`, `WW`, `Y`, `YEAR`, `YY`, `YYYY`, `arg1=W` | |
-| DATENAME | Supported : `arg1=D`, `DAY`, `DAYOFYEAR`, `DD`, `DW`, `DY`, `HH`, `HOUR`, `ISO_WEEK`, `ISOWK`, `ISOWW`, `M`, `MCS`, `MICROSECOND`, `MILLISECOND`, `MINUTE`, `MM`, `MONTH`, `MS`, `N`, `NANOSECOND`, `NS`, `Q`, `QQ`, `QUARTER`, `S`, `SECOND`, `SS`, `TZ`, `TZOFFSET`, `WEEK`, `WEEKDAY`, `WK`, `WW`, `YEAR`, `YY`, `YYYY`, `arg1=W` | |
-| DATEPART | Supported : `arg1=D`, `DAY`, `DAYOFYEAR`, `DD`, `DW`, `DY`, `HH`, `HOUR`, `ISO_WEEK`, `ISOWK`, `ISOWW`, `M`, `MCS`, `MICROSECOND`, `MILLISECOND`, `MINUTE`, `MM`, `MONTH`, `MS`, `N`, `NANOSECOND`, `NS`, `Q`, `QQ`, `QUARTER`, `S`, `SECOND`, `SS`, `TZ`, `TZOFFSET`, `WEEK`, `WEEKDAY`, `WK`, `WW`, `YEAR`, `YY`, `YYYY`, `arg1=W` | |
+| DATEADD | Supported : `arg1=D`, `DAY`, `DAYOFYEAR`, `DD`, `DY`, `HH`, `HOUR`, `M`, `MCS`, `MICROSECOND`, `MINUTE`, `MM`, `MONTH`, `N`, `NS`, `Q`, `QQ`, `QUARTER`, `S`, `SECOND`, `SS`, `WEEK`, `WEEKDAY`, `WK`, `WW`, `Y`, `YEAR`, `YY`, `YYYY` | |
+| DATEDIFF | Supported : `arg1=D`, `DAY`, `DAYOFYEAR`, `DD`, `DY`, `HH`, `HOUR`, `M`, `MCS`, `MICROSECOND`, `MILLISECOND`, `MINUTE`, `MM`, `MONTH`, `MS`, `N`, `NANOSECOND`, `NS`, `Q`, `QQ`, `QUARTER`, `S`, `SECOND`, `SS`, `WEEK`, `WK`, `WW`, `Y`, `YEAR`, `YY`, `YYYY` | |
+| DATENAME | Supported : `arg1=D`, `DAY`, `DAYOFYEAR`, `DD`, `DW`, `DY`, `HH`, `HOUR`, `ISO_WEEK`, `ISOWK`, `ISOWW`, `M`, `MCS`, `MICROSECOND`, `MILLISECOND`, `MINUTE`, `MM`, `MONTH`, `MS`, `N`, `NANOSECOND`, `NS`, `Q`, `QQ`, `QUARTER`, `S`, `SECOND`, `SS`, `TZ`, `TZOFFSET`, `WEEK`, `WEEKDAY`, `WK`, `WW`, `YEAR`, `YY`, `YYYY` | |
+| DATEPART | Supported : `arg1=D`, `DAY`, `DAYOFYEAR`, `DD`, `DW`, `DY`, `HH`, `HOUR`, `ISO_WEEK`, `ISOWK`, `ISOWW`, `M`, `MCS`, `MICROSECOND`, `MILLISECOND`, `MINUTE`, `MM`, `MONTH`, `MS`, `N`, `NANOSECOND`, `NS`, `Q`, `QQ`, `QUARTER`, `S`, `SECOND`, `SS`, `TZ`, `TZOFFSET`, `WEEK`, `WEEKDAY`, `WK`, `WW`, `YEAR`, `YY`, `YYYY` | |
 | DB role options | Unsupported : `AUTHORIZATION` | |
 | DB roles | Unsupported | |
 | DBA statements | Unsupported | |
@@ -75,8 +77,8 @@ nav_order: 1
 | HIERARCHYID features | Unsupported | |
 | IGNORE_DUP_KEY index | Unsupported | |
 | INDEXKEY_PROPERTY | Supported : `arg4=NO_SUPPORTED_ARGUMENTS_RIGHT_NOW` | |
-| INDEXPROPERTY | Supported : `arg3=IndexFillFactor`, `IndexID`, `IsClustered`, `IsDisabled`, `IsHypothetical`, `IsPadIndex`, `IsPageLockDisallowed`, `IsRowLockDisallowed`, `IsUnique` | |
-| INFORMATION_SCHEMA | Unsupported : `COLUMN_PRIVILEGES`, `CONSTRAINT_TABLE_USAGE`, `DOMAIN_CONSTRAINTS`, `KEY_COLUMN_USAGE`, `PARAMETERS`, `REFERENTIAL_CONSTRAINTS`, `ROUTINE_COLUMNS`, `SCHEMATA`, `TABLE_PRIVILEGES`, `VIEW_COLUMN_USAGE`, `VIEW_TABLE_USAGE` | |
+| INDEXPROPERTY | Unsupported | |
+| INFORMATION_SCHEMA | Unsupported : `CHECK_CONSTRAINTS`, `COLUMN_DOMAIN_USAGE`, `COLUMN_PRIVILEGES`, `CONSTRAINT_COLUMN_USAGE`, `CONSTRAINT_TABLE_USAGE`, `DOMAIN_CONSTRAINTS`, `KEY_COLUMN_USAGE`, `PARAMETERS`, `REFERENTIAL_CONSTRAINTS`, `ROUTINES`, `ROUTINE_COLUMNS`, `SCHEMATA`, `TABLE_PRIVILEGES`, `VIEWS`, `VIEW_COLUMN_USAGE`, `VIEW_TABLE_USAGE` | |
 | INSERT | Unsupported : `DEFAULT VALUES`, `EXECUTE SP_EXECUTESQL`, `EXECUTE(EXPRESSION)`, `OPENQUERY`, `OPENROWSET`, `OUTPUT OUTPUT`, `TOP` | |
 | INSERT BULK | Unsupported | |
 | Index attribute | Unsupported | |
@@ -88,6 +90,7 @@ nav_order: 1
 | Join hint | Unsupported | |
 | LIKE '[...]' | Unsupported | |
 | LOGINPROPERTY | Supported : `arg2=NO_SUPPORTED_ARGUMENTS_RIGHT_NOW` | |
+| Lateral join | Unsupported | |
 | Line continuation character | Unsupported | |
 | Login options | Unsupported : `ADD CREDENTIAL`, `CHECK_EXPIRATION`, `CHECK_POLICY`, `CREDENTIAL`, `DROP CREDENTIAL`, `FROM ASYMMETRIC KEY`, `FROM CERTIFICATE`, `FROM WINDOWS`, `MUST_CHANGE`, `NAME`, `NO CREDENTIAL`, `OLD_PASSWORD`, `PASSWORD HASHED`, `SID`, `UNLOCK` | |
 | MERGE | Unsupported | |
@@ -104,15 +107,15 @@ nav_order: 1
 | Non-PERSISTED computed columns | Unsupported | |
 | Nullable column | Unsupported | |
 | Numeric assignment to datetime variable/parameter/column | Unsupported | |
-| Numeric representation of datetime | Unsupported : `CONVERT`, `DATEADD`, `DATEDIFF`, `DATENAME`, `DATEPART`, `PARSE`, `TRY_CAST`, `TRY_CONVERT`, `TRY_PARSE` | |
-| OBJECTPROPERTY | Supported : `arg2=ExecIsAnsiNullsOn`, `ExecIsQuotedIdentOn`, `IsDefault`, `IsDefaultCnst`, `IsDeterministic`, `IsIndexed`, `IsInlineFunction`, `IsMSShipped`, `IsPrimaryKey`, `IsProcedure`, `IsRule`, `IsScalarFunction`, `IsSchemaBound`, `IsTable`, `IsTableFunction`, `IsTrigger`, `IsUserTable`, `IsView`, `OwnerId`, `TableFulltextPopulateStatus`, `TableHasVarDecimalStorageFormat` | |
-| OBJECTPROPERTYEX | Supported : `arg2=ExecIsAnsiNullsOn`, `ExecIsQuotedIdentOn`, `IsDefault`, `IsDefaultCnst`, `IsDeterministic`, `IsIndexed`, `IsInlineFunction`, `IsMSShipped`, `IsPrimaryKey`, `IsProcedure`, `IsRule`, `IsScalarFunction`, `IsSchemaBound`, `IsTable`, `IsTableFunction`, `IsTrigger`, `IsUserTable`, `IsView`, `OwnerId`, `TableFulltextPopulateStatus`, `TableHasVarDecimalStorageFormat`, `BaseType` | |
+| Numeric representation of datetime | Unsupported | |
+| OBJECTPROPERTY | Unsupported | |
+| OBJECTPROPERTYEX | Unsupported | |
 | ODBC Outer Join | Unsupported | |
 | ODBC literal | Unsupported | |
 | ODBC scalar function | Unsupported | |
 | OPEN KEY | Unsupported | |
-| Parameter value DEFAULT | Unsupported | |
-| Partitioning | Unsupported |[Partitioning workaround](https://babelfishpg.org/docs/workaround/partitioned_table/) - Babelfish code supports PostgreSQL-style partitioning on the PostgreSQL port, but use of PostgreSQL-styled partitioned tables from the TDS port is not recommended. |
+| Parameter value DEFAULT | Unsupported |[DEFAULT parameter value workaround](https://babelfishpg.org/docs/workaround/default_param_values/) |
+| Partitioning | Unsupported |[Partitioning Workaround](https://babelfishpg.org/docs/workaround/partitioned_table/) - Babelfish code supports PostgreSQL-style partitioning on the PostgreSQL port, but use of PostgreSQL-styled partitioned tables from the TDS port is not recommended. |
 | Procedure options | Unsupported : `ATOMIC NATIVELY COMPILED`, `ENCRYPTION`, `EXECUTE AS CALLER`, `EXECUTE AS OWNER`, `EXECUTE AS SELF`, `EXECUTE AS USER`, `EXTERNAL`, `RECOMPILE`, `SCHEMABINDING` | |
 | Procedure versioning (declaration) | Unsupported | |
 | Procedure versioning (execution) | Unsupported | |
@@ -132,7 +135,7 @@ nav_order: 1
 | SELECT..PIVOT | Unsupported | |
 | SELECT..UNPIVOT | Unsupported | |
 | SEQUENCE options | Unsupported | |
-| SERVERPROPERTY | Supported : `arg1=Collation`, `CollationID`, `Edition`, `IsSingleUser`, `ServerName`, `Babelfish`, `arg1=EditionID`, `EngineEdition`, `LicenseType`, `ProductVersion`, `ProductMajorVersion`, `ProductMinorVersion`, `IsIntegratedSecurityOnly`, `IsLocalDB`, `IsAdvancedAnalyticsInstalled`, `IsBigDataCluster`, `IsPolyBaseInstalled`, `IsFullTextInstalled`, `IsXTPSupported`, `arg1=MachineName`, `InstanceName` | |
+| SERVERPROPERTY | Supported : `arg1=Collation`, `CollationID`, `Edition`, `IsSingleUser`, `ServerName`, `Babelfish`, `arg1=EditionID`, `EngineEdition`, `LicenseType`, `ProductVersion`, `ProductMajorVersion`, `ProductMinorVersion`, `IsIntegratedSecurityOnly`, `IsLocalDB`, `IsAdvancedAnalyticsInstalled`, `IsBigDataCluster`, `IsPolyBaseInstalled`, `IsFullTextInstalled`, `IsXTPSupported` | |
 | SET ANSI_NULL_DFLT_OFF | Supported : `OFF` | |
 | SET ANSI_NULL_DFLT_ON | Supported : `ON` | |
 | SET ANSI_PADDING | Supported : `ON` | |
@@ -146,19 +149,24 @@ nav_order: 1
 | SET FMTONLY | Unsupported | |
 | SET LANGUAGE | Supported : `english`, `us_english` | |
 | SET NOEXEC | Supported : `OFF` | |
+| SET NO_BROWSETABLE | Unsupported | |
 | SET NUMERIC_ROUNDABORT | Supported : `OFF` | |
 | SET OFFSETS | Unsupported | |
+| SET PARSEONLY | Unsupported | |
 | SET QUERY_GOVERNOR_COST_LIMIT | Unsupported | |
 | SET QUOTED_IDENTIFIER in batch | Unsupported | |
 | SET ROWCOUNT | Unsupported : `NONZERO`, `VARIABLE` |[SET ROWCOUNT workaround](https://babelfishpg.org/docs/workaround/set_rowcount/) |
+| SET SHOWPLAN_ALL | Unsupported | |
 | SET SHOWPLAN_TEXT | Unsupported | |
 | SET SHOWPLAN_XML | Unsupported | |
+| SET STATISTICS | Unsupported | |
 | SET TEXTSIZE | Unsupported | |
 | SET TRANSACTION ISOLATION LEVEL | Supported : `READ COMMITTED`, `READ UNCOMMITTED`, `SNAPSHOT` | |
 | SETUSER | Unsupported | |
 | SQL graph | Unsupported | |
 | SQL_VARIANT_PROPERTY | Supported : `arg2=*` | |
 | STRING_AGG() WITHIN GROUP | Unsupported | |
+| Scalar UDF in table DDL | Unsupported : ` ALTER TABLE DEFAULT` | |
 | Server role options | Unsupported : `AUTHORIZATION`, `NAME` | |
 | Service Broker | Unsupported | |
 | Special characters in identifier | Unsupported | |
