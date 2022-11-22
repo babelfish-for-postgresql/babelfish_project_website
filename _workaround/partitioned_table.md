@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Migrating partitioned tables to Babelfish
-nav_order: 1
+nav_order: 2
 ---
 
 ## Migrating partitioned tables to Babelfish

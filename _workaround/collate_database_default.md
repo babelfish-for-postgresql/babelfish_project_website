@@ -1,7 +1,7 @@
 ---
 layout: default
 title: COLLATE DATABASE_DEFAULT
-nav_order: 1
+nav_order: 2
 ---
 
 ## COLLATE DATABASE_DEFAULT
