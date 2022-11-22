@@ -170,7 +170,7 @@ nav_order: 1
 | SQL graph | Unsupported | |
 | SQL_VARIANT_PROPERTY | Supported : `arg2=*` | |
 | STRING_AGG() WITHIN GROUP | Unsupported | |
-| Scalar UDF in table DDL | Unsupported : ` ALTER TABLE DEFAULT` | |
+| Scalar UDF in table DDL | Unsupported : `ALTER TABLE DEFAULT` | |
 | Server role options | Unsupported : `AUTHORIZATION`, `NAME` | |
 | Service Broker | Unsupported | |
 | Special characters in identifier | Unsupported | |
