@@ -6,7 +6,7 @@ nav_order: 1
 
 ## Babelfish Version 2.2.0
 
-| Feature | Options | Notes | 
+| Feature | Options | Notes  | 
 | ------- | ------- | ------- | 
 | @@variable | Unsupported : `@@CONNECTIONS`, `@@CPU_BUSY`, `@@IDLE`, `@@IO_BUSY`, `@@LANGID`, `@@PACKET_ERRORS`, `@@PACK_RECEIVED`, `@@PACK_SENT`, `@@REMSERVER`, `@@TEXTSIZE`, `@@TIMETICKS`, `@@TOTAL_ERRORS`, `@@TOTAL_READ`, `@@TOTAL_WRITE` | |
 | ADD SIGNATURE | Unsupported | |
