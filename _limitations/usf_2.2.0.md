@@ -47,7 +47,7 @@ nav_order: 1
 | DB roles | Unsupported | |
 | DBA statements | Unsupported | |
 | DBCC statements | Unsupported | |
-| DELETE | Unsupported : `OPENDATASOURCE`, `OPENQUERY`, `OPENROWSET`, `OUTPUT OUTPUT`, `WHERE CURRENT OF` | |
+| DELETE | Unsupported : `OPENDATASOURCE`, `OPENQUERY`, `OPENROWSET`, Two `OUTPUT` clauses, `WHERE CURRENT OF` | |
 | DENY | Unsupported | |
 | DESC constraint | Unsupported | |
 | DISABLE TRIGGER | Unsupported | |
