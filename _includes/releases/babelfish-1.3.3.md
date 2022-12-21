@@ -12,7 +12,7 @@
 
 Babelfish 1.3.3 contains the following fix to improve the user experience:
 
-- Fixes an issue that prevents a successful minor version upgrade from Babelfish PostgreSQL 13.4 to PostgreSQL 13.5.
+- Fixes an issue that prevents a successful minor version upgrade from Babelfish PostgreSQL 13.4 to PostgreSQL 13.7.
 
 
 ## Acknowledgements
