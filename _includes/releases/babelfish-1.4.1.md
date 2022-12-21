@@ -12,7 +12,7 @@
 
 Babelfish 1.4.1 contains the following fix that improves the user experience:
 
-- Fixed an issue that prevents a successful minor version upgrade from Babelfish PostgreSQL 13.4 to PostgreSQL 13.5.
+- Fixed an issue that prevents a successful minor version upgrade from Babelfish PostgreSQL 13.4 to PostgreSQL 13.8.
 
 ## Acknowledgements
 
