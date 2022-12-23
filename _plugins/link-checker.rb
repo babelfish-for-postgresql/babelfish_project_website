@@ -21,22 +21,18 @@ module Jekyll::LinkChecker
 
   ##
   # The collection that will get stores as the output
-
   @urls = {}
 
   ##
   # Pattern to identify documents that should be excluded based on their URL
-
   @excluded_paths = /(\.(css|js|json|map|xml|txt|yml|tpl)$)/i.freeze
 
   ##
   # Pattern to identify certain HTML tags whose content should be excluded from indexing
-
   @href_matcher = /<a[^>]+href=(['"])(.+?)\1/im.freeze
 
   ##
   # Pattern to check for external URLs
-
   @external_matcher = /^https?:\/\//.freeze
 
   ##
@@ -67,10 +63,15 @@ module Jekyll::LinkChecker
   # Driven by environment variables, it indicates the need to fail the build for dead links
   @should_build_fatally
 
+  ##
+  # Defines the priority of the plugin
+  # The hooks are registered with a very low priority to make sure they runs after any content modifying hook
+  def self.priority
+    10
+  end
 
   ##
   # Initializes the singleton by recording the site
-
   def self.init(site)
     puts "LinkChecker: [Notice] Reporting in"
     @site = site
@@ -81,7 +82,6 @@ module Jekyll::LinkChecker
   ##
   # Processes a Document or Page and adds the links to a collection
   # It also checks for anchors to parts of the same page/doc
-
   def self.process(page)
     return if @excluded_paths.match(page.path)
 
@@ -101,7 +101,6 @@ module Jekyll::LinkChecker
 
   ##
   # Saves the collection as a JSON file
-
   def self.verify(site)
     puts "LinkChecker: [Notice] Checking internal links"
     if ENV.key?('JEKYLL_CHECK_EXTERNAL_LINKS')
@@ -141,7 +140,6 @@ module Jekyll::LinkChecker
 
   ##
   # Check if URL is accessible
-
   def self.check(url)
     begin
       match = @base_url_matcher.match(url)
@@ -162,7 +160,6 @@ module Jekyll::LinkChecker
 
   ##
   # Check if an external URL is accessible by making a HEAD call
-
   def self.check_external(url)
     uri = URI(url)
     return true if @ignored_domains.include? uri.host
@@ -185,7 +182,6 @@ module Jekyll::LinkChecker
 
   ##
   # Check if an internal link is accessible
-
   def self.check_internal(url)
     return true if @ignored_paths =~ url
 
@@ -219,25 +215,21 @@ module Jekyll::LinkChecker
 end
 
 # Before any Document or Page is processed, initialize the LinkChecker
-
-Jekyll::Hooks.register :site, :pre_render do |site|
+Jekyll::Hooks.register :site, :pre_render, priority:Jekyll::LinkChecker.priority do |site|
   Jekyll::LinkChecker.init(site)
 end
 
 # Process a Page as soon as its content is ready
-
-Jekyll::Hooks.register :pages, :post_convert do |page|
+Jekyll::Hooks.register :pages, :post_convert, priority:Jekyll::LinkChecker.priority do |page|
   Jekyll::LinkChecker.process(page)
 end
 
 # Process a Document as soon as its content is ready
-
-Jekyll::Hooks.register :documents, :post_convert do |document|
+Jekyll::Hooks.register :documents, :post_convert, priority:Jekyll::LinkChecker.priority do |document|
   Jekyll::LinkChecker.process(document)
 end
 
 # Verify gathered links after Jekyll is done writing all its stuff
-
-Jekyll::Hooks.register :site, :post_write do |site|
+Jekyll::Hooks.register :site, :post_write, priority:Jekyll::LinkChecker.priority do |site|
   Jekyll::LinkChecker.verify(site)
 end
