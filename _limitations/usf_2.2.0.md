@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Version 2.2.0
-nav_order: 1
+nav_order: 7
 ---
 
 ## Babelfish Version 2.2.0
