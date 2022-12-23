@@ -81,6 +81,8 @@ sidebar:
         url: "/docs/versions/babelfish-1-2-1.html"
       - title: Release 1.2.0
         url: "/docs/versions/babelfish-1-2-0.html"
+      - title: Release 1.1.2
+        url: "/docs/versions/babelfish-1-1-2.html"
       - title: Release 1.1.1
         url: "/docs/versions/babelfish-1-1-1.html"
       - title: Release 1.1.0
