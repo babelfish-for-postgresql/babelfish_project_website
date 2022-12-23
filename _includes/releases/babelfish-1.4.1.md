@@ -6,7 +6,7 @@
   - [BABEL_1_4_1__PG_13_8.tar.gz](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/download/BABEL_1_4_1__PG_13_8/BABEL_1_4_1__PG_13_8.tar.gz)
 - Babelfish Compass
   - [Download](https://github.com/babelfish-for-postgresql/babelfish_compass/releases)
-- Date: December 19, 2022
+- Date: December 21, 2022
 
 ## Overview
 
