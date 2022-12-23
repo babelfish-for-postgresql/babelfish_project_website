@@ -37,7 +37,7 @@
 
 // Additional variables
 $table-border-color: $grey-lt-300;
-$toc-width: 232px !default;
+$toc-width: 200px !default;
 
 // Replaces xl size
 $media-queries: (
@@ -225,9 +225,10 @@ p.label {
 
 // Modifies margins in xl layout to support TOC
 .side-bar {
+  flex-shrink: 0;
+
   @include mq(xl) {
-    width: calc((100% - #{$nav-width + $content-width + $toc-width}) / 2 + #{$nav-width});
-    min-width: $nav-width;
+    width: $nav-width;
   }
 }
 
@@ -280,7 +281,7 @@ p.label {
   list-style-type: none;
   background-color: $sidebar-color;
   padding: $sp-6 $sp-4;
-  margin-left: $sp-6;
+  //margin-left: $sp-6;
   margin-right: 0;
   margin-bottom: 0;
   overflow: auto;
@@ -432,6 +433,7 @@ main {
 
     @include mq(xl) {
       overflow: visible;
+      max-width: calc(100vw - #{$nav-width} - #{$toc-width} - 2rem);
     }
   }
 }
