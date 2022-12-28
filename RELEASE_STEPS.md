@@ -22,9 +22,11 @@ Add a new file to the `_versions` folder with the following release-specific inf
 
 ```markdown
 ---
-date: 2022-01-01
+date: 2021-10-28
 
 title: Babelfish 1.0.0
+nav_order: 10000
+
 product: Babelfish for PostgreSQL
 version: '1.0.0'
 
@@ -44,6 +46,13 @@ pretty:
 ---
 Babelfish for PostgreSQL is open source software that uses the Apache License version 2 (ALv2) and PostgreSQL License. Project source is freely available on [GitHub](https://github.com/babelfish-for-postgresql). 
 ```
+
+When specifying a `nav_order` in the header, the order is made up of three clauses (joined without delimiters):
+- The first clause is a single digit representing the major version - at this point, `1` or `2`.
+- The second clause are two numbers that represent the minor version - if the sub-version number is a single digit, the version is preceded by a `0`.
+- The third clause is a pair of numbers representing the point release, again preceded by a `0` if the point release is a single digit.
+
+So, version `2.1.1` is represented in the `nav_order` by the clauses `2` `01` `01`, or the value `20101`.
 
 The text below the header of this file will be rendered at the end of the release notes in the documentation.
 
