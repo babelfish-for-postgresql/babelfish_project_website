@@ -206,6 +206,7 @@ not implemented or partially implemented in all Babelfish versions. This list is
 | `SEQUENCE` object support | `SEQUENCE` objects are supported for data support types `tinyint`, `smallint`, `int`, `bigint`, `numeric`, and `decimal`. PostgreSQL supports precision to 19 places for data types `numeric` and `decimal` in a `SEQUENCE`. |
 | `CREATE/ALTER/DROP SERVER AUDIT` | Functionality related to this object type is not supported. |
 | `CREATE/ALTER/DROP SERVER AUDIT SPECIFICATION` | Functionality related to this object type is not supported. |
+| `SCHEMABINDING` clause | The `SCHEMABINDING` clause is not supported for procedures, triggers and functions, and will be ignored when the `babelfishpg_tsql.escape_hatch_schemabinding_function` escape hatch is set to `ignore`. |
 | `SELECT... FOR BROWSE` | This syntax is not supported. |
 | `SELECT PIVOT/UNPIVOT` | This syntax is not supported. |
 | `SELECT TOP x PERCENT WHERE x \< or \> 100` | This syntax is not supported. |
@@ -259,6 +260,7 @@ not implemented or partially implemented in all Babelfish versions. This list is
 | `ALTER VIEW` | This syntax is not supported. |
 | `VIEW ... VIEW_METADATA` clause | This syntax is not supported. |
 | `VIEW ... CHECK OPTION` clause | This syntax is not supported. |
+| View creation without `SCHEMABINDING` clause | If you omit the `SCHEMABINDING` clause when creating a view, the view is created as if `SCHEMABINDING` was specified. |
 | `@@version` | The value returned by `@@version` is slightly different from the value returned by SQL Server. Your code might not work correctly if it depends on the formatting of `@@version`. |
 | `WAITFOR DELAY` | This syntax is not supported. |
 | `WAITFOR/RECEIVE` | This syntax is not supported. |
@@ -273,7 +275,6 @@ not implemented or partially implemented in all Babelfish versions. This list is
 | XML indexes | XML indexes are not supported. |
 | XPATH expressions | This syntax is not supported. |
 | WITH XMLNAMESPACES construct | This syntax is not supported. |
-| `WITHOUT SCHEMABINDING` clause | Not supported in functions, procedures, triggers, or views. The object will be created, but as if `WITH SCHEMABINDING` was specified. |
 | `CREATE/ALTER/DROP SELECTIVE XML INDEX` clause | This syntax is not supported. |
 | `CREATE/ALTER/DROP XML SCHEMA COLLECTION` | This syntax is not supported. |
 
