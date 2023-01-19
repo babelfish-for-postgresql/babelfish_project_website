@@ -21,7 +21,7 @@ Babelfish supports a major version upgrade on Babelfish PostgreSQL servers versi
 - Babelfish 1.4.0, built with PostgreSQL 13.8
 - Babelfish 1.5.0, built with PostgreSQL 13.9
 
-The target server must be running Babelfish PostgreSQL servers, version 14.5 or later. You can use the following release as an upgrade target (the version to which you'll upgrade):
+You can use the following Babelfish release as an upgrade target (the version to which you'll upgrade):
 
 - Babelfish 2.3.0, built with PostgreSQL 14.6
 
