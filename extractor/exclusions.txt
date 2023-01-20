@@ -1,0 +1,10 @@
+@@ERROR value
+System Stored Procedures
+System Functions
+Catalogs
+Collations
+Built-in functions
+DDL TRIGGER
+#LOGINPROPERTY
+#TYPEPROPERTY
+#INDEXKEY_PROPERTY
