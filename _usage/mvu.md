@@ -154,13 +154,17 @@ After the upgrade is successfully completed, start the new server with `pg_ctl`:
 
 ## Preparing the Upgraded Server for Use
 
-After upgrading, you need to update the parameter settings to ensure they match the settings you noted before the upgrade. Note that you are required to set `babelfishpg_tsql.database_name` even if the value is the same as in the new cluster as it was in the old cluster.
+After upgrading, you need to update the parameter settings to ensure they match the parameter settings in use before the upgrade. Note that you are required to set `babelfishpg_tsql.database_name` even if the value is the same as in the new cluster as it was in the old cluster.
 
-You can set the parameter settings at the `psql` command line; connect to `psql` with the command: 
+There are two ways to set the parameter values at the `psql` command line; first, connect to `psql`: 
 
 `$PKGDIR_NEW/bin/psql -U your_user_name -d babelfish_db_name` 
 
-To update the parameters with a single command, replace the `setting_value` in the following command with the values that you saved from the cluster before performing the upgrade:
+To change each individual parameter setting to match the values before the upgrade, use the following command:
+
+`ALTER SYSTEM SET <setting_name> = <setting_value>;`
+
+To update a group of parameters with a single command, replace the `setting_value` in the following command with the values that you saved from the cluster before performing the upgrade:
 
 ```sql
 cat << EOF >> ${BABELFISH_DATA_NEW}/postgresql.conf
@@ -174,26 +178,11 @@ babelfishpg_tsql.server_collation_name = setting_value
  EOF
 ```
 
-Please note that you cannot change migration mode during an upgrade.  For example, if `babelfishpg_tsql.migration_mode` was `multi-db` before the upgrade, and you change it to `single-db`, then you will not able to see any user-defined databases that were there before the upgrade.
-
-Then use the following SQL command to change the parameter settings to match the values before the upgrade:
-
-`ALTER SYSTEM SET <setting name> = <setting value>;`
-
-After updating the parameters, use the following command to reload the configuration file:
-
-`SELECT pg_reload_conf();`
-
-*Note:* If you change any of the following parameters, the server needs to be restarted instead of just reloaded:
-
-- `babelfishpg_tds.tds_default_numeric_precision`
-- `babelfishpg_tds.tds_default_numeric_scale`
-- `babelfishpg_tsql.server_collation_name`
-
-You can use the following command to restart the server:
+After updating the parameters, use the following command to restart the server:
 
 `${BABELFISH_HOME_NEW}/bin/pg_ctl -D ${BABELFISH_DATA_NEW} -l logfile restart`
 
+Please note that you cannot change migration mode during an upgrade.  For example, if `babelfishpg_tsql.migration_mode` was `multi-db` before the upgrade, and you change it to `single-db`, you will not able to see any user-defined databases that were there before the upgrade.
 
 
 
