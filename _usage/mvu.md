@@ -86,6 +86,7 @@ ${BABELFISH_HOME_OLD}/bin/psql -d babelfish_db -U postgres
 
 => ALTER EXTENSION babelfishpg_common UPDATE;
 => ALTER EXTENSION babelfishpg_tsql UPDATE;
+ALTER EXTENSION babelfishpg_tds UPDATE;
 ```
 
 When you're finished, exit psql:
@@ -97,31 +98,31 @@ exit
 
 ## Performing a Major Version Upgrade
 
-1. To update the Babelfish extensions, connect to the PostgreSQL endpoint of the Babelfish database and execute the following statements from a single session in this order:
+Use the following steps to perform a major version upgrade:
 
-```sql
-${BABELFISH_HOME_OLD}/bin/psql -d database_name -U user_name
+1. Download the zip or tar distribution file of the target Babelfish version which supports MVU from [here](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases). Extract the distribution and follow the instructions in `INSTALLING.md` to build and install new version of Babelfish in the location represented by (`$BABELFISH_HOME_NEW`), and initialize the `data` directory for the new engine version (`$BABELFISH_DATA_NEW`). 
 
-ALTER EXTENSION babelfishpg_common UPDATE;
-ALTER EXTENSION babelfishpg_tsql UPDATE;
-ALTER EXTENSION babelfishpg_tds UPDATE;
-```
+  *Note* that the target Babelfish database should be empty and should not already have the extensions installed. You should skip the `Enabling extensions in the target database` step while following the `INSTALLING.md` instructions for the target Babelfish installation.
 
-Then, use the following steps to perform a major version upgrade:
-
-2. Download the zip or tar distribution file of the target Babelfish version which supports MVU from [here](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases). Extract the distribution and follow the instructions in `INSTALLING.md` to build and install new version of Babelfish in the location represented by (`$BABELFISH_HOME_NEW`), and initialize the `data` directory for the new engine version (`$BABELFISH_DATA_NEW`). 
-
- *Note* that the target Babelfish database should be empty and should not already have the extensions installed. You should skip the `Enabling extensions in the target database` step while following the `INSTALLING.md` instructions for the target Babelfish installation.
-
-3. Stop the source and target servers (if running), with the following `pg_ctl` commands:
+2. Stop the source and target servers (if running), with the following `pg_ctl` commands:
 
 - To stop the source server:
 
-`${BABELFISH_HOME_OLD}/bin/pg_ctl -D ${BABELFISH_DATA_OLD}/ stop`
+```sql
+${BABELFISH_HOME_OLD}/bin/pg_ctl -D ${BABELFISH_DATA_OLD}/ stop
+```
 
 - To stop the target server:
 
-`${BABELFISH_HOME_NEW}/bin/pg_ctl -D ${BABELFISH_DATA_NEW}/ stop`
+```sql
+${BABELFISH_HOME_NEW}/bin/pg_ctl -D ${BABELFISH_DATA_NEW}/ stop
+```
+
+3. Switch to the `postgres` user (a non-superuser):
+
+```sql
+sudo su - postgres
+```
 
 4. You can use the `pg_upgrade` utility to upgrade the Postgres server. No special handling is needed to use pg_upgrade with Babelfish.  To simplify the commands, you can use environment variables; for example, if you are upgrading from Babelfish 1.4.1 to Babelfish 2.3.0, you can use the following commands to set environment variables:
 
@@ -147,10 +148,19 @@ Refer to the [pg_upgrade documentation](https://www.postgresql.org/docs/14/pgupg
 
 In the event of a failure, the new `data` directory (`$BABELFISH_DATA_NEW`) might have issues, but the old `data` directory (`$BABELFISH_DATA_OLD`) will remain intact. To retry the upgrade, you can remove the new `data` directory  and re-initialize it again. Follow the instructions in `Initiating the Data directory` from `INSTALLING.md`.
 
-After the upgrade is successfully completed, start the new server with `pg_ctl`:
+5. After the upgrade is successfully completed, start the new server with `pg_ctl`:
 
 `${BABELFISH_HOME_NEW}/bin/pg_ctl -D ${BABELFISH_DATA_NEW} -l logfile start`
 
+6. To update the Babelfish extensions, connect to the PostgreSQL endpoint of the Babelfish database and execute the following statements from a single session in this order:
+
+```sql
+${BABELFISH_HOME_OLD}/bin/psql -d database_name -U user_name
+
+ALTER EXTENSION babelfishpg_common UPDATE;
+ALTER EXTENSION babelfishpg_tsql UPDATE;
+ALTER EXTENSION babelfishpg_tds UPDATE;
+```
 
 ## Preparing the Upgraded Server for Use
 
