@@ -17,10 +17,9 @@ A query hint instructs the database engine how to execute a query. Babelfish can
 
 Babelfish version 2.3.0 supports version 1.4 of [pg_hint_plan](https://github.com/ossc-db/pg_hint_plan/releases/tag/REL14_1_4_0). To install pg_hint_plan:
 
-1. Download the  `pg_hint_plan14` module. 
-2. Navigate to the top of the source tree. 
-3. Assume the identity of the cluster owner, and run `make`, and then `make install`. 
-4. Modify your PATH environment variable to include the Babelfish PostgreSQL installation.
+1. Assume the identity of a sufficiently privileged user.
+2. At the top of the source tree, run `make` and then `make install`. 
+3. Modify your PATH environment variable to include the Babelfish PostgreSQL installation.
 
 You are not required to CREATE the pg_hint_plan extension, but you must either LOAD the extension.  Use the following command to load the extension for use in an individual session:
 
@@ -28,8 +27,6 @@ You are not required to CREATE the pg_hint_plan extension, but you must either L
 postgres=# LOAD 'pg_hint_plan';
 LOAD
 ```
-
-Or, to enable the extension globally, add the extension to the end of the `shared_preload_libraries` parameter in the `postgresql.conf` and reload the parameters.
 
 
 ### How to Turn on T-SQL Hints 
