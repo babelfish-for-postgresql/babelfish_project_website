@@ -21,7 +21,7 @@ Babelfish version 2.3.0 supports version 1.4 of [pg_hint_plan](https://github.co
 2. At the top of the source tree, run `make` and then `make install`. 
 3. Modify your PATH environment variable to include the Babelfish PostgreSQL installation.
 
-You are not required to CREATE the pg_hint_plan extension, but you must either LOAD the extension.  Use the following command to load the extension for use in an individual session:
+You are not required to CREATE the pg_hint_plan extension, but you must LOAD the extension.  Use the following command at the psql command line to load the extension:
 
 ```sql
 postgres=# LOAD 'pg_hint_plan';
