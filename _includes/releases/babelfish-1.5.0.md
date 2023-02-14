@@ -1,5 +1,5 @@
 - Babelfish Version: 1.5.0
-- Extension Version: 1.5.0
+- Extension Version: 1.3.0
 - PostgreSQL Server Version: 13.9
 - Download source distributions:
   - [BABEL_1_5_0__PG_13_9.zip](https://github.com/babelfish-for-postgresql/babelfish-for-postgresql/releases/download/BABEL_1_5_0__PG_13_9/BABEL_1_5_0__PG_13_9.zip)
@@ -45,9 +45,9 @@ babelfish_db[124386]# \dx
                                 List of installed extensions
         Name        | Version |   Schema   |                   Description
 --------------------+---------+------------+-------------------------------------------------
- babelfishpg_common | 1.2.1   | public     | Transact SQL Datatype Support
+ babelfishpg_common | 1.3.0   | public     | Transact SQL Datatype Support
                                  ....
- babelfishpg_tsql   | 1.2.1   | public     | Transact SQL Compatibility
+ babelfishpg_tsql   | 1.3.0   | public     | Transact SQL Compatibility
                                  ....
 ```
 
