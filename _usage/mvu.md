@@ -6,7 +6,7 @@ nav_order: 9
 
 ## Babelfish Major Version Upgrade
 
-Babelfish for PostgreSQL now supports major version upgrade (MVU). The upgrade is composed of two main steps. You first perform a major version upgrade on the PostgreSQL server to upgrade it to the target version. And, then you update all Babelfish extensions to the target version. Currently, the Babelfish for PostgreSQL only supports upgrade using the `pg_upgrade` module. Other upgrade methods such as `dump`/`restore` and replication are not supported.
+Babelfish for PostgreSQL now supports major version upgrade (MVU). The upgrade is composed of two main steps. You first perform a major version upgrade on the PostgreSQL server to upgrade it to the target version. And, then you update all Babelfish extensions to the target version. Currently, Babelfish for PostgreSQL only supports upgrade using the `pg_upgrade` module. Other upgrade methods such as `dump`/`restore` and replication are not supported.
 
 ## Naming Conventions
 
