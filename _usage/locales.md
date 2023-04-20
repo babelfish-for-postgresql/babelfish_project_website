@@ -172,7 +172,7 @@ postgres=# \dO
 Connect to the T-SQL port (by default `1433`) and enter:
 
 ```sql
-SELECT * FROM fn_helpcollation();
+SELECT * FROM fn_helpcollations();
 ```
 
 
