@@ -4,7 +4,7 @@ author: Suprio Pal and Shard Gupta
 authors: 
     - The Babelfish Project Team
 comments: true
-title: "This website is migrating to GitHub"
+title: "Launching Babelfish Discussions, Wiki and more"
 categories:
 - releases
 ---
