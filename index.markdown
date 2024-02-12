@@ -51,50 +51,22 @@ sidebar:
     links:
       - title: Release 2.3.0
         url: "/docs/versions/babelfish-2-3-0.html"
-      - title: Release 2.2.1
-        url: "/docs/versions/babelfish-2-2-1.html"
       - title: Release 2.2.0
         url: "/docs/versions/babelfish-2-2-0.html"
-      - title: Release 2.1.2
-        url: "/docs/versions/babelfish-2-1-2.html"
-      - title: Release 2.1.1
-        url: "/docs/versions/babelfish-2-1-1.html"
       - title: Release 2.1.0a
         url: "/docs/versions/babelfish-2-1-0a.html"
       - title: Release 2.1.0
         url: "/docs/versions/babelfish-2-1-0.html"
       - title: Release 1.5.0
         url: "/docs/versions/babelfish-1-5-0.html"
-      - title: Release 1.4.1
-        url: "/docs/versions/babelfish-1-4-1.html"
       - title: Release 1.4.0
         url: "/docs/versions/babelfish-1-4-0.html"
-      - title: Release 1.3.3
-        url: "/docs/versions/babelfish-1-3-3.html"
-      - title: Release 1.3.2
-        url: "/docs/versions/babelfish-1-3-2.html"
-      - title: Release 1.3.1
-        url: "/docs/versions/babelfish-1-3-1.html"
       - title: Release 1.3.0
         url: "/docs/versions/babelfish-1-3-0.html"
-      - title: Release 1.2.4
-        url: "/docs/versions/babelfish-1-2-4.html"
-      - title: Release 1.2.3
-        url: "/docs/versions/babelfish-1-2-3.html"
-      - title: Release 1.2.2
-        url: "/docs/versions/babelfish-1-2-2.html"
-      - title: Release 1.2.1
-        url: "/docs/versions/babelfish-1-2-1.html"
       - title: Release 1.2.0
         url: "/docs/versions/babelfish-1-2-0.html"
-      - title: Release 1.1.2
-        url: "/docs/versions/babelfish-1-1-2.html"
-      - title: Release 1.1.1
-        url: "/docs/versions/babelfish-1-1-1.html"
       - title: Release 1.1.0
         url: "/docs/versions/babelfish-1-1-0.html"
-      - title: Release 1.0.1
-        url: "/docs/versions/babelfish-1-0-1.html"
       - title: Release 1.0.0
         url: "/docs/versions/babelfish-1-0-0.html"
   - title: Have a question?
