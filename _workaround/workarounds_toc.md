@@ -21,4 +21,3 @@ You can use the workarounds in this section to replace unsupported SQL Server sy
 - [Dynamically defined cursors](https://babelfishpg.org/docs/workaround/dynamically_defined_cursor)
 - [Partitioning workaround for a cluster running in Single DB mode](https://babelfishpg.org/docs/workaround/partitioned_table)
 - [Rebuilding table indexes](https://babelfishpg.org/docs/workaround/rebuilding_table_indexes)
-- [SET ROWCOUNT](https://babelfishpg.org/docs/workaround/set_rowcount)
