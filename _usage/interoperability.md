@@ -24,9 +24,10 @@ A simple approach is to avoid accessing the Babelfish database from PostgreSQL a
 The interoperability considerations apply whenever the execution context is not pure TDS/T-SQL, i.e. when PostgreSQL SQL statements are executed in a Babelfish context. This is the case when:
 
 - In a PostgreSQL connection, PostgreSQL statements are executed against Babelfish-created objects (e.g. tables, views, procedures). 
-- In a TDS connection, T-SQL statements are executed against PostgreSQL-created objects (e.g. tables, views, procedures) or when PostgreSQL built-in functions are called from T-SQL. Based on customer feedback, this seems to be the more common of these scenarios.
+- In a TDS connection, T-SQL statements are executed against PostgreSQL-created objects (e.g. tables, views, procedures) or when PostgreSQL built-in functions are called from T-SQL.
+- In a TDS connection, a PostgreSQL trigger is defined (and later executed) on a TSQL table (or vice versa)
 
-In both cases, this effectively means the SQL dialect is temporarily (and transparently) switched in the session while accessing/executing the objects created in a different SQL dialect (this does not apply to accessing a table).
+In these cases, this effectively means the SQL dialect is temporarily (and transparently) switched in the session while accessing/executing the objects created in a different SQL dialect (this does not apply to accessing a table).
 
 When one of the above cases occurs in a Babelfish-based application, one or more of the following interoperability aspects may need to be considered. It is the responsibility of the Babelfish user to determine whether an application with such a mixed-SQL dialect scenario works as expected. Also, the user should anticipate potential issues when upgrading to future versions of Babelfish; such issues may need to be resolved by the user themselves.
 
@@ -81,7 +82,7 @@ Interoperability aspects: schema names; identifiers; permissions.
 
 - When the PostgreSQL connection also modifies the Babelfish-created tables or performs DDL to modify such objects, then also transactional semantics aspects will apply.
 
-- A more complex scenario is when a PostgreSQL connection executes a T-SQL procedure (either directly or via a PostgreSQL procedure), or modifies a Babelfish-created table which has a Babelfish-created trigger. The resulting semantics should be carefully validated by the Babelfish user. 
+- A more complex scenario is when a PostgreSQL connection executes a T-SQL procedure (either directly or via a PostgreSQL procedure), or modifies a Babelfish-created table which has a Babelfish-created trigger. The resulting semantics should be carefully validated by the Babelfish user. Beginning with Babelfish v.3.3.0, Babelfish intentionally blocks these configurations to prevent such issues.
 
 
 ## Interoperability Examples
