@@ -23,7 +23,7 @@ Babelfish 1.5.0 contains fixes and features that improve the user experience.
 
 Babelfish 1.5.0 is compatible with the version 1.x.x of Babelfish; a dump/restore is not required to upgrade to the newer version. To upgrade:
 
-1. Install the new binaries; for details, see [Compiling Babelfish From Source] (https://babelfishpg.org/docs/installation/compiling-babelfish-from-source/).
+1. Install the new binaries; for details, see [Compiling Babelfish From Source](https://babelfishpg.org/docs/installation/compiling-babelfish-from-source/).
 
 2. Start the new server.
 
