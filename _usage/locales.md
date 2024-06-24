@@ -121,7 +121,7 @@ You can use the following collations for column definitions, if you want to supp
 | Dialect   | Deterministic version | Non-deterministic versions         |
 | --------- | --------------------- | --------------------------------- |
 | `arabic`    | `arabic_cs_as`  | `arabic_ci_as`, `arabic_ci_ai`    |
-| `chinese`   | `chinese_cs_as`  | `chinese_ci_as`, `chinese_ci_ai`  |
+| `chinese`   | `chinese_prc_cs_as`  | `chinese_prc_ci_as`, `chinese_prc_ci_ai`  |
 | `cyrillic_general`  | `cyrillic_general_cs_as` | `cyrillic_general_ci_as`, `cyrillic_general_ci_ai` |
 | `estonian`  |`estonian_cs_as` | `estonian_ci_as`, `estonian_ci_ai` | 
 | `finnish_swedish` | `finnish_swedish_cs_as` | `finnish_swedish_ci_as`, `finnish_swedish_ci_ai` | 
