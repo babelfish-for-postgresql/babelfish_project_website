@@ -27,9 +27,6 @@ The PostgreSQL core that is distributed with Babelfish has been modified to prep
 transaction handling, and other behaviors that are different in SQL Server. This means that the database 
 server is not 100% identical to a community distribution of PostgreSQL.  
 
-To find out more about unsupported SQL Server behaviors, check
-out our section about [limitations and compatibility issues](/docs/usage/limitations-of-babelfish).
-
 ### Databases vs. schemas
 
 PostgreSQL supports the following logical structure of objects:
@@ -68,8 +65,7 @@ Here is a more detailed description of these extensions:
 
 Data types are often really similar but not necessarily 100% identical.
 Therefore, the Babelfish development team provides specific data types which
-mimic SQL Server behavior. You will find an up-to-date list of unsupported 
-data types and other functionality on the [Babelfish compatibility page](docs/usage/limitations-of-babelfish).
+mimic SQL Server behavior.
 
 #### `babelfishpg_money`: Money data type
 

@@ -56,10 +56,7 @@ permissions. These are disabled by default in SSMS.
 ### Deploying the schema and migrating the data
 
 Babelfish implements most T-SQL statements, so it should be relatively easy to
-port the generated DDL to Babelfish.  If you are facing errors or problems,
-we recommend that you check out our
-[discussion about differences in functionality](/docs/usage/limitations-of-babelfish)
-and adjust your DDL code if necessary.
+port the generated DDL to Babelfish.
 
 Run the DDL on your new Babelfish server to recreate your schema on Babelfish,
 either with sqlcmd or with SSMS. 
@@ -72,9 +69,7 @@ Once the schema and data have been migrated successfully, you can reconfigure yo
 client applications to connect to the Babelfish instance instead of to SQL Server. 
 Point your applications to the new data source, and launch your tests.
 
-To a client, Babelfish is expected to look just like a normal SQL Server. Unless
-you hit a [limitation](/docs/usage/limitations-of-babelfish), your apps should work
-normally. However, we recommend thorough testing.
+To a client, Babelfish is expected to look just like a normal SQL Server. Your apps should work normally. However, we recommend thorough testing.
 
 
 ### Moving to production

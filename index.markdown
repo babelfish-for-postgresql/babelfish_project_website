@@ -17,7 +17,7 @@ ctas:
   post: " on GitHub"
   primary:
     text: "Get Started"
-    url: "/getstarted/"
+    url: "docs/installation/compiling-babelfish-from-source/"
   roadmap:
     text: "View the project roadmap"
     url: https://github.com/orgs/babelfish-for-postgresql/projects/1
@@ -33,42 +33,16 @@ callouts_class: list-features
 callouts_id: principles
 callouts_leader: "When we (the contributors) are successful, Babelfish for PostgreSQL will be:"
 
-version_feature:
-  latest_label: "Current Version:"
-  date_label: "/"
-
 callout_button:
   title: Get Started
-  url: getstarted/
+  url: docs/installation/compiling-babelfish-from-source/
 
 secondary:
   heading: "Stay in the loop"
   content: "Check out the [forums](https://discuss.babelfishpgcommunity.dev) to stay informed."
 
 sidebar:
-  - title: Releases
-    description: List of Babelfish releases.
-    links:
-      - title: Release 2.3.0
-        url: "/docs/versions/babelfish-2-3-0.html"
-      - title: Release 2.2.0
-        url: "/docs/versions/babelfish-2-2-0.html"
-      - title: Release 2.1.0a
-        url: "/docs/versions/babelfish-2-1-0a.html"
-      - title: Release 2.1.0
-        url: "/docs/versions/babelfish-2-1-0.html"
-      - title: Release 1.5.0
-        url: "/docs/versions/babelfish-1-5-0.html"
-      - title: Release 1.4.0
-        url: "/docs/versions/babelfish-1-4-0.html"
-      - title: Release 1.3.0
-        url: "/docs/versions/babelfish-1-3-0.html"
-      - title: Release 1.2.0
-        url: "/docs/versions/babelfish-1-2-0.html"
-      - title: Release 1.1.0
-        url: "/docs/versions/babelfish-1-1-0.html"
-      - title: Release 1.0.0
-        url: "/docs/versions/babelfish-1-0-0.html"
+
   - title: Have a question?
     description: Do you have a question about Babelfish? You may not be the first person to ask it. Visit our Frequently Asked Questions (FAQ) to see if your question has been answered. If not, don’t hesitate to ask and we'll be glad to answer.
     links:

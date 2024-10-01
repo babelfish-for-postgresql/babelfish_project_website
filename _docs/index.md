@@ -11,7 +11,7 @@ permalink: /docs/
 This site contains the technical documentation for [Babelfish for PostgreSQL](https://babelfishpg.org/), an [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) and [PostgreSQL](https://www.postgresql.org/about/licence/) open-source project that adds a Microsoft SQL Server-compatible end-point to PostgreSQL. With the addition of Babelfish, PostgreSQL understands T-SQL, SQL Server's proprietary SQL dialect, and supports the TDS communication protocol, so applications originally written for SQL Server may work with PostgreSQL with fewer code changes and without changing database drivers.
 
 
-[Get started](/getstarted/){: .btn .btn-blue }
+[Get started](/docs/installation/compiling-babelfish-from-source/){: .btn .btn-blue }
 
 
 ---
