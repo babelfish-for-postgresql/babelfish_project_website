@@ -25,10 +25,7 @@ just_the_docs:
     faq:
       name: FAQ and getting help
       nav_fold: true
-    versions:
-      name: Releases
-      nav_fold: true
-      order: desc
+
 ```
 
 Each one of the `collections` attributes points to the folder in which the content resides, prefixed with an underscore.  For example:

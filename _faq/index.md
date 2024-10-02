@@ -14,10 +14,6 @@ Babelfish and Microsoft SQL Server compatibility.
 
 Yes, Babelfish can be used free of charge. It is open-source software, provided under the terms of the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0) and [PostgreSQL license](https://www.postgresql.org/about/licence/).
 
-## Is Babelfish 100% compatible with Microsoft SQL Server?
-
-The Babelfish community tries to be as compatible as possible but there are some limitations. To learn more about 
-these limitations, check out our [documentation](/docs/usage/limitations-of-babelfish) for a more detailed description.
 
 Babelfish supports TDS protocol versions 7.1 and higher.
 

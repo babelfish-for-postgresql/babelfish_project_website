@@ -33,8 +33,7 @@ By default, to use the following dialects use the following ports:
 
 - PostgreSQL dialect, clients connect to port 5432.
 
-Babelfish runs the Transact-SQL (T-SQL) language with the exceptions documented
-in [T-SQL limitations](/docs/usage/limitations-of-babelfish).
+Babelfish runs the Transact-SQL (T-SQL) language.
 
 
 ### Join the Babelfish community

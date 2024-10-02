@@ -52,6 +52,4 @@ Babelfish also creates a <code>*dbname*&lowbar;db&lowbar;owner</code> and a <cod
 
 These roles implement the SQL Server object ownership structure; they are maintained by the database, and should not be used for client connections.
 
-You can use `CREATE LOGIN` to create a new Babelfish login with access to all databases.  Babelfish logins
-are implemented as PostgreSQL login roles of the same name.  Note that Babelfish [provides limited support](/docs/usage/limitations-of-babelfish)
-for the `CREATE USER` and `CREATE ROLE` statements.
+You can use `CREATE LOGIN` to create a new Babelfish login with access to all databases. Babelfish logins are implemented as PostgreSQL login roles of the same name. 
