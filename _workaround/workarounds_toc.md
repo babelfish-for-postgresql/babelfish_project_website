@@ -16,6 +16,5 @@ You can use the workarounds in this section to replace unsupported SQL Server sy
 
 ## Workaround List
 
-- [COLLATE DATABASE_DEFAULT](https://babelfishpg.org/docs/workaround/collate_database_default)
 - [Dynamically defined cursors](https://babelfishpg.org/docs/workaround/dynamically_defined_cursor)
 - [Rebuilding table indexes](https://babelfishpg.org/docs/workaround/rebuilding_table_indexes)
