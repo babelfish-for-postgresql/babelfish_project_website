@@ -26,4 +26,3 @@ The following interfaces are officially supported:
 
 More connectivity drivers might be added in the future.  Since Babelfish supports the TDS 
 protocol, most TDS-based client applications are expected to work with Babelfish.
-
