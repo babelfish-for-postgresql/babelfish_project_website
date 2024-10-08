@@ -55,7 +55,7 @@ serverproperty
 
 ## Can I use a database with the TDS protocol and the PostgreSQL protocol at the same time?
 
-Yes. A database can support PostgreSQL syntax and SQL Server (TDS protocol) syntax at the same time, but [objects created in one syntax may not be accessible to the other syntax](https://babelfishpg.org/docs/usage/interoperability/).  
+Yes. A database can support PostgreSQL syntax and SQL Server (TDS protocol) syntax at the same time, but please refer to the [Interoperability](https://babelfishpg.org/docs/usage/interoperability/) guidance section.
 
 ### Which TDS clients are known to work with Babelfish?
 
