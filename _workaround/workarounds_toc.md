@@ -8,16 +8,13 @@ You can use the workarounds in this section to replace unsupported SQL Server sy
 
 | SQL Server feature | PostgreSQL feature | 
 | ------- | ------- | 
-| SQL Server Replication | [PostgreSQL Replication ](https://www.postgresql.org/docs/current/high-availability) |
-| DBCC CLEANTABLE | [PostgreSQL VACCUUM utilities](https://www.postgresql.org/docs/15/routine-vacuuming) |
-| SQL Server full-text search | [PostgreSQL full-text search ](https://www.postgresql.org/docs/15/textsearch) |
-| SQL Profiler | [auto_explain ](https://www.postgresql.org/docs/current/auto-explain) |
-| SQL Server spatial features | [PostGIS spatial data handler](https://postgis.net) |
+| SQL Server Replication | [PostgreSQL Replication ](https://www.postgresql.org/docs/current/high-availability.html) |
+| DBCC CLEANTABLE | [PostgreSQL VACCUUM utilities](https://www.postgresql.org/docs/current/routine-vacuuming.html) |
+| SQL Profiler | [auto_explain ](https://www.postgresql.org/docs/current/auto-explain.html) |
+
 
 
 ## Workaround List
 
-- [COLLATE DATABASE_DEFAULT](https://babelfishpg.org/docs/workaround/collate_database_default)
 - [Dynamically defined cursors](https://babelfishpg.org/docs/workaround/dynamically_defined_cursor)
-- [Partitioning workaround for a cluster running in Single DB mode](https://babelfishpg.org/docs/workaround/partitioned_table)
 - [Rebuilding table indexes](https://babelfishpg.org/docs/workaround/rebuilding_table_indexes)

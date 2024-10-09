@@ -16,14 +16,13 @@ if you face an issue.
 
 The following interfaces are officially supported:
 
-- OLEDB Provider/MSOLEDBSQL
-- OLEDB Driver/SQLOLEDB (deprecated by Microsoft)
-- .NET Data Provider for SQL Server
-- SQL Server Native Client 11.0 (deprecated by Microsoft)
-- Microsoft SqlClient Data Provider for SQL Server
 - Open Database Connectivity (ODBC)
-- Java Database Connectivity (JDBC)
+- OLEDB Provider/MSOLEDBSQL
+- Java Database Connectivity (JDBC) version 8.2.2 (mssql-jdbc-8.2.2) and higher
+- Microsoft SqlClient Data Provider for SQL Server
+- .NET Data Provider for SQL Server
+- SQL Server Native Client 11.0 (deprecated)
+- OLEDB Driver/SQLOLEDB (deprecated)
 
 More connectivity drivers might be added in the future.  Since Babelfish supports the TDS 
 protocol, most TDS-based client applications are expected to work with Babelfish.
-
