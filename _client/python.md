@@ -68,7 +68,7 @@ Then, the example creates a connection with the SQL Server host. The syntax of t
 server = 'host.example.com'
 database = 'postgres'
 username = 'postgres'
-password = '1safepassword'
+password = '********'
 
 # Establish a connection
 try:
@@ -215,7 +215,7 @@ server = 'host.example.com'
 port = 1433
 database = 'master'  
 username = 'babelfish_user'
-password = '1safepassword'
+password = '********'
 
 pg_database = "babelfish_db"
 pg_schema   = "master_dbo"

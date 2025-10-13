@@ -8,8 +8,8 @@ import psycopg2
 server = 'localhost'
 port = 1433
 database = 'master'  
-username = 'babelfish_user'
-password = '12345678'
+username = '<user_name>'
+password = '********'
 
 pg_database = "babelfish_db"
 pg_schema   = "master_dbo"
