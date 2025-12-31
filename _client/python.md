@@ -311,5 +311,3 @@ Finally, add the init call to `main()` function:
 if __name__ == "__main__":
     main()
 ```
-
-You can download this example from [here](/assets/examples/tds.py).
