@@ -38,7 +38,7 @@ The following table shows how Babelfish interprets SSL settings when a client co
 
 ### User management and roles
 
-Babelfish creates a number of PostgreSQL roles:
+Babelfish creates a number of T-SQL roles:
 
 - `sysadmin`
 - `master_db_owner`
@@ -48,8 +48,15 @@ Babelfish creates a number of PostgreSQL roles:
 - `tempdb_dbo`
 - `tempdb_guest`
 
-Babelfish also creates a <code>*dbname*&lowbar;db&lowbar;owner</code> and a <code>*dbname*&lowbar;dbo</code> for each database you create in Babelfish.
+Babelfish creates a <code>*dbname*&lowbar;db&lowbar;owner</code> and a <code>*dbname*&lowbar;dbo</code> for each database you create in Babelfish. Additionally following roles are also supported.
+
+| Feature                                                                                   | Supported versions   |
+|:------------------------------------------------------------------------------------------|:---------------------|
+| Fixed server roles: dbcreator, securityadmin                                              | Version 4.5+, 5.1+  |
+| Fixed database roles: db_owner, db_datareader, db_datawriter, db_accessadmin, db_securityadmin | Version 4.5+, 5.1+  |
+| ALTER AUTHORIZATION ON DATABASE (change DB owner)                                         | Version 3.4+         |
+| Schema-level GRANT/REVOKE (GRANT ... ON SCHEMA::)                                        | Version 3.6+, 4.2+  |
+| Object-level GRANT/REVOKE (GRANT ... ON OBJECT::)                                        | All versions         |
+| ALTER SERVER ROLE ... ADD MEMBER                                                          | All versions         |
 
 These roles implement the SQL Server object ownership structure; they are maintained by the database, and should not be used for client connections.
-
-You can use `CREATE LOGIN` to create a new Babelfish login with access to all databases. Babelfish logins are implemented as PostgreSQL login roles of the same name. 
