@@ -68,6 +68,12 @@ For example:
 JEKYLL_FATAL_LINK_CHECKER=all bundle exec jekyll build
 ```
 
+#### Content Modifier
+
+In order to automatically mitigate some common security risks, the generated pages are scanned and modified, during build, by the [`ContentModifier` plugin](_plugins/content-modifier.rb). Due to its impact on build times, the plugin does not run when developing locally using `jekyll serve`. This behavior can be changed to force the execution of plugin while serving by adding the ENV flag `JEKYLL_ALLOW_CONTENT_MODIFIER`. E.g.
+```sh
+JEKYLL_ALLOW_CONTENT_MODIFIER= bundle exec jekyll serve
+```
 
 ## Writing style guidelines
 
